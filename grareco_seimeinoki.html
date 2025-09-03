@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフィックレコーディング：生命の木 勉強会</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40;
+            --color-2: #DCE0F2;
+            --color-3: #012840;
+            --color-4: #A66A5D;
+            --color-5: #0D0D0D;
+            --font-main: 'Yomogi', cursive;
+            --font-accent: 'Kaisei Decol', serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            font-family: var(--font-accent);
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Aligns content to the top */
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card:hover .section-title i {
+            transform: rotate(360deg);
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: #64748b;
+            margin-left: 8px;
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.4;
+        }
+        
+        .card-body strong {
+            color: var(--color-1);
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.8;
+            margin-top: auto; /* Pushes icon to the bottom */
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+        
+        .comparison-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .comparison-item {
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .comparison-item h4 {
+            margin: 0 0 5px 0;
+            font-size: 15px;
+            color: var(--color-3);
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 印刷時専用のスタイルを追加 */
+        @media print {
+            body {
+                background-image: none; /* 印刷時に背景画像を非表示に */
+                color: #000 !important; /* 文字色を黒に */
+            }
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            .grid-container {
+                display: block; /* グリッドレイアウトを解除し、縦並びに */
+            }
+            .card {
+                page-break-inside: avoid; /* カードの途中で改ページされないように */
+                box-shadow: none;
+                margin-bottom: 25px;
+            }
+            .main-title {
+                background: none; /* タイトルのグラデーションを解除 */
+                -webkit-text-fill-color: initial;
+                color: #000;
+            }
+            .subtitle, footer a {
+                color: #333;
+            }
+            .icon-large {
+                 display: none; /* 印刷時には大きなアイコンを非表示にしてスペースを節約 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title">
+            <i class="fa-solid fa-tree"></i>
+            生命の木 勉強会 グラフィックレコーディング
+            <i class="fa-solid fa-lightbulb"></i>
+        </h1>
+        <p class="subtitle"><i class="fa-solid fa-clover"></i> タロットカードと生命の木の関連性を探るセッションの記録</p>
+
+        <div class="grid-container">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-circle-nodes"></i> 導入：生命の木とは <span class="timestamp">(00:20)</span></h3>
+                    <div class="card-body">
+                        情報を簡略化した図を使用。10個の「マル（セフィラ）」と、それらを繋ぐ22本の「線（パス）」で構成される。マルは小アルカナ、線は大アルカナに対応。
+                    </div>
+                </div>
+                <i class="fa-solid fa-sitemap icon-large"></i>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-ruler-combined"></i> アルカナの違い <span class="timestamp">(01:45)</span></h3>
+                    <div class="card-body">
+                         <div class="comparison-container">
+                            <div class="comparison-item">
+                                <h4>小アルカナ</h4>
+                                <p>「今の状態」や「テーマ」を示す。</p>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>大アルカナ</h4>
+                                <p>「変化のための行動」や「エネルギー」を示す。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-earth-asia"></i> 現実世界の位置 <span class="timestamp">(02:24)</span></h3>
+                    <div class="card-body">
+                        10番目のセフィラが「地球・現実世界」。人間は基本的にここからスタートし、上へと登っていくイメージ。新しいことは上から降りてくることもある。
+                    </div>
+                </div>
+                <i class="fa-solid fa-person-hiking icon-large"></i>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> 4つの世界層 <span class="timestamp">(02:50)</span></h3>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>1,2,3:</strong> 😇 神・宇宙の世界</li>
+                            <li><strong>4,5,6:</strong> ✨ ハイヤーセルフの領域（他人が登場しない）</li>
+                            <li><strong>7,8,9:</strong> 🧠 感情・思考・潜在意識</li>
+                            <li><strong>10:</strong> 🌍 肉体を持つ現実世界</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-lock"></i> 現実世界のループ <span class="timestamp">(04:15)</span></h3>
+                    <div class="card-body">
+                        9番（潜在意識）の「制限（思い込み）」を持ったまま10番（現実）で体験し、8番（感情）で感じ、7番（思考）が働く。このループから抜け出すには、制限を外す必要がある。
+                    </div>
+                </div>
+                <i class="fa-solid fa-repeat icon-large"></i>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-scale-balanced"></i> バランスの中心「6番」 <span class="timestamp">(06:20)</span></h3>
+                    <div class="card-body">
+                        6番のセフィラは図の中心で最もバランスが取れている。宇宙からの直感（1番）と繋がり、現実の自分（10番）や内面の制限（9番）を客観的に（俯瞰して）見つめることができる。
+                    </div>
+                </div>
+                <i class="fa-solid fa-binoculars icon-large"></i>
+            </div>
+            
+            <!-- Card 7 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-anchor"></i> 自分軸の構造 <span class="timestamp">(07:35)</span></h3>
+                    <div class="card-body speech-bubble">
+                        生命の木の真ん中の線（パス）は「自分軸」と捉えられる。俯瞰した視点と肉体を持ち、自分の制限を直視できる状態。
+                    </div>
+                    <div class="card-body">
+                        潜在意識の制限が重いと、上からの直感やインスピレーション（レシピ）が遮断されてしまう。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-puzzle-piece"></i> 暗記不要のリーディング <span class="timestamp">(09:46)</span></h3>
+                    <div class="card-body">
+                        生命の木を理解すれば、小アルカナ78枚の意味を丸暗記する必要はない。「各セフィラの土台の意味 × 4つのスート（火・水・風・土）」で意味を導き出せるため、暗記のハードルが下がる。
+                    </div>
+                </div>
+                 <i class="fa-solid fa-brain icon-large"></i>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-feather-pointed"></i> ウェイト版の背景 <span class="timestamp">(12:10)</span></h3>
+                    <div class="card-body">
+                        アーサー・エドワード・ウェイトは秘密結社「黄金の夜明け団」の教義に基づき、生命の木を土台にしてタロットを作成した。そのため、生命の木の知識は本来の意図を理解する上で重要。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 10 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-chess"></i> コートカードの配置 <span class="timestamp">(13:40)</span></h3>
+                    <div class="card-body">
+                        コートカードは特定のセフィラに対応する「現実創造のための術式」。
+                        <ul>
+                            <li><strong>キング:</strong> 2番（能動的エネルギー）</li>
+                            <li><strong>クイーン:</strong> 3番（受動的・物語の設定）</li>
+                            <li><strong>ナイト:</strong> 6番（直接的行動）</li>
+                            <li><strong>ページ:</strong> 10番（始まり・今ここ）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-scroll"></i> ワンドのクイーン解説 <span class="timestamp">(16:30 - 19:20)</span></h3>
+                    <div class="card-body">
+                        3番の場所（クイーン）は、ワンネスから分離し「物語の設定」が生まれる場所。性別や得意不得意など、変えられない設定が決まる。<strong>生まれ持った素質を活かし、新たに何かを生み出していく段階</strong>を示す。
+                    </div>
+                </div>
+                <i class="fa-solid fa-crown icon-large"></i>
+            </div>
+            
+            <!-- Card 12 -->
+            <div class="card">
+                 <div>
+                    <h3 class="section-title"><i class="fa-solid fa-graduation-cap"></i> 泉先生のコートカード解釈 <span class="timestamp">(21:31)</span></h3>
+                    <div class="card-body speech-bubble">
+                        ページは「未熟」、ナイトは「直接的」、クイーンは「経験豊富」、キングは「確立」というキーワードで解釈することもできる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-user-check"></i> 主体的な視点 <span class="timestamp">(25:05)</span></h3>
+                    <div class="card-body">
+                        生命の木の本質は「自分が主体」。相手がどうこうではなく、「なぜ自分はこの経験をしているのか？」という視点で物事を捉えることが重要。外側の世界は関係ない。
+                    </div>
+                </div>
+                <i class="fa-solid fa-street-view icon-large"></i>
+            </div>
+            
+            <!-- Card 14 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-code-branch"></i> パスを活かした深掘り <span class="timestamp">(26:30)</span></h3>
+                    <div class="card-body">
+                        1枚のカードが出ても、そのカードが位置するセフィラから伸びる「パス（大アルカナ）」の話をすることで、リーディングを広げられる。例えばクイーン（3番）からは戦車や恋人のパスがあり、行動のヒントになる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-circle-9"></i> ワンドの9解説 <span class="timestamp">(32:30)</span></h3>
+                     <div class="card-body highlight-box">
+                        9番（無意識）は「自動運転」がテーマ。かつて純粋な情熱だったワンドのエネルギーが、ここでは「やるのが当たり前」と自動化され、純粋さが失われつつある状態。
+                    </div>
+                    <div class="card-body">
+                        やり切る一歩手前で、初心を忘れかけている。物事の終わりが近いことを示唆する。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 16 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-star"></i> 感情の観察と浄化 <span class="timestamp">(40:50)</span></h3>
+                    <div class="card-body">
+                         9番から繋がる「星」のパスは、現実で起こることを見て感情を観察し、浄化することを示す。自分の感情を揺さぶる人は、自分の「闇」を映し出す大切なヒントをくれる存在。
+                    </div>
+                </div>
+                <i class="fa-solid fa-hand-holding-droplet icon-large"></i>
+            </div>
+
+            <!-- Card 17 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-mask"></i> 仮面が壊れる「塔」 <span class="timestamp">(44:34)</span></h3>
+                    <div class="card-body">
+                        「塔」のカードは、これまで被ってきた「いい人の仮面」や「母親の仮面」などが壊れることを示す。外側に向けて作られたペルソナの崩壊。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 18 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-person-praying"></i> 法王（司祭）解説 <span class="timestamp">(48:30)</span></h3>
+                    <div class="card-body">
+                        神様の圧倒的なエネルギー（2番）を、人間が安心に暮らせるように誰かがルールや道徳（4番）として作ってくれたパス。先生や師匠、育った環境など、外から与えられた「安心安全の枠組み」を象徴する。
+                    </div>
+                </div>
+                <i class="fa-solid fa-landmark icon-large"></i>
+            </div>
+
+            <!-- Card 19 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-arrows-rotate"></i> 心地よさの更新 <span class="timestamp">(55:00)</span></h3>
+                    <div class="card-body speech-bubble">
+                        4番のセフィラは「自分にとっての心地よいルール」。しかし、ずっと同じ場所に留まると水が濁るように停滞する。常に枠の外を意識し、自分の心地よさやルールを更新（バージョンアップ）し続ける必要がある。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 20 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-venus-mars"></i> 女帝と司祭の関係 <span class="timestamp">(58:20)</span></h3>
+                    <div class="card-body">
+                        女帝（3番）と司祭（5番のパス）は女性性の表裏一体。女帝がプラス（包容力）を、司祭の裏にある女教皇がマイナス（ダークな部分）を担当するイメージ。女帝はどんな感情や制限も受け止め、新たな現実を生み出す力を持つ。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 21 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-wheel-of-fortune"></i> 運命の輪の気づき <span class="timestamp">(1:03:00)</span></h3>
+                    <div class="card-body">
+                        「運命の輪」は、今の日常がどんな無意識の制限によって繰り返されているのかに「気づく」ことがテーマ。気づきによって既存のパターンが変わり、違う世界線（パラレルワールド）へ移動できる。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 22 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> 土台の再構築 <span class="timestamp">(1:05:30)</span></h3>
+                    <div class="card-body">
+                        運命の輪（木星）と戦車（蟹座）は連動している。気づきによって既存の日常が変わると、自分の土台（安心安全）も再構築される。より大きな土台を育むタイミング。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 23 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-hat-wizard"></i> 悪魔の高次元な使い方 <span class="timestamp">(1:08:20)</span></h3>
+                    <div class="card-body">
+                        「悪魔」のカードは通常、欠乏感を見ないためのエネルギーとして使われる。しかし、内面が整ってくると、欠乏感とは無関係の「純粋な悪」として、自分のダークな部分を意図的に力として使えるようになる。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 24 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-shoe-prints"></i> 愚者の旅（後半）<span class="timestamp">(1:13:00)</span></h3>
+                    <div class="card-body">
+                        15番(悪魔)以降は統合の旅。
+                        <ol>
+                            <li><strong>悪魔:</strong> 自分の闇と向き合う</li>
+                            <li><strong>塔:</strong> 今までの自分が崩れる</li>
+                            <li><strong>星:</strong> 裸の自分になる</li>
+                            <li><strong>月:</strong> 手探りで暗闇を歩く</li>
+                            <li><strong>太陽:</strong> 裸の自分で世界と調和する</li>
+                            <li><strong>審判:</strong> 自分の枠が広がる</li>
+                            <li><strong>世界:</strong> 新しい世界でダンスする</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 25 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-book-open-reader"></i> おすすめ書籍 <span class="timestamp">(1:14:45)</span></h3>
+                    <div class="card-body highlight-box">
+                         レイチェル・ポラックの「タロットの書」は、生命の木を前提に書かれており、深く理解するためにおすすめ。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 26 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-child"></i> ワンドのページ解説 <span class="timestamp">(1:17:40)</span></h3>
+                    <div class="card-body">
+                        10番の場所（ページ）は、外側の状況が固まっていて変えられない中で「今ここから何を探すか？」という始まりのカード。自分の命を燃やすようなワクワクすることを探す段階。
+                    </div>
+                </div>
+                 <i class="fa-solid fa-magnifying-glass icon-large"></i>
+            </div>
+
+            <!-- Card 27 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-satellite-dish"></i> 日常の小さな情報 <span class="timestamp">(1:22:50)</span></h3>
+                    <div class="card-body">
+                        ページのエネルギーは、既存の日常に飲み込まれると気づかないような小さな情報にアンテナを張ることでもある。「ここにタンポポがあったな」というような、何気ない気づきが重要。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 28 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-infinity"></i> 経験のサイクル <span class="timestamp">(1:24:40)</span></h3>
+                    <div class="card-body speech-bubble">
+                        ページ（プリンセス）はエース（種）に乗ってビナー（3番）に帰る。しんどい体験も含め、全ての経験は魂の情報量を豊かにし、それを用いてまた新たなものを生み出していくサイクルに戻る。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 29 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-feather"></i> まとめ：法王の再登場 <span class="timestamp">(1:26:30)</span></h3>
+                    <div class="card-body">
+                        セッションの最後に再び「法王」が登場。これは、新しいチャレンジを始め、今までの自分の枠を超え、土台をリフォームしている時期であることを象徴している。避けていたことをやり始める、まさに「枠の外」への挑戦。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 30 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-handshake-angle"></i> 終わりに <span class="timestamp">(1:29:22)</span></h3>
+                    <div class="card-body">
+                        生命の木を通してタロットを読むことで、1枚のカードから多角的な視点が得られ、自己理解が深まる。セッションは質疑応答で締めくくられた。
+                    </div>
+                </div>
+                 <i class="fa-solid fa-hands-clapping icon-large"></i>
+            </div>
+
+
+        </div>
+        
+        <footer>
+            <p>グラフィックレコーディング作成日: 2025年9月3日</p>
+            <p>情報源: <a href="https://www.youtube.com/watch?v=r5tjAcD5seI" target="_blank">勉強会0818 - YouTube</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
