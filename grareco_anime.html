@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフィックレコーディング：生命の樹 × アニメ考察</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40;
+            --color-2: #DCE0F2;
+            --color-3: #012840;
+            --color-4: #A66A5D;
+            --color-5: #0D0D0D;
+            --font-main: 'Yomogi', cursive;
+            --font-accent: 'Kaisei Decol', serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            font-family: var(--font-accent);
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .section-title i {
+            margin-right: 8px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card:hover .section-title i {
+            transform: rotate(360deg);
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: #64748b;
+            margin-left: 8px;
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.4;
+        }
+        
+        .card-body strong {
+            color: var(--color-1);
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.8;
+            margin-top: auto;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+        
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background-image: none;
+                color: #000 !important;
+            }
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            .grid-container {
+                display: block;
+            }
+            .card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                margin-bottom: 25px;
+            }
+            .main-title {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: #000;
+            }
+            .subtitle, footer a {
+                color: #333;
+            }
+            .icon-large {
+                 display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title">
+            <i class="fa-solid fa-film"></i>
+            生命の樹 × アニメ考察 グラレコ
+            <i class="fa-solid fa-tree"></i>
+        </h1>
+        <p class="subtitle"><i class="fa-solid fa-book-open"></i> アニメ「チ。-地球の運動について-」を中心に、物語の構造を生命の樹で読み解く</p>
+
+        <div class="grid-container">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-globe-europe"></i> アニメ「チ。」の世界観 <span class="timestamp">(00:30)</span></h3>
+                    <div class="card-body">
+                        舞台は天動説が正義とされた時代。地動説という「真理への好奇心」が、キリスト教の教えに背く「異端」とされ、命がけの研究が描かれる物語。
+                    </div>
+                </div>
+                <i class="fa-solid fa-star-of-david icon-large"></i>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-user-shield"></i> 登場人物：ノヴァク <span class="timestamp">(03:20)</span></h3>
+                    <div class="card-body">
+                        キリスト教側の異端審問官。神の教えに反する者（地動説学者）を捕らえ、裁く役割。物語の「秩序」や「既存のルール」を象徴する存在。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-brain"></i> 登場人物：ラファウ <span class="timestamp">(05:20)</span></h3>
+                    <div class="card-body">
+                        将来を嘱望された天才少年。地動説に出会い、その真理に魅せられ、命を顧みず研究に没頭する。「知的好奇心」や「既存の枠を超える力」の象徴。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-landmark"></i> ノヴァクと「4番の世界」 <span class="timestamp">(08:30)</span></h3>
+                    <div class="card-body speech-bubble">
+                        ノヴァクは生命の樹の4番「ケセド（慈悲）」の世界に執着する。ここはルールや教え（5番 法王のパス）に守られた安心・安全な場所。彼は神の教えを絶対的なものとし、そこに留まり続ける。
+                    </div>
+                </div>
+                <i class="fa-solid fa-chess-rook icon-large"></i>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-bolt"></i> 価値観の衝突 <span class="timestamp">(10:15)</span></h3>
+                    <div class="card-body">
+                        ラファウとの出会いは、ノヴァクの安定した世界を揺るがす。命をかけてまで好奇心を追求するラファウの姿に、ノヴァクは理解不能な衝撃を受け、同時に強く惹きつけられる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-hand-sparkles"></i> 抑圧された好奇心 <span class="timestamp">(12:51)</span></h3>
+                    <div class="card-body">
+                        ノヴァクは自分の中に芽生えた「知りたい」という好奇心を、「神の教えに背く悪」と判断し、封印（抑圧）してしまう。
+                    </div>
+                </div>
+                <i class="fa-solid fa-box-archive icon-large"></i>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-hat-wizard"></i> 「悪魔」への変質 <span class="timestamp">(13:20)</span></h3>
+                    <div class="card-body highlight-box">
+                        抑圧された好奇心は消えず、内面で「悪魔」へと変わる。封印した感情は、自分の「シャドウ（影）」となり、無意識に残り続ける。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 8 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-eye-slash"></i> シャドウの投影 <span class="timestamp">(14:04)</span></h3>
+                    <div class="card-body">
+                        ノヴァクは、自分の中の封印した悪魔（好奇心）を、地動説を唱える学者たちに投影する。彼らを目の敵にしたのは、見たくない自分自身の姿を彼らの中に見るから。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 9 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid-proclamation"></i> 悪魔のパスの沼 <span class="timestamp">(15:40)</span></h3>
+                    <div class="card-body">
+                        悪魔のパスは、欠乏感を埋めるための一時的な快楽。異端者を裁くことで一瞬の正義感を得るが、虚しさは消えず、より強い刺激を求めて過激化していく「沼」にはまる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-person-falling-burst"></i> 「ベール下」への落下 <span class="timestamp">(18:30)</span></h3>
+                    <div class="card-body">
+                        4番の世界から出るタイミングを無視すると、「ベール下（7,8,9番）」の世界に落ちる。封じ込めた感情に影響され続け、人や場所を変えても同じ経験を繰り返す。
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-down-long icon-large"></i>
+            </div>
+            
+            <!-- Card 11 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-users"></i> 現代社会と「4番」 <span class="timestamp">(25:18)</span></h3>
+                    <div class="card-body speech-bubble">
+                        「母親とはこうあるべき」「日本人なら迷惑をかけるな」といった社会的な常識や集合意識も、4番の世界。安心だが、同時に人を縛る檻にもなる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-scale-unbalanced-flip"></i> ラファウの天秤 <span class="timestamp">(26:50)</span></h3>
+                    <div class="card-body">
+                        ラファウは「正義」のパスで、自分の命と地動説という真理を天秤にかけた。そして彼は、自分の好奇心と真理を選び取った。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 13 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-arrows-rotate"></i> ルールの更新が鍵 <span class="timestamp">(34:00)</span></h3>
+                    <div class="card-body">
+                        4番の世界は高次元な「自分にとっての安心安全」の場所。でもその「安心安全」は常に変化させていかなくてはいけない。
+                    </div>
+                </div>
+                <i class="fa-solid fa-lightbulb-on icon-large"></i>
+            </div>
+            
+            <!-- Card 14 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-face-thinking"></i> エヴァ考察：シンジ君 <span class="timestamp">(41:30)</span></h3>
+                    <div class="card-body">
+                        普通の一般的な家族像（ケセドの地球的な集合意識）を知った時点で「じぶんは持っていない」と感じた時点で月イエソドの世界に閉じ込められる。音楽を聴いて世界を遮断するのは、彼なりの「悪魔のパス（現実逃避）」。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-eye"></i> 悪魔のパスと「目」 <span class="timestamp">(44:43)</span></h3>
+                    <div class="card-body">
+                        悪魔のパスのヘブライ語は「目」を意味する。自分の設定（得意・不得意）から目をそらさず直視することが重要。「できないこと」を認めると、それが武器になることもある。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 16 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-user-astronaut"></i> 枠外の住人 <span class="timestamp">(46:30)</span></h3>
+                    <div class="card-body highlight-box">
+                        「プロ奢ラレヤー」のように、社会のルール（4番）に馴染めない自分を自覚し、その特異性を純粋な力のまま使う人もいる。彼らは抑圧がないため、自分の「悪魔」を武器として使いこなす。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 17 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-brands fa-gripfire"></i> 鬼滅考察：炭治郎 <span class="timestamp">(58:50)</span></h3>
+                    <div class="card-body">
+                        炭治郎の「長男だから俺がやらなきゃ」という強い責任感は、彼の4番の世界。時にそれはワンドの7のように、一人で戦う固執にも繋がる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 18 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-spider"></i> 鬼滅考察：累（るい） <span class="timestamp">(1:01:30)</span></h3>
+                    <div class="card-body">
+                        鬼の多くは「欠乏感」が悪魔の力の源になっている。雲の鬼・累は、病弱だった過去から家族の愛に飢え、恐怖で偽りの家族を築き上げた。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 19 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-hat-cowboy"></i> 野生的なパワー <span class="timestamp">(1:05:20)</span></h3>
+                    <div class="card-body">
+                        悪魔のカードのモデルであるヤギの神は、コントロール不能な「野生的な力」や「生命力」の象徴。この純粋な力をうまく使えるようになると、人生を大きく動かす原動力になる。
+                    </div>
+                </div>
+                <i class="fa-solid fa-wand-magic-sparkles icon-large"></i>
+            </div>
+            
+            <!-- Card 20 -->
+            <div class="card">
+                <div>
+                    <h3 class="section-title"><i class="fa-solid fa-link"></i> 悪魔と現実創造 <span class="timestamp">(1:09:00)</span></h3>
+                    <div class="card-body">
+                        自分の設定（3番）と純粋な悪魔（15番）がセットでうまく使えるようになると、現実世界（世界のカード）が大きく変わってくる。自分の中の悪魔を他人に投影しないため、苦しまずに生きられるようになる。
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        
+        <footer>
+            <p>勉強会開催日: 2025年7月</p>
+            <p>情報源：生命の樹×アニメ - YouTube</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
