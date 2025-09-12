@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフィックレコーディング：タロット「太陽」の深掘り</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-[23']-1 */
+            --color-2: #DCE0F2; /* SHOOTING-[23']-2 */
+            --color-3: #012840; /* SHOOTING-[23']-3 */
+            --color-4: #A66A5D; /* SHOOTING-[23']-4 */
+            --color-5: #0D0D0D; /* SHOOTING-[23']-5 */
+            --font-main: 'Yomogi', cursive;
+            --font-accent: 'Kaisei Decol', serif;
+            --font-sub: 'Zen Kurenaido', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sub);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .title {
+            font-family: var(--font-accent);
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-3), var(--color-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-family: var(--font-sub);
+            font-size: 16px;
+            color: #475569;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-family: var(--font-accent);
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3 .timestamp {
+            font-family: var(--font-sub);
+            font-size: 12px;
+            color: #64748b;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        .card h3 i {
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .card p, .card ul {
+            font-family: var(--font-sub);
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+        
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .comparison-item {
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            border: 1px dashed rgba(1, 40, 63, 0.2);
+        }
+        .comparison-item .icon-small {
+            font-size: 24px;
+            color: var(--color-3);
+        }
+        .comparison-item p {
+            font-size: 12px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title"><i class="fa-solid fa-wand-magic-sparkles"></i> タロット「太陽」の深掘り <i class="fa-solid fa-wand-magic-sparkles"></i></h1>
+    <p class="subtitle"><i class="fa-solid fa-comments"></i> 承認欲求とお金をテーマに引かれた「太陽」のカードから、愚者の旅と生命の木を巡る対話の記録</p>
+
+    <div class="grid-container">
+
+        <div class="card">
+            <h3><i class="fa-solid fa-sun"></i> 問い：太陽のカード <span class="timestamp">(00:00)</span></h3>
+            <i class="fa-solid fa-sun icon-large" style="color:#A61B40;"></i>
+            <p>承認欲求とお金をテーマに引かれた一枚が「太陽 ☀️」。愚者の旅の終盤に位置するこのカードが、今回の対話の出発点となる。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-shoe-prints"></i> 愚者の旅：土台 <span class="timestamp">(02:15)</span></h3>
+            <i class="fa-solid fa-seedling icon-large"></i>
+            <p>旅の初期（魔術師、女教皇、女帝）は人生の土台を作る時期。ここで無条件の愛を十分に受けられないと、後々の人生で「欠乏感」を抱えやすくなる。多くの人が何かしらの不完全さを抱えている。</p>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-horse-head"></i> 戦車：外側の勝利 <span class="timestamp">(07:30)</span></h3>
+            <i class="fa-solid fa-horse-head icon-large" style="color:#012840;"></i>
+            <div class="speech-bubble">
+                <p>「何くそ！」という欠乏感すらパワーに変えて、外側の世界で勝利を掴もうとする。まだ内的な統合には至っていない、若々しい衝動のカード。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-door-open"></i> 内側への旅の始まり <span class="timestamp">(16:00)</span></h3>
+            <i class="fa-solid fa-door-open icon-large"></i>
+            <p>8番「力」から、旅は内面へと向かう。自分の内なる獣（ダダっ子）と向き合い、運命の輪（10番）でパターンに気づくことで、人生の選択肢が増え、世界線が移動する。
+            </p>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-tower-observation"></i> 塔：仮面の崩壊 <span class="timestamp">(23:45)</span></h3>
+            <i class="fa-solid fa-tower-observation icon-large" style="color:#A66A5D;"></i>
+            <p>「こうあるべき」という社会的な仮面や鎧が「塔」で強制的に破壊される。その後、「星」（17番）で裸の自分になり、「月」（18番）で未知の世界への不安を体験する。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-child-reaching"></i> 太陽：「すっぴん」の自分 <span class="timestamp">(26:10)</span></h3>
+            <i class="fa-solid fa-child-reaching icon-large" style="color:#A61B40;"></i>
+            <p>鎧を脱いだ「すっぴん」の自分で世界と関わると、意外にもうまくいく体験。周りの助けを得られ、無理のない自分で調和が生まれる。これが「太陽」のカードが示す状態。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-hands-holding-circle"></i> 究極のテーマ：コントロールしない <span class="timestamp">(29:30)</span></h3>
+            <i class="fa-solid fa-hands-holding-circle icon-large"></i>
+            <p>「太陽」のカードの子供は手綱を握っていない。これは、状況や他者、自分自身すら「コントロールしない」という究極の境地。流れに身を任せ、自然な調和の中にいる状態を表す。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-lightbulb"></i> 審判：傷が仕事になる <span class="timestamp">(35:15)</span></h3>
+            <i class="fa-solid fa-lightbulb icon-large"></i>
+            <div class="highlight-box">
+                <p>かつて執着し、認めたくなかった欠点やネガティブな部分が、逆に自分を輝かせる仕事や役割に変わっていく。全てを統合した上での活躍の段階。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-tree"></i> 生命の木との接続 <span class="timestamp">(45:00)</span></h3>
+            <i class="fa-solid fa-tree icon-large"></i>
+            <p>太陽のパスは「ホド（思考・言語）」と「イェソド（潜在意識）」を結ぶ。これは、言葉や思考の力を使って、自分の潜在意識を解き明かし、光を当てていくプロセスを象徴している。
+            </p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-recycle"></i> 「くびき」から「乗り物」へ <span class="timestamp">(51:30)</span></h3>
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <i class="fa-solid fa-lock icon-small"></i>
+                    <p>力（8番）：内なる獣は社会生活の「くびき（枷）」。抑える対象。</p>
+                </div>
+                <div class="comparison-item">
+                    <i class="fa-solid fa-horse icon-small"></i>
+                    <p>太陽（19番）：獣は自分を運ぶ「乗り物」。コントロール不要の仲間。</p>
+                </div>
+            </div>
+             <p>内なる衝動や本能が、抑圧対象から協力者へと変化する。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-flask-vial"></i> 節制：統合のプロセス <span class="timestamp">(1:05:00)</span></h3>
+            <i class="fa-solid fa-flask-vial icon-large"></i>
+            <p>自分の闇（シャドウ）に気づきながらも、急に変えようとせず、少しずつ混ぜ合わせていくのが「節制」。自分なりの落としどころを探り、太陽の完全な自己受容へと向かう。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-brain-circuit"></i> バカの壁とは？ <span class="timestamp">(1:10:00)</span></h3>
+            <i class="fa-solid fa-brain-circuit icon-large" style="color:#A66A5D;"></i>
+            <div class="speech-bubble">
+                <p>自分にとって理解不能な情報や受け入れたくない現実に対し、思考を停止させてしまう精神的な壁。「どうせ無理」「わからない」とシャットダウンしてしまう状態。</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-magnifying-glass-chart"></i> 壁を越える鍵 <span class="timestamp">(1:15:00)</span></h3>
+            <i class="fa-solid fa-magnifying-glass-chart icon-large"></i>
+            <p>「バカの壁」を越えるには、言葉の「情報量」を増やすことが重要。「承認欲求」とは何か？自分の言葉の定義を深く探ることで、今まで見えなかった世界が見えてくる。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-seedling"></i> 吊るされた男：何の種を蒔くか <span class="timestamp">(1:28:00)</span></h3>
+            <i class="fa-solid fa-seedling icon-large" style="color:#012840;"></i>
+            <p>動けない状況は、現実を創造する「種」を植える直前の状態。「不登校の“問題な”子」という種を蒔くか、「“ユニークな体験をしている”子」という種を蒔くかで、その後の現実が変わる。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-water"></i> 波風を恐れない <span class="timestamp">(1:36:00)</span></h3>
+            <i class="fa-solid fa-water icon-large"></i>
+            <p>「太陽」の調和とは、波風が立たないことではない。ありのままの自分でいることで生まれる摩擦や対立を恐れず、それすらも楽しむ強さを持つこと。</p>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-road"></i> けもの道理論 <span class="timestamp">(1:45:00)</span></h3>
+            <i class="fa-solid fa-road icon-large"></i>
+            <div class="highlight-box">
+                <p>新しい知識や感覚の定着は、けもの道と同じ。何度も繰り返し通る（意識する）ことで、道は確かなものになる。一度離れると、また草が生い茂ってしまう。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-puzzle-piece"></i> 自分の穴を見せる <span class="timestamp">(1:50:00)</span></h3>
+            <i class="fa-solid fa-puzzle-piece icon-large"></i>
+            <p>「私のここ、穴が空いてますよ！」と弱さや不得意を隠さずに見せる。そうすることで、その穴を埋めるのが得意な人が現れ、助けてくれるようになる。隠すと誰も気づけない。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-handshake-angle"></i> 合う・合わない思考 <span class="timestamp">(1:55:00)</span></h3>
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <i class="fa-solid fa-thumbs-down icon-small"></i>
+                    <p>好き・嫌い（固定的）</p>
+                </div>
+                <div class="comparison-item">
+                    <i class="fa-solid fa-arrows-left-right-to-line icon-small"></i>
+                    <p>今は合う・合わない（流動的）</p>
+                </div>
+            </div>
+            <p>物事を「好き嫌い」でなく、「今は合うか合わないか」で捉える。これにより、変化の余地が生まれ、自分や他者との不要な軋轢を減らせる。</p>
+        </div>
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-unlock-keyhole"></i> 今日の気づき <span class="timestamp">(2:00:00)</span></h3>
+            <i class="fa-solid fa-unlock-keyhole icon-large" style="color:#A61B40;"></i>
+            <p>「伸びしろですね」という言葉が分からなかったのは、まさに「バカの壁」が発動していたから。対話を通じて情報量が増え、壁の向こう側が見えた瞬間だった。</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-comments-dollar"></i> お金の散歩よし <span class="timestamp">(1:18:00)</span></h3>
+            <i class="fa-solid fa-comments-dollar icon-large"></i>
+            <p>お金の使い方の成長段階。自分を満たすため（承認欲求）から、自分も相手も、そして社会も喜ぶ「三方よし」の使い方へ。これが愚者の旅の後半のステージに対応する。</p>
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        <p>グラフィックレコーディング作成日: 2025年9月12日</p>
+        <p>情報源: 提供された文字起こしデータ</p>
+    </div>
+
+</div>
+
+</body>
+</html>
