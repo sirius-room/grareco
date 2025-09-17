@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グラフィックレコーディング：生命の木とタロットリーディング</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-[23']-1 */
+            --color-2: #DCE0F2; /* SHOOTING-[23']-2 */
+            --color-3: #012840; /* SHOOTING-[23']-3 */
+            --color-4: #A66A5D; /* SHOOTING-[23']-4 */
+            --color-5: #0D0D0D; /* SHOOTING-[23']-5 */
+        }
+
+        body {
+            font-family: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', cursive;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-3);
+            margin-bottom: 10px;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .card-header .fa-icon {
+            margin-right: 8px;
+            animation: icon-bounce 2s infinite;
+        }
+        
+        .card-header .timestamp {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        @keyframes icon-bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.4;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.8;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .comparison-item {
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 5px;
+            border-top: 2px dashed rgba(1, 40, 64, 0.2);
+        }
+        .comparison-item strong {
+            display: block;
+            font-size: 15px;
+            color: var(--color-3);
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 15px;
+            background-color: transparent;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        .keyword {
+           font-weight: bold;
+           color: var(--color-1);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title"><i class="fa-solid fa-wand-magic-sparkles"></i> 生命の木とタロットリーディング <i class="fa-solid fa-wand-magic-sparkles"></i></h1>
+        <p class="subtitle"><i class="fa-solid fa-book-open"></i> タロット勉強会の内容をグラフィックレコーディング</p>
+
+        <div class="grid-container">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <i class="fa-solid fa-tree icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-diagram-project fa-icon"></i>生命の木の全体像 <span class="timestamp">(00:35)</span></h2>
+                <div class="card-body">
+                    生命の木は3つの領域に分かれる。<br>
+                    <div class="comparison-container">
+                        <div class="comparison-item"><strong>1-2-3</strong><br>神々・宇宙の領域 (抽象的)</div>
+                        <div class="comparison-item"><strong>4-5-6</strong><br>純粋エネルギー (メタ認知)</div>
+                        <div class="comparison-item"><strong>7-10</strong><br>意識・感情(7-9)と現実世界(10)</div>
+                    </div>
+                     1-3のカードは潜在意識下のエネルギーを示唆し、まだ物質化していない。
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card">
+                <i class="fa-solid fa-brain icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-binoculars fa-icon"></i>メタ認知の領域 <span class="timestamp">(01:30)</span></h2>
+                <div class="card-body">
+                    6番のティファレトは<span class="keyword">自分軸の中心</span>。ここに立つことで、自分の感情や思考を客観的に観察できる「メタ認知」の視点がもたらされる。
+                    <div class="speech-bubble">
+                        「あ、今私はイラっとしているな」と自分を俯瞰して見ることができる状態。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <i class="fa-solid fa-users icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-cloud fa-icon"></i>「ベール」の下の世界 <span class="timestamp">(02:05)</span></h2>
+                <div class="card-body">
+                    世の中のほとんどの人は、メタ認知の視点がない<span class="keyword">「ベール」の下</span>（7, 8, 9, 10の世界）で生きている。感情や思考、物質的な世界が中心となっている。
+                    <ul>
+                        <li><b>7:</b> 感情 (ネツァク)</li>
+                        <li><b>8:</b> 思考 (ホド)</li>
+                        <li><b>9:</b> 無意識 (イェソド)</li>
+                        <li><b>10:</b> 物質 (マルクト)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <i class="fa-solid fa-question icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-lightbulb fa-icon"></i>相談内容を聞かない実践 <span class="timestamp">(04:45)</span></h2>
+                <div class="card-body">
+                    伊泉龍一先生の教え「相談内容を聞かずに引けばいい」。占い師はカードのエネルギーを説明するだけ。相談者はその説明を聞きながら、<span class="keyword">自分自身の問題と結びつける</span>。
+                    <div class="highlight-box">
+                        これにより「自動的に共感が生まれる」システム。占い師側の主観を挟まず、カードの本質を伝える。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                 <i class="fa-solid fa-coins icon-large" style="color:#A66A5D;"></i>
+                <h2 class="card-header"><i class="fa-solid fa-crosshairs fa-icon"></i>Cさんのカード：ペンタクル5 <span class="timestamp">(08:50)</span></h2>
+                <div class="card-body">
+                    5番「ゲブラー」（火星）に位置する。神々の領域から降りてきたエネルギー（可能性）の中から、<span class="keyword">何かを「選び取り、決める」</span>段階。
+                    <div class="speech-bubble">
+                        土のエネルギー（ペンタクル）は安定を好むため、変化を促すゲブラーの力は「しんどさ」「困難」として感じられる。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="card">
+                <i class="fa-solid fa-road icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-person-digging fa-icon"></i>困難は「通過点」 <span class="timestamp">(11:30)</span></h2>
+                 <div class="card-body">
+                    ペンタクル5の「物質的な困難」とは、体験のしんどさ。例えば起業を決めた後、<span class="keyword">実際にやらなければいけない多くの事務作業</span>のようなもの。これは目的を達成するためのただの通過点に過ぎない。
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="card">
+                <i class="fa-solid fa-book-open-reader icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-scroll fa-icon"></i>小アルカナの源流 <span class="timestamp">(13:10)</span></h2>
+                <div class="card-body">
+                    ウェイトもクローリーも秘密結社「黄金の夜明け団」に所属。団の教義が書かれた「Tの書」を元にタロットを作成した。小アルカナには元々<span class="keyword">「Worries（心配事）」</span>のような表題がついており、それが絵の元になっている。
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="card">
+                <i class="fa-solid fa-sitemap icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-expand fa-icon"></i>1枚のカードからの展開 <span class="timestamp">(18:20)</span></h2>
+                <div class="card-body">
+                    1枚のカードが出たら、それが位置するセフィラ（今回は5番ゲブラー）に<span class="keyword">繋がる他のパス（大アルカナ）</span>を見ていくことで、リーディングを多角的に深めることができる。
+                    <div class="highlight-box">
+                        相談者の反応を観察しながら、どのパスが最も響くかを探っていく。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 9 -->
+            <div class="card">
+                <i class="fa-solid fa-route icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-code-branch fa-icon"></i>ゲブラー関連パスの解説 <span class="timestamp">(19:00)</span></h2>
+                <div class="card-body">
+                    <ul>
+                        <li><b>戦車:</b> 目的に向かって突っ走る力。</li>
+                        <li><b>正義:</b> 感情を排し、バランスを取る。</li>
+                        <li><b>力:</b> 抑圧してきた内なる本質と向き合う。</li>
+                        <li><b>吊るされた男:</b> 理解はしているが、行動に移せない状態。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Card 10 -->
+            <div class="card">
+                 <i class="fa-solid fa-user-pen icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-comments fa-icon"></i>Cさんの悩み <span class="timestamp">(31:00)</span></h2>
+                <div class="card-body">
+                    保育士のアルバイト先で、特定のベテラン保育士から常に指示・否定され続け、<span class="keyword">自己肯定感が下がりモヤモヤ</span>している。相手に悪気はないと分かりつつも、しんどさを感じている。
+                </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="card">
+                <i class="fa-solid fa-child-reaching icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-lightbulb-on fa-icon"></i>「ダダっこ」のパス <span class="timestamp">(34:30)</span></h2>
+                <div class="card-body">
+                    この悩みは「力」のパスに関連するかもしれない。些細なことでも積み重なると、<span class="keyword">抑圧された「ダダっこ（駄々っ子）」</span>が「もう嫌だ！」と叫んでいる状態。
+                     <div class="speech-bubble">
+                        大人だからと我慢せず、一度その気持ちを認めて吐き出す（機嫌を取る）ことが大切。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 12 -->
+            <div class="card">
+                <i class="fa-solid fa-list-ol icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-clipboard-check fa-icon"></i>リーディングの5ステップ <span class="timestamp">(42:00)</span></h2>
+                <div class="card-body">
+                    <ol style="padding-left: 20px; font-size: 13px;">
+                        <li>生命の木に書き込む。</li>
+                        <li>愚者の旅に当てはめる。</li>
+                        <li>関連カードと比較する(例:5と15)。</li>
+                        <li>エレメントや柱の偏りを見る。</li>
+                        <li>相談者を観察し、共感ポイントを探る。</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Card 13 -->
+            <div class="card">
+                 <i class="fa-solid fa-seedling icon-large" style="color: #6a5d4d;"></i>
+                <h2 class="card-header"><i class="fa-solid fa-leaf fa-icon"></i>Yさんのカード：ペイジのペンタクル <span class="timestamp">(48:50)</span></h2>
+                <div class="card-body">
+                    ペイジは10番「マルクト」（地球）に対応。肉体を持ち、<span class="keyword">現実世界にいる「私」</span>そのものを表す。
+                    <div class="highlight-box">
+                        ページの問いかけ：「固まった現実の中で、五感を使い、具体的に何を始めますか？どんな体験をしますか？」
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 14 -->
+            <div class="card">
+                <i class="fa-solid fa-link icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-infinity fa-icon"></i>コートカードとセフィラ <span class="timestamp">(49:30)</span></h2>
+                <div class="card-body">
+                    コートカードは生命の木の特定のセフィラに対応している。
+                    <div class="comparison-container">
+                        <div class="comparison-item"><strong>キング</strong><br>2番 コクマー</div>
+                        <div class="comparison-item"><strong>クイーン</strong><br>3番 ビナー</div>
+                    </div>
+                     <div class="comparison-container">
+                        <div class="comparison-item"><strong>ナイト</strong><br>6番 ティファレト</div>
+                        <div class="comparison-item"><strong>ペイジ</strong><br>10番 マルクト</div>
+                    </div>
+                    ナイト（魂）とペイジ（肉体）は双子のような関係。
+                </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="card">
+                <i class="fa-solid fa-satellite-dish icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-bullhorn fa-icon"></i>Yさんの道 <span class="timestamp">(57:30)</span></h2>
+                <div class="card-body">
+                    元々ヒーラーとして活動し一度辞めたが、今度は「未来視」として、<span class="keyword">見えない世界の情報を「ベールの下」の人々にも役立つ形で伝えていきたい</span>と思い始めたところ。
+                    <div class="speech-bubble">
+                        まさにペイジのペンタクルの示す通り、「地上で何をするか」を模索し始めるタイミング。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 16 -->
+            <div class="card">
+                 <i class="fa-solid fa-puzzle-piece icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-user-check fa-icon"></i>自分のピースを見つける <span class="timestamp">(1:00:00)</span></h2>
+                <div class="card-body">
+                    人は皆、パズルのピースのような役割を持って生まれてくる。違うピースになろうとすると苦しくなる。<span class="keyword">自分が座るべき場所</span>に座ることで、周りも自然とはまっていく。
+                </div>
+            </div>
+
+            <!-- Card 17 -->
+            <div class="card">
+                <i class="fa-solid fa-key icon-large"></i>
+                <h2 class="card-header"><i class="fa-solid fa-door-open fa-icon"></i>準備ができた時に出会う <span class="timestamp">(1:01:45)</span></h2>
+                <div class="card-body">
+                    生命の木のような深い知識には、<span class="keyword">その人が準備できたタイミングで出会う</span>。誰もが理解できるものではない。だからこそ、自分の役割に合った人々が自然と集まってくる。
+                </div>
+            </div>
+            
+        </div>
+        
+        <footer>
+            <p>グラフィックレコーディング作成日: 2025年9月17日</p>
+            <p>情報源: タロット勉強会</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
