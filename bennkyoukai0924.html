@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi 式解説書 - カップの9</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40;
+            --color-2: #DCE0F2;
+            --color-3: #012840;
+            --color-4: #A66A5D;
+            --color-5: #0D0D0D;
+        }
+
+        body {
+            font-family: 'Yomogi', 'Kaisei Decol', 'Zen Kurenaido', cursive;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .main-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-heading {
+            font-size: 18px;
+            color: #1e40af;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-family: 'Kaisei Decol', serif;
+        }
+        
+        .section-heading .fa-icon {
+            margin-right: 8px;
+            animation: bounceIcon 2s infinite;
+        }
+        
+        @keyframes bounceIcon {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .comparison-item {
+            background-color: rgba(220, 223, 242, 0.3);
+            border: 1px dashed var(--color-4);
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .comparison-item h4 {
+            margin: 0 0 5px 0;
+            color: var(--color-1);
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title"><i class="fas fa-magic"></i> Mayumi 式解説書 <i class="fas fa-magic"></i></h1>
+        <p class="subtitle"><i class="fas fa-feather-alt"></i> カップの9 (Nine of Cups) の深層心理を探る</p>
+
+        <div class="grid-container">
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-question-circle fa-icon"></i>カップ9の第一印象 (00:00)</h3>
+                <i class="fas fa-balance-scale-right icon-large"></i>
+                <p>カップの9は一般的に「ウィッシュ・カード」と呼ばれ、願望成就や満足を意味します。しかし、その一方で「何かが足りない」「あと1歩」といった不足感を感じさせる側面も持っています。このカードの解釈は、表面的な幸福感と、その裏にある無意識の渇望という2つの側面から成り立っています。この二重性が、リーディングを深くする鍵となります。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <h4>ポジティブな側面</h4>
+                        <p>願望成就、満足、幸福感 😊</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>ネガティブな側面</h4>
+                        <p>不足感、自己満足、満たされない心 🤔</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-cogs fa-icon"></i>生命の樹：9番目の「イェソド」 (00:00)</h3>
+                <i class="fas fa-robot icon-large"></i>
+                <p>生命の樹において、カップの9は9番目のセフィラ「イェソド」に対応します。イェソドは「基礎」を意味し、無意識や夢、感情のパターンを司る領域です。ここでのエネルギーは「自動運転」の状態にあり、意識的な思考を経ずに感情や反応が自動的に生成されます。例えば、「こういう状況ではこう感じるべき」といった、長年の経験で培われた感情の癖が、疑問を挟むことなく現れる場所です。このカードが出た時、その感情が本当に今の自分のものなのか、それとも過去からの習慣なのかを問う必要があります。</p>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-infinity fa-icon"></i>カップ（愛）の本質＝統合 (00:00)</h3>
+                <i class="fas fa-heart-circle-bolt icon-large"></i>
+                <p>カップが象徴する「愛」とは、生命の樹や錬金術の文脈では「統合」を意味します。これは、好きと嫌い、やりたいとやりたくない、といった相反する2つのものを混ぜ合わせ、1つの調和した状態へと導く力です。頭で無理やり納得させるのではなく、「ああ、そうだったのか」と腹の底から腑に落ちる感覚、それが統合です。カップの9が示す感情のパターンは、この統合が不完全であるか、あるいは偏った形で固定化してしまっている可能性を示唆しています。</p>
+                <div class="highlight-box">
+                    <p>愛とは、異なるものを混ぜ合わせ、調和させる力。あなたの心の中では、どんなものが混ざり合っていますか？</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-stream fa-icon"></i>エネルギーの旅路 (00:00)</h3>
+                <i class="fas fa-arrow-down-long icon-large"></i>
+                <p>生命の樹の上部（1, 2, 3）にある純粋で抽象的なエネルギーは、下界に降りてくる過程で様々な経験を経て制限され、具体的な形を取ります。特に、7, 8, 9の領域は他者との関わりが密接になり、外部からの影響を強く受けます。カップの9の位置では、かつて純粋だった「感情」が、他人との比較や社会的な常識によって特定のパターンに固定化され、それが「当たり前」として自動運転されている状態を示します。それは、もはや純粋な感情ではなく、経験によって形成された「思い込み」かもしれません。</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-theater-masks fa-icon"></i>バカの壁と幻想の世界 (00:00)</h3>
+                <i class="fas fa-eye-slash icon-large"></i>
+                <p>イェソド（9番）は「幻想の世界」とも言われます。ここでは、人は無意識に作り上げた「バカの壁」の内側にいて、なぜ自分がそのように感じるのかを深く掘り下げようとしません。例えば、特定のタイプの人に会うといつもイライラするのはなぜか？その根本原因を探求せず、「あの手のタイプは嫌いだ」で思考を停止させてしまうのが自動運転です。この壁に気づかない限り、人は同じ感情のループから抜け出せず、他者に自分の内なる問題を投影し続けます。</p>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-star fa-icon"></i>宇宙視点での「幸福 (Happiness)」 (00:00)</h3>
+                <i class="fas fa-rocket icon-large"></i>
+                <p>トートタロットでは、カップの9は「幸福 (Happiness)」と名付けられています。これは、宇宙的な視点に立つと理解できます。魂は、喜びも悲しみも含めた様々な感情を体験するために肉体を持って地球に来ています。無感情な状態ではなく、制限された世界で特定の感情パターンを経験できること自体が、魂にとっては「ありがたい」ことであり、願望成就なのです。たとえそれが地球にいる私たちにとってしんどい経験であっても、魂の冒険としては目的地の一歩手前まで来た「幸福」な状態と言えるのです。</p>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-mask fa-icon"></i>シェイクスピアと見栄っ張りな男 (00:00)</h3>
+                <p class="icon-large">🎭</p>
+                <p>ウェイト版の絵の人物は、シェイクスピアの劇に登場するジョン・フォールスタッフがモデルとされています。彼は元々従者（ペイジ）でしたが、成り上がり、自分を大きく見せるために多くのカップを並べて自己満足に浸る、見栄っ張りなキャラクターです。この背景を知ると、カップの9が持つ「満足」には、「侮られたくない」という無意識の恐れや、他者に見せるための表面的な幸福感が含まれている可能性が見えてきます。その満足は、本物でしょうか？それとも、誰かに見せるためのものでしょうか？</p>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-route fa-icon"></i>不足感の正体と解決の道 (00:00)</h3>
+                <i class="fas fa-lightbulb icon-large"></i>
+                <p>もしこのカードを見て「不足感」を強く感じるなら、それは無意識（イェソド）に「何かが足りない」というプログラムが自動運転されている証拠です。このパターンから抜け出すヒントは、関連するパスにあります。</p>
+                <ul>
+                    <li><i class="fas fa-balance-scale" style="color: #A61B40;"></i> <b>節制:</b> 不足感と満足感を混ぜ合わせ、自分なりの「ちょうど良さ」を見つける。</li>
+                    <li><i class="fas fa-sun" style="color: #A61B40;"></i> <b>太陽:</b> 「足りない」と感じている部分こそが、実は自分の魅力や個性であると光を当てる。</li>
+                    <li><i class="fas fa-star" style="color: #A61B40;"></i> <b>星:</b> 「もっと頑張らねば」という鎧を脱ぎ捨て、ありのままの自分を受け入れる。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="section-heading"><i class="fas fa-user-secret fa-icon"></i>占い師の役割と主観 (00:00)</h3>
+                <i class="fas fa-comments icon-large"></i>
+                <p>リーディングでは、占い師の主観がどうしても入ります。しかし、大切なのは固定された意味を押し付けることではありません。カップの9が持つ「満足」と「不足」の両方のエネルギーを提示し、相談者がどちらに反応するかを観察することが重要です。もし相談者が幸福のカードを見てネガティブに感じるなら、その人にとってはそれが「逆位置」の意味を持つ真実なのです。カードは鏡であり、相談者自身の内面を映し出すツール。その反応の中にこそ、次へのステップのヒントが隠されています。</p>
+            </div>
+
+            <div class="card">
+                 <h3 class="section-heading"><i class="fas fa-layer-group fa-icon"></i>コートカードとの関連性 (00:00)</h3>
+                 <i class="fas fa-chess-king icon-large"></i>
+                 <div class="speech-bubble">
+                     <p>行動と経験のサイクルは、私たちを成長させます。カップの9で感じた無意識のパターンも、行動を通じて変化させることができます。</p>
+                 </div>
+                 <ul>
+                     <li><b>ペイジ (Page):</b> まずは肉体を使って行動を起こす段階。</li>
+                     <li><b>ナイト (Knight):</b> 行動を俯瞰し、改善点を見つける意識の段階。</li>
+                     <li><b>クイーン (Queen):</b> 経験を内面で消化し、自分のものにする段階。</li>
+                     <li><b>キング (King):</b> 全ての経験を踏まえ、新たな挑戦（種）を生み出す段階。</li>
+                 </ul>
+                 <p>このサイクルを回し続けることが、自動運転から抜け出し、新たな現実を創造する力となります。</p>
+            </div>
+
+        </div>
+        
+        <footer>
+            <p>作成日: 2025年9月25日 | 情報源: Mayumi 式タロット解説</p>
+        </footer>
+    </div>
+
+</body>
+</html>
