@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi 式解説書 - コートカードの深層</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-[23']-1 */
+            --color-2: #DCE0F2; /* SHOOTING-[23']-2 */
+            --color-3: #012840; /* SHOOTING-[23']-3 */
+            --color-4: #A66A5D; /* SHOOTING-[23']-4 */
+            --color-5: #0D0D0D; /* SHOOTING-[23']-5 */
+            --font-main: 'Yomogi', 'Kaisei Decol', 'Zen Kurenaido', cursive;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-family: 'Kaisei Decol', serif;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 .fa-icon {
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        p, ul, .highlight-box, .speech-bubble {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.7;
+        }
+        
+        ul {
+            padding-left: 20px;
+            list-style: '✨';
+        }
+        
+        li {
+            padding-left: 8px;
+            margin-bottom: 5px;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        .comparison-item {
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            border: 1px dashed rgba(1, 40, 63, 0.2);
+        }
+        .comparison-item strong {
+            display: block;
+            color: var(--color-3);
+            margin-bottom: 5px;
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        .timestamp {
+            font-size: 12px;
+            color: #64748b;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title"><i class="fa-solid fa-chess-king"></i> Mayumi 式解説書 <i class="fa-solid fa-chess-queen"></i></h1>
+        <p class="subtitle"><i class="fa-solid fa-diagram-project"></i> コートカードを「現実創造のシステム」として理解する</p>
+
+        <div class="grid-container">
+            
+            <div class="card">
+                <i class="fa-solid fa-user-secret icon-large"></i>
+                <h3><i class="fa-solid fa-lightbulb fa-icon"></i> コートカードの新視点 <span class="timestamp">(02:30)</span></h3>
+                <p>コートカードを「こういう人物が現れる」というキャラクターとして読むのは、選択肢を狭める危険性があります。</p>
+                <div class="speech-bubble">
+                    <p>生命の木では、コートカードを特定の人物ではなく、<b>現実を創造するための「役割」や「機能」</b>として捉え直します。これはゲームのジョブレベルのようなものです。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-microchip icon-large"></i>
+                <h3><i class="fa-solid fa-gears fa-icon"></i> 現実創造の術式 <span class="timestamp">(04:45)</span></h3>
+                <p>コートカードは「テトラグラマトンの術式」と呼ばれ、宇宙のエネルギーが現実化するまでの4段階のシステムを表しています。</p>
+                <ul>
+                    <li><b>キング:</b> 始まりの「種」🌱</li>
+                    <li><b>クイーン:</b> 種を受け止める「器」🏺</li>
+                    <li><b>ナイト:</b> エネルギー体の自分 (意識) ✨</li>
+                    <li><b>ペイジ:</b> 肉体を持つ自分 (行動) 🏃‍♀️</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-chess-king icon-large"></i>
+                <h3><i class="fa-solid fa-seedling fa-icon"></i> キング：始まりの「種」 <span class="timestamp">(06:00)</span></h3>
+                <p>キングは生命の木の<b>2番「コクマー」</b>に位置し、神々の世界に属します。まだ生まれる前の、純粋なエネルギーやアイデアの「種」そのものです。</p>
+                <div class="highlight-box">
+                    <p>これは人間の営みに例えると「精子」のようなもの。可能性の始まりであり、ここから全てが展開します。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-chess-queen icon-large"></i>
+                <h3><i class="fa-solid fa-vial fa-icon"></i> クイーン：種を受け止める「器」 <span class="timestamp">(06:15)</span></h3>
+                <p>クイーンは<b>3番「ビナー」</b>に位置し、キングの「種」を受け止め、育む「器」の役割を果たします。女性的な受容のエネルギーです。</p>
+                 <div class="speech-bubble">
+                    <p>種だけでは何も生まれません。クイーンという器があって初めて、現実創造のプロセスが始まります。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-people-arrows icon-large"></i>
+                <h3><i class="fa-solid fa-twins fa-icon"></i> ナイトとペイジ：「双子」の誕生 <span class="timestamp">(07:00)</span></h3>
+                <p>キングとクイーンの結合から、<b>「双子」</b>としてナイトとペイジが生まれます。これは、私たちの意識と肉体の二重性を象徴しています。</p>
+                <ul>
+                    <li><b>ナイト (6番):</b> エネルギー体、意識、ハイヤーセルフ</li>
+                    <li><b>ペイジ (10番):</b> 肉体、現実での行動</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-shoe-prints icon-large"></i>
+                <h3><i class="fa-solid fa-map-pin fa-icon"></i> ペイジ：固定された現実からの行動 <span class="timestamp">(09:30)</span></h3>
+                <p>ペイジは<b>10番「マルクト」</b>（現実世界）に位置します。これは「変えられない現実の中で、何を始めるか？」を問うカードです。</p>
+                <div class="highlight-box">
+                    <p>始まりのカードですが、それはゼロからではなく、既に固まった状況の中から次の一歩を踏み出すことを意味します。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-brain icon-large"></i>
+                <h3><i class="fa-solid fa-binoculars fa-icon"></i> ナイト：俯瞰する「意識」の力 <span class="timestamp">(12:30)</span></h3>
+                <p>ナイトは<b>6番「ティファレト」</b>に位置し、ハイヤーセルフ的な「俯瞰した目線」を象徴します。</p>
+                <div class="speech-bubble">
+                    <p>目の前の出来事にただ対処するだけでなく、「なぜこう感じるのか？」「本当に必要なことは何か？」と自分を客観視する力です。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-handshake-angle icon-large"></i>
+                <h3><i class="fa-solid fa-link fa-icon"></i> 結合の重要性 <span class="timestamp">(13:15)</span></h3>
+                <p>本当の現実創造は、ナイト（意識）とペイジ（行動）が<b>「結婚」</b>したときに起こります。</p>
+                 <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>ペイジだけ</strong>
+                        <p>無意識のパターンに振り回され、盲目的に行動する。</p>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>ナイトだけ</strong>
+                        <p>気づくだけで行動せず、現実が変わらない。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-blender icon-large"></i>
+                <h3><i class="fa-solid fa-puzzle-piece fa-icon"></i> クイーン：経験と内面の「統合」 <span class="timestamp">(18:00)</span></h3>
+                <p>クイーンの段階は、ペイジとナイトで積んだ経験を、自分本来の<b>「素事」（生まれ持った性質）</b>と統合するステージです。</p>
+                <div class="speech-bubble">
+                    <p>「今までの経験」と「自分らしさ」を掛け合わせ、全く新しい可能性やアイデアを生み出す準備段階と言えます。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-rocket icon-large"></i>
+                <h3><i class="fa-solid fa-crown fa-icon"></i> キング：枠を超える「挑戦」 <span class="timestamp">(22:00)</span></h3>
+                <p>キングは、今までの経験全てを元に、全く新しい枠組みを確立する<b>「挑戦」</b>の段階です。天皇星のように、既存の枠を壊し、新たな「種」を生み出します。</p>
+                <div class="highlight-box">
+                    <p>リーダーシップを発揮し、自分なりの新たな王国を創造していく力強いエネルギーです。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-business-time icon-large"></i>
+                <h3><i class="fa-solid fa-clipboard-question fa-icon"></i> リーディングへの応用 <span class="timestamp">(24:15)</span></h3>
+                <p>例えば「起業した人」へのアドバイスは、出たコートカードによって変わります。</p>
+                <ul>
+                    <li><b>ペイジなら:</b> 「今はとにかく現実世界で動く時です」</li>
+                    <li><b>ナイトなら:</b> 「俯瞰的な視点を持って行動計画を立てましょう」</li>
+                    <li><b>クイーンなら:</b> 「経験とあなたの才能を統合し、新サービスを」</li>
+                    <li><b>キングなら:</b> 「既存のやり方を超え、新たな挑戦をする時です」</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-layer-group icon-large"></i>
+                <h3><i class="fa-solid fa-arrows-to-eye fa-icon"></i> 解釈の3つのレイヤー <span class="timestamp">(31:00)</span></h3>
+                <p>リーディングでコートカードが出た時、人物と決めつけず、以下の3つの視点で捉えると混乱しません。</p>
+                <ol style="padding-left: 20px;">
+                    <li>問題における<b>あなた自身のテーマ</b>。</li>
+                    <li>その<b>状況が求めているエネルギー</b>。</li>
+                    <li>あなたと相手との<b>関係性のテーマ</b>。</li>
+                </ol>
+            </div>
+            
+             <div class="card">
+                <i class="fa-solid fa-heart-crack icon-large" style="color:#A61B40;"></i>
+                <h3><i class="fa-solid fa-comment-slash fa-icon"></i> ソードの3：悲しみの本質 <span class="timestamp">(35:00)</span></h3>
+                <p>ソードの3（ビナー）の悲しみは、失恋そのものではなく、<b>「変えられない設定を言語化する痛み」</b>です。</p>
+                <div class="speech-bubble">
+                    <p>神の世界ではただの「設定」だったものが、人間界で言葉にされると「私にはこれができない」という残酷な現実として認識されます。この不公平さを受け入れる悲しみが本質です。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-signal icon-large"></i>
+                <h3><i class="fa-solid fa-arrow-down-wide-short fa-icon"></i> スートの次元（情報量） <span class="timestamp">(36:15)</span></h3>
+                <p>4つのスートには次元（情報量の多さ）があり、上から下へ具体化・制限されていきます。</p>
+                <ul>
+                    <li><b>ワンド:</b> 最も抽象的、生命エネルギー 🔥</li>
+                    <li><b>カップ:</b> 感情、起伏 💧</li>
+                    <li><b>ソード:</b> 言語化、思考 💨</li>
+                    <li><b>ペンタクル:</b> 物質化、文字 🌍</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-hand-holding-heart icon-large"></i>
+                <h3><i class="fa-solid fa-compass-drafting fa-icon"></i> ビナーと「母なる海」 <span class="timestamp">(43:00)</span></h3>
+                <p>3番ビナーは「母なる海」に例えられます。全てを受け入れる優しさと、時に厳しい側面も持ち合わせます。</p>
+                <div class="highlight-box">
+                    <p>人生経験で豊かになった「今の自分」の器そのもの。ここに立ち返り、自分の設定（土星）を見つめ直すことがテーマになります。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-burst icon-large"></i>
+                <h3><i class="fa-solid fa-people-roof fa-icon"></i> ワンドの5：葛藤と調整 <span class="timestamp">(50:00)</span></h3>
+                <p>ワンドの5は、獅子座（自己表現）のエネルギーに土星（制限・形）がかかった状態です。</p>
+                 <div class="speech-bubble">
+                    <p>「やりたい！」という純粋な情熱を、どのような形で社会に出していくか、という葛藤と調整を表します。熱量を抑えるのではなく、どう成熟した形で表現するかを学ぶ段階です。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-user-astronaut icon-large"></i>
+                <h3><i class="fa-solid fa-recycle fa-icon"></i> 宇宙的なリセット <span class="timestamp">(54:00)</span></h3>
+                <p>時に、宇宙は強制的なリセット（アカウントBANなど）を通じて、私たちを次のステージへ導きます。</p>
+                <div class="highlight-box">
+                    <p>積み上げたものがゼロになるのは一見ショックですが、それは「今までのやり方を手放し、全く新しい挑戦を始める」という宇宙からのサインでもあります。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-wand-magic-sparkles icon-large"></i>
+                <h3><i class="fa-solid fa-cubes fa-icon"></i> 魔術師の視点 <span class="timestamp">(59:00)</span></h3>
+                <p>大きなリセットが起きた時、それは魔術師のテーブルにバラバラの素材が置かれたような状態です。</p>
+                 <div class="speech-bubble">
+                    <p>失ったものではなく「残った素材」に目を向け、「さあ、これから何を創り出そうか？」と考えることが、変化をチャンスに変える鍵です。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-person-praying icon-large"></i>
+                <h3><i class="fa-solid fa-hand-sparkles fa-icon"></i> 吊るされた男：変容の直前 <span class="timestamp">(1:08:00)</span></h3>
+                <p>吊るされた男は、現実創造のまさに一歩手前のカードです。</p>
+                <ul>
+                    <li>動けない状況の中で、自分がこれからどんな「種」を植えるか（どんな意識を選択するか）を問われている。</li>
+                    <li>ネガティブな種を植えそうになる自分に気づき、意識を切り替えることで、世界線が変わる瞬間でもあります。</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-book-open-reader icon-large"></i>
+                <h3><i class="fa-solid fa-graduation-cap fa-icon"></i> まとめ：コートカードは役割 <span class="timestamp">(1:15:00)</span></h3>
+                <p>コートカードは、現実を創造していくプロセスにおける<b>4つの異なる役割（ジョブ）</b>です。</p>
+                 <div class="highlight-box">
+                    <p>人物像に囚われず、<b>「今はどの役割の段階にいるのか？」</b>という視点で読み解くことで、リーディングに深みと具体的なアドバイスが生まれます。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>この解説書は 2025年9月26日 に作成されました。</p>
+            <p>情報源: Mayumi様ご提供の文字起こし</p>
+        </footer>
+    </div>
+
+</body>
+</html>
