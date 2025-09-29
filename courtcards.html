@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi 式解説書 - コートカードの深層</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-[23']-1 */
+            --color-2: #DCE0F2; /* SHOOTING-[23']-2 */
+            --color-3: #012840; /* SHOOTING-[23']-3 */
+            --color-4: #A66A5D; /* SHOOTING-[23']-4 */
+            --color-5: #0D0D0D; /* SHOOTING-[23']-5 */
+            --font-main: 'Yomogi', 'Kaisei Decol', 'Zen Kurenaido', cursive;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Kaisei Decol', serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-family: 'Kaisei Decol', serif;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 .fa-icon {
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        p, ul, .highlight-box, .speech-bubble, table {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.7;
+        }
+        
+        ul {
+            padding-left: 20px;
+            list-style: '✨';
+        }
+        
+        li {
+            padding-left: 8px;
+            margin-bottom: 5px;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+        
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: rgba(220, 223, 242, 0.2);
+        }
+        th, td {
+            border: 1px dashed rgba(1, 40, 63, 0.2);
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(1, 40, 63, 0.1);
+            font-family: 'Kaisei Decol', serif;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 12px;
+            color: #475569;
+        }
+        
+        .timestamp {
+            font-size: 12px;
+            color: #64748b;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title"><i class="fa-solid fa-chess-king"></i> Mayumi 式解説書 <i class="fa-solid fa-chess-queen"></i></h1>
+        <p class="subtitle"><i class="fa-solid fa-diagram-project"></i> コートカードを「役割とエネルギーのシステム」として理解する</p>
+
+        <div class="grid-container">
+            
+            <div class="card">
+                <i class="fa-solid fa-user-secret icon-large"></i>
+                <h3><i class="fa-solid fa-lightbulb fa-icon"></i> コートカードの新視点</h3>
+                <p>コートカードの解釈で混乱する主な原因は、「特定の人物像」に当てはめようとすることです。</p>
+                <div class="speech-bubble">
+                    <p>この解説書では、人物ではなく<b>「役割やエネルギーの成熟度レベル」</b>という視点で捉え直します。これにより、具体的で実用的なアドバイスが可能になります。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-atom icon-large"></i>
+                <h3><i class="fa-solid fa-gears fa-icon"></i> 現実創造の術式：YHVH</h3>
+                <p>コートカードは、神聖な名前<b>YHVH（ヨッド・ヘー・ヴァヴ・ヘー）</b>と生命の樹の構造に基づき、エネルギーが現実化する4段階のシステム（術式）を象徴します。</p>
+                <table>
+                    <tr><th>ランク</th><th>YHVH</th><th>象徴</th><th>生命の樹</th></tr>
+                    <tr><td>キング</td><td>Y (ヨッド)</td><td>父</td><td>コクマー</td></tr>
+                    <tr><td>クイーン</td><td>H (ヘー)</td><td>母</td><td>ビナー</td></tr>
+                    <tr><td>ナイト</td><td>V (ヴァヴ)</td><td>息子</td><td>ティファレト</td></tr>
+                    <tr><td>ペイジ</td><td>H (ヘー)</td><td>娘</td><td>マルクト</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-shoe-prints icon-large"></i>
+                <h3><i class="fa-solid fa-map-pin fa-icon"></i> ペイジ：現実での実践レベル</h3>
+                <p>ペイジは生命の樹の<b>マルクト（地上世界）</b>に対応し、「肉体を持って行動すること」を象徴する、レベル1の初心者です。</p>
+                <div class="highlight-box">
+                    <p><b>役割:</b> 学び始め、行動の開始、現場での経験積み。</p>
+                    <p><b>課題:</b> 変えられない現実の中で「何を始めるか」が問われます。外の世界に影響されやすく、単独で暴走しがちです。</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-brain icon-large"></i>
+                <h3><i class="fa-solid fa-link fa-icon"></i> ナイト：精神と肉体をつなぐ</h3>
+                <p>ナイトは生命の樹の中心<b>ティファレト（美）</b>に対応し、精神（上の世界）と現実（下の世界）をつなぐ重要な役割を持ちます。</p>
+                 <div class="speech-bubble">
+                    <p>「エネルギー体の自分」と「肉体の自分」が結婚（結合）した状態。俯瞰した目線で行動に指示を出し、本質と行動を一致させることがテーマです。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-vial icon-large"></i>
+                <h3><i class="fa-solid fa-compass-drafting fa-icon"></i> クイーン：設定を生み出す</h3>
+                <p>クイーンは<b>ビナー（理解）</b>に位置し、創造に形を与える「母」なる力。全ての可能性が形になる前の段階です。</p>
+                 <ul>
+                    <li>実践経験を内面で温め、自分の素地（才能）と掛け合わせる。</li>
+                    <li>新しい枠組みや「物語の設定」を生み出す。</li>
+                    <li>無限の可能性から何を選び、どこに制限をかけるかを決める。</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-rocket icon-large"></i>
+                <h3><i class="fa-solid fa-crown fa-icon"></i> キング：枠を超える挑戦</h3>
+                <p>キングは<b>コクマー（知恵）</b>に位置し、純粋な創造の衝動、「種」のエネルギーそのものです。</p>
+                <div class="highlight-box">
+                    <p>全ての経験を踏まえ、今までの枠の外へ出て自分自身の王国を確立する段階。常に挑戦が求められる、リーダーシップのエネルギーです。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-wind icon-large"></i>
+                <h3><i class="fa-solid fa-fire fa-icon"></i> 4つのエネルギータイプ</h3>
+                <p>スートは四大元素に対応し、コートカードが持つエネルギーの種類を示します。</p>
+                <ul>
+                    <li><b>ワンド (火 🔥):</b> 情熱、活力、直感、「やる気」のエネルギー。</li>
+                    <li><b>カップ (水 💧):</b> 感情、想像力、愛、「共感」のエネルギー。</li>
+                    <li><b>ソード (風 💨):</b> 思考、情報、コミュニケーション、「分析」のエネルギー。</li>
+                    <li><b>ペンタクル (土 🌍):</b> 感覚、物質、スキル、「実務」のエネルギー。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-layer-group icon-large"></i>
+                <h3><i class="fa-solid fa-arrows-to-eye fa-icon"></i> 解釈の3つのレイヤー</h3>
+                <p>コートカードを人物探しではなく「あなたへのメッセージ」として受け取るための3つの視点です。</p>
+                <ol style="padding-left: 20px;">
+                    <li><b>あなた自身のエネルギー：</b>今、心の中で必要な力。</li>
+                    <li><b>状況が求めるエネルギー：</b>問題解決に必要なアプローチ。</li>
+                    <li><b>関係性のテーマ：</b>二人の間にある共通のエネルギー。</li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-comments icon-large"></i>
+                <h3><i class="fa-solid fa-comment-dots fa-icon"></i> 具体例：アドバイス編</h3>
+                <p>役割とエネルギーで解釈すると、アドバイスが具体的になります。</p>
+                <div class="speech-bubble">
+                    <p><b>カップのペイジ:</b> 「感受性豊かな子」→「心に浮かんだアイデアを小さく形にし始める時」</p>
+                    <p><b>ソードのキング:</b> 「理知的な男性」→「今までの枠を超え、広い視野で挑戦する時」</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-user-tie icon-large"></i>
+                <h3><i class="fa-solid fa-briefcase fa-icon"></i> 具体例：仕事のトラブル</h3>
+                 <p><b>相談:</b> 上司とのトラブルで転職を考えている<br><b>カード:</b> ペンタクルのナイト</p>
+                 <div class="highlight-box">
+                    <p><b>解釈:</b> 「今は着実に実務スキル(ペンタクル)を向上させる時期(ナイト)。俯瞰した目線で自分を観察し、相手との言葉の定義の違いなど、問題の根っこに気づくことが次のアクションに繋がります。」</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-heart icon-large"></i>
+                <h3><i class="fa-solid fa-user-group fa-icon"></i> 具体例：恋愛運</h3>
+                 <p><b>相談:</b> 出会いはあるか？<br><b>カード:</b> ソードのキング</p>
+                 <div class="speech-bubble">
+                    <p><b>解釈:</b> 「今までの恋愛パターンから抜け出す時。枠を超えた思考やコミュニケーションを確立することが、新しい出会いの鍵になるでしょう。」</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-lightbulb icon-large"></i>
+                <h3><i class="fa-solid fa-sitemap fa-icon"></i> 具体例：新しい仕事</h3>
+                 <p><b>相談:</b> 新しい仕事について<br><b>カード:</b> ペンタクルのクイーン</p>
+                 <div class="highlight-box">
+                    <p><b>解釈:</b> 「安定した女性が関わる？」→「過去の経験を棚卸しし、自分なりの形に整え、新しく生み出していく段階です。あなたの中のその力を育んでいきましょう。」</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-person-circle-question icon-large"></i>
+                <h3><i class="fa-solid fa-venus-mars fa-icon"></i> 具体例：性別を超えた解釈</h3>
+                 <p><b>相談:</b> 仕事について（30代男性）<br><b>カード:</b> ソードのクイーン</p>
+                 <div class="speech-bubble">
+                    <p><b>解釈:</b> 「女性上司のこと？」→「性別は関係ありません。自分の信念を持ちつつ、相手との対話を大切にする姿勢が重要になるフェーズです。」</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-child-reaching icon-large"></i>
+                <h3><i class="fa-solid fa-arrows-rotate fa-icon"></i> 具体例：年齢を超えた解釈</h3>
+                 <p><b>相談:</b> 恋愛について（50代女性）<br><b>カード:</b> ペンタクルのペイジ</p>
+                 <div class="highlight-box">
+                    <p><b>解釈:</b> 「年下の男性？」→「年齢は関係ありません。恋愛において新鮮な体験を求めている段階。初心者の気持ちで、新しいことを学び楽しんでみましょう。」</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-book-open-reader icon-large"></i>
+                <h3><i class="fa-solid fa-graduation-cap fa-icon"></i> まとめ：役割とエネルギー</h3>
+                <p>コートカードは、現実を創造していくプロセスにおける<b>4つの異なる役割（ジョブ）</b>です。</p>
+                 <div class="speech-bubble">
+                    <p>人物像に囚われず、<b>「今はどの役割の段階にいるのか？」</b>という視点で読み解くことで、リーディングに深みと具体的なアドバイスが生まれます。</p>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>この解説書は 2025年9月27日 に作成されました。</p>
+            <p>情報源: Mayumi様ご提供の解説記事</p>
+        </footer>
+    </div>
+
+</body>
+</html>
