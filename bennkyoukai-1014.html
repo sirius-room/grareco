@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi 式解説書HTML</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-[23']-1 */
+            --color-2: #DCE0F2; /* SHOOTING-[23']-2 */
+            --color-3: #012840; /* SHOOTING-[23']-3 */
+            --color-4: #A66A5D; /* SHOOTING-[23']-4 */
+            --color-5: #0D0D0D; /* SHOOTING-[23']-5 */
+        }
+
+        body {
+            font-family: 'Zen Kurenaido', 'Yomogi', 'Kaisei Decol', sans-serif;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--color-1) 0%, var(--color-4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        h1 .fa-icon {
+            font-size: 28px;
+            -webkit-text-fill-color: var(--color-1); /* For icons */
+            background: none;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #475569;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 .fa-icon {
+            font-size: 24px;
+            color: var(--color-1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        p, ul, ol {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 1.5em; /* For custom bullet points */
+        }
+
+        li::before {
+            content: "✨"; /* Default emoji bullet */
+            position: absolute;
+            left: 0;
+            font-size: 0.8em;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            box-shadow: none; /* No box-shadow for transparent look */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1); /* SHOOTING-[23']-4 with opacity */
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .comparison-item {
+            background-color: transparent; /* No background */
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            border: 1px dashed rgba(1, 40, 64, 0.2); /* Light dashed border */
+        }
+        
+        .comparison-item strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: var(--color-1);
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: transparent; /* No background */
+            margin: 15px 0;
+        }
+
+        .small-icon {
+            font-size: 1em;
+            margin-right: 5px;
+            color: var(--color-4);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px dashed #e0e0e0;
+        }
+
+        /* メディアクエリ */
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-book fa-icon"></i> Mayumi 式解説書：タロットと生命の木 <i class="fas fa-book-open fa-icon"></i></h1>
+        <h2><i class="fas fa-feather-alt"></i> タロットを深掘りする Mayumi スタイルの視覚的ガイド</h2>
+        <hr>
+        <div class="grid-container">
+
+            <div class="card">
+                <h3><i class="fas fa-tree fa-icon"></i> 生命の木の基本構造 [00:00]</h3>
+                <i class="icon-large fas fa-sitemap"></i>
+                <p><strong>生命の木</strong>は、小アルカナと大アルカナの対応を示す図です。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>小アルカナ (丸い部分 10個)</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-circle"></i> 現状や問題のテーマ</li>
+                            <li><i class="small-icon fas fa-info-circle"></i> 現在の状態を示すエネルギー</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>大アルカナ (線 22本)</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-arrow-right"></i> 丸から丸への移動エネルギー</li>
+                            <li><i class="small-icon fas fa-exchange-alt"></i> 変化・変容をもたらすエネルギー</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    <p>気づきだけでなく、その後の<strong>変化</strong>が非常に重要です。大アルカナは人生の節目や変化のエネルギーを表します。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-gem fa-icon"></i> 小アルカナの根源的な意味 [02:23]</h3>
+                <i class="icon-large fas fa-puzzle-piece"></i>
+                <p>小アルカナの各丸 (10個) には、そのスートの<strong>根っこの意味</strong>があります。例えば「小アルカナの 7」はどのスートでも<strong>感情と欲</strong>に関連します。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-fire"></i> <strong>ワンド 7:</strong> 自分のエゴや欲求のため戦う</li>
+                    <li><i class="small-icon fas fa-heart"></i> <strong>カップ 7:</strong> 欲が膨らんだ感情で妄想に浸る</li>
+                    <li><i class="small-icon fas fa-gavel"></i> <strong>ソード 7:</strong> 欲のために思考を使い、ずる賢く振る舞う</li>
+                    <li><i class="small-icon fas fa-coins"></i> <strong>ペンタクル 7:</strong> 目の前の収穫に不満を感じる欲求</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>思考が欲に負けていたり、感情が肥大化して現状を見つめられていない状態を示唆します。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-balance-scale fa-icon"></i> 生命の木の構造と対極性 [04:52]</h3>
+                <i class="icon-large fas fa-compress-alt"></i>
+                <p>生命の木は、<strong>左右の柱</strong>と<strong>上下の領域</strong>で対極的な意味合いを持ちます。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>左右の柱</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-brain"></i> 理性</li>
+                            <li><i class="small-icon fas fa-hand-holding-heart"></i> 感情/欲</li>
+                            <li><i class="small-icon fas fa-times-circle"></i> 相容れない性質</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>上と下</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-infinity"></i> 宇宙/神様 (抽象的、純粋)</li>
+                            <li><i class="small-icon fas fa-users"></i> 現実世界 (分離、肉体、個別)</li>
+                            <li><i class="small-icon fas fa-compress-arrows-alt"></i> 異質なものが対極に</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>上 (1, 2, 3) は<strong>ワンネス</strong>の世界観で、比べる相手や肉体がなく全てが一体です。下 (10) は<strong>分離</strong>した現実世界で、各々が肉体を持ち、感情や思考を個人のものとして捉えます。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-lightbulb fa-icon"></i> タロットの真の目的と自己洞察 [08:28]</h3>
+                <i class="icon-large fas fa-search-plus"></i>
+                <p>タロットの本来の使い方は、<strong>未来を当てることではなく、自己洞察と成長を促すこと</strong>です。</p>
+                <div class="speech-bubble">
+                    <p>泉竜一先生の教え: 占い師が相談内容を細かく聞くと主観が入り、占いに影響を与えてしまう。カードの深い解説を通して、相談者自身が問題の気づきを得ることが重要。</p>
+                </div>
+                <ul>
+                    <li><i class="small-icon fas fa-recycle"></i> 人間は同じ思考や感情の経路を繰り返す傾向がある。</li>
+                    <li><i class="small-icon fas fa-eye"></i> タロットは 78枚の視点を提供し、新しい解決策や気づきを促す。</li>
+                    <li><i class="small-icon fas fa-ban"></i> 生命の木を使ったリーディングでは、逆位置を固定的に捉えず、それも含めてエネルギーと考える。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-brain fa-icon"></i> ペンタクル 9: 無意識と潜在意識 [13:30]</h3>
+                <i class="icon-large fas fa-cloud"></i>
+                <p>ペンタクル 9は、生命の木の<strong>イエソド (9番)</strong> に対応し、西洋占星術では<strong>月</strong>が当てはまります。この場所は、<strong>無意識・潜在意識、固定観念、自分の中の無意識の制限</strong>を表します。</p>
+                <p>例えば、「○○しないと生きていけない」「尽くさないと愛されない」といった、自分の中に無意識にある制約がテーマとなるカードです。</p>
+                <div class="highlight-box">
+                    <p>私たちは、生まれる前の設定（性別、環境、得意不得意）や育った環境、価値観によって、様々な<strong>制限</strong>を抱えています。</p>
+                </div>
+                <p>現実での体験や感情、思考は、全てこの無意識・潜在意識の領域によって影響を受けています。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-car-alt fa-icon"></i> 潜在意識による現実の「自動運転」 [21:48]</h3>
+                <i class="icon-large fas fa-cogs"></i>
+                <p>ペンタクル 9 (潜在意識) と 10 (現実世界) の関係は、まさに<strong>自動運転</strong>です。潜在意識にある制限が、自動的に現実世界で体験として現れます。</p>
+                <div class="speech-bubble">
+                    <p>もし無意識に「個性的な自分はダメだ」という制限があれば、それが自動的に現実を動かし、その制限に沿った体験を繰り返すことになります。</p>
+                </div>
+                <p>ペンタクル 9の「豊かさ」は、<strong>宇宙目線での豊かさ</strong>を意味します。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-globe-americas"></i> 宇宙の視点では、善悪や比較がなく、高次元のエネルギー</li>
+                    <li><i class="small-icon fas fa-child"></i> 地球に降りてきた「愚者」（異世界の王子）が喜怒哀楽を体験し、魂の情報量を増やすこと自体が豊かさ</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-duotone fa-binoculars fa-icon"></i> ペンタクル 9の多角的視点 [26:31]</h3>
+                <i class="icon-large fas fa-eye"></i>
+                <p>ペンタクル 9には、単なる豊かさ以上の深い側面があります。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>側面 1: 宇宙的な体験の豊かさ</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-star"></i> 人生における素晴らしい経験</li>
+                            <li><i class="small-icon fas fa-grin-stars"></i> 困難も含めて魂の成長の機会</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>側面 2: 自動運転化された体験</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-redo-alt"></i> いつも同じパターンを繰り返していないか</li>
+                            <li><i class="small-icon fas fa-question"></i> その根っこに隠れた、向き合うべき問題は何か</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>既存の日常に染まっていると、無意識のうちに多くの気づきを見過ごしてしまうことがあります。深掘りすることで、自分の中の「闇」と向き合うことになります。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-person fa-icon"></i> ペンタクル 9と自己軸の確立 [31:21]</h3>
+                <i class="icon-large fas fa-arrows-alt-v"></i>
+                <p>生命の木の中心の列（ティファレト 6、イエソド 9、マルクト 10）は「<strong>自分軸</strong>」を表します。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-moon"></i> イエソド (9) や月 (大アルカナ 18) は<strong>低次元の月</strong>（自己の闇）</li>
+                    <li><i class="small-icon fas fa-crow"></i> 女教皇 (大アルカナ 2) は<strong>高次元の月</strong>（直感と叡智）</li>
+                    <li><i class="small-icon fas fa-child"></i> 闇に向き合いクリアになることで、高次元の月へのパスが通りやすくなる。</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>ティファレト (6) は宇宙と繋がる唯一の場所であり、<strong>直感</strong>を通してガイドを受け取ります。肉体を持つ人間は常に中心にはいられませんが、中心に戻ることを目指します。</p>
+                </div>
+                <p>ペンタクル 9は、この自己軸を見つめ、制限を外していくという、人生の重要なテーマを扱います。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-star-of-life fa-icon"></i> ペンタクル 9の占星術的対応 [35:58]</h3>
+                <i class="icon-large fas fa-venus-double"></i>
+                <p>小アルカナは惑星とサインに対応しています。ペンタクル 9は、<strong>乙女座の金星</strong>、キーワードは「物質的な利益」です。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-ruler-combined"></i> <strong>乙女座:</strong> 分析、整理整頓、優秀な執事のような性質。</li>
+                    <li><i class="small-icon fas fa-smile"></i> <strong>金星:</strong> ワクワク、楽しい、喜び。</li>
+                </ul>
+                <div class="speech-bubble">
+                    <p>自分の潜在意識を分析し、そこに楽しさを見出すことが、あなたにとっての素晴らしい利益（豊かさ）に繋がる、と読み解けます。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-hand-rock fa-icon"></i> ペンタクル 5: 困難と魂の成長 [38:21]</h3>
+                <i class="icon-large fas fa-walking"></i>
+                <p>ペンタクル 5は生命の木の<strong>ゲブラー (5番)</strong> に対応し、西洋占星術では<strong>火星</strong>が当てはまります。一般的に「貧乏カード」「困難」とされますが、ネガティブに捉える必要はありません。</p>
+                <div class="highlight-box">
+                    <p>このカードは宇宙に近い上部の領域に位置するため、人間のドロドロとした執着や嫉妬といった感情とは異なります。むしろ、<strong>魂的な成長</strong>の段階を示唆します。</p>
+                </div>
+                <p>潜在意識の心の闇を乗り越える過程で、悪魔・死・節制といった「しんどい」カードの経験を経て、頭ではなく「腹落ち」するような深い気づきを得ることを意味します。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-shield-alt fa-icon"></i> ペンタクル 5: 魂の安心と安全 [43:00]</h3>
+                <i class="icon-large fas fa-cloud-sun-rain"></i>
+                <p>この上部の領域では、他人の目や現実世界のルールにとらわれず、<strong>自分がどうしたいか、自分にとっての安心・安全</strong>が重要になります。</p>
+                <div class="speech-bubble">
+                    <p>一時的に悪と思える選択であっても、今の自分の魂やエネルギー状態にとって必要であれば、それが「安心・安全」となり得るのです。</p>
+                </div>
+                <p><strong>体験談：</strong>アトピー治療でステロイドを「悪」と認識していたが、皮膚炎悪化の恐怖から使用した際に得た「安心」は、その時の自分にとっての必要な選択でした。しかし、成長と共にその「安心」は新たな制限となり、手放す時が来ます。</p>
+                <p>「土」のエレメントは安定を好むため、安心・安全に執着しやすい性質がありますが、成長にはその執着を手放し、次の行動を選ぶことが求められます。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-handshake fa-icon"></i> ペンタクル 5: 占星術的視点と学び [51:19]</h3>
+                <i class="icon-large fas fa-bullseye"></i>
+                <p>ペンタクル 5は、<strong>牡牛座の水星</strong>に対応し、「物質的な困難」を意味します。これは錬金術的表現で、<strong>体験が少ししんどいフェーズに移行する</strong>ことを示します。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-bullhorn"></i> <strong>牡牛座:</strong> 五感が敏感。</li>
+                    <li><i class="small-icon fas fa-comment"></i> <strong>水星:</strong> 細かく表現する。</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>細かく感じるしんどさを表現する段階です。これは、今まで避けてきたことや、悩む人の気持ちを理解する必要があるという、<strong>魂の成長の機会</strong>となります。</p>
+                </div>
+                <p>既存の日常に流されず、自身の内観や自己探求を続けることで、新たな気づきや成長が生まれます。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-fire-extinguisher fa-icon"></i> ワンド 10: 生命エネルギーの終焉と新たな始まり [55:18]</h3>
+                <i class="icon-large fas fa-arrow-alt-circle-down"></i>
+                <p>ワンドは生命エネルギーややる気の次元が高く、抽象的です。しかし、生命の木の<strong>マルクト (10番)</strong> に到達すると、情報が制限され、次元が低くなります。</p>
+                <div class="speech-bubble">
+                    <p>かつて純粋に胸を熱くしたものが、頑張りや経験を経て「当たり前」となり、最終的に<strong>窮屈さ</strong>を感じ、<strong>完結</strong>に至る過程を示します。</p>
+                </div>
+                <p>ワンドのエネルギーは自由で上昇する性質を持ちますが、10番ではそれが束縛され、「絞り出したマヨネーズ」のように自由さがなくなります。これは一つのサイクルの終わりを意味します。</p>
+                <div class="highlight-box">
+                    <p>生命の木は繰り返しのサイクルであり、完結したということは、また新たなエネルギーを受け取り、次のサイクルへと進む時期が来たことを示唆します。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-globe-europe fa-icon"></i> ワンド 10と世界のカード、自己設定への回帰 [1:05:32]</h3>
+                <i class="icon-large fas fa-sync-alt"></i>
+                <p>ワンド 9 (潜在意識) と 10 (現実) を結ぶのは、大アルカナの<strong>世界のカード</strong>です。世界のカードは西洋占星術で<strong>土星</strong>に対応し、「固める」「枠を作る」「制限」といった意味があります。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-ruler"></i> 形となり、枠が決まる。</li>
+                    <li><i class="small-icon fas fa-angle-double-left"></i> これは土星が対応するビナー (3番) にある「自分の設定」への回帰を意味します。</li>
+                    <li><i class="small-icon fas fa-hand-holding-usd"></i> 悪魔のカード（山羊座、支配星が土星）は、自分の「持っていない」ことへの執着や欠乏感を表しますが、これを受け入れることで力に変えることができます。</li>
+                </ul>
+                <div class="speech-bubble">
+                    <p>ワンド 10は、一つの終わりを経て、自己設定に戻り、新たなスタートを切る時が来たことを示しています。これは、これまでとは異なる「生み出す」フェーズに入る可能性があります。</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-crown fa-icon"></i> コートカード: 現実創造の宇宙システム [1:14:23]</h3>
+                <i class="icon-large fas fa-atom"></i>
+                <p>コートカード (キング、クイーン、ナイト、ペイジ) は、生命の木において<strong>現実創造の宇宙システム（テトラグラマトン術式）</strong>を表します。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>宇宙システム</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-male"></i> キング (種/精子)</li>
+                            <li><i class="small-icon fas fa-female"></i> クイーン (受け皿/子宮)</li>
+                            <li><i class="small-icon fas fa-venus-mars"></i> ナイト (魂の自分/息子)</li>
+                            <li><i class="small-icon fas fa-child-reaching"></i> ペイジ (肉体を持った自分/娘)</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>現実創造</strong>
+                        <ul>
+                            <li><i class="small-icon fas fa-hand-holding-heart"></i> ハイヤーセルフ (魂) と肉体 (自分) の合体</li>
+                            <li><i class="small-icon fas fa-ring"></i> 「息子と娘の結婚」で新たなクイーンが誕生</li>
+                            <li><i class="small-icon fas fa-sync"></i> このサイクルを繰り返すことで、望む現実を創造</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>肉体だけで頑張っても現実創造は難しく、魂の自分との協調があって初めて、望む現実へと動かすことができます。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-feather-alt fa-icon"></i> ソードのクイーン: 新たな情報の扱い方 [1:20:45]</h3>
+                <i class="icon-large fas fa-wind"></i>
+                <p>ソードのクイーンは、<strong>自分の持っている素質（ビナー 3）に戻り、今までの経験（ペイジやナイト）を合わせ、何を新たに生み出すか</strong>がテーマです。</p>
+                <p>これは、新しい形で情報を扱ったり、コミュニケーションを広げたりするなど、<strong>「風」のエネルギーの新しい使い方</strong>を意味します。</p>
+                <div class="speech-bubble">
+                    <p>「経験豊か」なクイーンとして、自分の設定（素質）を活かしながら、魔術師（水星のパス）のように概念や受け止め方、自己設定を生み出す大変さも伴います。</p>
+                </div>
+                <p>既存の常識の外側を自分に馴染ませ、他者の言葉から気づきを得て、どのような言葉を発すればより穏やかに状況を切り抜けられるか、という視点が重要です。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-gem fa-icon"></i> ソードのクイーン: 魂の磨きと自己成長 [1:25:31]</h3>
+                <i class="icon-large fas fa-hand-sparkles"></i>
+                <p>自己中心的な性質を持つ人が、家族や他者のために動くことを学ぶのは、まさに<strong>魂磨き</strong>です。子供の言葉は、自分の内なる制限を刺激する重要なメッセージとなり得ます。</p>
+                <div class="highlight-box">
+                    <p>「自分勝手であること」もまた、一つの制限である可能性があります。そこに向き合うことで、私たちは成長し、新たな「安心安全」を築いていきます。</p>
+                </div>
+                <p>ソードのクイーンは、このような心理学的な働きを、カードの絵や状況を通して分かりやすく表現しています。今までの自分ではない、新たな情報の扱い方を体験しているのかもしれません。</p>
+                <p>生み出した後は、ナイトのように行動に移し、時にはペイジ（肉体）の暴走を抑えつつ、ハイヤーセルフ（魂）との協調を目指します。</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-lightbulb fa-icon"></i> タロットと占星術の連携でリーディングを深める [1:35:14]</h3>
+                <i class="icon-large fas fa-star-and-moon"></i>
+                <p>コートカードのリーディングでは、周辺の大アルカナ（例: 魔術師、女帝、戦車）や、占星術の知識を組み合わせることで、より深いアドバイスが可能になります。</p>
+                <ul>
+                    <li><i class="small-icon fas fa-brain"></i> <strong>魔術師:</strong> 何をどう生み出すか、好奇心に従う</li>
+                    <li><i class="small-icon fas fa-female"></i> <strong>女帝:</strong> 何をしても、何もしなくてもそのままで良いという受容</li>
+                    <li><i class="small-icon fas fa-chess-rook"></i> <strong>戦車:</strong> 何かが「ピコン」とハマった時に動き出すエネルギー</li>
+                </ul>
+                <div class="speech-bubble">
+                    <p>既存の日常で感情を揺さぶる言葉はヒントです。そこからイエソド (9) の制限が緩むと、高次元の月（女教皇）が働き、直感的なガイダンスが降りてきます。</p>
+                </div>
+                <p>占星術の基礎知識（12サインと10天体）は、生命の木を扱う上で強力な武器となります。タロットと占星術を組み合わせることで、独自の魅力的リーディングが展開できます。</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>作成日: 2025年10月15日</p>
+        <p>情報源: <a href="https://www.youtube.com/watch?v=nUH8h9dkKpg" target="_blank">1014勉強会 - YouTube</a></p>
+    </footer>
+</body>
+</html>
