@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カップの8 解説書 - Mayumi式</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    :root {
+      --color-1: #A61B40;
+      --color-2: #DCE0F2;
+      --color-3: #012840;
+      --color-4: #A66A5D;
+      --color-5: #0D0D0D;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #f9f7f1;
+      overflow-x: hidden;
+      color: var(--color-5);
+      line-height: 1.6;
+      font-family: 'Yomogi', cursive;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .main-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(135deg, var(--color-1), var(--color-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 30px 0;
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #475569;
+      margin-bottom: 40px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      background-color: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .section-title {
+      font-size: 18px;
+      color: var(--color-3);
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-family: 'Zen Kurenaido', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #64748b;
+      margin-left: auto;
+    }
+
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 15px auto;
+      text-align: center;
+      color: var(--color-3);
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .card-text strong {
+      color: var(--color-1);
+      font-weight: bold;
+    }
+
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(166, 106, 93, 0.1);
+      border-radius: 15px;
+      padding: 12px;
+      margin: 15px 0;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+    }
+
+    .highlight-box {
+      border-left: 3px solid var(--color-1);
+      padding-left: 10px;
+      background-color: transparent;
+      margin: 15px 0;
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      gap: 10px;
+    }
+
+    .comparison-item {
+      background-color: rgba(220, 223, 242, 0.3);
+      padding: 10px;
+      border-radius: 10px;
+      flex: 1;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      padding: 5px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--color-1);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      background-color: rgba(220, 223, 242, 0.3);
+      border-radius: 15px;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    @media (max-width: 1600px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .main-title {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      .main-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main-title">
+      <i class="fas fa-star"></i>
+      カップの8 深層解説
+      <i class="fas fa-star"></i>
+    </div>
+    <div class="subtitle">
+      <i class="fas fa-heart"></i> 生命の樹とタロットで紐解く内面の旅 <i class="fas fa-tree"></i>
+    </div>
+
+    <div class="grid-container">
+      <!-- カード1: イントロダクション -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-book-open"></i>
+          カップの8とは
+          <span class="timestamp">(00:00)</span>
+        </div>
+        <div class="icon-large">🏆</div>
+        <div class="card-text">
+          カップの8は生命の樹における<strong>セフィラの8番「ホド」</strong>の領域を表すカードです。今回の解説では、アレスター・クローリーのトートタロットと、ウェイト版の両方の視点から、このカードの深い意味を紐解いていきます。ホドは生命の樹において下の方、つまり木の根元に近い位置にあり、私たちが日々生きている現実世界と深く関わる場所です。
+          <div class="speech-bubble">
+            この場所は、肉体を持って生きる私たちの日常と、思考や情報という水星的な性質が交わる重要なポイントなのです。クローリーの「トートの書」では、このカードについて非常に興味深い解釈がなされており、魚座と土星という組み合わせが持つ独特のエネルギーについて詳しく語られています。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード2: 人間の三角形 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-users"></i>
+          人間の三角形
+          <span class="timestamp">(01:06)</span>
+        </div>
+        <div class="icon-large">🔺</div>
+        <div class="card-text">
+          生命の樹において、人間存在を理解する上で欠かせないのが<strong>「三角形」</strong>の概念です。この三角形は、現実世界・感情・思考という3つの要素で構成されています。現実世界では、私たちは肉体を持ち、他人と比較したり、持っている・持っていないという物質的な違いを日々感じながら生きています。
+          <div class="comparison-container">
+            <div class="comparison-item">
+              <strong>現実世界</strong><br>
+              肉体を持ち、人と比べながら生きる物質的な世界。目に見える形で存在し、他者との関係性の中で自分を認識する場所
+            </div>
+            <div class="comparison-item">
+              <strong>感情・思考</strong><br>
+              現実と切っても切り離せない関係。感じること、考えること、この2つが常に現実世界に影響を与え続けている
+            </div>
+          </div>
+          <div class="highlight-box">
+            この3つの要素は互いに深く結びついており、どれか1つだけを切り離して考えることはできません。私たちは常に、この三角形の中で生きているのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード3: 無意識の制限 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-lock"></i>
+          無意識の制限
+          <span class="timestamp">(01:22)</span>
+        </div>
+        <div class="icon-large">🔒</div>
+        <div class="card-text">
+          現実世界・感情・思考という三角形の中心には、さらに深い層が存在します。それが<strong>無意識や潜在意識</strong>と呼ばれる領域です。この奥深い場所には、私たちが幼い頃から刷り込まれてきた様々な制限や思い込みが眠っています。
+          <div class="highlight-box">
+            「○○しないと愛されない」「こういう側面を出したら怒られる」「完璧でなければ認めてもらえない」——こうした制限は、多くの場合、私たち自身も気づいていない無意識の領域に深く根ざしています。これらの制限は、小さい頃の体験や、家族から受け継いだ価値観、社会から与えられた「べき論」などから形成されています。
+          </div>
+          こうした無意識の制限は、自分で気づき、「あ、そんなことしなくてもいいんだ」「もう大丈夫なんだ」と心の底から安心するまで、私たちの行動や選択に影響を与え続けます。表面的な意識では理解していても、腹の底から納得できるまでは、この制限のもとで現実を体験し、感情を感じ、思考を巡らせることになるのです。
+        </div>
+      </div>
+
+      <!-- カード4: 現実を変えるには -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-key"></i>
+          現実を変える鍵
+          <span class="timestamp">(02:05)</span>
+        </div>
+        <div class="icon-large">🔑</div>
+        <div class="card-text">
+          現実世界で何か辛いことや苦しいことがあったとき、私たちはしばしば<strong>人を変えたり、場所を変えたり</strong>することで状況を改善しようとします。しかし、外側の環境をいくら変えても、根本的な問題が解決しないことがあります。なぜでしょうか？
+          <div class="speech-bubble">
+            それは、内側にある制限が緩まっていかない限り、現実というものはなかなか変わらないからです。新しい職場に移っても、新しい人間関係を築いても、結局同じようなパターンの問題に直面してしまう——これは、無意識の制限が変わっていないために起こる現象なのです。
+          </div>
+          軽やかに生きていくためには、自分の中にある制限や思い込みを、どんどん軽くしていく必要があります。完全になくすことは人間である限り難しいかもしれませんが、できる限り少なくしていくことで、自然と行動できるようになってきます。そして行動が変われば、現実社会も必ず変わっていくのです。内側の変化が外側の変化を生み出す——これが、真の変容の鍵なのです。
+        </div>
+      </div>
+
+      <!-- カード5: ホドの性質 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-brain"></i>
+          ホドとは
+          <span class="timestamp">(03:09)</span>
+        </div>
+        <div class="icon-large">🧠</div>
+        <div class="card-text">
+          セフィラの8番「ホド」は、<strong>知性・形式・情報</strong>を司る領域です。トートの書によれば、ここは知性と情報が集まる水星の領域として位置づけられています。水星は占星術において、思考・情報・概念・コミュニケーションを司る天体です。
+          <ul class="bullet-list">
+            <li><strong>水星の領域:</strong> 情報処理や論理的思考、言葉によるコミュニケーションを担当する知的な領域</li>
+            <li><strong>知性と形式:</strong> 抽象的な概念を具体的な形式に落とし込む働きを持つ</li>
+            <li><strong>水性の領域:</strong> 感情の水ではなく、情報という水が流れる場所。思考や概念という流動的な性質を持つ</li>
+          </ul>
+          <div class="highlight-box">
+            ホドは生命の樹の中で、上位世界から降りてきた抽象的なエネルギーを、より具体的で理解可能な情報や知識に変換する重要な役割を果たしています。しかし、この場所まで降りてくると、本来の純粋さが失われ始める——それがカップの8が示す重要なメッセージなのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード6: 魚座×土星 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-fish"></i>
+          魚座の土星
+          <span class="timestamp">(03:45)</span>
+        </div>
+        <div class="icon-large">♓</div>
+        <div class="card-text">
+          カップの8は、占星術的には<strong>魚座の土星</strong>に相当するカードです。この組み合わせは非常に興味深い性質を持っています。魚座は12星座の最後のサインであり、牡羊座から始まった旅の終着点です。そのため、これまでの11のサインすべての性質を少しずつ含んでいるような、非常に複雑で多面的な性質を持っています。
+          <div class="highlight-box">
+            魚座は本来、穏やかで優しく、すべてを受け入れるような包容力を持つサイン。しかし、クローリーはこれを「淀んだ水」と表現しました。なぜなら、魚座は酸いも甘いも全て体験し尽くした結果、すべてがグレーに混ざり合ってしまっているからです。白黒はっきりさせることができず、「みんなの気持ちが分かっちゃう」「どっちも正しいし、どっちも間違っている」というような、曖昧で不思議な性質を持っています。
+          </div>
+          <div class="speech-bubble">
+            激しく感情を表に出すタイプではなく、どちらかというと穏やかで静か。しかしその静けさの中に、様々な要素が混ざり合った複雑さが潜んでいる——それが魚座の本質なのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード7: 土星の影響 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-compress"></i>
+          土星の制限力
+          <span class="timestamp">(05:08)</span>
+        </div>
+        <div class="icon-large">🪐</div>
+        <div class="card-text">
+          穏やかでグレーな魚座に、<strong>土星</strong>という厳しい天体のエネルギーが加わるとどうなるでしょうか。土星は、制限し、縮小し、形のないものに枠を与える力を持つ天体です。拡大と成長を促す木星とは正反対に、土星は物事を凝縮し、境界線を引き、「ここまで」という限界を設定します。
+          <div class="speech-bubble">
+            曖昧でグレーな魚座のエネルギーに、土星の厳しさが入り込むことで、「白黒はっきりさせろ」「どっちつかずはダメだ」というプレッシャーがかかります。本来は穏やかに流れていた魚座の水が、土星によって抑圧され、流れが止まってしまう。その結果、水は淀み、鈍くなってしまうのです。
+          </div>
+          <div class="highlight-box">
+            本来であれば、母なる海のように広大で生命を育む強さを持つはずの水。しかし土星の影響により、その大海原は小さな水溜りになってしまう——クローリーはこのように表現しました。広がりを持てず、流れることもできず、ただそこに停滞している水。それがカップの8が示す、エネルギーの質なのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード8: セフィラ3との対比 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-crown"></i>
+          母なる海(セフィラ3)
+          <span class="timestamp">(05:51)</span>
+        </div>
+        <div class="icon-large">👑</div>
+        <div class="card-text">
+          水のエネルギーの本来の姿を理解するために、<strong>セフィラ3(ビナー)</strong>を見てみましょう。ビナーは「母なる海」と呼ばれ、クイーンの場所でもあります。ここには土星も当てはめられていますが、その意味は8番とは全く異なります。ビナーにおける土星は、形を作り、設定を定める創造的な力として機能します。
+          <div class="comparison-container">
+            <div class="comparison-item">
+              <strong>力強さ・生命力</strong><br>
+              大海原のように広大で、あらゆる生命を育む母性的な強さを持つ
+            </div>
+            <div class="comparison-item">
+              <strong>厳しさ・母性</strong><br>
+              優しさだけでなく、必要な時には厳しく導く女性性の両面を併せ持つ
+            </div>
+          </div>
+          <div class="highlight-box">
+            まさに母親のイメージ——包み込むような優しさと、時に厳しく躾ける強さの両方を持っています。同じ土星でも、上位のビナーでは創造的で力強いのに、8番まで降りてくると制限的で停滞した性質に変わってしまう。これが、エネルギーが下降する過程で起こる変化なのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード9: 純粋さの喪失 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-droplet"></i>
+          淀んだ水
+          <span class="timestamp">(06:59)</span>
+        </div>
+        <div class="icon-large">💧</div>
+        <div class="card-text">
+          生命の樹の上の世界から降りてきた<strong>水のエネルギー</strong>が、8番の位置まで到達するとどうなるでしょうか。上位世界では純粋で透明だったカップ(水)のエネルギーが、徐々に濁り始め、8番に至る頃には、もはや水溜りのように淀んでしまった状態になっています。
+          <div class="highlight-box">
+            これは比喩ではなく、エネルギーの質的な変化を表しています。上位世界では理想的で純粋だった感情や愛のエネルギーが、現実世界に近づくにつれて、様々な制限や条件、執着などが混ざり込み、本来の輝きを失っていく。カップの8は、そのような「純粋さを失った水」の状態を象徴的に表現しているのです。
+          </div>
+          <div class="speech-bubble">
+            流れることができず、そこに停滞している水。新鮮な空気も入らず、生命力も弱まっている状態。これが、カップの8が私たちに見せている、感情や精神性の「淀み」なのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード10: カップの7との対比 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-cloud"></i>
+          カップの7
+          <span class="timestamp">(07:18)</span>
+        </div>
+        <div class="icon-large">☁️</div>
+        <div class="card-text">
+          カップの8を理解するためには、その前の段階である<strong>カップの7</strong>を知ることが不可欠です。7番は一般的に「妄想カード」として知られています。なぜなら、このカードが示す状態は、現実に根ざしていない空想や願望に満ちているからです。
+          <ul class="bullet-list">
+            <li><strong>感情と欲が強い:</strong> 7番の位置は、思考(8番の水星側)が弱く、感情と欲(7番のネツァク/金星側)が強くなる場所</li>
+            <li><strong>選択肢だらけ:</strong> 雲の中に様々なカップが浮かんでいるように、たくさんの可能性や選択肢が見えている</li>
+            <li><strong>地に足がつかない:</strong> しかし、どれも現実的な基盤を持たず、ただ空中に浮かんでいるだけ</li>
+          </ul>
+          <div class="speech-bubble">
+            「あれもいいな」「これもいいな」と夢見がちな状態。現実が見えておらず、自分の願望や理想ばかりが膨らんでいる状態を表しています。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード11: 月のカードの影響 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-moon"></i>
+          月のパス
+          <span class="timestamp">(08:13)</span>
+        </div>
+        <div class="icon-large">🌙</div>
+        <div class="card-text">
+          生命の樹において、現実世界(マルクト/10番)とカップの7(ネツァク/7番)を繋いでいるパスは、<strong>大アルカナ18番の「月」</strong>です。この月のカードが、カップの7の妄想的な性質を説明する重要な鍵となります。
+          <div class="speech-bubble">
+            月は確かに夜空を照らしてくれますが、その光はぼんやりとしていて、物事をはっきりと見せてはくれません。むしろ、影を作り、輪郭を曖昧にし、本来の姿を歪めて見せてしまいます。月夜で現実を見ると、すべてがぼんやりと暗く、はっきりしない。そのため、本当の現実が見えず、自分の想像や願望で空白を埋めてしまうのです。
+          </div>
+          <div class="highlight-box">
+            現実がぼんやり暗い月夜でしか見えていないからこそ、カップの7の状態ではフワフワした妄想の世界に入り込んでしまう。事実ではなく、自分が見たいものだけを見ている状態——これが月のパスが示す重要なメッセージなのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード12: 幻想の世界 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-ghost"></i>
+          幻想の罠
+          <span class="timestamp">(08:42)</span>
+        </div>
+        <div class="icon-large">👻</div>
+        <div class="card-text">
+          カップの7の状態を方程式で表すと、<strong>「感情×水(カップ)×現実見えてない」</strong>となります。この3つの要素が組み合わさると、必然的に幻想や妄想の世界観が生まれます。感情的で、流動的で、しかも現実が見えていない——これは非常に危険な状態です。
+          <div class="highlight-box">
+            現実社会で実際に起こっている事実を、自分の主観というフィルターを通して、見たいように見ている。都合の悪いことは見ないようにし、都合の良い解釈だけを選んでいる。これは意図的な嘘ではなく、本人は本当にそう見えているのです。月明かりの下では、それが現実だと信じ込んでしまう——これが幻想の罠なのです。
+          </div>
+          <div class="speech-bubble">
+            この状態では、いくら周りの人が現実を指摘しても、本人には届きません。なぜなら、自分の見ている世界こそが真実だと信じているからです。幻想の中にいることに、本人は気づいていないのです。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード13: 7から8への移行 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-arrow-right"></i>
+          8番への移動
+          <span class="timestamp">(09:06)</span>
+        </div>
+        <div class="icon-large">➡️</div>
+        <div class="card-text">
+          幻想の状態から8番へ。
+          <div class="speech-bubble">
+            クローリーは7と8の両方を「過ち」として対比させています
+          </div>
+        </div>
+      </div>
+
+      <!-- カード14: クローリーの解釈 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-scroll"></i>
+          2つの過ち
+          <span class="timestamp">(09:20)</span>
+        </div>
+        <div class="icon-large">📜</div>
+        <div class="card-text">
+          <div class="comparison-container">
+            <div class="comparison-item">
+              <strong>7の過ち</strong><br>
+              幻想にとらわれる危険
+            </div>
+            <div class="comparison-item">
+              <strong>8の過ち</strong><br>
+              外見は立派だが偽りの場所
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- カード15: 虚しさの正体 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-heart-crack"></i>
+          心の虚しさ
+          <span class="timestamp">(10:04)</span>
+        </div>
+        <div class="icon-large">💔</div>
+        <div class="card-text">
+          <strong>一見幸せそうに見えるが実は心は虚しい</strong>
+          <div class="highlight-box">
+            現実社会に根付いていない幻想を自分の世界だと思い込んでいる状態。見た目は完璧でも心が伴っていない
+          </div>
+        </div>
+      </div>
+
+      <!-- カード16: キリスト教批判 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-church"></i>
+          形式主義への警鐘
+          <span class="timestamp">(10:36)</span>
+        </div>
+        <div class="icon-large">⛪</div>
+        <div class="card-text">
+          クローリーは「<strong>キリスト教神秘主義風神</strong>」と表現。
+          <ul class="bullet-list">
+            <li>形式や決まり事だけ守る上辺</li>
+            <li>聖職者の偽善</li>
+            <li>見た目だけ正しく何も考えてない</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード17: 停滞の象徴 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-stop"></i>
+          停滞した状態
+          <span class="timestamp">(11:31)</span>
+        </div>
+        <div class="icon-large">🛑</div>
+        <div class="card-text">
+          クローリーがこのカードに込めた意味:
+          <div class="speech-bubble">
+            ただの苦行、形式だけの正しさ、心の伴わない行為の停滞状態
+          </div>
+        </div>
+      </div>
+
+      <!-- カード18: ウェイト版の視点 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-palette"></i>
+          ウェイト版の描写
+          <span class="timestamp">(11:49)</span>
+        </div>
+        <div class="icon-large">🎨</div>
+        <div class="card-text">
+          <strong>ウェイトとパメラの共同作品</strong>
+          <div class="highlight-box">
+            淀んだ場所の対策を描いた。中身のない場所を「去る」という描写で表現
+          </div>
+        </div>
+      </div>
+
+      <!-- カード19: 忍者のメタファー -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-user-ninja"></i>
+          忍者のように去る
+          <span class="timestamp">(12:33)</span>
+        </div>
+        <div class="icon-large">🥷</div>
+        <div class="card-text">
+          レイチェル・ポラックの解釈:
+          <div class="speech-bubble">
+            描かれている人物は「忍者のよう」。大アルカナ9番の隠者になるという解釈も
+          </div>
+        </div>
+      </div>
+
+      <!-- カード20: 8つのカップ -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-wine-glass"></i>
+          8つのカップの意味
+          <span class="timestamp">(13:29)</span>
+        </div>
+        <div class="icon-large">🍷</div>
+        <div class="card-text">
+          <strong>8つのカップは未だ持っているもの</strong>
+          <ul class="bullet-list">
+            <li>これまでの概念</li>
+            <li>積み上げてきた思考</li>
+            <li>自分の常識や価値観</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード21: 虚しさの原因 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-question"></i>
+          なぜ虚しいのか
+          <span class="timestamp">(14:07)</span>
+        </div>
+        <div class="icon-large">❓</div>
+        <div class="card-text">
+          <div class="highlight-box">
+            幻想の世界(カップの7)で作ったもの、理想のものを持っているから。それを手に入れても心は満たされない
+          </div>
+        </div>
+      </div>
+
+      <!-- カード22: 月明かりの幻影 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-mask"></i>
+          幻の自分
+          <span class="timestamp">(15:01)</span>
+        </div>
+        <div class="icon-large">🎭</div>
+        <div class="card-text">
+          <strong>月明かりで見える自分は本当の自分ではない</strong>
+          <div class="speech-bubble">
+            きちんと見えてない状態で作り上げたものを持っているから虚しい
+          </div>
+        </div>
+      </div>
+
+      <!-- カード23: 新月への旅 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-circle"></i>
+          新月の暗闇
+          <span class="timestamp">(15:55)</span>
+        </div>
+        <div class="icon-large">🌑</div>
+        <div class="card-text">
+          虚しさに気づいたら...
+          <div class="highlight-box">
+            一旦すべて手放して、新月の暗闇に入る。本当は自分が何を見たいのか、何を手に入れたいのかを確認する旅へ
+          </div>
+        </div>
+      </div>
+
+      <!-- カード24: 太陽で照らす -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-sun"></i>
+          太陽の光
+          <span class="timestamp">(16:21)</span>
+        </div>
+        <div class="icon-large">☀️</div>
+        <div class="card-text">
+          <strong>太陽の光で照らして確認</strong>
+          <div class="speech-bubble">
+            月明かりではなく、太陽の光でしっかり見て、本当の自分を確認する
+          </div>
+        </div>
+      </div>
+
+      <!-- カード25: ウェイト版の山 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-mountain"></i>
+          山を登る
+          <span class="timestamp">(17:02)</span>
+        </div>
+        <div class="icon-large">⛰️</div>
+        <div class="card-text">
+          ウェイト版の背景に描かれた<strong>山</strong>
+          <ul class="bullet-list">
+            <li>山は高い場所の象徴</li>
+            <li>生命の樹で言えば上の方</li>
+            <li>高次の自分を見つける旅</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード26: 忍者の旅路 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-hiking"></i>
+          旅立ちの意味
+          <span class="timestamp">(18:05)</span>
+        </div>
+        <div class="icon-large">🚶</div>
+        <div class="card-text">
+          <strong>一人で旅に出る忍者</strong>
+          <div class="highlight-box">
+            誰にも言わず、密かに一人で。自分を見つめ直す内なる旅へ出発する
+          </div>
+        </div>
+      </div>
+
+      <!-- カード27: 旅の目的地 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-flag-checkered"></i>
+          目指す場所
+          <span class="timestamp">(19:11)</span>
+        </div>
+        <div class="icon-large">🏁</div>
+        <div class="card-text">
+          旅の行き先は<strong>ティファレット(6番)</strong>
+          <div class="speech-bubble">
+            高次の自分、本当の自分に出会う場所。太陽の光で照らされた真実の自己
+          </div>
+        </div>
+      </div>
+
+      <!-- カード28: 審判のカード -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-gavel"></i>
+          審判のカード
+          <span class="timestamp">(21:48)</span>
+        </div>
+        <div class="icon-large">⚖️</div>
+        <div class="card-text">
+          8番から6番へのパスは<strong>審判(20番)</strong>
+          <ul class="bullet-list">
+            <li>過去の自分との決別</li>
+            <li>新しい自分への目覚め</li>
+            <li>復活と再生</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード29: ラッパの意味 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-trumpet"></i>
+          天使のラッパ
+          <span class="timestamp">(23:30)</span>
+        </div>
+        <div class="icon-large">🎺</div>
+        <div class="card-text">
+          <strong>ラッパが鳴る＝おめでとう</strong>
+          <div class="highlight-box">
+            情報量が増えた、視点が変わった、新しい自分に気づいた瞬間を祝福する音
+          </div>
+        </div>
+      </div>
+
+      <!-- カード30: 棺桶から出る -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-box-open"></i>
+          棺桶を開ける
+          <span class="timestamp">(24:15)</span>
+        </div>
+        <div class="icon-large">⚰️</div>
+        <div class="card-text">
+          <strong>棺桶＝古い自分を閉じ込めた箱</strong>
+          <div class="speech-bubble">
+            一度閉じたと思っても、また開く。それは新しい気づきのサイン。終わりはなく、一生続く旅
+          </div>
+        </div>
+      </div>
+
+      <!-- カード31: 過去世との決別 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-history"></i>
+          過去を手放す
+          <span class="timestamp">(26:44)</span>
+        </div>
+        <div class="icon-large">🕰️</div>
+        <div class="card-text">
+          審判は<strong>過去世との決別</strong>も意味する
+          <ul class="bullet-list">
+            <li>過去の自分を卒業</li>
+            <li>古い価値観から解放</li>
+            <li>新しいステージへ</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- カード32: 家族との絆 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-users"></i>
+          親子3人組
+          <span class="timestamp">(28:20)</span>
+        </div>
+        <div class="icon-large">👨‍👩‍👦</div>
+        <div class="card-text">
+          審判カードの<strong>親子3人</strong>の意味
+          <div class="highlight-box">
+            家族から受け継いだもの、DNAレベルの情報、世代を超えた解放を表す
+          </div>
+        </div>
+      </div>
+
+      <!-- カード33: 新しい視点 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-eye"></i>
+          視点の変化
+          <span class="timestamp">(31:02)</span>
+        </div>
+        <div class="icon-large">👁️</div>
+        <div class="card-text">
+          <strong>同じ出来事でも見え方が変わる</strong>
+          <div class="speech-bubble">
+            情報量が増えると、過去の出来事の意味が変わる。「あの時はあれで良かった」と思える
+          </div>
+        </div>
+      </div>
+
+      <!-- カード34: 螺旋階段 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-sync"></i>
+          螺旋の旅
+          <span class="timestamp">(1:28:20)</span>
+        </div>
+        <div class="icon-large">🌀</div>
+        <div class="card-text">
+          <strong>人生は螺旋階段</strong>
+          <div class="highlight-box">
+            同じ景色を見ているようで違う。視点がどんどん変わっていく。ステージが上がり続ける旅
+          </div>
+        </div>
+      </div>
+
+      <!-- カード35: ティファレットへの道 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-crown"></i>
+          ティファレットへ
+          <span class="timestamp">(1:32:47)</span>
+        </div>
+        <div class="icon-large">👑</div>
+        <div class="card-text">
+          <strong>ティファレットまでの旅を意識した人</strong>
+          <div class="speech-bubble">
+            人生で何回もこの旅を繰り返す。一度だけではなく、何度でも。今あるものを一旦置いて、もう一回見ようという旅路
+          </div>
+        </div>
+      </div>
+
+      <!-- カード36: カップの8の本質 -->
+      <div class="card">
+        <div class="section-title">
+          <i class="fas fa-lightbulb"></i>
+          まとめ
+          <span class="timestamp">(全体)</span>
+        </div>
+        <div class="icon-large">💡</div>
+        <div class="card-text">
+          <strong>カップの8の核心</strong>
+          <ul class="bullet-list">
+            <li>外見は立派だが心は虚しい状態</li>
+            <li>幻想で作ったものを持っている</li>
+            <li>一旦手放して本当の自分を探す旅へ</li>
+            <li>審判のパスで新しい自分に目覚める</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p><strong>解説書作成日:</strong> 2025年10月25日</p>
+      <p><strong>情報源:</strong> シリウスの部屋 - カップの8解説動画(1時間33分)</p>
+      <p><strong>制作:</strong> Mayumi式解説書 × Claude</p>
+      <p><i class="fas fa-heart" style="color: var(--color-1);"></i> 生命の樹とタロットで心の旅を <i class="fas fa-star" style="color: var(--color-3);"></i></p>
+    </div>
+  </div>
+</body>
+</html>
