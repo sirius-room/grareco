@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式解説書 - カップの8と生命の木</title>
+    <!-- フォントとアイコンのインポート -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    </style>
+    
+    <!-- スタイル設定 -->
+    <style>
+        :root {
+          --color-1: #A61B40; /* rgb(165, 26, 63) */
+          --color-2: #DCE0F2; /* rgb(220, 223, 242) */
+          --color-3: #012840; /* rgb(1, 39, 63) */
+          --color-4: #A66A5D; /* rgb(165, 106, 92) */
+          --color-5: #0D0D0D; /* rgb(12, 12, 12) */
+        }
+
+        body {
+          font-family: 'Yomogi', 'Kaisei Decol', 'Zen Kurenaido', cursive;
+          /* 手書き風グリッドライン背景 */
+          background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+          background-size: 30px 30px;
+          background-color: #f9f7f1;
+          overflow-x: hidden;
+          color: var(--color-5);
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 2000px;
+          margin: 0 auto;
+          padding: 40px 20px;
+        }
+
+        .main-title {
+          font-family: 'Kaisei Decol', cursive;
+          font-size: 32px;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 10px;
+          background: linear-gradient(45deg, var(--color-1), var(--color-3));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+
+        .main-title i {
+          color: var(--color-1);
+          margin: 0 15px;
+          -webkit-text-fill-color: var(--color-1);
+        }
+
+        .subtitle {
+          font-family: 'Zen Kurenaido', cursive;
+          font-size: 16px;
+          color: #475569;
+          text-align: center;
+          margin-bottom: 40px;
+        }
+
+        .subtitle i {
+          margin-right: 8px;
+          color: #475569;
+        }
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 30px;
+        }
+
+        .card {
+          background-color: transparent;
+          padding: 15px;
+          border-radius: 15px;
+          position: relative;
+          margin-bottom: 40px;
+          transition: transform 0.3s ease;
+          font-family: 'Yomogi', cursive;
+          /* HTMLが崩れないよう、カードの高さを自動調整 */
+          height: fit-content;
+        }
+
+        .card:hover {
+          transform: translateY(-5px);
+        }
+
+        .section-title {
+          font-family: 'Kaisei Decol', cursive;
+          font-size: 18px;
+          font-weight: bold;
+          color: #1e40af;
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap; /* タイトルが長い場合に折り返す */
+        }
+
+        .section-title i {
+          margin-right: 10px;
+          animation: bounceIcon 2s infinite ease-in-out;
+          color: #1e40af;
+        }
+
+        .timestamp {
+          font-family: 'Zen Kurenaido', cursive;
+          font-size: 14px;
+          color: #64748b;
+          margin-left: auto;
+          padding-left: 10px;
+          font-weight: normal;
+          white-space: nowrap; /* タイムスタンプが改行しないように */
+        }
+
+        .card-content {
+          font-size: 14px;
+          color: #334155;
+          line-height: 1.4;
+        }
+
+        .card-content i, .card-content .emoji {
+          margin-right: 4px;
+          color: var(--color-3);
+          font-size: 1.1em;
+        }
+
+        .icon-large {
+          font-size: 70px;
+          display: block;
+          margin: 15px auto;
+          text-align: center;
+          color: var(--color-3);
+          opacity: 0.8;
+        }
+
+        .speech-bubble {
+          position: relative;
+          background-color: rgba(166, 106, 93, 0.1);
+          border-radius: 15px;
+          padding: 12px;
+          margin: 15px 0;
+          font-size: 1.05em;
+          font-weight: bold;
+        }
+
+        .speech-bubble::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 20px;
+          border-width: 10px 10px 0;
+          border-style: solid;
+          border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+          display: flex;
+          justify-content: space-between;
+          margin: 20px 0;
+          gap: 10px;
+          flex-wrap: wrap; /* 狭い画面でも対応 */
+        }
+
+        .comparison-item {
+          background-color: transparent;
+          padding: 10px;
+          border-radius: 10px;
+          flex: 1;
+          min-width: 120px; /* 最小幅 */
+          margin: 0 5px;
+          border: 1px dashed rgba(1, 39, 63, 0.2);
+        }
+
+        .comparison-item h4 {
+          font-weight: bold;
+          color: var(--color-3);
+          margin-bottom: 5px;
+          font-family: 'Kaisei Decol', cursive;
+        }
+
+        .highlight-box {
+          border-left: 3px solid var(--color-1);
+          padding-left: 10px;
+          background-color: transparent;
+          margin: 15px 0;
+          font-style: italic;
+          color: var(--color-1);
+        }
+
+        ul {
+          list-style-type: none;
+          padding-left: 10px;
+        }
+
+        ul li {
+          position: relative;
+          padding-left: 20px;
+          margin-bottom: 8px;
+        }
+
+        ul li::before {
+          content: '\f00c'; /* Font Awesome check icon */
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          position: absolute;
+          left: 0;
+          top: 2px;
+          color: var(--color-4);
+          font-size: 12px;
+        }
+
+        footer {
+          text-align: center;
+          margin-top: 40px;
+          font-size: 12px;
+          color: #64748b;
+          font-family: 'Zen Kurenaido', cursive;
+        }
+
+        @keyframes bounceIcon {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+
+        /* メディアクエリ */
+        @media (max-width: 1600px) {
+          .grid-container {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        @media (max-width: 1024px) {
+          .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 768px) {
+          .grid-container {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 480px) {
+          .grid-container {
+            grid-template-columns: 1fr;
+          }
+          .main-title {
+            font-size: 24px;
+          }
+          .section-title {
+            font-size: 16px;
+          }
+          .comparison-container {
+              flex-direction: column;
+          }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ヘッダー -->
+        <header>
+            <h1 class="main-title">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Mayumi式解説書：カップの8と生命の木
+                <i class="fa-solid fa-feather-pointed"></i>
+            </h1>
+            <p class="subtitle">
+                <i class="fa-solid fa-book-open"></i>
+                ウェイト版とクローリー版の比較から見えた深い世界観
+            </p>
+        </header>
+
+        <!-- グリッドコンテナ -->
+        <div class="grid-container">
+
+            <!-- カード 1 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    イントロ：カップの8
+                    <span class="timestamp">(00:02)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-person-walking-arrow-right"></i>
+                <div class="card-content">
+                    <p>カップの8について解説します。ウェイト版の気づきは、クローリー版（トートタロット）のセフィラ（ホド）の考察がきっかけでした。クローリーの解説は難解で、一度自分なりに考察しないと理解が深まりません。</p>
+                </div>
+            </div>
+
+            <!-- カード 2 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    7(感情)と8(思考)
+                    <span class="timestamp">(01:08)</span>
+                </h3>
+                <div class="card-content">
+                    <p>生命の木において、<span class="emoji">🧠</span>8番（ホド：思考）は<span class="emoji">💖</span>7番（ネツァク：感情）の「保管」です。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4>7. ネツァク (感情・欲)</h4>
+                            <p>感情が強く動くと、8の思考が働き始める。</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>8. ホド (思考)</h4>
+                            <p>「嫌な思いをしないように」や「また体験したい」など、感情を元に思考が機能する。</p>
+                        </div>
+                    </div>
+                    <p>7が強いと8は弱く、互いに反発しあう対極の柱（慈悲と峻厳）にあります。</p>
+                </div>
+            </div>
+
+            <!-- カード 3 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                    中央の柱は「高度」
+                    <span class="timestamp">(02:34)</span>
+                </h3>
+                <div class="card-content">
+                    <p>右（慈悲）と左（峻厳）の柱は異質なエネルギーです。これらを自分で混ぜ合わせ、腹落ちさせる必要がある「中央の柱」は、非常に高度で大変なカードが多いです。</p>
+                    <i class="icon-large fa-solid fa-fire-flame-curved"></i>
+                    <ul>
+                        <li><i class="fa-solid fa-lion"></i> 力 (8)</li>
+                        <li><i class="fa-solid fa-bolt"></i> 塔 (16)</li>
+                        <li><i class="fa-solid fa-vial"></i> 節制 (14)</li>
+                    </ul>
+                    <p>これらは自分の闇を直視しつつ、やりたい/やりたくないを「自分にちょうどいい割合」で混ぜていく高度な作業です。</p>
+                </div>
+            </div>
+
+            <!-- カード 4 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-code-merge"></i>
+                    分離と統合の始まり
+                    <span class="timestamp">(03:46)</span>
+                </h3>
+                <div class="card-content">
+                    <p>生命の木の中心線は、分離と統合のプロセスを示します。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4><i class="fa-solid fa-heart-crack"></i> 恋人 (6)</h4>
+                            <p>「分離の始まり」。男性性（理性）と女性性（感情）が分かれる。イヴ（感情）だけが上（天）と繋がろうとしている。</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4><i class="fa-solid fa-hands-holding-circle"></i> 節制 (14)</h4>
+                            <p>「統合の始まり」。分離したものを再び混ぜ合わせる、高度な段階。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- カード 5 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                    愚者の旅と節制
+                    <span class="timestamp">(06:00)</span>
+                </h3>
+                <div class="card-content">
+                    <p>愚者の旅でも「節制」は統合の始まりとして配置されています。</p>
+                    <i class="icon-large fa-solid fa-map-signs"></i>
+                    <ul>
+                        <li><i class="fa-solid fa-seedling"></i> 幼少期 (女帝など)</li>
+                        <li><i class="fa-solid fa-building"></i> 社会・外側 (戦車)</li>
+                        <li><i class="fa-solid fa-magnifying-glass"></i> 内側へ (力, 隠者)</li>
+                        <li><i class="fa-solid fa-skull-crossbones"></i> 終わり (死神)</li>
+                        <li><i class="fa-solid fa-vial"></i> 統合の始まり (節制)</li>
+                    </ul>
+                    <p>戦車(7)の勢いは続かず、内省が始まり、死神(13)でリセットされた後に、節制(14)で混ぜ合わせる段階に入ります。</p>
+                </div>
+            </div>
+
+            <!-- カード 6 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-cross"></i>
+                    中央の困難さ
+                    <span class="timestamp">(09:20)</span>
+                </h3>
+                <div class="card-content">
+                    <p>ティファレト（メタ認知）に至る道は、十字架のように人生に組み込まれ、避けて通れません。</p>
+                    <div class="speech-bubble">
+                        <i class="fa-solid fa-tower"></i> 塔（ペルソナの崩壊）や <i class="fa-solid fa-lion"></i> 力（内なる獣を制す）経験は必須です。
+                    </div>
+                    <p>落ち込む経験も、最初はショックですが、回数を重ねると「あ、また見つけた」という宝探しのような感覚に変わっていきます。</p>
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-eye-slash"></i> 自分のことは自分が一番わかっていない。見たいものしか見ないのが人間。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- カード 7 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-cloud"></i>
+                    カップの7：幻想
+                    <span class="timestamp">(12:38)</span>
+                </h3>
+                <i class="icon-large fa-regular fa-moon"></i>
+                <div class="card-content">
+                    <p>カップの7は「幻想」「夢見がち」がキーワード。</p>
+                    <p>これはマルクト(10)とネツァク(7)を結ぶパス「<i class="fa-solid fa-moon"></i> 月」の影響です。</p>
+                    <p>暗闇で現実をきっちり把握できず、不安で見えないからこそ、自分の「見たいものだけを見ている」世界観です。</p>
+                </div>
+            </div>
+
+            <!-- カード 8 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-book-skull"></i>
+                    クローリー版 カップ8
+                    <span class="timestamp">(14:40)</span>
+                </h3>
+                <div class="card-content">
+                    <p>クローリー（トートタロット）の解釈は異なります。</p>
+                    <ul>
+                        <li><i class="fa-solid fa-atom"></i> 対応：<span class="emoji">♓</span> 魚座の <span class="emoji">🪐</span> 土星</li>
+                        <li><i class="fa-solid fa-water"></i> 魚座（曖昧・よどみ）と土星（縮小・枠）が葛藤。</li>
+                        <li><i class="fa-solid fa-droplet-slash"></i> エネルギーが「水たまりのようによどんでいる」。</li>
+                    </ul>
+                    <div class="speech-bubble">
+                        クローリーは7を「妄想」、8を「見た目は整っているが中身がない」と解釈。キリスト教の形式骸化を批判しています。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 9 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-door-open"></i>
+                    ウェイト版：ゲートカード
+                    <span class="timestamp">(19:38)</span>
+                </h3>
+                <div class="card-content">
+                    <p>ウェイト版のカップ8は、クローリー版とは全く違う世界観です。</p>
+                    <p>タロット研究家のレイチェル・ポラックは、このカードを「ゲートカード」（小アルカナの中でも特に重要な意味を持つカード）と呼んでいます。</p>
+                    <i class="icon-large fa-solid fa-monument"></i>
+                    <div class="highlight-box">
+                        決定的な違いは、カップが一つも「倒れていない」こと。理路整然と並んだカップに背を向けて去っていきます。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 10 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-masks-theater"></i>
+                    ウェイト版：仮面家族
+                    <span class="timestamp">(23:00)</span>
+                </h3>
+                <div class="card-content">
+                    <p>ウェイト版のカップ8は、カップ7（妄想）から続きます。</p>
+                    <div class="speech-bubble">
+                        例：裕福で、外食もし、良い服を着て週末は出かける「仮面家族」。
+                    </div>
+                    <p><i class="fa-solid fa-eye"></i> 外側から見たら完璧（カップが並んでいる状態）だが、心が通っていない、親の顔色を伺って演じている。</p>
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-triangle-exclamation"></i> クローリー版のように「よどむ前」に、その違和感に気づき、旅立ちましょう、という示唆です。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 11 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-sun"></i>
+                    向かう先はティファレト
+                    <span class="timestamp">(24:19)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-eclipse"></i>
+                <div class="card-content">
+                    <p>人物が向かう山は、ティファレト（メタ認知）への道です。</p>
+                    <p>空にあるのは「月食」。これはティファレト（<span class="emoji">☀️</span> 太陽）がイェソド（<span class="emoji">🌙</span> 月）を照らす関係を示します。</p>
+                    <p>ティファレトの視点に戻り、「なぜ完璧に見えるのに満足できないのか？」という自分の心の闇を解明する必要があることを示しています。</p>
+                </div>
+            </div>
+
+            <!-- カード 12 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-user-secret"></i>
+                    忍者とヨッド
+                    <span class="timestamp">(25:50)</span>
+                </h3>
+                <div class="card-content">
+                    <p>レイチェル・ポラックは、赤い服の人物を「忍者（<span class="emoji">🥷</span> 隠者）」のようだと表現します。</p>
+                    <p>「隠者」はヘブライ語で「ヨッド」に対応します。</p>
+                    <ul>
+                        <li><i class="fa-solid fa-hand-fist"></i> ヨッドは「拳」であり「種」。</li>
+                        <li><i class="fa-solid fa-star-of-life"></i> 握りしめた拳の中にある、現実を創造するための圧倒的な可能性のエネルギー（セフィラの2番にも対応）。</li>
+                    </ul>
+                    <p>この旅は、己の中の可能性の種に繋がる作業です。</p>
+                </div>
+            </div>
+
+            <!-- カード 13 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-code-compare"></i>
+                    比較：カップ5と8
+                    <span class="timestamp">(29:30)</span>
+                </h3>
+                <div class="card-content">
+                    <p>カップの8の高度さを理解するために、カップの5と比較します。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4>カップの5</h4>
+                            <p><i class="fa-solid fa-wine-glass-crack"></i> カップは「明らかに倒れている」。問題が可視化されている状態。（例：子供が不良で帰ってこない）</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>カップの8</h4>
+                            <p><i class="fa-solid fa-wine-glass"></i> カップは「倒れていない」。一見完璧で問題が見えにくい。（例：仮面家族の虚しさ）</p>
+                        </div>
+                    </div>
+                    <p>カップ8は、この「外側の完璧さ」への違和感に気づくという、非常に高度なカードです。</p>
+                </div>
+            </div>
+
+            <!-- カード 14 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-link"></i>
+                    関連カード：悪魔(15)
+                    <span class="timestamp">(30:40)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-handcuffs"></i>
+                <div class="card-content">
+                    <p>カップ8のリーディングには、6, 7, 8番だけでなく、「悪魔」のカードの視点も必要です。</p>
+                    <ul>
+                        <li><i class="fa-solid fa-satellite-dish"></i> 悪魔は山羊座、支配星は土星。</li>
+                        <li><i class="fa-solid fa-brain"></i> これはビナー（土星、物語の最初の設定）と関係します。</li>
+                        <li><i class="fa-solid fa-circle-question"></i> 「自分は何を求めているか？」という根源的な問い。</li>
+                    </ul>
+                    <p>悪魔は「持ってないもの」への執着（欠乏感）と深く関連しています。</p>
+                </div>
+            </div>
+
+            <!-- カード 15 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    悪魔の高次元な使い方
+                    <span class="timestamp">(31:39)</span>
+                </h3>
+                <div class="card-content">
+                    <p>悪魔のカードにも低次元と高次元の使い方があります。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4>低次元</h4>
+                            <p>欠乏感に気づかないようアドレナリンでごまかす（依存症）。</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>高次元</h4>
+                            <p>「持ってない」という欠乏感を「武器」や「力」に変える。</p>
+                        </div>
+                    </div>
+                    <div class="speech-bubble">
+                        例：「プロおごられ屋」。彼は「絶対にやりたくないこと（労働？）」をやらなくてすむように、「別に好きでもないけどできること（人の話を聞く）」を徹底してやる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 16 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    学習者の悩み
+                    <span class="timestamp">(36:00)</span>
+                </h3>
+                <div class="card-content">
+                    <p>（こえりさんの発言）魚座の土星（クローリー版カップ8）の「形が整っているのに中身がない」という言葉が、学んでも落とし込めない自分に響く。</p>
+                    <div class="speech-bubble">
+                        <i class="fa-solid fa-person-chalkboard"></i> Mayumiさん回答：それは成長の過程。西洋占星術がフックとなり、目まぐるしく吸収している。自信を持って。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 17 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-microphone-slash"></i>
+                    リーディングのコツ①
+                    <span class="timestamp">(38:20)</span>
+                </h3>
+                <div class="card-content">
+                    <p>占い師が陥りがちな「<i class="fa-solid fa-bullhorn"></i> アドバイスしなきゃ」「答えなきゃ」という強迫観念を一旦捨てる。</p>
+                    <div class="highlight-box">
+                        わからなくても、カードの説明（番号、惑星、パスの位置など）を口に出して喋っているうちに、自分の中でキーワードが引っかかる瞬間が来る。
+                    </div>
+                    <p>「どう思いますか？」と相手に委ねることで、相手がさらに情報を出し、気づきが生まれる。</p>
+                </div>
+            </div>
+
+            <!-- カード 18 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-lock"></i>
+                    リーディングのコツ②
+                    <span class="timestamp">(40:20)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-user-shield"></i>
+                <div class="card-content">
+                    <p>「自分で自分を占うのが一番高度」</p>
+                    <p>なぜなら、人間は「気づきたくないこと」に対して無意識にロックをかけるから。準備ができていないと、急にモヤがかかってわからなくなります。</p>
+                    <div class="speech-bubble">
+                        そういう時は、他人に頼るのが一番。
+                    </div>
+                </div>
+            </div>
+            
+            <!-- カード 19 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-chart-line"></i>
+                    状態分析：ペンタクル7
+                    <span class="timestamp">(41:20)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-seedling"></i>
+                <div class="card-content">
+                    <p>「勉強しても中身がないように感じる」という状態は、ペンタクルの7に似ています。</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> 確実に成長している（作物は育っている）。</li>
+                        <li><i class="fa-solid fa-arrow-trend-up"></i> だが、「もっと知りたい」「もっとなりたい」という欲が出て、現状に満足していない状態。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- カード 20 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-person-digging"></i>
+                    アドバイス：ペンタクル8
+                    <span class="timestamp">(43:20)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-hammer"></i>
+                <div class="card-content">
+                    <p>「もっと」と上を見る（ペンタクル7）よりも、今は「ペンタクルの8」の意識が大切です。</p>
+                    <div class="highlight-box">
+                        今できること、今持っている知識を組み合わせて、コツコツと形にする作業に集中する。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 21 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-star-and-crescent"></i>
+                    応用：占星術とタロット
+                    <span class="timestamp">(44:10)</span>
+                </h3>
+                <div class="card-content">
+                    <p>西洋占星術のチャート（度数）と小アルカナを対応させると、チャートだけでは気づかない側面が見えます。</p>
+                    <div class="speech-bubble">
+                        例：Mayumiさん <i class="fa-solid fa-venus"></i> 金星 水瓶座8度 ＝ <i class="fa-solid fa-shield-halved"></i> ソードの5
+                    </div>
+                    <p>「知識で勝ち負けをつけたい」「改革（水瓶座）の楽しさ（金星）が暴走する」といった側面が、ソードの5と繋がります。</p>
+                </div>
+            </div>
+
+            <!-- カード 22 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-tree"></i>
+                    解釈法：森を見る
+                    <span class="timestamp">(46:22)</span>
+                </h3>
+                <div class="card-content">
+                    <p>生命の木とサインを対応させる時、詳細なキーワード（木）に縛られると混乱します。</p>
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-leaf"></i> 木を見る（乙女座）のではなく、<i class="fa-solid fa-forest"></i> 森を見る（魚座）ように、ぼんやりとした概念や人の成長の流れで捉えるとわかりやすい。
+                    </div>
+                    <p>例：1-6（自分のサイン）、7-12（他人の登場）。</p>
+                </div>
+            </div>
+
+            <!-- カード 23 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-image"></i>
+                    深掘り：ソードの6（絵の罠）
+                    <span class="timestamp">(1:01:04)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+                <div class="card-content">
+                    <p>多くの人が、ソードの6を「哀愁ある背中」の絵に引っ張られ、「何かを諦めて去る」と読みがちです。</p>
+                    <div class="speech-bubble">
+                        これは絵の擬人化によるデメリットです。
+                    </div>
+                    <p>ウェイト自身の解説書では、このカードのメインは「親子」ではなく「船頭さん」だと書かれています。</p>
+                </div>
+            </div>
+            
+            <!-- カード 24 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-ship"></i>
+                    深掘り：ソードの6（船頭の視点）
+                    <span class="timestamp">(1:03:00)</span>
+                </h3>
+                <div class="card-content">
+                    <p>船頭さんは、天候や客（親子）がどんなに悲しんでいようと、感情に流されず「対岸に届ける」というタスクを冷静に遂行します。</p>
+                    <p>これはソードの5で技術を磨いた後、技術が身につき（意識しなくても使える）、状況を俯瞰して見れるようになった状態です。</p>
+                    <div class="highlight-box">
+                        <i class="fa-solid fa-anchor"></i> 助け船 ＝ 自分の「メタ認知（思考）」が助け船になる。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 25 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-brain"></i>
+                    深掘り：ソードの6（メタ認知）
+                    <span class="timestamp">(1:06:20)</span>
+                </h3>
+                <div class="card-content">
+                    <p>ソードの6は「ティファレト」の感覚です。</p>
+                    <p>人間は「見たいものしか見ない」（イェソドの幻想）状態に陥りがちです。</p>
+                    <p>ソードの6（船頭の視点）は、その思い込みから抜け出し、「こうかもしれない」と他の可能性を冷静に感じ取れる状態を示します。</p>
+                    <div class="speech-bubble">
+                        対応：<i class="fa-solid fa-atom"></i> 水瓶座の <i class="fa-solid fa-feather"></i> 水星 ＝ 改革者（水瓶座）＋有能な秘書（水星）＝最強の思考力。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 26 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    トート版 vs ウェイト版
+                    <span class="timestamp">(1:08:50)</span>
+                </h3>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <h4>ウェイト版</h4>
+                        <p>絵がイマジネーションを刺激するが、絵に引っ張られるデメリットもある。</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>トート版</h4>
+                        <p>絵から読むのは難しいが、惑星やサインの記号が明記されている。</p>
+                    </div>
+                </div>
+                <p>ソードの6（トート版）は、絶妙なバランスで思考回路が働いている様を示します。</p>
+            </div>
+
+            <!-- カード 27 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-yin-yang"></i>
+                    二元論の罠
+                    <span class="timestamp">(1:09:32)</span>
+                </h3>
+                <div class="card-content">
+                    <p>「バランスが崩れること」は悪ではありません。崩れることで学ぶのが生命の木です。</p>
+                    <div class="speech-bubble">
+                        <i class="fa-solid fa-circle-exclamation"></i> 危険な罠：「エゴはダメ」「左脳はダメ」といった二元論。
+                    </div>
+                    <p>肉体を持つ限り、必ず下の世界（欲やエゴ）に引っ張られます。それは当然のことです。</p>
+                    <div class="highlight-box">
+                        ティファレトに「いなきゃいけない」と思うこと自体が、イェソドの幻想（執着）です。
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 28 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-child-reaching"></i>
+                    深掘り：カップの6
+                    <span class="timestamp">(1:12:30)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-heart"></i>
+                <div class="card-content">
+                    <p>カップの6は「幼少期のように、素直に喜怒哀楽を感じ切る」ことを示します。</p>
+                    <p>ただし、幼少期に戻るのではなく、「あの頃の素直さ × 大人の経験値」です。</p>
+                    <p>感情をOKにしつつ、その後の「フォローがうまくできる」状態。純粋な上層と「～すべき」の下層の中間（ティファレト）にある調和です。</p>
+                </div>
+            </div>
+
+            <!-- カード 29 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-comments"></i>
+                    アウトプットの重要性
+                    <span class="timestamp">(1:21:40)</span>
+                </h3>
+                <div class="card-content">
+                    <p>インプット（勉強）ばかりでは、自分が何をしたいのか見えてきません。</p>
+                    <p>アウトプット（無料モニター等）を繰り返す中で、自分の「本当にやりたいこと」に気づきます。</p>
+                    <div class="speech-bubble">
+                        Mayumiさん：「占い師」ではなく、「とっつきにくい知識を簡単に教える人」が自分の道だと気づいた。
+                    </div>
+                    <p>トライアンドエラーを恐れず、発信することが重要です。</p>
+                </div>
+            </div>
+
+            <!-- カード 30 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-robot"></i>
+                    深掘り：カップの9
+                    <span class="timestamp">(1:26:00)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-repeat"></i>
+                <div class="card-content">
+                    <p>（こえりさん「新月にカップ9」）</p>
+                    <p>カップ9（イェソド）のリーディングの肝は、「感情が自動運転されていませんか？」です。</p>
+                    <div class="highlight-box">
+                        例：「子供が学校に行かない」と聞いて、何も考えずに「イラッ」とする。これは感情の自動運転です。
+                    </div>
+                    <p>一度立ち止まり、自動運転に気づけば、「特定の授業がある日だけでは？」とパターンを「観察」できます。</p>
+                </div>
+            </div>
+
+            <!-- カード 31 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-infinity"></i>
+                    9のカードの共通点
+                    <span class="timestamp">(1:30:40)</span>
+                </h3>
+                <div class="card-content">
+                    <p>9のカード（イェソド）は、基本的にすべて「自動運転」がキーワードです。</p>
+                    <ul>
+                        <li><i class="fa-solid fa-fire"></i> ワンド9：炎を燃やすのが当たり前になり、必要ない場面でも燃やしすぎる。</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> ソード9：悪く考えるのが自動運転になっている。</li>
+                        <li><i class="fa-solid fa-coins"></i> ペンタクル9：通勤路のように、何も考えなくても行動できる状態。</li>
+                    </ul>
+                    <p>日常は自動運転（無意識）で溢れています。</p>
+                </div>
+            </div>
+
+            <!-- カード 32 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-fish"></i>
+                    9の解釈：物質化と幸福
+                    <span class="timestamp">(1:36:00)</span>
+                </h3>
+                <div class="card-content">
+                    <p>カップ9の「物質的幸福」というキーワードは、複数の解釈ができます。</p>
+                    <ol>
+                        <li>まもなく10（マルクト）で「物質化する」という喜び。</li>
+                        <li>対応する<span class="emoji">♓</span> 魚座 / <span class="emoji">🪐</span> 木星。</li>
+                    </ol>
+                    <div class="speech-bubble">
+                        <i class="fa-solid fa-water"></i> 最後のサイン（魚座）として、これまでの「いろいろな経験」をしたこと自体を「幸福」（木星）と捉える視点。
+                    </div>
+                    <p>自動運転に「気づけたら」幸福（木星）です。</p>
+                </div>
+            </div>
+
+            <!-- カード 33 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-layer-group"></i>
+                    ベールの上下：運命の輪
+                    <span class="timestamp">(1:39:40)</span>
+                </h3>
+                <div class="card-content">
+                    <p>生命の木は、アビスのベールで上下に分かれます。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4>ベールの下 (7, 8, 9)</h4>
+                            <p>自分の主観の世界。「見たい世界」しか見えない。欲に囚われ、「叶う/叶わない」の二択しかない。</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>ベールの上 (10:運命の輪)</h4>
+                            <p>可能性の世界。「失敗」をデータと捉え、「じゃあ今度はこうしてみよう」と視点が広がる。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- カード 34 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-person-praying"></i>
+                    深掘り：審判（情報量）
+                    <span class="timestamp">(1:42:10)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-coffin"></i>
+                <div class="card-content">
+                    <p>カップ8がベールの上への「お誘い（ゲートカード）」です。</p>
+                    <p>審判(20)は、「現実の捉え方の情報量（レベル）」を示します。</p>
+                    <div class="highlight-box">
+                        例：「受験失敗」という出来事。
+                        <ul>
+                            <li>情報量 低：「人生真っ暗」で終わり。</li>
+                            <li>情報量 高：「あの時失敗したから、あの人に出会えた」と捉え直せる（＝棺桶が開く）。</li>
+                        </ul>
+                    </div>
+                    <p>情報量が増えると、悪魔（執着）を解き明かすヒントが増えます。</p>
+                </div>
+            </div>
+
+            <!-- カード 35 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-filter-circle-xmark"></i>
+                    深掘り：審判（仕分け）
+                    <span class="timestamp">(1:47:36)</span>
+                </h3>
+                <div class="card-content">
+                    <p>審判は「仕分け」のカードです。</p>
+                    <div class="comparison-container">
+                        <div class="comparison-item">
+                            <h4>低次元 (イェソド)</h4>
+                            <p>情報が整理できず混乱し、「好き/嫌い」「いる/いらない」と分離・遮断する。</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>高次元</h4>
+                            <p>「こういう人もいるんだ」と分離せず、「こういう使い方もあるんだ」と視点（情報量）が増える。</p>
+                        </div>
+                    </div>
+                    <p>分けない（＝整理できる）方がレベルの高い使い方です。</p>
+                </div>
+            </div>
+
+            <!-- カード 36 -->
+            <div class="card">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-check-double"></i>
+                    まとめと質疑応答
+                    <span class="timestamp">(1:51:07)</span>
+                </h3>
+                <i class="icon-large fa-solid fa-hands-clapping"></i>
+                <div class="card-content">
+                    <p>講義はここで終了。非常に多岐にわたる深い内容でした。</p>
+                    <p>質問があれば、FacebookやLINEでいつでも受け付けるとのこと。</p>
+                    <div class="speech-bubble">
+                        お疲れ様でした！
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- .grid-container の終わり -->
+
+        <!-- フッター -->
+        <footer>
+            <p>
+                解説書作成日: 2025年10月26日<br>
+                情報源: GMT20251024-011202_Recording (1:51:54)
+            </p>
+        </footer>
+
+    </div> <!-- .container の終わり -->
+
+</body>
+</html>
