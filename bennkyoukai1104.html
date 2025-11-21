@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式 生命の樹タロット解説書 Vol.2</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --color-1: #A61B40; /* SHOOTING-[23]-1 */
+  --color-2: #DCE0F2; /* SHOOTING-[23]-2 */
+  --color-3: #012840; /* SHOOTING-[23]-3 */
+  --color-4: #A66A5D; /* SHOOTING-[23]-4 */
+  --color-5: #0D0D0D; /* SHOOTING-[23]-5 */
+}
+
+body {
+  font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
+  /* 手書き風グリッドライン背景 */
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+  background-size: 30px 30px;
+  background-color: #f9f7f1;
+  overflow-x: hidden;
+  color: var(--color-5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  border-radius: 20px;
+}
+
+h1 {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 48px;
+  background: linear-gradient(45deg, var(--color-1), var(--color-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 i {
+  -webkit-text-fill-color: var(--color-4);
+  font-size: 40px;
+  margin: 0 15px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #475569;
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.section-header {
+  font-size: 18px;
+  color: #1e40af;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dashed var(--color-2);
+  padding-bottom: 5px;
+}
+
+.section-header i {
+  margin-right: 10px;
+  animation: bounce 2s infinite;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #64748b;
+  margin-left: auto;
+  font-weight: normal;
+}
+
+.icon-large {
+  font-size: 70px;
+  display: block;
+  margin: 15px auto;
+  text-align: center;
+  color: var(--color-3);
+  opacity: 0.8;
+}
+
+.speech-bubble {
+  position: relative;
+  background-color: rgba(166, 106, 93, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+}
+
+.highlight-box {
+  border-left: 4px solid var(--color-1);
+  padding: 10px 15px;
+  background-color: rgba(220, 224, 242, 0.2);
+  margin: 15px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.comparison-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255,255,255,0.5);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 5px;
+  list-style-type: circle;
+}
+
+footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  padding: 20px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1600px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1><i class="fa-solid fa-book-journal-whills"></i>Mayumi式 実践リーディング<i class="fa-solid fa-feather"></i></h1>
+    <p class="subtitle"><i class="fa-solid fa-stars"></i> 力、9番の自動運転、そしてコートカードの真実</p>
+  </header>
+
+  <div class="grid-container">
+
+    <!-- 1. 生命の樹の復習 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-rotate-right"></i>基本概念の復習 <span class="timestamp">(00:00)</span>
+      </div>
+      <i class="fa-solid fa-sitemap icon-large"></i>
+      <div class="highlight-box">
+        <strong>丸（セフィラ）と線（パス）の役割</strong>
+      </div>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-regular fa-circle"></i> セフィラ(小)</span>
+          <span>現状・事柄・テーマ（駅）</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-minus"></i> パス(大)</span>
+          <span>変化・気づき・エネルギー（電車）</span>
+        </div>
+      </div>
+      <p><strong>領域の違い：</strong></p>
+      <ul>
+        <li>上（1-3）：神・宇宙・Oneness（干渉不可）</li>
+        <li>境界線（1）：深淵（Abyss）</li>
+        <li>下（4-10）：人間界・分離の世界</li>
+      </ul>
+    </div>
+
+    <!-- 2. 力(8番) 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-child-reaching"></i>愚者の旅と「8番」 <span class="timestamp">(06:40)</span>
+      </div>
+      <i class="fa-solid fa-arrow-turn-down icon-large"></i>
+      <div class="speech-bubble">
+        外側に向かう旅から、内側に向かう旅への転換点
+      </div>
+      <ul>
+        <li><strong>1-3番：</strong>幼少期・土台（変えられない素質）</li>
+        <li><strong>4-7番：</strong>自我の確立・社会での成功（戦車＝イケイケ）</li>
+        <li><strong>8番(力)：</strong>社会で成功した後に感じる「疲れ」や「虚しさ」から、内面へ向かう第一歩。</li>
+      </ul>
+      <p><small>「キャリアウーマンになったけど、これ本当の私？」と気づく段階。</small></p>
+    </div>
+
+    <!-- 3. 力(8番) 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-cat"></i>獅子を手懐ける <span class="timestamp">(10:00)</span>
+      </div>
+      <i class="fa-solid fa-paw icon-large"></i>
+      <div class="highlight-box">
+        <strong>獅子 ＝ 暴れる駄々っ子（自我・欲）</strong>
+      </div>
+      <p>今まで無視してきた「わがままな自分」や「欠乏感（～がないから頑張る）」と向き合う。</p>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-link"></i> くびき（枷）</span>
+          <span>自由を制御するもの＝バラの花で繋がれている</span>
+        </div>
+      </div>
+      <p><strong>リーディングの鍵：</strong><br>
+      「ちゃんとした人」という仮面を脱ぎ、本当は何を求めていたのか（安心・安全）を、ハイヤーセルフの視点（高次元）から優しく問いかける。</p>
+    </div>
+
+    <!-- 4. ワンドの9 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-fire"></i>9番は「自動運転」 <span class="timestamp">(29:15)</span>
+      </div>
+      <i class="fa-solid fa-robot icon-large"></i>
+      <div class="highlight-box">
+        <strong>9番(イェソド) ＝ 月 ＝ 無意識・自動化</strong>
+      </div>
+      <p>ワンド（情熱・火）が9番まで来ると、もはや「ワクワク」ではなく「ルーティン」になっている。</p>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-quote-left"></i> やるのが当たり前すぎて、胸も熱くならない状態
+      </div>
+      <p>例：野球部のキャプテンが、何も考えずに朝練に行くような状態。「槍」のように速く到達しているが、思考停止している可能性も。</p>
+    </div>
+
+    <!-- 5. ワンドの9 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-eye"></i>射手座の月とアドバイス <span class="timestamp">(36:40)</span>
+      </div>
+      <i class="fa-solid fa-bullseye icon-large"></i>
+      <p><strong>対応：射手座の月</strong></p>
+      <ul>
+        <li>視野が広いから「やるべきこと」が全部見えてしまう。</li>
+        <li>「私がやらなきゃ」と抱え込み、自動的に処理している。</li>
+      </ul>
+      <div class="highlight-box">
+        <i class="fa-solid fa-lightbulb"></i> <strong>アドバイス：</strong>
+        「それ、本当に必要？」と疑ってみる。自動運転を止めて、俯瞰して整理する（捨てる）タイミング。
+      </div>
+    </div>
+
+    <!-- 6. カップの9 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-mug-hot"></i>幸福の正体 <span class="timestamp">(43:20)</span>
+      </div>
+      <i class="fa-solid fa-heart-circle-check icon-large"></i>
+      <div class="highlight-box">
+        <strong>対応：魚座の木星</strong>
+      </div>
+      <p>一般的には「ウィッシュカード（願いが叶う）」と言われるが、Mayumi式ではもっと深い。</p>
+      <div class="speech-bubble">
+        制限があるからこそ感じる「幸福」
+      </div>
+      <p>宇宙（Oneness）には「比較」がないので、良いも悪いもない。<br>
+      地球（分離の世界）に来たからこそ、「制限」や「欠乏」があり、それを満たす喜び（ジェットコースターのような体験）がある。</p>
+    </div>
+
+    <!-- 7. カップの9 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-hand-holding-heart"></i>運命の輪 vs コントロール <span class="timestamp">(50:50)</span>
+      </div>
+      <i class="fa-solid fa-dharmachakra icon-large"></i>
+      <p><strong>執着を手放す</strong></p>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-hand-fist"></i> 隠者 (ヨッド/種)</span>
+          <span>握りしめている種（こだわり）</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-hand"></i> 運命の輪 (カフ/掌)</span>
+          <span>開いた手（可能性）</span>
+        </div>
+      </div>
+      <p>「こうなってくれたら楽なのに（例：子供が学校に行く）」という自分の欲（コントロール）を手放し、「思い通りにはならない」と認めた瞬間、手が開き、新しい可能性（運命の輪）が回り出す。</p>
+    </div>
+
+    <!-- 8. ソードのナイト 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-chess-knight"></i>コートカードの構造 <span class="timestamp">(01:00:50)</span>
+      </div>
+      <i class="fa-solid fa-users-viewfinder icon-large"></i>
+      <div class="highlight-box">
+        <strong>宇宙の家族システム</strong>
+      </div>
+      <ul>
+        <li><strong>父 (King)：</strong>火・意志</li>
+        <li><strong>母 (Queen)：</strong>水・受容・経験</li>
+        <li><strong>双子の子供：</strong>
+          <ul>
+            <li><strong>兄 (Knight)：</strong>風・エネルギー体・メタ認知</li>
+            <li><strong>妹 (Page)：</strong>土・肉体・現実・未熟</li>
+          </ul>
+        </li>
+      </ul>
+      <p>現実創造には、エネルギー（Knight）と肉体（Page）の<strong>結婚（合一）</strong>が必要不可欠。</p>
+    </div>
+
+    <!-- 9. ソードのナイト 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-wind"></i>思考と行動のバランス <span class="timestamp">(01:04:30)</span>
+      </div>
+      <i class="fa-solid fa-feather-pointed icon-large"></i>
+      <div class="speech-bubble">
+        気づくだけでは現実は変わらない！
+      </div>
+      <p><strong>Knight（思考・気づき）とPage（肉体・行動）の連携</strong></p>
+      <ul>
+        <li><strong>Pageだけ：</strong>肉体の暴走。無意識に反応するだけ。</li>
+        <li><strong>Knightだけ：</strong>頭でっかち。行動が伴わない。</li>
+      </ul>
+      <div class="highlight-box">
+        <i class="fa-solid fa-check"></i> <strong>アドバイス：</strong>
+        俯瞰した視点（Knight）を持ちつつ、実際に肉体を使って新しい行動（Page）を試みることで、新しい現実が創造される。
+      </div>
+    </div>
+
+    <!-- 10. まとめ -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-seedling"></i>リーディングの極意 <span class="timestamp">(01:10:30)</span>
+      </div>
+      <i class="fa-solid fa-plant-wilt icon-large"></i>
+      <div class="highlight-box">
+        何の種を植えますか？
+      </div>
+      <p>今この瞬間、私たちは常に現実創造の直前にいます（魔術師の前の状態）。</p>
+      <ul>
+        <li>自動運転（9番）に気づくこと。</li>
+        <li>自分の欠乏感や欲（8番の獅子）を認めること。</li>
+        <li>思考（Knight）と行動（Page）を一致させること。</li>
+      </ul>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-heart"></i> これらを意識して、新しい可能性の種を自分で選んで植えましょう。
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Mayumi式 生命の樹タロット解説書 Vol.2 | Created based on transcript GMT20251104-010332</p>
+    <p><small>※本解説書は動画の内容を要約・再構成したものです。</small></p>
+  </footer>
+</div>
+
+</body>
+</html>
