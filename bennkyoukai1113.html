@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式 生命の樹タロット解説書</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --color-1: #A61B40; /* SHOOTING-[23]-1 */
+  --color-2: #DCE0F2; /* SHOOTING-[23]-2 */
+  --color-3: #012840; /* SHOOTING-[23]-3 */
+  --color-4: #A66A5D; /* SHOOTING-[23]-4 */
+  --color-5: #0D0D0D; /* SHOOTING-[23]-5 */
+}
+
+body {
+  font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
+  /* 手書き風グリッドライン背景 */
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+  background-size: 30px 30px;
+  background-color: #f9f7f1;
+  overflow-x: hidden;
+  color: var(--color-5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  border-radius: 20px;
+}
+
+h1 {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 48px;
+  background: linear-gradient(45deg, var(--color-1), var(--color-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 i {
+  -webkit-text-fill-color: var(--color-4);
+  font-size: 40px;
+  margin: 0 15px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #475569;
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.6); /* 完全透明だと読みづらいため、ごく薄い白を追加 */
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+  /* 枠線なし、背景になじませる */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.section-header {
+  font-size: 18px;
+  color: #1e40af;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dashed var(--color-2);
+  padding-bottom: 5px;
+}
+
+.section-header i {
+  margin-right: 10px;
+  animation: bounce 2s infinite;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #64748b;
+  margin-left: auto;
+  font-weight: normal;
+}
+
+.icon-large {
+  font-size: 70px;
+  display: block;
+  margin: 15px auto;
+  text-align: center;
+  color: var(--color-3);
+  opacity: 0.8;
+}
+
+.speech-bubble {
+  position: relative;
+  background-color: rgba(166, 106, 93, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+}
+
+.highlight-box {
+  border-left: 4px solid var(--color-1);
+  padding: 10px 15px;
+  background-color: rgba(220, 224, 242, 0.2);
+  margin: 15px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.comparison-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255,255,255,0.5);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 5px;
+  list-style-type: circle;
+}
+
+footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+  padding: 20px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1600px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1><i class="fa-solid fa-tree"></i>Mayumi式 生命の樹タロット<i class="fa-solid fa-star-of-david"></i></h1>
+    <p class="subtitle"><i class="fa-solid fa-pen-fancy"></i> 構造から読み解く深層心理と自己探求の旅</p>
+  </header>
+
+  <div class="grid-container">
+
+    <!-- 1. 導入：タロットの背景 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-book-open"></i>ウェイト版の真実 <span class="timestamp">(00:00)</span>
+      </div>
+      <i class="fa-solid fa-scroll icon-large"></i>
+      <div class="highlight-box">
+        <strong>本来の目的は占いではない</strong><br>
+        ウェイト版は「魔術」や「神聖なるエネルギーと繋がる」ために作られました。
+      </div>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-quote-left"></i> しがらみから魂を解き放ち、自分の作りたい現実を切り開くためのツールだよ
+      </div>
+      <ul>
+        <li>一般向けの解説書では生命の樹の知識は隠されている</li>
+        <li>逆位置などの意味も出版社の意向が含まれている可能性</li>
+        <li>本来は自己探求のためのシステム</li>
+      </ul>
+    </div>
+
+    <!-- 2. 生命の樹の構造 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-sitemap"></i>基本構造の理解 <span class="timestamp">(03:58)</span>
+      </div>
+      <i class="fa-solid fa-circle-nodes icon-large"></i>
+      <div class="highlight-box">
+        <strong>丸と線の意味</strong>
+      </div>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-regular fa-circle"></i> 丸 (10個)</span>
+          <span>小アルカナ<br>(セフィラ)</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-minus"></i> 線 (22本)</span>
+          <span>大アルカナ<br>(パス)</span>
+        </div>
+      </div>
+      <p>これらは適当に繋がっているのではなく、心理学や哲学的な深い意味で結ばれています。</p>
+      <p><small><i class="fa-solid fa-lightbulb"></i> ここを土台にすると、カード1枚から無限に話を広げられる！</small></p>
+    </div>
+
+    <!-- 3. 小アルカナの読み方 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-layer-group"></i>「7番」の読み解き例 <span class="timestamp">(04:14)</span>
+      </div>
+      <i class="fa-solid fa-7 icon-large"></i>
+      <div class="speech-bubble">
+        7番の場所は「感情・欲」がテーマになる場所！
+      </div>
+      <p><strong>スート × 7番(欲)の化学反応</strong></p>
+      <ul>
+        <li><i class="fa-solid fa-wine-glass"></i> <strong>カップの7</strong><br>感情×欲＝「妄想」っぽくなる</li>
+        <li><i class="fa-solid fa-fire"></i> <strong>ワンドの7</strong><br>情熱×欲＝「一人で戦っちゃう、周りが見えない」</li>
+        <li><i class="fa-solid fa-fan"></i> <strong>ソードの7</strong><br>思考×欲＝「ズル賢さ、策を弄する」</li>
+      </ul>
+      <p><small>数字の場所の意味（セフィラ）を知れば、丸暗記しなくてもイメージが湧く！</small></p>
+    </div>
+
+    <!-- 4. 占星術とのリンク -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-moon"></i>天体との対応 <span class="timestamp">(06:40)</span>
+      </div>
+      <i class="fa-solid fa-planet-ringed icon-large" style="font-family: 'Font Awesome 6 Pro';"></i>
+      <i class="fa-solid fa-sun icon-large"></i>
+      <div class="highlight-box">
+        セフィラには天体が当てはまる
+      </div>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-sun" style="color:#A66A5D;"></i> 6番</span>
+          <span>太陽 (社会的な自分)</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-moon" style="color:#DCE0F2;"></i> 9番</span>
+          <span>月 (潜在意識・無意識)</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-heart"></i> 7番</span>
+          <span>金星 (感情・欲)</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-brain"></i> 8番</span>
+          <span>水星 (思考・情報)</span>
+        </div>
+      </div>
+      <p>難しい用語（ケテル、ティファレト等）は後回しでも、天体のイメージで掴めばOK！</p>
+    </div>
+
+    <!-- 5. リーディングの深め方 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>全体像で見る <span class="timestamp">(09:10)</span>
+      </div>
+      <i class="fa-solid fa-project-diagram icon-large"></i>
+      <div class="speech-bubble">
+        1枚引くだけで全部繋がる！
+      </div>
+      <p>例：欲が強いカードが出た場合</p>
+      <ol>
+        <li>「今、感情が強くなって現実が見えてないかも？」</li>
+        <li>現実(10番)と感情(7番)の関係を見る</li>
+        <li>現実と感情を結ぶ大アルカナは「18 月」</li>
+        <li>月は夜で暗い＝「よく見えていない」状態</li>
+      </ol>
+      <div class="highlight-box">
+        <i class="fa-solid fa-check"></i> <strong>結論：</strong>現実的な情報を集めたり、誰かに聞いてみよう、というアドバイスに繋がる。
+      </div>
+    </div>
+
+    <!-- 6. 占い師のスタンス -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-user-doctor"></i>占い師の役割 <span class="timestamp">(15:22)</span>
+      </div>
+      <i class="fa-solid fa-hand-holding-heart icon-large"></i>
+      <div class="highlight-box">
+        <strong>未来予測はしない</strong>
+      </div>
+      <p>「AとBどっちが正解？」という答えはない。自分で選択することに人生の意味がある。</p>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-comment-dots"></i> 構造の説明＋カードの意味だけでOK。あとは相談者が勝手に「当たってる！」と気づいてくれる。
+      </div>
+      <p><small>※どうしても答えを求める人には、ラッキーカラーや石をお勧めして「お守り」として渡すのが吉。</small></p>
+    </div>
+
+    <!-- 7. 節制(14番) 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-scale-balanced"></i>節制：構造と位置 <span class="timestamp">(19:29)</span>
+      </div>
+      <i class="fa-solid fa-bridge icon-large"></i>
+      <p><strong>6番(ティファレト) と 9番(イェソド) を結ぶパス</strong></p>
+      <div class="highlight-box">
+        <strong>人間が生きる三角形</strong><br>
+        10(現実) - 7(感情) - 8(思考)
+      </div>
+      <p>多くの人はこの三角形の中で、他人と比べたり、潜在意識の制限（～しなきゃ愛されない等）の中で生きている。</p>
+      <p>節制は、その中心にある<strong>9番(潜在意識)</strong>から、上の次元へ抜けるための重要なパス。</p>
+    </div>
+
+    <!-- 8. 節制(14番) 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-flask"></i>節制：意味と試練 <span class="timestamp">(26:45)</span>
+      </div>
+      <i class="fa-solid fa-shuffle icon-large"></i>
+      <div class="highlight-box">
+        ただの「バランス」や「穏やか」なカードではない！
+      </div>
+      <div class="speech-bubble">
+        相反するものを、ドロドロした自分を直視しながら混ぜ合わせる作業
+      </div>
+      <ul>
+        <li><strong>理性 vs 感情</strong><br>「頭では分かってるけど嫌だ」「やりたいけど怖い」</li>
+        <li><strong>逃げられない状況</strong><br>（例：弟が生まれて親を独占できなくなった子供のように）</li>
+      </ul>
+      <p>嫌な自分、見たくない自分と向き合い、自分の中の適切な配合を見つける<strong>「大いなる技(Alchemy)」</strong>。</p>
+    </div>
+
+    <!-- 9. 節制(14番) 解説③ -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-mountain"></i>節制：絵柄の象徴 <span class="timestamp">(30:59)</span>
+      </div>
+      <i class="fa-solid fa-shoe-prints icon-large"></i>
+      <div class="comparison-container">
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-water"></i> 水につけた足</span>
+          <span>潜在意識 (9番)</span>
+        </div>
+        <div class="comparison-item">
+          <span><i class="fa-solid fa-earth-americas"></i> 陸にある足</span>
+          <span>現実世界 (10番)</span>
+        </div>
+      </div>
+      <p>現実を踏みしめつつ、片足は潜在意識に突っ込んで「なぜ今これを体験しているのか？」を探求している姿。</p>
+      <div class="highlight-box">
+        <strong>背景の山と道</strong><br>
+        境界線（ベール）を超える険しい道のり。超えた先には6番の太陽（覚醒・俯瞰した視点）がある。
+      </div>
+    </div>
+
+    <!-- 10. 世界(21番) 解説① -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-globe"></i>世界：完成と土星 <span class="timestamp">(47:49)</span>
+      </div>
+      <i class="fa-solid fa-ring icon-large"></i>
+      <div class="highlight-box">
+        <strong>対応天体：土星 (Saturn)</strong>
+      </div>
+      <p>土星の意味＝「枠を作る」「固める」「制限する」「縮小する」</p>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-quote-left"></i> あなたが望んで作った世界が、そのまま完成しましたよ
+      </div>
+      <p>9番(潜在意識)と10番(現実)を結ぶパス。<br>無意識のイメージを、土星の力で現実に「固めた」結果が今。</p>
+    </div>
+
+    <!-- 11. 世界(21番) 解説② -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-cogs"></i>初期設定と制限 <span class="timestamp">(53:04)</span>
+      </div>
+      <i class="fa-solid fa-clipboard-list icon-large"></i>
+      <p><strong>3番(ビナー)も土星対応</strong></p>
+      <div class="highlight-box">
+        <strong>魂の初期設定</strong><br>
+        性別、親、得意・不得意などの「変えられない設定」が生まれた場所。
+      </div>
+      <ul>
+        <li>上の世界(1,2,3)では比較対象がいないのでただの「設定」。</li>
+        <li>下の世界(10)に降りてくると、他人と比較して「欠乏感」や「劣等感」が生まれる。</li>
+        <li>その制限の中で作り上げたのが「世界」のカード。</li>
+      </ul>
+    </div>
+
+    <!-- 12. 世界(21番) 解説③ -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-person-running"></i>ヘビとのダンス <span class="timestamp">(01:01:05)</span>
+      </div>
+      <i class="fa-solid fa-staff-snake icon-large"></i>
+      <div class="speech-bubble">
+        どんなに辛い現実も、魂視点では「素晴らしいダンス」
+      </div>
+      <ul>
+        <li>自分が選んだ結果、自分が歩んできた道のりの集大成。</li>
+        <li>喜怒哀楽、苦しみがあるからこそ輝く地球独自の体験。</li>
+        <li>「愚者」の冒険のゴール。</li>
+      </ul>
+      <div class="highlight-box">
+        <i class="fa-solid fa-exclamation"></i> <strong>納得いかない場合：</strong><br>
+        現実を変えたいなら、作った大元である「潜在意識の制限」や「設定」を見直して再構築（上に戻る）必要がある。
+      </div>
+    </div>
+
+    <!-- 13. 占いの深め方 -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-hat-wizard"></i>実践的アドバイス <span class="timestamp">(01:04:30)</span>
+      </div>
+      <i class="fa-solid fa-wand-magic-sparkles icon-large"></i>
+      <p><strong>知識の連想ゲーム</strong></p>
+      <ol>
+        <li>「世界」が出る → 土星だ！</li>
+        <li>土星といえば3番(ビナー)も関係あるな。</li>
+        <li>山羊座(支配星が土星)の「悪魔」も関係あるかも？</li>
+        <li>悪魔＝欠乏感を見ないふりしてアドレナリンで誤魔化してない？</li>
+      </ol>
+      <div class="speech-bubble">
+        知識を点ではなく線で繋げると、アドバイスの深さが劇的に変わる！
+      </div>
+    </div>
+
+    <!-- 14. 学習のロードマップ -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-graduation-cap"></i>学びの進め方 <span class="timestamp">(01:16:00)</span>
+      </div>
+      <i class="fa-solid fa-book-journal-whills icon-large"></i>
+      <div class="highlight-box">
+        <strong>自分軸とは？</strong>
+      </div>
+      <p>「自分軸」は言葉で説明しにくいが、生命の樹の図（真ん中の柱）を見せると視覚的に理解しやすい。</p>
+      <p><strong>学習リソース：</strong></p>
+      <ul>
+        <li>書籍：ジョン・マイケル・グリア（内容は難しいが本格的）</li>
+        <li>講座：基礎からマニアックな内容まで</li>
+        <li>ツール：生命の樹の法陣セット（視覚的に相談者と共有できる）</li>
+      </ul>
+    </div>
+
+    <!-- 15. 結論・まとめ -->
+    <div class="card">
+      <div class="section-header">
+        <i class="fa-solid fa-door-open"></i>結論 <span class="timestamp">(01:25:40)</span>
+      </div>
+      <i class="fa-solid fa-seedling icon-large"></i>
+      <div class="highlight-box">
+        生命の樹から入るのが近道
+      </div>
+      <p>これからタロットを学ぶなら、単なるカードの意味の丸暗記ではなく、<strong>生命の樹の構造</strong>から入ると、後々の理解度やリーディングの質が全く違ったものになります。</p>
+      <div class="speech-bubble">
+        <i class="fa-solid fa-heart"></i> 構造を知ることは、自分自身の深層心理や人生の地図を手に入れること。
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Mayumi式 生命の樹タロット解説書 | Created based on transcript GMT20251113-120208</p>
+    <p><small>※本解説書は動画の内容を要約・再構成したものです。</small></p>
+  </footer>
+</div>
+
+</body>
+</html>
