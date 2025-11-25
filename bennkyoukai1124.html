@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式タロット勉強会解説書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40;
+            --color-2: #DCE0F2;
+            --color-3: #012840;
+            --color-4: #A66A5D;
+            --color-5: #0D0D0D;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        body {
+            /* 手書き風グリッドライン背景 */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.6;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            text-align: center;
+            background: linear-gradient(to right, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 40px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-header {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 18px;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed rgba(30, 64, 175, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .section-header i {
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        .timestamp {
+            font-size: 0.8em;
+            color: #64748b;
+            margin-left: auto;
+            font-family: 'Yomogi', cursive;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-family: 'Yomogi', cursive;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .comparison-item {
+            background-color: rgba(220, 223, 242, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            list-style-type: '✏️ ';
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            color: #64748b;
+            padding: 20px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+        /* メディアクエリ */
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><i class="fa-solid fa-star"></i> Mayumi式 タロット勉強会 解説書 <i class="fa-solid fa-moon"></i></h1>
+    <div class="subtitle">
+        <i class="fa-solid fa-pen-nib"></i> 生命の木とタロットの深淵なる世界へようこそ
+    </div>
+
+    <div class="grid-container">
+
+        <!-- Card 1: 勉強会の趣旨 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-door-open"></i> 勉強会の流れ
+                <span class="timestamp">(04:06)</span>
+            </div>
+            <i class="fa-solid fa-users-viewfinder icon-large"></i>
+            <div class="card-content">
+                <div class="speech-bubble">
+                    参加者一人一人にカードを引いて、生命の木を絡めて解説するよ！
+                </div>
+                <ul>
+                    <li>偶然出たカードを今の自分に当てはめる</li>
+                    <li>解説を聞いて自分の中で結びつく感覚を体験</li>
+                    <li>脳が自動的に自分の出来事とリンクさせる不思議</li>
+                </ul>
+                <div class="highlight-box">
+                    特定のカードについての質問もOK。一緒に深掘りしていこう。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: 生命の木について -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-tree"></i> 生命の木の基本
+                <span class="timestamp">(07:40)</span>
+            </div>
+            <i class="fa-solid fa-sitemap icon-large"></i>
+            <div class="card-content">
+                <p>2種類の図を使って説明。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>シンプル版</strong><br>
+                        難しい言葉を省いた図
+                    </div>
+                    <div class="comparison-item">
+                        <strong>詳細版</strong><br>
+                        占星術やヘブライ語対応
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    最初は詳細を覚えなくてOK。まずは根本的な「領域」の意味（宇宙、現実世界など）を理解することが重要。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: カップの2 - 1 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-heart"></i> カップの2：枠の外
+                <span class="timestamp">(09:51)</span>
+            </div>
+            <i class="fa-solid fa-hand-holding-heart icon-large"></i>
+            <div class="card-content">
+                <p>一般的には「恋愛」「調和」のカードだけど、生命の木では？</p>
+                <ul>
+                    <li><strong>場所：</strong>コクマー（2番）</li>
+                    <li><strong>対応：</strong>天王星（革新・独立）</li>
+                    <li><strong>意味：</strong>枠の外のエネルギー</li>
+                </ul>
+                <div class="speech-bubble">
+                    上の世界（1,2,3）は宇宙の領域。人間がコントロールできない、当たり前の外側にあるエネルギーなんだ。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: カップの2 - 2 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-bolt"></i> カップの2：分離の始まり
+                <span class="timestamp">(15:40)</span>
+            </div>
+            <i class="fa-solid fa-people-arrows icon-large"></i>
+            <div class="card-content">
+                <p>この絵の本質的な意味とは？</p>
+                <div class="highlight-box">
+                    ワンネス（1）から2つに分離した状態を描いているだけ。
+                </div>
+                <p>それを擬人化したから恋愛に見える。まだ地上に降りていないエネルギーなので、具体化していない。</p>
+                <ul>
+                    <li>これからの可能性は無限大</li>
+                    <li>今までのパターンの外側を体験させてくれる</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 5: カップの2 - 3 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-route"></i> 選択と現実化
+                <span class="timestamp">(18:00)</span>
+            </div>
+            <i class="fa-solid fa-shuffle icon-large"></i>
+            <div class="card-content">
+                <div class="speech-bubble">
+                    ジャッジして「やらない」を選ぶと、そのエネルギーは無かったことになっちゃうよ。
+                </div>
+                <p>現実を変えたいなら、今までと違う選択（枠の外）が必要。</p>
+                <ul>
+                    <li>未知のものへの好奇心を持つ</li>
+                    <li>いつもと違うパターンを選んでみる</li>
+                </ul>
+                <p>蟹座の金星＝純粋でキラキラした原石のような感情。</p>
+            </div>
+        </div>
+
+        <!-- Card 6: 世界 (The World) - 1 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-globe"></i> 世界：現実化のプロセス
+                <span class="timestamp">(30:30)</span>
+            </div>
+            <i class="fa-solid fa-earth-americas icon-large"></i>
+            <div class="card-content">
+                <p>パスの位置：イエソド（9）→マルクト（10）</p>
+                <div class="highlight-box">
+                    潜在意識（9）が現実（10）になる過程を表すカード。
+                </div>
+                <p>自分が作り上げた世界の中でダンスしている状態。エースにあった純粋な種が、制限という形をとって地上に降りてきた姿。</p>
+                <div class="speech-bubble">
+                    あなたが無意識に持っている制限や固定概念が、そのまま現実に反映されているんだよ。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7: 世界 (The World) - 2 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-mountain"></i> 土星と制限
+                <span class="timestamp">(33:26)</span>
+            </div>
+            <i class="fa-solid fa-ban icon-large"></i>
+            <div class="card-content">
+                <p>世界のカードは土星に対応。</p>
+                <ul>
+                    <li>3番（ビナー）も土星＝設定が生まれる場所</li>
+                    <li>現実世界は比較対象が無限にいる</li>
+                </ul>
+                <p>自分の素地（設定）を「持っていない」と捉えると、欠乏の世界が完成してしまう。</p>
+                <div class="speech-bubble">
+                    今の現実は一つの物語の完結。次は何を生み出す？
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8: 世界 (The World) - 3 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-masks-theater"></i> 悪魔との関連
+                <span class="timestamp">(38:15)</span>
+            </div>
+            <i class="fa-solid fa-ghost icon-large"></i>
+            <div class="card-content">
+                <p>土星＝山羊座＝悪魔のカード。</p>
+                <div class="highlight-box">
+                    「持っていない」設定が悪魔（執着）になりうる。
+                </div>
+                <p>変えられない設定（親、環境など）への欠乏感を埋めるために、何かに執着したり、見ないふりをしたりする。</p>
+                <ul>
+                    <li>復縁への執着も、自分の欠乏を埋めてくれた存在への執着かも？</li>
+                    <li>根本的な「持っていない自分」を認めることが大事</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 9: 10とページの違い -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-utensils"></i> 10とページの違い
+                <span class="timestamp">(44:40)</span>
+            </div>
+            <i class="fa-solid fa-egg icon-large"></i>
+            <div class="card-content">
+                <p><strong>10（マルクト）：</strong><br>
+                絞り出されたマヨネーズ。<br>
+                もう出てしまった結果（現実は変えられない）。</p>
+                <p><strong>ページ（王女）：</strong><br>
+                そのマヨネーズをどう調理するか？<br>
+                出てきた現実を使って、これから何をするか。</p>
+                <div class="speech-bubble">
+                    現実は変えられないけど、その後の扱いは自由！未熟さは「常に初めての体験」という可能性でもあるよ。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10: ソードの2 - 1 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-scale-balanced"></i> ソードの2：神の叡智
+                <span class="timestamp">(52:20)</span>
+            </div>
+            <i class="fa-solid fa-brain icon-large"></i>
+            <div class="card-content">
+                <p>場所は2番（コクマー）。ヘブライ語で「知恵」。</p>
+                <div class="highlight-box">
+                    神様の叡智（知恵）という、人間には扱いきれない圧倒的なエネルギー。
+                </div>
+                <p>これを人間が扱おうとするには「静寂」が必要。</p>
+                <ul>
+                    <li>目隠し＝外側を見ない</li>
+                    <li>内側に集中し、心の波を鎮める</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 11: ソードの2 - 2 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-water"></i> 潜在意識の鎮静
+                <span class="timestamp">(57:37)</span>
+            </div>
+            <i class="fa-solid fa-moon icon-large"></i>
+            <div class="card-content">
+                <p>背景の水＝潜在意識（イエソドの月）。</p>
+                <div class="speech-bubble">
+                    心が荒波の時は、神様の叡智にはアクセスできないよ。
+                </div>
+                <p>天秤座の月＝バランスと調和。</p>
+                <p>自分の内側に深く集中し、潜在意識を穏やかにすることで初めて、枠の外からの新しい指令やインスピレーションを受け取れるようになる。</p>
+            </div>
+        </div>
+
+        <!-- Card 12: パスのつながり -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-network-wired"></i> 2番からのパス
+                <span class="timestamp">(01:01:20)</span>
+            </div>
+            <i class="fa-solid fa-project-diagram icon-large"></i>
+            <div class="card-content">
+                <p>圧倒的なエネルギー（2番）はどう流れる？</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>愚者</strong><br>
+                        自由すぎて扱いにくい
+                    </div>
+                    <div class="comparison-item">
+                        <strong>女帝</strong><br>
+                        枠を作り、生み出す
+                    </div>
+                </div>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>法王</strong><br>
+                        ルールや善悪にする
+                    </div>
+                    <div class="comparison-item">
+                        <strong>皇帝</strong><br>
+                        自分の王国を築く
+                    </div>
+                </div>
+                <p>カオスなエネルギーを人間が扱える形に変換していく。</p>
+            </div>
+        </div>
+
+        <!-- Card 13: ペンタクルの10 - 1 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-coins"></i> ペンタクルの10：ゲート
+                <span class="timestamp">(01:06:50)</span>
+            </div>
+            <i class="fa-solid fa-torii-gate icon-large"></i>
+            <div class="card-content">
+                <p>生命の木が完全に配置された唯一のカード。<br>
+                単なる繁栄ではなく、魔術的な「ゲートカード」。</p>
+                <div class="highlight-box">
+                    家族の視線がバラバラなことに注目！
+                </div>
+                <ul>
+                    <li>大人たち：物質や地位しか見ていない</li>
+                    <li>子供と犬：老人の偉大さに気づいているかも？</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 14: ペンタクルの10 - 2 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-hat-wizard"></i> 老人と魔術
+                <span class="timestamp">(01:11:20)</span>
+            </div>
+            <i class="fa-solid fa-wand-magic-sparkles icon-large"></i>
+            <div class="card-content">
+                <p>老人のマントの柄＝魔術師的。天秤が描かれている。</p>
+                <div class="speech-bubble">
+                    今の現実は、あなたが選んで魔術で生み出した結果だよ。
+                </div>
+                <p>11番（正義/調整）の魔術的意味：<br>
+                「寸分違わずあなたのエネルギーが現実化しています。不満なら調整してね」</p>
+                <p>全ては自分が原因で生み出された結果であるという自覚。</p>
+            </div>
+        </div>
+
+        <!-- Card 15: ペンタクルの10 - 3 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-eye"></i> 本質を見る目
+                <span class="timestamp">(01:17:00)</span>
+            </div>
+            <i class="fa-solid fa-glasses icon-large"></i>
+            <div class="card-content">
+                <p>神話のオデュッセウスのように、ボロボロの姿（失った現実）でも、本質（英雄）に気づけるか？</p>
+                <div class="highlight-box">
+                    「失った」と捉えるか、「次のチャンスの種」と捉えるか。
+                </div>
+                <p>乙女座の水星＝感情ではなく、理路整然と分析する力。</p>
+                <p>物質的な見た目に振り回されず、その裏にある意図や奇跡に気づくことが本当の「富」。</p>
+            </div>
+        </div>
+
+        <!-- Card 16: 中庸の柱（自分軸） -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-arrows-up-down"></i> 中庸の柱と覚醒
+                <span class="timestamp">(01:30:50)</span>
+            </div>
+            <i class="fa-solid fa-up-down icon-large"></i>
+            <div class="card-content">
+                <p>真ん中の柱＝自分軸。ここに戻ると現実化が最速。</p>
+                <p><strong>ティファレト（6）の視点：</strong><br>
+                覚醒・メタ認知。現実を俯瞰して観察する。</p>
+                <div class="speech-bubble">
+                    「なぜ私はこの現実を体験しているの？」と問うことで、潜在意識の制限に気づける。
+                </div>
+                <p>潜在意識（イエソド）をクリアにすれば、パイプが太くなり、宇宙（ケテル）からの指令を直感的に受け取れるようになる。</p>
+            </div>
+        </div>
+
+        <!-- Card 17: 人生を楽しむ -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-person-walking"></i> 揺らぎと帰還
+                <span class="timestamp">(01:35:00)</span>
+            </div>
+            <i class="fa-solid fa-scale-unbalanced icon-large"></i>
+            <div class="card-content">
+                <p>肉体がある限り、重力（思いの重さ）で下に引っ張られるのは当たり前。</p>
+                <div class="highlight-box">
+                    常に真ん中にいられなくてもOK。行ったり来たりしながら戻ってくればいい。
+                </div>
+                <ul>
+                    <li>潜在意識の扉を一つずつ開けていく</li>
+                    <li>行動への言い訳やジャッジが減っていく</li>
+                    <li>最終的に真ん中に戻ってこれたら人生楽しい！</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 18: 宣伝とまとめ -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-bullhorn"></i> 研究所とこれから
+                <span class="timestamp">(01:40:00)</span>
+            </div>
+            <i class="fa-solid fa-school icon-large"></i>
+            <div class="card-content">
+                <p><strong>生命の木研究所（Facebook）：</strong><br>
+                参加費無料、資料・動画見放題、質問し放題。</p>
+                <p><strong>ストアカ：</strong><br>
+                3ヶ月集中講座、入門コースなど。</p>
+                <div class="speech-bubble">
+                    タロットライフを楽しんでね！いつでも相談待ってます。
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>作成日: 2025年11月25日 | 情報源: タロット勉強会動画 (GMT20251124-005620)</p>
+    </footer>
+</div>
+
+</body>
+</html>
