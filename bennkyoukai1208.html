@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タロット解説書：16番「塔」と魂の解放</title>
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            /* Palette Definition */
+            --color-1: rgb(165, 26, 63);   /* A61B40: Deep Red/Magenta */
+            --color-2: rgb(220, 223, 242); /* DCE0F2: Pale Blue/Grey */
+            --color-3: rgb(1, 39, 63);     /* 012840: Deep Navy */
+            --color-4: rgb(165, 106, 92);  /* A66A5D: Muted Terra Cotta */
+            --color-5: rgb(12, 12, 12);    /* 0D0D0D: Almost Black */
+        }
+
+        body {
+            font-family: 'Zen Kurenaido', sans-serif;
+            /* 手書き風グリッドライン背景 */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23cccccc" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            overflow-x: hidden;
+            color: var(--color-5);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 32px;
+            background: linear-gradient(45deg, var(--color-3), var(--color-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 18px;
+            color: var(--color-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: transparent; /* 完全透明 */
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            /* 枠線なし */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Typography within Cards */
+        h2.section-title {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 20px;
+            color: var(--color-3);
+            border-bottom: 2px dashed var(--color-2);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timestamp {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: var(--color-4);
+            font-weight: normal;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: var(--color-5);
+            margin-bottom: 15px;
+        }
+
+        /* Components */
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(220, 223, 242, 0.4); /* COLOR-2 with opacity */
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Yomogi', cursive;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-width: 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent rgba(220, 223, 242, 0.4);
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--color-1);
+            padding-left: 12px;
+            background-color: rgba(165, 26, 63, 0.05);
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .comparison-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .comparison-item {
+            flex: 1;
+            text-align: center;
+            background-color: rgba(255,255,255,0.3);
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--color-4);
+            border-top: 1px dashed var(--color-4);
+            padding-top: 20px;
+        }
+
+        /* Animation */
+        .fa-shake-slow {
+            animation: fa-shake 3s infinite linear;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 24px; }
+            .container { padding: 20px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fa-solid fa-bolt"></i> タロット「塔」と生命の樹 <i class="fa-solid fa-star"></i></h1>
+        <div class="subtitle">
+            <i class="fa-solid fa-pen-fancy"></i> Mayumi式 グラレコ解説書
+        </div>
+    </header>
+
+    <div class="grid-container">
+
+        <!-- Card 1: 生命の樹の位置 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-tree fa-bounce"></i> 位置と構造</span>
+                <span class="timestamp">(01:16)</span>
+            </h2>
+            <i class="fa-solid fa-sitemap icon-large"></i>
+            <div class="card-text">
+                <p><strong>16番「塔」</strong>は、生命の樹の下層部に位置するパスです。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>7. ネツァク</strong><br>
+                        (金星)<br>
+                        感情・欲・美
+                    </div>
+                    <div class="comparison-item">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>8. ホド</strong><br>
+                        (水星)<br>
+                        思考・情報・理性
+                    </div>
+                </div>
+            </div>
+            <div class="speech-bubble">
+                ヘブライ語は覚えなくてOK！<br>
+                「金星（感情）」と「水星（思考）」を結ぶ架け橋とイメージして。
+            </div>
+        </div>
+
+        <!-- Card 2: 金星と水星の葛藤 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-venus-mars"></i> 感情 vs 思考</span>
+                <span class="timestamp">(02:46)</span>
+            </h2>
+            <i class="fa-solid fa-scale-unbalanced icon-large" style="color: var(--color-1);"></i>
+            <div class="card-text">
+                <p>人間は本来、<strong>感情（金星）が先に湧きます</strong>。しかし、すぐに<strong>思考（水星）がそれを制御</strong>しようとします。</p>
+                <div class="highlight-box">
+                    <i class="fa-regular fa-lightbulb"></i> 日本人の傾向<br>
+                    「ムッとしたけど、大人だから我慢しよう」と、思考で感情を蓋しがち。
+                </div>
+                <p>この2つは相反するもの。これらを統合していく作業こそが、宇宙的な意味での「愛」なのです。</p>
+            </div>
+        </div>
+
+        <!-- Card 3: 統合という「愛」 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-heart-pulse"></i> 統合の深さ</span>
+                <span class="timestamp">(07:00)</span>
+            </h2>
+            <i class="fa-solid fa-hand-holding-heart icon-large"></i>
+            <div class="card-text">
+                <p><strong>「統合」＝「愛」</strong><br>
+                1番の世界（ワンネス）と10番の世界（個の分離）は真逆。この矛盾を受け入れ、混ざり合うグレーゾーンを認めることが「6番（ティファレト）」的な愛であり、統合です。</p>
+                <div class="speech-bubble">
+                    統合にはLv.1からLv.100まである！<br>
+                    不公平な地球で、いかに自分らしく楽しむか？それも愛の形。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: 塔のカードの誤解 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-house-crack"></i> 悪いカード？</span>
+                <span class="timestamp">(12:43)</span>
+            </h2>
+            <i class="fa-solid fa-bolt-lightning icon-large" style="color: var(--color-4);"></i>
+            <div class="card-text">
+                <p>雷が落ち、人が落下する衝撃的な絵柄。<br>
+                多くの人が「怖い」「悪いことが起きる」と思いがちですが、魂の視点では<strong>「超いいカード」</strong>です。</p>
+                <div class="highlight-box">
+                    壊れているのは「塔」だけ。<br>
+                    それは、あなたが作り上げた<strong>「不要な鎧」</strong>や<strong>「仮面」</strong>です。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: 愚者の旅（前半） -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-shoe-prints"></i> 愚者の旅 [前編]：構築</span>
+                <span class="timestamp">(14:00)</span>
+            </h2>
+            <i class="fa-solid fa-arrow-trend-up icon-large"></i>
+            <div class="card-text">
+                <p><strong>0～7番：外側の社会で「自分」を作る時期</strong></p>
+                <ul>
+                    <li><strong>0-3番:</strong> 生まれ持った土台・環境</li>
+                    <li><strong>4番:</strong> 社会のルール・条件付きの愛</li>
+                    <li><strong>6番:</strong> 好奇心による脱線と学び</li>
+                    <li><strong>7番 戦車:</strong> 欠乏感をバネにした社会的成功</li>
+                </ul>
+                <div class="speech-bubble">
+                    「見返してやる！」というエネルギーで、外向きの鎧（キャリア）を着込んでいく段階。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6: 愚者の旅（中盤・内側へ） -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-arrows-turn-to-dots"></i> 愚者の旅 [後編]：回帰</span>
+                <span class="timestamp">(18:11)</span>
+            </h2>
+            <i class="fa-solid fa-user-astronaut icon-large"></i>
+            <div class="card-text">
+                <p><strong>9～15番：内側に向き合い「本質」に気づく時期</strong></p>
+                <ul>
+                    <li><strong>9番 隠者:</strong> 「本当にこれで幸せ？」という問い</li>
+                    <li><strong>12番 吊るされた男:</strong> 価値観を変えるための停止</li>
+                    <li><strong>13番 死神:</strong> 過去の自分（鎧）を終わらせる</li>
+                    <li><strong>14番 節制:</strong> 新旧の自分を混ぜ合わせる調整</li>
+                </ul>
+                <div class="highlight-box">
+                    そしてラスボス（15番 悪魔/欠乏感）と向き合い、16番「塔」へ至ります。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7: 塔の正体＝仮面 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-mask"></i> 崩れる塔</span>
+                <span class="timestamp">(20:20)</span>
+            </h2>
+            <i class="fa-solid fa-dungeon icon-large"></i>
+            <div class="card-text">
+                <p>塔＝<strong>これまで築き上げてきた自分の像</strong>（キャリア、いい人、良い母親などの仮面）。</p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>家の中</strong><br>
+                        スッピン・パジャマ<br>
+                        (本来の自分)
+                    </div>
+                    <div class="comparison-item">
+                        <strong>社会</strong><br>
+                        メイク・スーツ・鎧<br>
+                        (塔の自分)
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    もうその「鎧」重くない？<br>
+                    必要なくなった武装が、雷に打たれて崩れ落ちる瞬間。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8: 具体例・モデルの話 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-person-rays"></i> モデルの例</span>
+                <span class="timestamp">(24:40)</span>
+            </h2>
+            <i class="fa-solid fa-person-dress icon-large" style="color: var(--color-1);"></i>
+            <div class="card-text">
+                <p><strong>背景：</strong>背が高いことを馬鹿にされた（トラウマ）<br>
+                <strong>戦車：</strong>「見返してやる！」とモデルになり成功。<br>
+                <strong>塔の時期：</strong>完璧に見えるが内面は限界。違和感。</p>
+                <div class="highlight-box">
+                    「成功＝幸せ」ではなかった。<br>
+                    欠乏感を埋めるための努力が、逆に自分を苦しめる鎖になっていたことに気づく。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9: 強制終了のサイン -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-hand-stop-well"></i> 強制終了</span>
+                <span class="timestamp">(39:39)</span>
+            </h2>
+            <i class="fa-solid fa-triangle-exclamation icon-large" style="color: #eab308;"></i>
+            <div class="card-text">
+                <p>小さな違和感（気づき）を無視し続けると、宇宙から<strong>「強制終了」</strong>が入ります。</p>
+                <ul>
+                    <li>突然のクビ</li>
+                    <li>スキャンダル</li>
+                    <li>病気や怪我</li>
+                </ul>
+                <div class="speech-bubble">
+                    宇宙は忖度しない！<br>
+                    「そっちじゃないよ」と教えるために、理不尽な形でストップをかけることも。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10: 火星のエネルギー -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-fire"></i> 火星と目的</span>
+                <span class="timestamp">(44:50)</span>
+            </h2>
+            <i class="fa-solid fa-fire-flame-curved icon-large" style="color: var(--color-1);"></i>
+            <div class="card-text">
+                <p>塔には<strong>火星（ゲブラー）</strong>が対応しています。<br>
+                「何のためにそれを選んだのか？」を問う厳しいエネルギー。</p>
+                <p>かつては必要だった選択も、今の魂にはメリットがないなら、容赦なく燃やし尽くします。</p>
+                <div class="highlight-box">
+                    破壊の後に残るもの。<br>
+                    それが本当に大切にしたい「命」や「本心」です。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11: 東出さんの例 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-mountain-sun"></i> 野生への回帰</span>
+                <span class="timestamp">(46:40)</span>
+            </h2>
+            <i class="fa-solid fa-paw icon-large"></i>
+            <div class="card-text">
+                <p><strong>実例：東出昌大さん</strong><br>
+                俳優としてのキャリア（塔）はスキャンダルで崩壊。しかし現在は「マタギ」として命と向き合う生活へ。</p>
+                <div class="speech-bubble">
+                    世間的には「転落」でも、魂的には「本来の自分への回帰」。<br>
+                    作られた自分から、野性的で純粋な自分へ。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12: 崩壊後の世界 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-star"></i> 裸の自分へ</span>
+                <span class="timestamp">(53:14)</span>
+            </h2>
+            <i class="fa-solid fa-baby icon-large"></i>
+            <div class="card-text">
+                <p>塔で鎧が壊れた後は...</p>
+                <ul>
+                    <li><strong>17番 星:</strong> 素っ裸で希望を見上げる</li>
+                    <li><strong>18番 月:</strong> 慣れない「素」の自分への不安</li>
+                    <li><strong>19番 太陽:</strong> ありのままの自分を楽しむ</li>
+                </ul>
+                <p>一回り成長した状態で、再び「裸（本質）」に戻る素晴らしいプロセスです。</p>
+            </div>
+        </div>
+
+        <!-- Card 13: 学びの姿勢 -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-book-open"></i> 知識と実践</span>
+                <span class="timestamp">(1:03:00)</span>
+            </h2>
+            <i class="fa-solid fa-chalkboard-user icon-large"></i>
+            <div class="card-text">
+                <p>生命の樹やタロットの講義（泉先生など）は、具体例は豊富でも「結論」はくれないことが多い。</p>
+                <div class="highlight-box">
+                    <i class="fa-solid fa-pencil"></i> 答えは自分で出す<br>
+                    「つまりこのパスは何？」と自分なりの言葉でまとめることで、初めて使える知識になります。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 14: まとめ -->
+        <div class="card">
+            <h2 class="section-title">
+                <span><i class="fa-solid fa-flag-checkered"></i> 最終結論</span>
+                <span class="timestamp">(1:10:00)</span>
+            </h2>
+            <i class="fa-regular fa-face-smile-wink icon-large" style="color: var(--color-4);"></i>
+            <div class="card-text">
+                <p><strong>16番「塔」は怖くない！</strong><br>
+                むしろ、自分らしく生きるための「解放」であり「愛」ある破壊です。</p>
+                <p>小さな違和感を無視せず、自ら気づいて変化していくことが、大事故（強制終了）を防ぐコツです。</p>
+                <div class="speech-bubble">
+                    さあ、あなたは今、<br>どんな鎧を脱ぎ捨てますか？
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Created based on Mayumi's Session | <i class="fa-solid fa-calendar-days"></i> 2025.12.08</p>
+    </footer>
+</div>
+
+</body>
+</html>
