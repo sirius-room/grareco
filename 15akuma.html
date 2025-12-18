@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式タロット解説：No.15 悪魔 (The Devil)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --color-1: #A61B40; /* Deep Pink/Red */
+  --color-2: #DCE0F2; /* Pale Blue */
+  --color-3: #012840; /* Dark Blue */
+  --color-4: #A66A5D; /* Muted Red/Brown */
+  --color-5: #0D0D0D; /* Black */
+}
+
+body {
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+  background-size: 30px 30px;
+  background-color: #f9f7f1;
+  font-family: 'Zen Kurenaido', sans-serif;
+  color: var(--color-5);
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Typography */
+h1 {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 32px;
+  text-align: center;
+  background: linear-gradient(45deg, var(--color-1), var(--color-3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.subtitle {
+  text-align: center;
+  font-family: 'Yomogi', cursive;
+  color: #475569;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 20px;
+  color: var(--color-3);
+  border-bottom: 2px dashed var(--color-4);
+  padding-bottom: 5px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #666;
+  font-weight: normal;
+  margin-left: auto;
+  font-family: 'Yomogi', cursive;
+}
+
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+/* Card Styling */
+.card {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  transition: transform 0.3s ease;
+  /* No border as per instructions, utilizing transparency */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.icon-large {
+  font-size: 70px;
+  display: block;
+  margin: 15px auto;
+  text-align: center;
+  color: var(--color-3);
+  text-shadow: 2px 2px 0px var(--color-2);
+}
+
+/* Content Elements */
+.speech-bubble {
+  position: relative;
+  background-color: rgba(166, 106, 93, 0.15);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  font-family: 'Yomogi', cursive;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(166, 106, 93, 0.15) transparent transparent;
+}
+
+.highlight-box {
+  border-left: 4px solid var(--color-1);
+  padding-left: 15px;
+  background-color: rgba(220, 224, 242, 0.3);
+  margin: 15px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  font-size: 0.9em;
+}
+
+.comparison-table td {
+  padding: 5px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 5px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+  font-family: 'Yomogi', cursive;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1800px) {
+  .grid-container { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 1400px) {
+  .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid-container { grid-template-columns: 1fr; }
+  h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1><i class="fa-solid fa-dragon"></i> Mayumiのタロット解説：悪魔 (15) <i class="fa-solid fa-fire"></i></h1>
+  <p class="subtitle">〜闇の中に潜む野生の力と、魂の解放〜</p>
+
+  <div class="grid-container">
+
+    <div class="card">
+      <h2><i class="fa-solid fa-route"></i> 生命の木とパス <span class="timestamp">01:05</span></h2>
+      <i class="fa-solid fa-bezier-curve icon-large"></i>
+      <div class="highlight-box">
+        <strong>パス26：Ayin (目)</strong><br>
+        ティファレト(6) ⇔ ホド(8)
+      </div>
+      <p>太陽（自己意識・統合された自我）から、水星（論理・理性・言語）へと向かう「狭き道」。</p>
+      <ul>
+        <li><strong>守護者：</strong>悪魔と死神が守る</li>
+        <li><strong>プロセス：</strong>高次の意識を定義・限定していく過程</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-regular fa-eye"></i> 「目」の二面性 <span class="timestamp">02:51</span></h2>
+      <i class="fa-solid fa-eye icon-large"></i>
+      <div class="speech-bubble">
+        Ayin（アイン）は「目」を意味します。<br>呪いにも覚醒にもなる目線です。
+      </div>
+      <table class="comparison-table">
+        <tr>
+          <td><strong>邪視 (Evil Eye)</strong></td>
+          <td>他者を支配・コントロールする呪い的な視点</td>
+        </tr>
+        <tr>
+          <td><strong>第三の目</strong></td>
+          <td>真実を見抜く力、覚醒の視点（トートの牧神パンにも描かれる）</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-mountain"></i> 山羊座と土星 <span class="timestamp">04:07</span></h2>
+      <i class="fa-solid fa-cubes-stacked icon-large"></i>
+      <div class="highlight-box">
+        <strong>山羊座 (Capricorn)</strong><br>
+        支配星：土星 (Saturn)<br>
+        副支配星：火星 (Mars)
+      </div>
+      <ul>
+        <li><strong>冬至点：</strong>闇の底から光へ向かう転換点。深い潜在意識の闇。</li>
+        <li><strong>エネルギー：</strong>土星（制限・現実）＋火星（行動・熱意）＝社会的な野心と実行力。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-masks-theater"></i> 悪魔像の変遷 <span class="timestamp">05:58</span></h2>
+      <i class="fa-solid fa-mask icon-large"></i>
+      <p>元々（マルセイユ版など）はコミカルでパロディ的な「笑いの対象」だった。</p>
+      <div class="speech-bubble">
+        現在の「怖い悪魔像」は、エリファス・レヴィのバフォメット像の影響を受けています。
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-scale-unbalanced"></i> 司祭(5)との対比 <span class="timestamp">07:09</span></h2>
+      <i class="fa-solid fa-hands-praying icon-large"></i>
+      <p>ウェイト版ではNo.5（司祭）とNo.15（悪魔）は対の構図。</p>
+      <div class="highlight-box">
+        <strong>司祭 (Hierophant)</strong><br>
+        手：指を折る / 意味：見えない精神世界も重要
+      </div>
+      <div class="highlight-box" style="border-color: var(--color-3);">
+        <strong>悪魔 (Devil)</strong><br>
+        手：開いている (パー) / 意味：目に見える物質が全て（幻想）
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-star-half-stroke"></i> 逆五芒星と松明 <span class="timestamp">08:53</span></h2>
+      <i class="fa-solid fa-fire-flame-curved icon-large"></i>
+      <ul>
+        <li><strong>逆五芒星：</strong>生殖器が上。抑制されない野性的な欲望・本能が理性を支配している状態。</li>
+        <li><strong>下向きの松明：</strong>本来上昇すべき霊的な火のエネルギーが、低い位置（物質界・尻尾）に留まり燻っている。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-heart-crack"></i> 堕ちた恋人たち <span class="timestamp">09:38</span></h2>
+      <i class="fa-solid fa-venus-mars icon-large"></i>
+      <p>No.6「恋人たち」のアダムとイブが堕落した姿と言われる。</p>
+      <table class="comparison-table">
+        <tr>
+          <td><strong>アダムの尻尾</strong></td>
+          <td><strong>火</strong>：情熱が精神へ昇華されず、下位に留まる。</td>
+        </tr>
+        <tr>
+          <td><strong>イブの尻尾</strong></td>
+          <td><strong>ブドウ</strong>：物質的な富、あるいは「ビナーの血（制限による痛み）」。</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-link-slash"></i> ゆるい鎖の幻想 <span class="timestamp">13:35</span></h2>
+      <i class="fa-solid fa-lock-open icon-large"></i>
+      <div class="speech-bubble">
+        鎖はゆるく、いつでも抜け出せるのになぜか抜け出せない。
+      </div>
+      <ul>
+        <li><strong>思考停止の罠：</strong>「社会のせい」「仕方ない」と制限の中にいる方が、本当の自分（欠乏感や悲しみ）と向き合うより楽だから。</li>
+        <li><strong>敷居 (Threshold)：</strong>内と外の境界線。覚醒するか、幻想に留まるかの瀬戸際。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-om"></i> 牧神パンのエネルギー <span class="timestamp">16:01</span></h2>
+      <i class="fa-solid fa-hat-wizard icon-large"></i>
+      <div class="highlight-box">
+        <strong>Pan = 全て (All)</strong>
+      </div>
+      <p>トートタロットの悪魔は「牧神パン」。</p>
+      <ul>
+        <li>強烈な性エネルギー、野性、生命力。</li>
+        <li>人間は動物的本能や欲から逃れられない。</li>
+        <li>それを否定せず、どう使うかが鍵。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-arrows-split-up-and-left"></i> 悪魔の二面性 <span class="timestamp">16:43</span></h2>
+      <i class="fa-solid fa-scale-balanced icon-large"></i>
+      <p>山羊座のエネルギーには「低次元」と「高次元」の使い道がある。</p>
+      <div class="highlight-box">
+        <strong>低次元：</strong>社会から植え付けられた歪んだ欲（見栄、ステータス）。欠乏感を埋めるための終わりなき野心。
+      </div>
+      <div class="highlight-box" style="border-color: #2e8b57;">
+        <strong>高次元：</strong>魂からの純粋な欲求。自分の特性（欠点に見えるもの）を武器にする。
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-bolt"></i> 欠点を武器にする <span class="timestamp">22:00</span></h2>
+      <i class="fa-solid fa-rocket icon-large"></i>
+      <div class="speech-bubble">
+        例：マコなり社長 (ADHDを公言)
+      </div>
+      <p>一般社会では「欠点」とされるADHDの特性（多動、衝動性）を、爆発的なエネルギー源や行動力としてビジネスの武器に変えた。</p>
+      <p><strong>ポイント：</strong>「普通」になろうとせず、自分の異端さを解放して居場所を作る。</p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-flask"></i> 変容のプロセス <span class="timestamp">26:08</span></h2>
+      <i class="fa-solid fa-vial-circle-check icon-large"></i>
+      <p>悪魔(15)を乗り越えるには、前後のカードが不可欠。</p>
+      <ul>
+        <li><strong>No.13 死神：</strong>執着を断ち切る。</li>
+        <li><strong>No.14 節制(技)：</strong>影と向き合い、異質なものを混ぜ合わせる錬金術。</li>
+      </ul>
+      <p>これらを経て、魂の純粋な野心を取り戻す。</p>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-calculator"></i> 3と9の秘密 <span class="timestamp">27:44</span></h2>
+      <i class="fa-solid fa-hashtag icon-large"></i>
+      <div class="highlight-box">
+        <strong>3 (Binah/土星) × 3 = 9 (Yesod/月)</strong>
+      </div>
+      <ul>
+        <li><strong>3 (ビナー)：</strong>魂の設定（持てるもの/持たざるもの）。</li>
+        <li><strong>9 (イエソド)：</strong>地上(10)で感じた「欠乏感」や「痛み」が潜在意識(9)に蓄積され、悪魔の幻想を作る。</li>
+        <li>3(女帝)のように、ありのままの自分を肯定することが鍵。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-hourglass-end"></i> クロノスの神話 <span class="timestamp">30:15</span></h2>
+      <i class="fa-solid fa-user-clock icon-large"></i>
+      <p>農耕神クロノス（サトゥルヌス/土星）は、我が子に殺される予言を恐れ、子供を次々と飲み込んだ。</p>
+      <div class="speech-bubble">
+        <strong>恐れたもの＝「終わり（時間）」</strong><br>
+        自分の支配が終わることへの恐怖。
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-child-reaching"></i> 飲み込んだ「子供」 <span class="timestamp">33:40</span></h2>
+      <i class="fa-solid fa-person-circle-exclamation icon-large"></i>
+      <p>私たちもクロノスのように何かを飲み込んでいる。</p>
+      <ul>
+        <li><strong>飲み込んだもの：</strong>幼い頃の純粋な欲求、理由なき「好き」、野生的な本質。</li>
+        <li><strong>理由：</strong>「社会で通用しない」「時間がない」という恐怖から、自分自身を封印した。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-cloud-bolt"></i> ゼウスと山羊の乳 <span class="timestamp">39:02</span></h2>
+      <i class="fa-solid fa-baby icon-large"></i>
+      <p>末っ子ゼウスだけは、母によってクレタ島に隠され生き延びた。</p>
+      <div class="highlight-box">
+        <strong>育ての親：アマルテイア (山羊)</strong>
+      </div>
+      <ul>
+        <li>ゼウスは牧神パンの妹（山羊）の乳で育った＝<strong>野生のエネルギー</strong>で育った。</li>
+        <li>ゼウスは「奪われる恐怖」を持たず、欲望に率直。</li>
+        <li>クローリーが「パン」を描いた意図はここにある。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-capsules"></i> 吐き出すための薬 <span class="timestamp">42:20</span></h2>
+      <i class="fa-solid fa-prescription-bottle-medical icon-large"></i>
+      <p>ゼウスはクロノスに薬を飲ませ、飲み込まれた兄弟たちを吐き出させた。</p>
+      <ul>
+        <li><strong>現代の「薬」：</strong>心を揺さぶる出来事、嫌いな人（トリガー）。</li>
+        <li>それらと向き合い（Yesod）、自分の中の闇に光を当てる（Temperance）ことで、飲み込んだ「本当の自分」を取り戻せる。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-earth-americas"></i> 土星のダンス <span class="timestamp">43:33</span></h2>
+      <i class="fa-solid fa-shoe-prints icon-large"></i>
+      <div class="speech-bubble">
+        <strong>3(Binah) → 15(Devil) → 21(World)</strong><br>
+        全て土星対応。
+      </div>
+      <p>持って生まれた「制限（設定）」という素材を使って、どう踊るか？</p>
+      <ul>
+        <li>欠乏感に踊らされるか（悪魔の低次元）</li>
+        <li>制限すらも個性として踊り切るか（世界）</li>
+      </ul>
+      <p><strong>結論：</strong>悪魔のカードは、高次元への分岐点。</p>
+    </div>
+
+  </div> <footer>
+    <p>解説作成日: 2025年12月18日 | Source: Mayumi Tarot Lecture Transcript</p>
+  </footer>
+</div>
+
+</body>
+</html>
