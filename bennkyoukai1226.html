@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1226 タロット勉強会解説書 - Mayumi式</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-1 */
+            --color-2: #DCE0F2; /* SHOOTING-2 */
+            --color-3: #012840; /* SHOOTING-3 */
+            --color-4: #A66A5D; /* SHOOTING-4 */
+            --color-5: #0D0D0D; /* SHOOTING-5 */
+            --font-main: 'Kaisei Decol', serif;
+            --font-hand: 'Yomogi', cursive;
+            --font-sub: 'Zen Kurenaido', sans-serif;
+        }
+
+        body {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            color: var(--color-5);
+            line-height: 1.6;
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: var(--color-3);
+            background: linear-gradient(transparent 70%, var(--color-2) 70%);
+            display: inline-block;
+            padding: 0 15px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        h1 i {
+            margin: 0 15px;
+            color: var(--color-1);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            font-family: var(--font-sub);
+            margin-top: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .section-header {
+            grid-column: 1 / -1;
+            font-size: 20px;
+            color: var(--color-3);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px dashed var(--color-4);
+            padding-bottom: 10px;
+        }
+
+        .section-header i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--color-1);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+        .timestamp {
+            font-size: 14px;
+            color: var(--color-4);
+            margin-left: auto;
+            font-family: var(--font-hand);
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-3);
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(166, 106, 93, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.8;
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: #334155;
+            font-family: var(--font-sub);
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 15px 0;
+            font-family: var(--font-hand);
+            font-size: 13px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding-left: 10px;
+            background-color: rgba(220, 224, 242, 0.2);
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            gap: 10px;
+        }
+
+        .comparison-item {
+            background-color: rgba(1, 40, 64, 0.05);
+            padding: 10px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #e0e0e0;
+            font-family: var(--font-sub);
+            color: #64748b;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1600px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+            h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-star"></i>1226 タロット勉強会解説書<i class="fas fa-star"></i></h1>
+        <div class="subtitle"><i class="fas fa-pen-nib"></i> 生命の木から読み解く、魂の「選択」と「光」</div>
+    </header>
+
+    <div class="grid-container">
+        
+        <!-- Section: THE CHARIOT -->
+        <div class="section-header">
+            <i class="fas fa-dharmachakra"></i> 戦車（ゆきえさんの一枚）
+            <span class="timestamp">01:14</span>
+        </div>
+
+        <div class="card">
+            <div class="card-title">戦車の居場所</div>
+            <i class="fas fa-tree icon-large"></i>
+            <div class="card-content">
+                生命の木の「ビナー(3)」と「ゲブラー(5)」を繋ぐパス。
+                <ul>
+                    <li>ビナー：設定が生まれる場所。土星。</li>
+                    <li>ゲブラー：戦う、選ぶ意志。火星。</li>
+                </ul>
+                神の領域と現実を繋ぐ、非常に純粋なエネルギー。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">「何のために」行動するか</div>
+            <i class="fas fa-question-circle icon-large"></i>
+            <div class="card-content">
+                単なる「行動」ではなく、<b>「自分の魂が望む設定」</b>のために動くカード。
+                <div class="speech-bubble">外側の常識や善悪を超えて、魂が求めるものを選び取る。</div>
+                ブランド品が欲しい欲とは違う、もっと根源的な欲求。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">戦車 vs 司祭（教皇）</div>
+            <i class="fas fa-arrows-alt-h icon-large"></i>
+            <div class="card-content">
+                真反対に位置する相反するエネルギー。
+                <div class="comparison-container">
+                    <div class="comparison-item"><b>司祭</b><br>社会のルール<br>道徳・教え<br>集合意識</div>
+                    <div class="comparison-item"><b>戦車</b><br>自分だけのルール<br>魂の純粋な衝動<br>個の貫徹</div>
+                </div>
+                時にはルールに反しても「自分を守る」ために突き進む。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">蟹座としての戦車</div>
+            <i class="fas fa-shrimp icon-large"></i>
+            <div class="card-content">
+                蟹座は「大切なものを守る」とき、鋼の甲羅で攻撃を跳ね返す能動性を持つ。
+                <div class="highlight-box">大切なものを守るための強烈なパワー。</div>
+                アンテナを張って、理屈を超えた「興味」に従ってみる時期。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">女帝と恋人の視点</div>
+            <i class="fas fa-venus icon-large"></i>
+            <div class="card-content">
+                <ul>
+                    <li><b>女帝(3)：</b>存在するだけで豊か。受け取っていい。</li>
+                    <li><b>恋人(6)：</b>理性(アダム)より感情(イブ)の突破口。</li>
+                </ul>
+                迷った時は「効率」ではなく「心が湧く方」をジャッジせずに選ぶ。
+            </div>
+        </div>
+
+        <!-- Section: 4 OF CUPS -->
+        <div class="section-header">
+            <i class="fas fa-wine-glass"></i> カップの４（ユカさんの一枚）
+            <span class="timestamp">29:00</span>
+        </div>
+
+        <div class="card">
+            <div class="card-title">ケセド(4)の安心安全</div>
+            <i class="fas fa-shield-alt icon-large"></i>
+            <div class="card-content">
+                木星が対応。自分にとっての「安心安全」を意味する抽象的な領域。
+                <div class="speech-bubble">子供が「何をしても愛される」と思うような、神に近い純粋な安心感。</div>
+                人生で数回訪れる「魂の記憶の書き換え」の場所。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">安心は「腐る」</div>
+            <i class="fas fa-water icon-large"></i>
+            <div class="card-content">
+                水（カップ）は器がないと形を保てないが、同じ器にずっといると腐る。
+                <div class="highlight-box">安心安全は常に「更新」されるべきもの。</div>
+                マンネリや無気力は「次のステージへ出る合図」。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">更新のタイミング</div>
+            <i class="fas fa-sync icon-large"></i>
+            <div class="card-content">
+                これまでの「当たり前」が今の自分には制限になっている可能性。
+                <div class="speech-bubble">ビナー(3)から手が差し伸べられている。「次、いかがですか？」</div>
+                今の幸せにモヤっとするのは、魂の設定に沿っていないから。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">自分との対話</div>
+            <i class="fas fa-search icon-large"></i>
+            <div class="card-content">
+                現実世界から距離を置き、内側に問う。
+                <ul>
+                    <li>何が本当に必要なのか？</li>
+                    <li>今までのルールは必要か？</li>
+                </ul>
+                隠者のように自分を見つめることで、運命の輪が回り出す。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">実体験：脱ステロイド</div>
+            <i class="fas fa-notes-medical icon-large"></i>
+            <div class="card-content">
+                「薬は悪」という記憶から、「今は必要」と受け入れた瞬間の安心感。
+                <div class="highlight-box">腹の底から記憶が書き換わると、世界が変わる。</div>
+                一度感情を感じ切り、その上で思考を更新する。
+            </div>
+        </div>
+
+        <!-- Section: THE SUN -->
+        <div class="section-header">
+            <i class="fas fa-sun"></i> 太陽（マリさんの一枚）
+            <span class="timestamp">01:15:00</span>
+        </div>
+
+        <div class="card">
+            <div class="card-title">意識と無意識の橋渡し</div>
+            <i class="fas fa-brain icon-large"></i>
+            <div class="card-content">
+                八番(思考)と九番(無意識)を繋ぐ光。
+                <div class="speech-bubble">心の闇（見たくない部分）にバーンと光を当てるカード。</div>
+                見ないようにしていたところに、実は答えがある。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">素の自分と野生の調和</div>
+            <i class="fas fa-child icon-large"></i>
+            <div class="card-content">
+                馬に乗る裸の赤ちゃん。コントロールしようとしなくても調和している状態。
+                <div class="highlight-box">我慢しない自分で、世界が回り始める。</div>
+                思考を使って心の闇を解き明かす、高度な「統合」。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">根っこ（周波数）を変える</div>
+            <i class="fas fa-seedling icon-large"></i>
+            <div class="card-content">
+                「学校へ行かないと不幸になる」という根底の恐怖がある限り、現実は変わらない。
+                <div class="speech-bubble">根っこが「大丈夫」に変われば、言葉が同じでも周波数が変わる。</div>
+                それが相手（娘さん）にも伝搬していく。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">鏡としての他者（Aさん）</div>
+            <i class="fas fa-mirror icon-large"></i>
+            <div class="card-content">
+                他人の心ない言葉は、自分が自分にかけていた言葉の投影。
+                <div class="highlight-box">「私が一番自分に厳しかった」と気づくチャンス。</div>
+                気づきを得ると、その相手との学びのご縁（周波数）は終わる。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">錬金術：金(太陽)の誕生</div>
+            <i class="fas fa-vial icon-large"></i>
+            <div class="card-content">
+                異質なものを混ぜ合わせ、輝きを生むプロセス。
+                <div class="speech-bubble">口先だけの「大丈夫」が、本物の「大丈夫」になった時。</div>
+                感情をしっかり感じ切った後の、軽やかな世界線への移行。
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><i class="far fa-calendar-alt"></i> 作成日：2026年1月9日 | <i class="fas fa-book-open"></i> 情報源：1226 タロット勉強会講義</p>
+        <p>2025年最後の勉強会、お疲れ様でした！良いお年を。 <i class="fas fa-peace"></i></p>
+    </footer>
+</div>
+
+</body>
+</html>
