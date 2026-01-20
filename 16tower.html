@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タロット×生命の木：1枚で10倍読めるグラレコ解説</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+
+        :root {
+            --color-1: #A61B40; /* Red */
+            --color-2: #DCE0F2; /* Pale Blue */
+            --color-3: #012840; /* Navy */
+            --color-4: #A66A5D; /* Muted Red */
+            --color-5: #0D0D0D; /* Black */
+        }
+
+        body {
+            /* 手書き風グリッドライン背景 */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            font-family: 'Zen Kurenaido', sans-serif;
+            color: var(--color-5);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 36px;
+            color: var(--color-3);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--color-2);
+        }
+
+        h1 i {
+            color: var(--color-1);
+            margin: 0 15px;
+        }
+
+        .subtitle {
+            font-family: 'Yomogi', cursive;
+            font-size: 20px;
+            color: var(--color-4);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px; /* カード間の間隔を広く */
+        }
+
+        .card {
+            background-color: transparent; /* 背景透明 */
+            padding: 10px;
+            position: relative;
+            margin-bottom: 20px;
+            /* 枠線なし */
+        }
+
+        .section-header {
+            font-family: 'Kaisei Decol', serif;
+            font-size: 20px;
+            color: var(--color-3);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px dashed var(--color-4); /* 手書き風の下線のみ */
+            padding-bottom: 5px;
+        }
+
+        .section-header i {
+            margin-right: 10px;
+            color: var(--color-1);
+            animation: bounce 2s infinite;
+        }
+
+        .timestamp {
+            font-family: 'Yomogi', cursive;
+            font-size: 14px;
+            color: #888;
+            margin-left: auto;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.9;
+        }
+
+        .content-text {
+            font-size: 16px;
+            color: #334155;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(220, 223, 242, 0.4); /* 薄い透明度 */
+            border-radius: 20px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Yomogi', cursive;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(220, 223, 242, 0.4) transparent transparent;
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--color-1);
+            padding-left: 15px;
+            margin: 15px 0;
+            background: linear-gradient(90deg, rgba(166, 27, 64, 0.05) 0%, transparent 100%);
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        ul li::before {
+            content: '✏️';
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .comparison-item {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-family: 'Yomogi', cursive;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1600px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .icon-large {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fa-solid fa-star-of-david"></i> Mayumi式 タロット×生命の木 <i class="fa-solid fa-tree"></i></h1>
+        <div class="subtitle">設計図を知れば、1枚のカードから10倍の物語が読める</div>
+    </header>
+
+    <div class="grid-container">
+        
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-person-circle-question"></i> タロット迷子あるある
+                <span class="timestamp">04:24</span>
+            </div>
+            <i class="fa-solid fa-puzzle-piece icon-large"></i>
+            <div class="content-text">
+                <p><strong>みんなの悩み 🤔</strong></p>
+                <ul>
+                    <li>相談内容とキーワードが一致しない</li>
+                    <li>「もう1枚引く」「オラクルに頼る」</li>
+                    <li>自分のリーディングに自信がない</li>
+                </ul>
+                <div class="speech-bubble">
+                    「解説書通りの意味じゃ、この人の相談に答えられない…どうしよう💦」
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-triangle-exclamation"></i> なぜ読めないのか？
+                <span class="timestamp">13:21</span>
+            </div>
+            <i class="fa-solid fa-map icon-large"></i>
+            <div class="content-text">
+                <div class="highlight-box">
+                    <strong>結論：設計図を知らないから！</strong>
+                </div>
+                <p>タロットは78枚バラバラの絵ではなく、精密な設計図（<strong>生命の木</strong>）に基づいて作られています。</p>
+                <p>設計図なしで家を建てるようなもの🏠💦 土台がないから、キーワード暗記と「妄想力（インスピレーション）」頼みになってしまう。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-sitemap"></i> 生命の木の仕組み
+                <span class="timestamp">23:37</span>
+            </div>
+            <i class="fa-solid fa-circle-nodes icon-large" style="color:var(--color-1);"></i>
+            <div class="content-text">
+                <p><strong>明確な役割の違い</strong></p>
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <i class="fa-regular fa-circle"></i><br>
+                        <strong>小アルカナ</strong><br>
+                        丸（セフィラ）<br>
+                        ＝ 駅・状態・点 📍
+                    </div>
+                    <div class="comparison-item">
+                        <i class="fa-solid fa-minus"></i><br>
+                        <strong>大アルカナ</strong><br>
+                        線（パス）<br>
+                        ＝ 電車・移動・変化 🚃
+                    </div>
+                </div>
+                <p>小アルカナで「今の現在地」を知り、大アルカナという「エネルギー」を使って次の駅へ移動する。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-heart-pulse"></i> 「7」の本質的意味
+                <span class="timestamp">26:09</span>
+            </div>
+            <i class="fa-solid fa-venus icon-large"></i>
+            <div class="content-text">
+                <p>すべての「7」のカードの根っこには<strong>「感情・欲」</strong>（金星/ネツァク）というテーマがあります。</p>
+                <div class="highlight-box">
+                    ワンドもカップもソードもペンタクルも、7番が出たら「感情・欲」が強くなっているサイン⚠️
+                </div>
+                <p>これを知るだけで、丸暗記不要でイメージが湧いてきます！</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-cloud-moon"></i> カップの7の正体
+                <span class="timestamp">31:40</span>
+            </div>
+            <i class="fa-solid fa-glass-water icon-large"></i>
+            <div class="content-text">
+                <p><strong>なぜ「妄想・幻想」なのか？</strong></p>
+                <p>💧 カップ（水/感情）<br>
+                ✖️<br>
+                💖 7番（感情・欲）</p>
+                <div class="speech-bubble">
+                    感情に欲が掛け合わさると、見たいものしか見ない「妄想」になる！背景に大地が描かれていない＝地に足がついていない☁️
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-user-doctor"></i> 実践リーディング
+                <span class="timestamp">38:31</span>
+            </div>
+            <i class="fa-solid fa-comments icon-large"></i>
+            <div class="content-text">
+                <p><strong>相談：「彼との相性は？」→ カップの7</strong></p>
+                <p>❌ 旧：あなたは夢見がちですね（10秒で終了）</p>
+                <p>⭕️ <strong>新（心理学的アプローチ）：</strong><br>
+                「今、感情と欲が高ぶっていて、現実が見えていません。彼の調査（現実確認）をして、理性（8番/思考）を働かせましょう」</p>
+                <p>相性を答えるのではなく、<strong>状態を分析し、行動の指針</strong>を示す！</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-brain"></i> 心理学と言語化
+                <span class="timestamp">44:43</span>
+            </div>
+            <i class="fa-solid fa-key icon-large"></i>
+            <div class="content-text">
+                <p>「紫のバナナを想像しないで」と言われると想像してしまうように、人は言われたことを自分に当てはめる性質があります。</p>
+                <p>生命の木の概念（心理学的な配置）を話すだけで、お客さんは勝手に「あ、それ私のことです！」と納得し、深い悩みを開示してくれます🗝️</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-link"></i> カードは繋がっている
+                <span class="timestamp">49:46</span>
+            </div>
+            <i class="fa-solid fa-diagram-project icon-large"></i>
+            <div class="content-text">
+                <p>7番（感情）が出たら、そこから伸びるパス（大アルカナ）の話をします。</p>
+                <ul>
+                    <li>⚡️ 塔（価値観の崩壊）</li>
+                    <li>💀 死神（終わらせる）</li>
+                    <li>🌙 月（不安・現実が見えない）</li>
+                </ul>
+                <div class="highlight-box">
+                    無理にストーリーを作らなくても、<strong>隣り合うカードの概念</strong>を話すだけで、深いアドバイスになります。
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-sack-dollar"></i> 電話占い vs 本質的ケア
+                <span class="timestamp">56:00</span>
+            </div>
+            <i class="fa-solid fa-scale-balanced icon-large"></i>
+            <div class="content-text">
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <strong>📞 電話占い</strong><br>
+                        「答えが欲しい」<br>
+                        薄利多売<br>
+                        消耗しやすい
+                    </div>
+                    <div class="comparison-item">
+                        <strong>🌳 生命の木</strong><br>
+                        「変わりたい」<br>
+                        高単価・長期<br>
+                        互いに幸せ
+                    </div>
+                </div>
+                <p>「答えだけくれ」という人にはオラクルカード。「自分を知りたい」人には生命の木。使い分けが大事💡</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-rocket"></i> 上級編：「2」の世界
+                <span class="timestamp">1:17:54</span>
+            </div>
+            <i class="fa-solid fa-meteor icon-large"></i>
+            <div class="content-text">
+                <p><strong>小アルカナの「2」＝ 枠の外（コクマー/知恵）</strong></p>
+                <p>神様の領域。まだ現実化していない、圧倒的なエネルギー🪐</p>
+                <p>例：カップの2 💑<br>
+                単なる「出会い」ではなく、<strong>「今までの常識外の、エイリアンのような全く新しい感情・体験」</strong>が宇宙にある状態。受け取るかどうかは自分次第！</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-rotate"></i> 逆位置はとる？
+                <span class="timestamp">1:27:30</span>
+            </div>
+            <i class="fa-solid fa-arrows-up-down icon-large"></i>
+            <div class="content-text">
+                <p><strong>黄金の夜明け団の教義：逆位置は取らない</strong></p>
+                <p>エネルギーに逆も何もないからです。極端に反対の意味（塔＝平和、悪魔＝天使）にはしません。</p>
+                <div class="speech-bubble">
+                    「気づいてないフリをしているかも？」程度のニュアンスでOK。無理に反対にしなくて良いです🙆‍♀️
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-seedling"></i> 学びが自分を変える
+                <span class="timestamp">1:38:00</span>
+            </div>
+            <i class="fa-solid fa-spa icon-large" style="color:var(--color-1);"></i>
+            <div class="content-text">
+                <p>タロット（生命の木）を学ぶことは、占いスキルの向上だけでなく、<strong>自分自身の潜在意識を知り、生きやすくなること</strong>に繋がります✨</p>
+                <p>「あの時の悩みは、ここのパスを通っていたんだ！」と自己分析できるようになり、人生が軽くなります🕊️</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Generated based on Mayumi's Tarot Workshop Transcript | 2026.01.20</p>
+        <p><small>※この解説は文字起こしを元に作成されたイメージです。</small></p>
+    </footer>
+</div>
+
+</body>
+</html>
