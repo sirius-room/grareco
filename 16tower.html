@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>タロット×生命の木：1枚で10倍読めるグラレコ解説</title>
+    <title>Mayumi式 タロット解説：No.16 塔（The Tower）</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
 
         :root {
-            --color-1: #A61B40; /* Red */
+            --color-1: #A61B40; /* Deep Red */
             --color-2: #DCE0F2; /* Pale Blue */
             --color-3: #012840; /* Navy */
             --color-4: #A66A5D; /* Muted Red */
@@ -23,7 +23,7 @@
             background-color: #f9f7f1;
             font-family: 'Zen Kurenaido', sans-serif;
             color: var(--color-5);
-            line-height: 1.7;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -63,25 +63,29 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 40px; /* カード間の間隔を広く */
+            gap: 40px;
         }
 
         .card {
-            background-color: transparent; /* 背景透明 */
+            background-color: transparent;
             padding: 10px;
             position: relative;
             margin-bottom: 20px;
-            /* 枠線なし */
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .section-header {
             font-family: 'Kaisei Decol', serif;
             font-size: 20px;
-            color: var(--color-3);
+            color: #1e40af;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-            border-bottom: 2px dashed var(--color-4); /* 手書き風の下線のみ */
+            border-bottom: 2px dashed var(--color-4);
             padding-bottom: 5px;
         }
 
@@ -114,7 +118,7 @@
 
         .speech-bubble {
             position: relative;
-            background-color: rgba(220, 223, 242, 0.4); /* 薄い透明度 */
+            background-color: rgba(220, 223, 242, 0.4);
             border-radius: 20px;
             padding: 15px;
             margin: 15px 0;
@@ -144,7 +148,7 @@
         }
 
         ul li::before {
-            content: '✏️';
+            content: '⚡️';
             margin-right: 8px;
             font-size: 12px;
         }
@@ -160,6 +164,9 @@
             flex: 1;
             text-align: center;
             padding: 5px;
+            border: 1px dotted var(--color-3);
+            border-radius: 10px;
+            margin: 0 5px;
         }
 
         @keyframes bounce {
@@ -202,221 +209,230 @@
 
 <div class="container">
     <header>
-        <h1><i class="fa-solid fa-star-of-david"></i> Mayumi式 タロット×生命の木 <i class="fa-solid fa-tree"></i></h1>
-        <div class="subtitle">設計図を知れば、1枚のカードから10倍の物語が読める</div>
+        <h1><i class="fa-solid fa-bolt"></i> Mayumi式 タロット解説：16 塔 <i class="fa-solid fa-fire"></i></h1>
+        <div class="subtitle">破壊は変化の始まり。恐怖の奥にある「再生」のシナリオを読み解く</div>
     </header>
 
     <div class="grid-container">
         
         <div class="card">
             <div class="section-header">
-                <i class="fa-solid fa-person-circle-question"></i> タロット迷子あるある
-                <span class="timestamp">04:24</span>
+                <i class="fa-solid fa-sitemap"></i> 生命の木の位置
+                <span class="timestamp">01:05</span>
             </div>
-            <i class="fa-solid fa-puzzle-piece icon-large"></i>
+            <i class="fa-solid fa-arrows-left-right-to-line icon-large"></i>
             <div class="content-text">
-                <p><strong>みんなの悩み 🤔</strong></p>
-                <ul>
-                    <li>相談内容とキーワードが一致しない</li>
-                    <li>「もう1枚引く」「オラクルに頼る」</li>
-                    <li>自分のリーディングに自信がない</li>
-                </ul>
-                <div class="speech-bubble">
-                    「解説書通りの意味じゃ、この人の相談に答えられない…どうしよう💦」
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-triangle-exclamation"></i> なぜ読めないのか？
-                <span class="timestamp">13:21</span>
-            </div>
-            <i class="fa-solid fa-map icon-large"></i>
-            <div class="content-text">
-                <div class="highlight-box">
-                    <strong>結論：設計図を知らないから！</strong>
-                </div>
-                <p>タロットは78枚バラバラの絵ではなく、精密な設計図（<strong>生命の木</strong>）に基づいて作られています。</p>
-                <p>設計図なしで家を建てるようなもの🏠💦 土台がないから、キーワード暗記と「妄想力（インスピレーション）」頼みになってしまう。</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-sitemap"></i> 生命の木の仕組み
-                <span class="timestamp">23:37</span>
-            </div>
-            <i class="fa-solid fa-circle-nodes icon-large" style="color:var(--color-1);"></i>
-            <div class="content-text">
-                <p><strong>明確な役割の違い</strong></p>
+                [cite_start]<p><strong>感情 vs 理性の衝突</strong> [cite: 57]</p>
                 <div class="comparison-container">
                     <div class="comparison-item">
-                        <i class="fa-regular fa-circle"></i><br>
-                        <strong>小アルカナ</strong><br>
-                        丸（セフィラ）<br>
-                        ＝ 駅・状態・点 📍
+                        <strong>7 ネツァク</strong><br>
+                        感情・欲<br>
+                        (金星)
                     </div>
                     <div class="comparison-item">
-                        <i class="fa-solid fa-minus"></i><br>
-                        <strong>大アルカナ</strong><br>
-                        線（パス）<br>
-                        ＝ 電車・移動・変化 🚃
+                        <strong>8 ホド</strong><br>
+                        思考・情報<br>
+                        (水星)
                     </div>
                 </div>
-                <p>小アルカナで「今の現在地」を知り、大アルカナという「エネルギー」を使って次の駅へ移動する。</p>
+                [cite_start]<p>この相容れない2つを結ぶのが「塔」です。「頭ではわかっているけど心がついていかない」という葛藤が爆発する場所です [cite: 57]。</p>
             </div>
         </div>
 
         <div class="card">
             <div class="section-header">
-                <i class="fa-solid fa-heart-pulse"></i> 「7」の本質的意味
-                <span class="timestamp">26:09</span>
+                <i class="fa-solid fa-layer-group"></i> 3つの横切るパス
+                <span class="timestamp">02:27</span>
             </div>
-            <i class="fa-solid fa-venus icon-large"></i>
+            <i class="fa-solid fa-shield-halved icon-large"></i>
             <div class="content-text">
-                <p>すべての「7」のカードの根っこには<strong>「感情・欲」</strong>（金星/ネツァク）というテーマがあります。</p>
-                <div class="highlight-box">
-                    ワンドもカップもソードもペンタクルも、7番が出たら「感情・欲」が強くなっているサイン⚠️
-                </div>
-                <p>これを知るだけで、丸暗記不要でイメージが湧いてきます！</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-cloud-moon"></i> カップの7の正体
-                <span class="timestamp">31:40</span>
-            </div>
-            <i class="fa-solid fa-glass-water icon-large"></i>
-            <div class="content-text">
-                <p><strong>なぜ「妄想・幻想」なのか？</strong></p>
-                <p>💧 カップ（水/感情）<br>
-                ✖️<br>
-                💖 7番（感情・欲）</p>
-                <div class="speech-bubble">
-                    感情に欲が掛け合わさると、見たいものしか見ない「妄想」になる！背景に大地が描かれていない＝地に足がついていない☁️
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-user-doctor"></i> 実践リーディング
-                <span class="timestamp">38:31</span>
-            </div>
-            <i class="fa-solid fa-comments icon-large"></i>
-            <div class="content-text">
-                <p><strong>相談：「彼との相性は？」→ カップの7</strong></p>
-                <p>❌ 旧：あなたは夢見がちですね（10秒で終了）</p>
-                <p>⭕️ <strong>新（心理学的アプローチ）：</strong><br>
-                「今、感情と欲が高ぶっていて、現実が見えていません。彼の調査（現実確認）をして、理性（8番/思考）を働かせましょう」</p>
-                <p>相性を答えるのではなく、<strong>状態を分析し、行動の指針</strong>を示す！</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-brain"></i> 心理学と言語化
-                <span class="timestamp">44:43</span>
-            </div>
-            <i class="fa-solid fa-key icon-large"></i>
-            <div class="content-text">
-                <p>「紫のバナナを想像しないで」と言われると想像してしまうように、人は言われたことを自分に当てはめる性質があります。</p>
-                <p>生命の木の概念（心理学的な配置）を話すだけで、お客さんは勝手に「あ、それ私のことです！」と納得し、深い悩みを開示してくれます🗝️</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-link"></i> カードは繋がっている
-                <span class="timestamp">49:46</span>
-            </div>
-            <i class="fa-solid fa-diagram-project icon-large"></i>
-            <div class="content-text">
-                <p>7番（感情）が出たら、そこから伸びるパス（大アルカナ）の話をします。</p>
+                [cite_start]<p>ジョン・マイケル・グリアの解説による違い [cite: 57, 58]：</p>
                 <ul>
-                    <li>⚡️ 塔（価値観の崩壊）</li>
-                    <li>💀 死神（終わらせる）</li>
-                    <li>🌙 月（不安・現実が見えない）</li>
+                    <li><strong>女帝 (上段):</strong> 調和が取れており、摩擦が少ない</li>
+                    <li><strong>力 (中段):</strong> 深淵の下だが、激しさはまだ少ない</li>
+                    <li><strong>塔 (下段):</strong> ベールの下で保護がなく、最も激しい対立が起こる</li>
                 </ul>
-                <div class="highlight-box">
-                    無理にストーリーを作らなくても、<strong>隣り合うカードの概念</strong>を話すだけで、深いアドバイスになります。
+                <div class="speech-bubble">
+                    [cite_start]下に行くほどエネルギーが限定されるため、ぶつかった時の爆発が大きくなります💥 [cite: 58]
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="section-header">
-                <i class="fa-solid fa-sack-dollar"></i> 電話占い vs 本質的ケア
-                <span class="timestamp">56:00</span>
+                <i class="fa-solid fa-burst"></i> なぜ爆発するのか？
+                <span class="timestamp">04:30</span>
             </div>
-            <i class="fa-solid fa-scale-balanced icon-large"></i>
+            <i class="fa-solid fa-house-crack icon-large"></i>
             <div class="content-text">
+                [cite_start]<p><strong>宇宙からの強制リセット</strong> [cite: 58]</p>
+                <p>宇宙から「変化しよう」「新しいことに挑戦しよう」というエネルギーが降りてきても、古い制限や思い込みで弾いてしまうと、爆発が起こります。</p>
+                <div class="highlight-box">
+                    [cite_start]新しいものが入る「余地」を作るために、老朽化したパターンを強制的に破壊するのが塔の役割です [cite: 58]。
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-xmarks-lines"></i> 節制との十字架
+                <span class="timestamp">06:55</span>
+            </div>
+            <i class="fa-solid fa-hand-holding-water icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>塔をぶち抜く「節制」のパス</strong> [cite: 58]</p>
+                <p>塔の横線に対し、節制（縦線）がクロスして十字架を作っています。爆発の後、感情と理性を統合し、上の視点に上がれるかが重要です。</p>
+                [cite_start]<p>「失ったものは大きいけれど、新しい自分になれるかも」と切り替えられるかがポイントです [cite: 58]。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-teeth-open"></i> ヘブライ語「ペイ」
+                <span class="timestamp">08:09</span>
+            </div>
+            <i class="fa-solid fa-utensils icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>意味は「口」👄</strong> [cite: 58]</p>
+                <p>一見怖そうに見えますが、「消化の始まり」を表します。食べ物を噛み砕いて壊すことで、体が吸収できる形に変えるプロセスです。</p>
+                <div class="speech-bubble">
+                    [cite_start]塔の破壊も、新しいエネルギーを吸収・同化するための「咀嚼」なのです [cite: 58]。
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-mars"></i> 火星の二面性
+                <span class="timestamp">09:34</span>
+            </div>
+            <i class="fa-solid fa-sun icon-large" style="color:var(--color-1);"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>太陽的側面 ☀️ & 地下世界的側面 🌑</strong> [cite: 58]</p>
+                <p>古代バビロニアの神「ネルガル」は、太陽の一面と冥界の力を両方持っていました。塔も同じです。</p>
+                <ul>
+                    <li>宇宙からの圧倒的なエネルギー（太陽的）</li>
+                    <li>ブラックホールのような闇の引力（冥王星的）</li>
+                </ul>
+                [cite_start]<p>どちらも人間が抗えない「限界を超えた力」を表します [cite: 58]。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-mask"></i> 壊される「教義の家」
+                <span class="timestamp">12:46</span>
+            </div>
+            <i class="fa-solid fa-dungeon icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>嘘と偽りの牢獄</strong> [cite: 59]</p>
+                [cite_start]<p>ウェイト氏は、壊されるのは「教義の家＝偽りの仮面」だと言っています。富や名声、肉体的な喜びだけを求める狭い自我の牢獄が、稲妻によって破壊されるのです [cite: 59]。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-user-injured"></i> 落ちる二人の正体
+                <span class="timestamp">14:43</span>
+            </div>
+            <i class="fa-solid fa-people-arrows icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p>レイチェル・ポラックの説 [cite: 59]：</p>
                 <div class="comparison-container">
                     <div class="comparison-item">
-                        <strong>📞 電話占い</strong><br>
-                        「答えが欲しい」<br>
-                        薄利多売<br>
-                        消耗しやすい
+                        <strong>赤い服</strong><br>
+                        魔術師 (I)<br>
+                        能動性
                     </div>
                     <div class="comparison-item">
-                        <strong>🌳 生命の木</strong><br>
-                        「変わりたい」<br>
-                        高単価・長期<br>
-                        互いに幸せ
+                        <strong>青い服</strong><br>
+                        女教皇 (II)<br>
+                        受動性
                     </div>
                 </div>
-                <p>「答えだけくれ」という人にはオラクルカード。「自分を知りたい」人には生命の木。使い分けが大事💡</p>
+                [cite_start]<p>男性性と女性性の対立がぶつかり、投げ出されている様子を表しているのかもしれません [cite: 59]。</p>
             </div>
         </div>
 
         <div class="card">
             <div class="section-header">
-                <i class="fa-solid fa-rocket"></i> 上級編：「2」の世界
-                <span class="timestamp">1:17:54</span>
+                <i class="fa-solid fa-droplet"></i> 火の粉の数字の秘密
+                <span class="timestamp">15:42</span>
             </div>
-            <i class="fa-solid fa-meteor icon-large"></i>
+            <i class="fa-solid fa-hashtag icon-large"></i>
             <div class="content-text">
-                <p><strong>小アルカナの「2」＝ 枠の外（コクマー/知恵）</strong></p>
-                <p>神様の領域。まだ現実化していない、圧倒的なエネルギー🪐</p>
-                <p>例：カップの2 💑<br>
-                単なる「出会い」ではなく、<strong>「今までの常識外の、エイリアンのような全く新しい感情・体験」</strong>が宇宙にある状態。受け取るかどうかは自分次第！</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-header">
-                <i class="fa-solid fa-rotate"></i> 逆位置はとる？
-                <span class="timestamp">1:27:30</span>
-            </div>
-            <i class="fa-solid fa-arrows-up-down icon-large"></i>
-            <div class="content-text">
-                <p><strong>黄金の夜明け団の教義：逆位置は取らない</strong></p>
-                <p>エネルギーに逆も何もないからです。極端に反対の意味（塔＝平和、悪魔＝天使）にはしません。</p>
-                <div class="speech-bubble">
-                    「気づいてないフリをしているかも？」程度のニュアンスでOK。無理に反対にしなくて良いです🙆‍♀️
+                [cite_start]<p><strong>12個と10個のヨッド</strong> [cite: 59, 60]</p>
+                <ul>
+                    <li>12個側：吊るされた男 (XII) ＝ 思考に縛られて動けない</li>
+                    <li>10個側：運命の輪 (X) ＝ 気づかず同じパターンを繰り返す</li>
+                </ul>
+                <div class="highlight-box">
+                    [cite_start]「言葉が空っぽになった人」と「言葉を誤解した人」というウェイトの記述と、数字がリンクしている可能性があります [cite: 60]。
                 </div>
             </div>
         </div>
 
         <div class="card">
             <div class="section-header">
-                <i class="fa-solid fa-seedling"></i> 学びが自分を変える
-                <span class="timestamp">1:38:00</span>
+                <i class="fa-solid fa-hand-fist"></i> 悪魔とユング心理学
+                <span class="timestamp">19:13</span>
             </div>
-            <i class="fa-solid fa-spa icon-large" style="color:var(--color-1);"></i>
+            <i class="fa-solid fa-water icon-large"></i>
             <div class="content-text">
-                <p>タロット（生命の木）を学ぶことは、占いスキルの向上だけでなく、<strong>自分自身の潜在意識を知り、生きやすくなること</strong>に繋がります✨</p>
-                <p>「あの時の悩みは、ここのパスを通っていたんだ！」と自己分析できるようになり、人生が軽くなります🕊️</p>
+                [cite_start]<p><strong>意識のダムが決壊する</strong> [cite: 60]</p>
+                <p>悪魔のカードが「物質的・動物的状態への墜落」なら、塔はその凝り固まった知性の破壊です。</p>
+                [cite_start]<p>ユング心理学的に言えば、意識がせき止めていた「無意識（水）のダム」が爆破され、抑圧されたものが飛び出してくる状態です [cite: 60]。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-eye"></i> トートタロットの「目」
+                <span class="timestamp">22:00</span>
+            </div>
+            <i class="fa-solid fa-eye-slash icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>ホルスの目 / シヴァの目</strong> [cite: 61]</p>
+                [cite_start]<p>開くと宇宙が破滅すると言われるほど強力な目です。悪魔のカード（ヘブライ語でAyin=目）とも関連しますが、クロウリーは「混同してはいけない」と警告しています [cite: 61]。</p>
+                <div class="speech-bubble">
+                    [cite_start]悪魔の目は「個人の本質を見抜く目」。塔の目は、もっと根源的な「宇宙の圧倒的な力（アイン）」と繋がっていると考えられます [cite: 61]。
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-shapes"></i> 幾何学的図形になる人間
+                <span class="timestamp">26:40</span>
+            </div>
+            <i class="fa-solid fa-cube icon-large"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>善悪を超えた「情報」としての視点</strong> [cite: 61, 62]</p>
+                <p>トートタロットでは、落ちる人が「幾何学的図形」として描かれています。これは、出来事を「被害者・加害者」「善・悪」で判断するのではなく、単なる「情報・パターン」として捉える視唆かもしれません。</p>
+                [cite_start]<p>組織化された牢獄からの解放であり、素の自分に戻るプロセスです [cite: 62]。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-phoenix-framework"></i> 神話と再生の結論
+                <span class="timestamp">29:19</span>
+            </div>
+            <i class="fa-solid fa-door-open icon-large" style="color:var(--color-1);"></i>
+            <div class="content-text">
+                [cite_start]<p><strong>アレス（嫌われ者）とマルス（守護神）</strong> [cite: 62]</p>
+                [cite_start]<p>火星には「制御できない衝動」と「尊敬される力」の二面性があります。さらに、冥界の王（ハデス/ディス）の力も加わり、上と下から揺さぶられます [cite: 61, 62]。</p>
+                <div class="highlight-box">
+                    [cite_start]塔が出たら、壊れたことを嘆くのではなく、「価値観や生き方を変える最大のチャンス」と捉え、節制や死神の力を使ってリスタートしましょう✨ [cite: 62]
+                </div>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>Generated based on Mayumi's Tarot Workshop Transcript | 2026.01.20</p>
-        <p><small>※この解説は文字起こしを元に作成されたイメージです。</small></p>
+        <p>Generated based on Mayumi's Tarot Lecture "The Tower" | 2026.01.20</p>
+        [cite_start]<p>Source: [cite: 57, 58, 59, 60, 61, 62]</p>
     </footer>
 </div>
 
