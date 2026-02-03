@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式解説書 - 0130勉強会</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+  :root {
+    --color-1: #A61B40; /* Deep Red */
+    --color-2: #DCE0F2; /* Light Blue */
+    --color-3: #012840; /* Dark Blue */
+    --color-4: #A66A5D; /* Muted Red */
+    --color-5: #0D0D0D; /* Black */
+  }
+
+  body {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+    background-size: 30px 30px;
+    background-color: #f9f7f1;
+    overflow-x: hidden;
+    color: var(--color-5);
+    line-height: 1.6;
+    font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+  }
+
+  .container {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-family: 'Kaisei Decol', serif;
+    font-weight: bold;
+    color: var(--color-1);
+    text-shadow: 2px 2px 0px var(--color-2);
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: #475569;
+    font-family: 'Yomogi', cursive;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .section-header {
+    grid-column: 1 / -1;
+    font-size: 24px;
+    color: var(--color-3);
+    font-weight: bold;
+    border-bottom: 2px dashed var(--color-4);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Kaisei Decol', serif;
+  }
+
+  .section-header i {
+    margin-right: 15px;
+    color: var(--color-1);
+    animation: bounce 2s infinite;
+  }
+
+  .timestamp {
+    font-size: 16px;
+    color: var(--color-4);
+    margin-left: auto;
+    font-family: 'Yomogi', cursive;
+    background: var(--color-2);
+    padding: 2px 10px;
+    border-radius: 15px;
+  }
+
+  .card {
+    background-color: transparent; /* 完全透明 */
+    padding: 15px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon-large {
+    font-size: 70px;
+    display: block;
+    margin: 10px auto 20px;
+    text-align: center;
+    color: var(--color-3);
+    filter: drop-shadow(2px 2px 0px rgba(220, 223, 242, 0.8));
+  }
+
+  .card h3 {
+    font-size: 22px;
+    text-align: center;
+    color: var(--color-1);
+    font-family: 'Yomogi', cursive;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted var(--color-4);
+    padding-bottom: 5px;
+  }
+
+  .card-text {
+    font-size: 16px;
+    color: var(--color-5);
+  }
+
+  .speech-bubble {
+    position: relative;
+    background-color: rgba(166, 106, 93, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: 'Yomogi', cursive;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+  }
+
+  .highlight-box {
+    border-left: 4px solid var(--color-1);
+    padding-left: 12px;
+    background-color: rgba(220, 223, 242, 0.2); /* 薄い透明 */
+    margin: 15px 0;
+    font-weight: bold;
+  }
+
+  .comparison-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .comparison-item {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 8px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    border: 1px dashed var(--color-3);
+  }
+
+  ul {
+    padding-left: 20px;
+    list-style-type: none;
+  }
+  
+  ul li {
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '\f00c'; /* FontAwesome check */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--color-4);
+    position: absolute;
+    left: -20px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 20px;
+    border-top: 2px solid var(--color-2);
+    font-family: 'Kaisei Decol', serif;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+  }
+
+  /* Media Queries */
+  @media (max-width: 1600px) {
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 32px; }
+  }
+  @media (max-width: 600px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .icon-large { font-size: 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1><i class="fas fa-book-open" style="margin-right:15px;"></i>Mayumi式 0130勉強会 解説書</h1>
+    <p class="subtitle">タロットと生命の木で読み解く、魂の解放と創造のプロセス</p>
+  </header>
+
+  <!-- Section 1: 女司祭 (Introduction & Deep Dive) -->
+  <div class="section-header">
+    <i class="fas fa-moon"></i> 1. 女司祭（High Priestess）の深淵 <span class="timestamp">00:00 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-bahai icon-large"></i>
+      <h3>「これしか出ない」必然性</h3>
+      <div class="card-text">
+        <div class="speech-bubble">
+          参加者へのメッセージ。<br>
+          「マジでこれしか出ない」は、今まさに必要な完璧なタイミングの証。
+        </div>
+        <div class="highlight-box">
+          静寂と内なる声に耳を傾ける時。<br>
+          まだ外に知識を出す時ではなく、内側に溜め込み、熟成させる期間。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-network-wired icon-large"></i>
+      <h3>生命の木における配置</h3>
+      <div class="card-text">
+        <p>中心の柱を貫く「第2のパス」。</p>
+        <div class="comparison-container">
+          <div class="comparison-item"><b>上：1 ケテル</b><br>神・宇宙の世界</div>
+          <div class="comparison-item"><b>下：6 ティファレト</b><br>魂・ハイヤーセルフ</div>
+        </div>
+        <p>神の領域と魂の領域を繋ぐ重要な架け橋。深淵（アビス）を超えて、宇宙と直結するパイプとなる。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-child-reaching icon-large"></i>
+      <h3>制限 vs 本質</h3>
+      <div class="card-text">
+        <ul>
+          <li><b>9 イエソドの月：</b> 地球で生きるために刷り込まれたルールや制限（〜ねばならない）。</li>
+          <li><b>女司祭の月：</b> 誰の影響も受けていない、生まれる前から決めている「変えられない本質」。</li>
+        </ul>
+        <div class="highlight-box">
+          幼少期に「ダメ」と言われて封印した自分勝手な部分こそが、実は女司祭の本質。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-magnet icon-large"></i>
+      <h3>引き寄せのメカニズム</h3>
+      <div class="card-text">
+        <div class="speech-bubble">
+          自分の中のダークな部分や制限を「許し、認める」と、パイプが太くなる！
+        </div>
+        <p>制限（ジャッジ）がなくなると、宇宙からの直感やご縁（＝引き寄せ）がスムーズに降りてくる。</p>
+        <p><i class="fas fa-star" style="color:var(--color-1)"></i> 否定せず「それも私」と受け入れることが鍵。</p>
+      </div>
+    </div>
+    
+    <div class="card">
+      <i class="fas fa-eye-slash icon-large"></i>
+      <h3>見えない真実</h3>
+      <div class="card-text">
+        <p>下（現実世界）から見上げると、女司祭は「黒くて怖いヤツ」に見えることがある。</p>
+        <p>なぜなら、社会のルールや道徳の外にいる存在だから。</p>
+        <div class="highlight-box">
+           歴史的にも「本質を出した女性」が排除された背景があるが、今はその封印を解く時。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: ワンドのキング (Yukie's Turn) -->
+  <div class="section-header">
+    <i class="fas fa-fire"></i> 2. ワンドのキングと「未知への挑戦」 <span class="timestamp">33:17 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-bolt icon-large"></i>
+      <h3>枠の外にあるエネルギー</h3>
+      <div class="card-text">
+        <p><b>2 コクマー（天王星）：</b> 神の叡智・革命・独立。</p>
+        <div class="highlight-box">
+          人間の枠の外にある、まだ扱ったことのない未知のエネルギー。
+        </div>
+        <p>「具体的になに？」と聞かれても言語化できないほどの圧倒的なパワーの塊。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-chess-king icon-large"></i>
+      <h3>未開の地を切り拓く</h3>
+      <div class="card-text">
+        <div class="speech-bubble">
+          「やったことないけど、なんかやるんでしょ？」という感覚。
+        </div>
+        <ul>
+          <li><b>皇帝の力：</b> 未知のエネルギーを使って、自分なりの王国（やり方）を築く。</li>
+          <li>普段はやらないことにあえて挑戦する。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-satellite-dish icon-large"></i>
+      <h3>アンテナの修復</h3>
+      <div class="card-text">
+        <p>参加者の気づき：「アンテナが折れていたかも」</p>
+        <div class="highlight-box">
+          <i class="fas fa-wrench"></i> 現実観察（メタ認知）によって、壊れたアンテナは直せる。
+        </div>
+        <p>いつもと違う行動（挑戦）が、静かな湖に大きな石を投げ込み、違う現実の波紋を広げる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: カップの7 (Naoko's Turn) -->
+  <div class="section-header">
+    <i class="fas fa-water"></i> 3. カップの7と「感情の錬金術」 <span class="timestamp">44:17 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-cloud icon-large"></i>
+      <h3>幻想と現実の狭間</h3>
+      <div class="card-text">
+        <p><b>7 ネツァク（金星）：</b> 感情・欲・快不快。</p>
+        <div class="speech-bubble">
+          参加者「心当たりありまくり。でも楽しいんですよ！」
+        </div>
+        <p>現実世界（10）に引っ張られ、感情や欲が強くなると、事実が歪んで見える（色眼鏡）。<br>例：過去の裏切りから「男は全員こうだ」と決めつける。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-stairs icon-large"></i>
+      <h3>突破口としての感情</h3>
+      <div class="card-text">
+        <p><b>思考（8）</b>だけでは限界がある。<br><b>感情（7）</b>こそが、ベールを突破し上の世界（6 ティファレト）へ上がる鍵。</p>
+        <div class="highlight-box">
+          アダムは下を見ているが、イブ（感情・女性性）だけが上を見ている。
+        </div>
+        <p>感情の「背景」にある本音に気づくことで、制限が外れる。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-people-arrows icon-large"></i>
+      <h3>他者は「ただの筒」</h3>
+      <div class="card-text">
+        <p>ムカつくことを言う相手も、たまたま宇宙に選ばれて「その役」をやらされているだけ。</p>
+        <ul>
+          <li>相手に執着せず、「この言葉から私は何を学ぶ？」と視点を変える。</li>
+          <li>気づいた瞬間、世界線が変わり、可能性（星のカード）へ繋がる。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: ワンドの6 (Sanae's Turn) -->
+  <div class="section-header">
+    <i class="fas fa-sun icon-large"></i> 4. ワンドの6と「調和と勝利」 <span class="timestamp">01:04:30 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-medal icon-large"></i>
+      <h3>調和の取れた勝利</h3>
+      <div class="card-text">
+        <p><b>6 ティファレト（太陽）：</b> 中庸・ハイヤーセルフ。</p>
+        <div class="speech-bubble">
+          闇雲に戦う（ワンド5）のではなく、周りと調和し、指令を受け取りながら現実化できている状態。
+        </div>
+        <p>上（ワンネス）と下（分離の世界）のちょうど真ん中でバランスが良い。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-road icon-large"></i>
+      <h3>次なるプロセスへの分岐点</h3>
+      <div class="card-text">
+        <p>「勝利」を一度味わうと、人間は「もっと欲しい」と欲が出る（→7へ移行）。</p>
+        <div class="highlight-box">
+          参加者「いかようにもなれる場所。さて、どう料理しようか」
+        </div>
+        <p>この安定から、次にどう動くかが問われるタイミング。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-earth-asia icon-large"></i>
+      <h3>地球を楽しむ醍醐味</h3>
+      <div class="card-text">
+        <p>ずっと「中庸（6）」にいなきゃいけない、というのもまた制限。</p>
+        <div class="speech-bubble">
+          講師「落ちても大丈夫。ちゃんと気づけるから、安心して下（現実）で楽しんで！」
+        </div>
+        <p>誕生日のソーラーリターン（太陽回帰）を前に、執着せず、喜怒哀楽も含めて地球の遊びを味わうこと。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: まとめ・事務連絡 (Conclusion) -->
+  <div class="section-header">
+    <i class="fas fa-bullhorn"></i> 5. 本日のまとめ <span class="timestamp">01:21:00 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card" style="grid-column: span 5;">
+      <i class="fas fa-layer-group icon-large"></i>
+      <h3>解説のポイント</h3>
+      <div class="card-text">
+        <ol>
+          <li><b>女司祭：</b> 本質への回帰と受容。静寂の中で内なる声を聞く。</li>
+          <li><b>ワンドのキング：</b> 未知への創造と挑戦。枠の外にあるエネルギーを降ろす。</li>
+          <li><b>カップの7：</b> 感情を鍵とした覚醒。幻想の裏にある真実を見抜く。</li>
+          <li><b>ワンドの6：</b> 調和と地球を楽しむ自信。中庸を知り、現実を遊ぶ。</li>
+        </ol>
+        <div class="highlight-box" style="text-align: center;">
+          全てのカードは繋がっており、どの段階も魂の成長プロセスの一部です。<br>
+          制限を外し、ありのままの自分を受け入れることで、人生はより軽やかに展開します。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Mayumi式 0130勉強会 解説書 | 作成日: 2026年2月3日 | Based on Session Recording</p>
+  </footer>
+</div>
+
+</body>
+</html>
