@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式解説書 - 0122勉強会</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+  :root {
+    --color-1: #A61B40; /* Deep Red */
+    --color-2: #DCE0F2; /* Light Blue */
+    --color-3: #012840; /* Dark Blue */
+    --color-4: #A66A5D; /* Muted Red */
+    --color-5: #0D0D0D; /* Black */
+  }
+
+  body {
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+    background-size: 30px 30px;
+    background-color: #f9f7f1;
+    overflow-x: hidden;
+    color: var(--color-5);
+    line-height: 1.6;
+    font-family: 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+  }
+
+  .container {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-family: 'Kaisei Decol', serif;
+    font-weight: bold;
+    color: var(--color-1);
+    text-shadow: 2px 2px 0px var(--color-2);
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: #475569;
+    font-family: 'Yomogi', cursive;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .section-header {
+    grid-column: 1 / -1;
+    font-size: 24px;
+    color: var(--color-3);
+    font-weight: bold;
+    border-bottom: 2px dashed var(--color-4);
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Kaisei Decol', serif;
+  }
+
+  .section-header i {
+    margin-right: 15px;
+    color: var(--color-1);
+    animation: bounce 2s infinite;
+  }
+
+  .timestamp {
+    font-size: 16px;
+    color: var(--color-4);
+    margin-left: auto;
+    font-family: 'Yomogi', cursive;
+    background: var(--color-2);
+    padding: 2px 10px;
+    border-radius: 15px;
+  }
+
+  .card {
+    background-color: transparent; /* 完全透明 */
+    padding: 15px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon-large {
+    font-size: 70px;
+    display: block;
+    margin: 10px auto 20px;
+    text-align: center;
+    color: var(--color-3);
+    filter: drop-shadow(2px 2px 0px rgba(220, 223, 242, 0.8));
+  }
+
+  .card h3 {
+    font-size: 22px;
+    text-align: center;
+    color: var(--color-1);
+    font-family: 'Yomogi', cursive;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted var(--color-4);
+    padding-bottom: 5px;
+  }
+
+  .card-text {
+    font-size: 16px;
+    color: var(--color-5);
+  }
+
+  .speech-bubble {
+    position: relative;
+    background-color: rgba(166, 106, 93, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: 'Yomogi', cursive;
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+  }
+
+  .highlight-box {
+    border-left: 4px solid var(--color-1);
+    padding-left: 12px;
+    background-color: rgba(220, 223, 242, 0.2); /* 薄い透明 */
+    margin: 15px 0;
+    font-weight: bold;
+  }
+
+  .comparison-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .comparison-item {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 8px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    border: 1px dashed var(--color-3);
+  }
+
+  ul {
+    padding-left: 20px;
+    list-style-type: none;
+  }
+  
+  ul li {
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  ul li::before {
+    content: '\f00c'; /* FontAwesome check */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--color-4);
+    position: absolute;
+    left: -20px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 20px;
+    border-top: 2px solid var(--color-2);
+    font-family: 'Kaisei Decol', serif;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+  }
+
+  /* Media Queries */
+  @media (max-width: 1600px) {
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 32px; }
+  }
+  @media (max-width: 600px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .icon-large { font-size: 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1><i class="fas fa-book-open" style="margin-right:15px;"></i>Mayumi式 0122勉強会 解説書</h1>
+    <p class="subtitle">生命の木（カバラ）の深層構造と魂の錬金術</p>
+  </header>
+
+  <!-- Section 1: 生命の木の基本構造 (Tree of Life Basics) -->
+  <div class="section-header">
+    <i class="fas fa-project-diagram"></i> 1. 生命の木：宇宙と魂の設計図 <span class="timestamp">00:00 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-map-marked-alt icon-large"></i>
+      <h3>10のセフィラと22のパス</h3>
+      <div class="card-text">
+        <p>生命の木は、宇宙のエネルギーの流れと魂の成長プロセスを表す地図。</p>
+        <ul>
+          <li><b>セフィラ（丸）：</b> エネルギーのステーション（受信機・貯蔵庫）。</li>
+          <li><b>パス（線）：</b> エネルギーが通る道。タロットの大アルカナ22枚が対応。</li>
+        </ul>
+        <div class="highlight-box">
+          上から下へ「現実化」し、下から上へ「精神性」を高める循環システム。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-layer-group icon-large"></i>
+      <h3>3つの意識階層</h3>
+      <div class="card-text">
+        <div class="comparison-container" style="flex-direction: column; gap: 10px;">
+          <div class="comparison-item">
+            <b>1. 上層（1-2-3）：神・宇宙</b><br>
+            肉体も自我もない「ワンネス」の領域。純粋なエネルギーの世界。
+          </div>
+          <div class="comparison-item">
+            <b>2. 中層（4-5-6）：魂・ハイヤーセルフ</b><br>
+            「個」としての魂が存在するが、まだ肉体的制限を受けない高次の自己。
+          </div>
+          <div class="comparison-item">
+            <b>3. 下層（7-8-9-10）：自我・肉体</b><br>
+            私たちが普段認識している現実世界。感情・思考・肉体を持つ領域。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-columns icon-large"></i>
+      <h3>3本の柱の役割</h3>
+      <div class="card-text">
+        <p>エネルギーは3本の柱を行き来しながら流れる。</p>
+        <div class="comparison-container">
+          <div class="comparison-item" style="border-left: 3px solid var(--color-3);">
+            <b>左の柱（峻厳）</b><br>
+            形式・制限・ルール<br>女性的原理（受け取る器）
+          </div>
+          <div class="comparison-item" style="border-left: 3px solid var(--color-1);">
+            <b>右の柱（慈悲）</b><br>
+            拡大・発展・力<br>男性的原理（与える力）
+          </div>
+        </div>
+        <div class="highlight-box" style="text-align: center;">
+          <b>中央の柱（均衡）</b><br>
+          意識・調和・統合<br>
+          ここを通ることが魂の覚醒への近道。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: 悪魔 (The Devil) -->
+  <div class="section-header">
+    <i class="fas fa-link"></i> 2. 悪魔（The Devil）：常識という名の鎖 <span class="timestamp">38:30 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-route icon-large"></i>
+      <h3>パス15の配置と意味</h3>
+      <div class="card-text">
+        <p><b>繋ぐ場所：6 ティファレト（本心・美） ⇔ 8 ホド（思考・常識）</b></p>
+        <div class="speech-bubble">
+          思考（8）が強すぎると、本心（6）が見えなくなる。
+        </div>
+        <p>「普通はこうするべき」「社会的にはこうあるべき」という思考が、魂の輝きを閉じ込めてしまう状態。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-dungeon icon-large"></i>
+      <h3>「狭き門」の守護者</h3>
+      <div class="card-text">
+        <p>ティファレト（覚醒）へ至る道には、3つの試練のカードがある。</p>
+        <ul>
+          <li><b>悪魔：</b> 執着と欲望の解放</li>
+          <li><b>死神：</b> 不要なものの手放し</li>
+          <li><b>節制：</b> 異質なものの統合</li>
+        </ul>
+        <div class="highlight-box">
+          悪魔は「通せんぼ」しているのではなく、「本気で自分を生きる覚悟」を試している守護者。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-smile-wink icon-large"></i>
+      <h3>ユーモアが鍵</h3>
+      <div class="card-text">
+        <p>悪魔の鎖は実は緩く、首輪もいつでも外せる。</p>
+        <div class="speech-bubble">
+          講師「私、こんなことにこだわってたんだ（笑）って笑い飛ばせた時、鎖は外れます」
+        </div>
+        <p>深刻さは悪魔の好物。ユーモアと笑いが、常識の呪縛を解く最強の武器になる。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-user-check icon-large"></i>
+      <h3>「いい人」をやめる</h3>
+      <div class="card-text">
+        <p>自分の中のドロドロした感情や欲望（エゴ）を否定しない。</p>
+        <div class="highlight-box">
+          「私にはこんな汚い部分もある」と認めることが統合への第一歩。<br>
+          清廉潔白であろうとすることこそが、最大の「執着」かもしれない。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: 皇帝 (The Emperor) -->
+  <div class="section-header">
+    <i class="fas fa-crown"></i> 3. 皇帝（The Emperor）：自らの王国の創造 <span class="timestamp">52:15 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-bolt icon-large"></i>
+      <h3>神の叡智を降ろすパス</h3>
+      <div class="card-text">
+        <p><b>繋ぐ場所：2 コクマー（神の知恵・父性） ⇔ 6 ティファレト（中心・自己）</b></p>
+        <p>宇宙の純粋で荒々しい、形になる前のエネルギー（2）を、自分の中心（6）にダイレクトに降ろす。</p>
+        <div class="highlight-box">
+          <i class="fas fa-star"></i> 既存のルール（4 ケセド/法王的なもの）ではなく、宇宙の法則に従って「自分のルール」を作る力。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-chair icon-large"></i>
+      <h3>リーダーシップの本質</h3>
+      <div class="card-text">
+        <div class="speech-bubble">
+          参加者「新しいことを始める不安がある」<br>講師「それは誰もやっていない新しい道だから」
+        </div>
+        <p>皇帝は、誰も歩いていない荒野に道を作り、自分の王国を建国するエネルギー。<br>責任を負い、孤独を受け入れ、玉座に座る覚悟。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-gavel icon-large"></i>
+      <h3>法王との対比</h3>
+      <div class="card-text">
+        <div class="comparison-container">
+          <div class="comparison-item">
+            <b>法王 (The Hierophant)</b><br>
+            社会のルール・道徳・伝統に従う。<br>「みんなと同じ」安心感。
+          </div>
+          <div class="comparison-item">
+            <b>皇帝 (The Emperor)</b><br>
+            自らがルールブック。<br>未開の地を切り拓く開拓精神。
+          </div>
+        </div>
+        <p>今は「教わる」側ではなく、「決める」側に回るタイミング。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-eye icon-large"></i>
+      <h3>視座の高さ</h3>
+      <div class="card-text">
+        <p>2番コクマーは、至高の三角形の一部であり、視座が非常に高い。</p>
+        <div class="highlight-box">
+          目先の損得ではなく、大局的な視点（宇宙的な視点）で物事を捉え、それを現実世界で構造化・具現化していく実行力を持つ。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: ソードの3 (Three of Swords) -->
+  <div class="section-header">
+    <i class="fas fa-heart-broken"></i> 4. ソードの3：ビナーの理解と分離の痛み <span class="timestamp">01:05:40 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card">
+      <i class="fas fa-female icon-large"></i>
+      <h3>ビナー（理解）＝土星</h3>
+      <div class="card-text">
+        <p><b>3 ビナー（土星・母）</b><br>生命の木において、3番目のセフィラ「ビナー」は「理解」を意味するが、対応する惑星は「土星（制限・試練）」である。</p>
+        <div class="highlight-box">
+          形のないエネルギーに「形」を与えるためには、「枠（制限）」が必要になる。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-cut icon-large"></i>
+      <h3>分離は誕生の条件</h3>
+      <div class="card-text">
+        <p>ワンネス（全てが一つ）の状態では、「私」も「あなた」も存在しない。</p>
+        <div class="speech-bubble">
+          お母さんのお腹から出て「へその緒」を切る（＝分離する）ことで、初めて個としての人生が始まる。
+        </div>
+        <p>ソードの3の痛みは、単なる悲劇ではなく、自立と理解のための「産みの苦しみ」。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-brain icon-large"></i>
+      <h3>「理解」とは分けること</h3>
+      <div class="card-text">
+        <p>「分かる」の語源は「分ける」。<br>物事を区別し、境界線を引くことで、初めて本質を理解できる。</p>
+        <div class="highlight-box">
+          ハートに剣が刺さる絵柄は、感情（ハート）を思考（剣）で切り分け、分析し、理解しようとしているプロセス。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-hand-holding-heart icon-large"></i>
+      <h3>愛ゆえの厳しさ</h3>
+      <div class="card-text">
+        <p>ビナーは「母なる海」だが、甘やかすだけの母ではない。<br>子供の自立を促すために突き放すような、厳格な愛（土星的愛）を持つ。</p>
+        <div class="speech-bubble">
+          その悲しみの奥には、深い愛と、物事を本質的に理解する知性が眠っています。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: まとめ (Conclusion) -->
+  <div class="section-header">
+    <i class="fas fa-star"></i> 5. 本日の学びとまとめ <span class="timestamp">01:20:00 〜</span>
+  </div>
+  <div class="grid-container">
+    <div class="card" style="grid-column: span 5;">
+      <i class="fas fa-book-reader icon-large"></i>
+      <h3>魂の成長プロセス</h3>
+      <div class="card-text">
+        <div class="comparison-container" style="align-items: stretch;">
+          <div class="comparison-item" style="flex: 1;">
+            <b><i class="fas fa-dungeon"></i> 悪魔 (Devil)</b><br>
+            <small>常識・思考の枠</small><br>
+            「〜すべき」という思考の鎖に気づき、ユーモアで自分を解放する。本音を認める勇気。
+          </div>
+          <div class="comparison-item" style="flex: 1;">
+            <b><i class="fas fa-crown"></i> 皇帝 (Emperor)</b><br>
+            <small>創造・リーダーシップ</small><br>
+            宇宙の意志を降ろし、未開の地に自分のルールで王国を築く。責任と情熱。
+          </div>
+          <div class="comparison-item" style="flex: 1;">
+            <b><i class="fas fa-heart-broken"></i> ソードの3</b><br>
+            <small>理解・分離・土星</small><br>
+            痛みを通して「個」を確立し、物事の本質を理解する。厳しさの中に愛がある。
+          </div>
+        </div>
+        <div class="highlight-box" style="text-align: center; margin-top: 20px;">
+          人生の悩みや葛藤は、生命の木のどこかのパス（道）を通っている証拠。<br>
+          今自分がどこにいて、何を学んでいるかを知ることで、迷いは「プロセス」に変わります。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Mayumi式 0122勉強会 解説書 | 作成日: 2026年2月3日 | Based on Session Recording</p>
+  </footer>
+</div>
+
+</body>
+</html>
