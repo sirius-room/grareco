@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式解説書：アレフ・牡牛・ネツァクの神秘（司祭 詳説版）</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; 
+            --color-2: #DCE0F2; 
+            --color-3: #012840; 
+            --color-4: #A66A5D; 
+            --color-5: #0D0D0D; 
+        }
+
+        body {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            color: var(--color-5);
+            font-family: 'Kaisei Decol', 'Yomogi', 'Zen Kurenaido', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 32px;
+            background: linear-gradient(45deg, var(--color-3), var(--color-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #475569;
+            margin-top: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--color-4);
+            padding-bottom: 5px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .timestamp {
+            font-size: 12px;
+            color: var(--color-4);
+            margin-left: auto;
+            font-family: sans-serif;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 15px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.8;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .highlight-box {
+            border-left: 3px solid var(--color-1);
+            padding: 20px;
+            background-color: rgba(220, 223, 242, 0.2);
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .comparison-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+
+        .comparison-item {
+            background-color: rgba(220, 223, 242, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 5px;
+            text-align: center;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1600px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .grid-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-church"></i> 5. 司祭（法皇）と「牡牛」の深淵なる神秘 <i class="fas fa-church"></i></h1>
+        <p class="subtitle"><i class="fas fa-feather-alt"></i> 天上の英知を「ヴァウ（釘）」で繋ぎ止め、地上の慈悲へと変換する</p>
+    </header>
+
+    <div class="grid-container">
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-project-diagram"></i> 生命の木：コクマーとケセドの架け橋
+                <span class="timestamp">(00:00)</span>
+            </div>
+            <i class="fas fa-dharmachakra icon-large"></i>
+            [cite_start]<p>現在、0番から21番までの大アルカナ解説書を作成中ですが、この5番「司祭」は特にマニアックで面白い発見がありました [cite: 1, 2]。このカードは、神の知恵であるコクマーと、慈悲のケセドを結ぶパスを司ります。</p>
+            <div class="highlight-box">
+                占星術的対応は「牡牛座（♉）」。この「牛」というシンボルが、生命の木の最上層にあるエネルギーと地上のルールを繋ぐ、驚くべきミッシングリンクとなっていたのです。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-link"></i> アレフとヴァウ：二つの「牡牛」
+                <span class="timestamp">(01:04)</span>
+            </div>
+            <i class="fas fa-bull icon-large"></i>
+            <p>0番「愚者」のヘブライ文字アレフは「牡牛」を指しますが、5番「司祭」の牡牛座対応もまた、深い「牛」の繋がりを示唆しています。</p>
+            <div class="speech-bubble">
+                アレフの牡牛は、ケテルとコクマーを結ぶ「天井の三つ組み」の中にあり、ルールも枠も一切ない、圧倒的で荒々しい自由なエネルギーそのものです。一方、司祭はこの奔放な力を、人間が受け取り可能な「形」へと落とし込む役割を担っています。
+            </div>
+            <ul>
+                <li><strong>アレフ（愚者）:</strong> 宇宙の根源的な爆発、何ものにも縛られない自由な存在。</li>
+                <li><strong>ヴァウ（司祭）:</strong> その力を地上に固定し、意味を与える「釘」。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-tools"></i> ヴァウ（釘）による英知の固定
+                <span class="timestamp">(02:05)</span>
+            </div>
+            <i class="fas fa-hammer icon-large"></i>
+            <p>コクマーの神の知恵は、人間には直接扱うことが極めて難しい、圧倒的で得体の知れないエネルギーです。司祭は、このエネルギーを<strong>「ヴァウ（釘）」</strong>という文字が示す通り、地上に釘打ちして固定します。</p>
+            <div class="highlight-box">
+                この固定のプロセスこそが、私たちが「道徳」「善悪」「社会のルール」として認識しているものの正体です。
+            </div>
+            <p>「命を大切にする」といった普遍的なルールは、よく分からない巨大なエネルギーを、人間が生きていくための「使いやすい指針」へと変換した結果なのです。</p>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-venus"></i> 金星・ネツァク・そして「感情」へ
+                <span class="timestamp">(03:25)</span>
+            </div>
+            <i class="fas fa-heartbeat icon-large"></i>
+            <p>牡牛座の支配星は「金星」であり、それは生命の木の第7セフィラ<strong>「ネツァク」</strong>へと繋がっています。</p>
+            <div class="comparison-container">
+                <div class="comparison-item"><strong>二元性の誕生</strong><br>善悪という「差」があるからこそ、人の感情は動く</div>
+                <div class="comparison-item"><strong>尊い摩擦</strong><br>二極の摩擦から生まれる喜怒哀楽こそが、愛の正体</div>
+            </div>
+            <p>アレイスター・クローリーが「生命の木自体が金星（愛）である」と語ったように、ルール（善悪）の設定によって生まれる苦しみや喜びを体験すること自体が、地球に生まれた私たちの尊い目的です。</p>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <i class="fas fa-key"></i> 自己更新と「ダート」の扉
+                <span class="timestamp">(05:37)</span>
+            </div>
+            <i class="fas fa-door-open icon-large"></i>
+            <p>司祭のカードは一見、土のエネルギーが強く、地球の古いルール（マルクト）に縛られているように見えます。しかし、魂の成長に合わせて、自分自身の「善悪の設定」を更新し続けることが可能です。</p>
+            <div class="speech-bubble">
+                宇宙の真理（コクマー）へと戻るには、深淵の入り口である<strong>「ダート」</strong>を通過しなければなりません。自分の内なる本質や、時にダークに見える部分をも受け入れ、扉を叩く勇気が求められます。
+            </div>
+            <p><i class="fas fa-check-circle"></i> 司祭が示す「ルール」は、いつかその枠を超えて自由な「アレフ」へと還るための、大切な足場なのです。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>作成日: 2026年2月16日 | 情報源: Mayumi式タロット解説音声「アレフ、牡牛、ネツァク」全編（00:00〜07:19）より</p>
+    </footer>
+</div>
+
+</body>
+</html>
