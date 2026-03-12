@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi式解説書：3月10日勉強会</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    :root {
+      --color-1: #A61B40;
+      --color-2: #DCE0F2;
+      --color-3: #012840;
+      --color-4: #A66A5D;
+      --color-5: #0D0D0D;
+    }
+
+    body {
+      font-family: 'Zen Kurenaido', sans-serif;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #f9f7f1;
+      color: var(--color-5);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      margin-bottom: 50px;
+    }
+
+    .header-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(45deg, var(--color-1), var(--color-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #475569;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      background-color: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 15px auto 25px auto;
+      text-align: center;
+      color: var(--color-3);
+    }
+
+    .card-title {
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      font-family: 'Kaisei Decol', serif;
+      font-weight: bold;
+    }
+
+    .card-title i {
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    .timestamp {
+      font-size: 14px;
+      color: var(--color-4);
+      margin-left: auto;
+      font-family: 'Yomogi', sans-serif;
+    }
+
+    .card-content {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(166, 106, 93, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 20px 0;
+      font-family: 'Yomogi', sans-serif;
+      font-size: 15px;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+    }
+
+    .highlight-box {
+      border-left: 3px solid var(--color-1);
+      padding-left: 12px;
+      background-color: transparent;
+      margin: 20px 0;
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      gap: 10px;
+    }
+
+    .comparison-item {
+      background-color: rgba(220, 223, 242, 0.3);
+      padding: 12px;
+      border-radius: 10px;
+      flex: 1;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      text-align: right;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px dashed #ccc;
+      font-size: 14px;
+      color: var(--color-4);
+      font-family: 'Yomogi', sans-serif;
+    }
+
+    @media (max-width: 1600px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <i class="fa-solid fa-moon"></i>
+        Mayumi式解説書：3月10日勉強会
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <div class="header-subtitle">
+        <i class="fa-solid fa-pen-nib"></i> カードの深掘りと生命の木、神話から読み解く心の成長
+      </div>
+    </header>
+
+    <div class="grid-container">
+      
+      <!-- カード1 -->
+      <div class="card">
+        <i class="fa-solid fa-eye-slash icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-sparkles"></i> ソードの8と正当化
+          <span class="timestamp">02:54</span>
+        </div>
+        <div class="card-content">
+          双子座の木星に対応するカードです。双子座の「広く浅く」広がる性質に、木星の拡大・発展のエネルギーが乗ることで、思考が散漫になり一点集中が欠けてしまう状態を表します。周囲の声に惑わされたり、違うものを真実と思い込んだりしやすくなります。<br><br>
+          生命の木でいうと、感情が先走る7番の状態から、その感情を言語化・思考化して分ける8番への移行期にあたります。欲のために使われた思考を、「だって家族ってそういうものでしょう？」「みんなもそう言っているし」と常識や言い訳を使って無意識に正当化してしまいます。絵柄では目隠しをされ縛られていますが、実は自分で気づけばいつでも抜け出せる状態なのです。
+        </div>
+      </div>
+
+      <!-- カード2 -->
+      <div class="card">
+        <i class="fa-solid fa-masks-theater icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-ghost"></i> 無自覚なシャドウの投影
+          <span class="timestamp">06:14</span>
+        </div>
+        <div class="card-content">
+          いかに自分が可哀想かを語り、無自覚に「自分は悪くないんだ」と認めてもらいたくてSNS等に晒してしまう行為。これはまさにソードの8が示す囚われの状態です。<br><br>
+          本当に何も気にしていなければ、その瞬間に腹が立っても数日で終わるはずです。しかし、いつまでも引きずり他者にアピールしてしまうのは、自分の心の中にある「シャドウ(闇)」を相手に投影している結果なのです。
+          <div class="speech-bubble">
+            「あなたは悪くないですよ」と言われて安心したい裏側には、実は心の底で「自分が悪いのではないか」という強い自己否定や迷いが隠れています👁️
+          </div>
+        </div>
+      </div>
+
+      <!-- カード3 -->
+      <div class="card">
+        <i class="fa-solid fa-khanda icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-book-open"></i> トートタロットのソードの8
+          <span class="timestamp">08:21</span>
+        </div>
+        <div class="card-content">
+          トートタロットにおけるソードの8（妨害）は、ウェイト版とは異なる視点を与えてくれます。絵柄では、後ろにある6本の剣（ティファレトの6を意味する本来の力）が、手前の2本の剣によって完全に遮られています。<br><br>
+          これは、「感情をそのまま言語化して正当化する行為」が、あなたの本来の実力や真実（6番）へ到達するのを邪魔していることを示唆しています。
+          <div class="highlight-box">
+            ウェイト版だと「悲劇のヒロイン」のように擬人化して捉えがちですが、本質は「自分の確固たる芯が入っておらず、感情の言語化に囚われて固まった状態」。ここから上の次元へ抜け出すための気づきが求められます。
+          </div>
+        </div>
+      </div>
+
+      <!-- カード4 -->
+      <div class="card">
+        <i class="fa-solid fa-wall-brick icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-person-rays"></i> 審判と「バカの壁」
+          <span class="timestamp">11:34</span>
+        </div>
+        <div class="card-content">
+          「審判」のカードの本質を理解する鍵は、養老孟司先生の「バカの壁」の概念にあります。人は現実を判断する時、見たくないものや理解できないものに対して「これはこういうものだ」とシャッターを下ろし、思考を停止させてしまいます。<br><br>
+          毎日同じ通勤路をスマホを見ながら歩き、新しいお店ができても全く気づかないように、無意識に生きていると新しい情報は一切入ってきません。しかし、同じ景色や言葉から、これまでとは違う「膨大な情報量」を感じ取れるようになる瞬間があります。その次元上昇の合図こそが、審判のラッパなのです🎺
+        </div>
+      </div>
+
+      <!-- カード5 -->
+      <div class="card">
+        <i class="fa-solid fa-seedling icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-cloud"></i> モヤモヤは進化のサイン
+          <span class="timestamp">13:42</span>
+        </div>
+        <div class="card-content">
+          嫌いなタイプの相手に遭遇した時、「ああいう人は嫌いだから関わらない」とシャッターを下ろし、それで平気でいられるうちは、その制限の中で人生のサイクルが回っているので問題ありません。<br><br>
+          しかし、どんなにシャッターを下ろしても、なぜかその人のことが気になってずっとモヤモヤし続ける時がやってきます。それは、これまでの「ただ避けるだけ」という言語化のパターンが古くなり、処理しきれなくなっているサインです。
+          <div class="speech-bubble">
+            暗闇（月）の中で手探りで自分の感情を観察し、「なぜこんなに引っかかるのか」を深掘りして新しい意味を見つけられれば、次元上昇の大チャンスとなります🌱
+          </div>
+        </div>
+      </div>
+
+      <!-- カード6 -->
+      <div class="card">
+        <i class="fa-solid fa-hat-wizard icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-ban"></i> 占いの罠と無駄の効用
+          <span class="timestamp">18:26</span>
+        </div>
+        <div class="card-content">
+          占星術や四柱推命などの命術を学ぶと、誰もが自分の星を深掘りし「私は何座だからこういう人間だ」と理解した気になります。しかし、その決めつけが強すぎると、今度はそれが自らの可能性を縛る強固な「制限（棺桶）」に変わってしまう危険性があります。<br><br>
+          現代社会はどうしてもタイパなどの「効率」を求めがちですが、生きる意味は本来、無駄を楽しむことにあります。効率主義を手放し、日常の小さな看板の変化や、一杯のコーヒーの味の違いに感動できる余裕を持つこと。その気づきの積み重ねが情報量を増やし、魂の次元上昇（レベルアップ）へと繋がっていくのです✨
+        </div>
+      </div>
+
+      <!-- カード7 -->
+      <div class="card">
+        <i class="fa-solid fa-yin-yang icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-scale-unbalanced"></i> 自分の中の矛盾
+          <span class="timestamp">22:51</span>
+        </div>
+        <div class="card-content">
+          正論ばかりで打ち負かしてくる相手に対して異常にイラッとするのは、相手の問題ではなく、自分自身の心に原因があります。例えば、あなたの中に「自由にやりたい、途中で投げ出したい」という射手座の月のような本音があるとします。<br><br>
+          しかし、真面目なあなたはそんな「いい加減な自分」を激しく自己否定しています。だからこそ、その痛いところを突いてくる正論の持ち主に過剰反応してしまうのです。
+          <div class="highlight-box">
+            相手は「違う次元の自分が言わされているだけ」とゲーム感覚で捉えてみましょう。真面目な自分も、自由でいい加減な自分も、どちらも大切な自分の一部です。相反する性質を否定せず、共に歩んでいくバランス感覚を取り戻しましょう⚖️
+          </div>
+        </div>
+      </div>
+
+      <!-- カード8 -->
+      <div class="card">
+        <i class="fa-solid fa-staff-snake icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-seedling"></i> 隠者と大地への種まき
+          <span class="timestamp">25:52</span>
+        </div>
+        <div class="card-content">
+          乙女座に対応する「隠者」のカードは、トートタロットを見るとその本質がよく分かります。隠者は稲穂（マルクト＝現実の大地を象徴）を持ち、固く握りしめた拳の中に「種（ヨッド）」を隠し持っています。<br><br>
+          神の世界にある純粋なエネルギーの種とは異なり、隠者が持つ種は常に「地球（大地）」とセットになっています。つまり、宇宙の真理に気づいたり、自分の中の欲望（蛇が象徴する力のエネルギー）と向き合うだけで満足してはいけません。その気づきを、実際の現実世界という大地にしっかりと植え付け、具体的な行動に移していくことが求められているのです🌍
+        </div>
+      </div>
+
+      <!-- カード9 -->
+      <div class="card">
+        <i class="fa-solid fa-snowflake icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-leaf"></i> 完璧さを終わらせる
+          <span class="timestamp">30:54</span>
+        </div>
+        <div class="card-content">
+          乙女座は「自分の信じる完璧な美しさ」への強いこだわりを持つサインです。これを理解するには、豊穣の女神デメテル（女帝）と娘ペルセポネのギリシャ神話が鍵となります。ペルセポネが冥界の王ハデスに連れ去られ、ザクロの実（冥界の食べ物）を食べたことで、地上に「実りのない冬」が生まれました。<br><br>
+          これと同じように、乙女座の人が抱く「これが完璧で白黒はっきりした美しい状態だ」という強い理想も、一度終わらせて「冬」を迎える必要があります。自分が信じた実りをあえて手放し、完璧さを壊すことで、物事のグレーな部分を許容できるようになり、次なる春にはより大きな深みと新しい美しさが見えてくるのです🌸
+        </div>
+      </div>
+
+      <!-- カード10 -->
+      <div class="card">
+        <i class="fa-solid fa-coins icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-box-open"></i> ペンタクルの4の真意
+          <span class="timestamp">37:32</span>
+        </div>
+        <div class="card-content">
+          ペンタクルの4は、人物が金貨を抱え込むウェイト版の絵柄のせいで「強欲」や「現実にしがみつく執着」と悪く捉えられがちです。しかし生命の木で配置を見ると、深淵のすぐ下という非常に高い次元（4番ケセド）に位置しています。<br><br>
+          ここはドロドロした現実ではなく、人間界のルールの始まりであり「集合的無意識」の領域です。「日本にいれば命を狙われない」と私たちが信じているように、「順序立てて話せば必ず相手に分かってもらえるはずだ」という、これまでのあなたを支えてきた強固で純粋な「安心安全の土台（ルール）」が詰まった大切な箱のような状態を表しているのです📦
+        </div>
+      </div>
+
+      <!-- カード11 -->
+      <div class="card">
+        <i class="fa-solid fa-door-closed icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-hand"></i> シャッターを下ろす権利
+          <span class="timestamp">47:19</span>
+        </div>
+        <div class="card-content">
+          「話せば分かる」と信じて事情を説明しようとしたのに、相手から「返信無用」と対話を拒絶されてしまった。それは決してあなたのせいではありません。あなたの発した言葉が相手にとってあまりにも「図星」であり、まだ自分の心の闇（悪魔）に太陽の光を当てて向き合う準備が全くできていなかったからです。
+          <div class="comparison-container">
+            <div class="comparison-item">
+              <b>あなたの状態</b><br>対話で解決できるという高い視点と情報量を持っている
+            </div>
+            <div class="comparison-item">
+              <b>相手の状況</b><br>傷つくのを恐れ、防衛本能でシャッターを下ろしている
+            </div>
+          </div>
+          次元や持っている情報量が違いすぎると、どんなに言葉を尽くしてもすれ違います。相手が気づくタイミングは相手の権利なので、今はそっと尊重してあげるしかありません。
+        </div>
+      </div>
+
+      <!-- カード12 -->
+      <div class="card">
+        <i class="fa-solid fa-scale-balanced icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-hand-holding-heart"></i> 欲のコントロールと正義
+          <span class="timestamp">50:08</span>
+        </div>
+        <div class="card-content">
+          誤解されたままでは辛い。「悪気はなかったのだから、ちゃんと事情を説明して分かってもらいたい」。そう思うのは人間として当然の「欲（エゴ）」です。しかし今あなたが直面している課題は、まさにその湧き上がる欲を優しく手懐ける「力」のカードの段階にあります。<br><br>
+          この欲を放置して抑圧すると、やがてドロドロとした「悪魔」に変わってしまいます。そうなる前に、「正義」のカードのように感情を一旦天秤から下ろして事実だけを淡々と見つめましょう。説明したい衝動をグッと堪え、あえて「言い訳をしない」「そのままにしておく」という強い意志を貫くことが、今のあなたの魂の成長に繋がります🦁
+        </div>
+      </div>
+
+      <!-- カード13 -->
+      <div class="card">
+        <i class="fa-solid fa-crown icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-arrow-up-right-dots"></i> 女帝へのアップデート
+          <span class="timestamp">54:10</span>
+        </div>
+        <div class="card-content">
+          人と人は対話によって必ず分かり合える。その美しく純粋な乙女座的価値観は、あなたのこれまでの人生において既に最大限の「実りの秋」を迎えました。もうその役割は十分に果たしたのです。だからこそ、今はその古い価値観を一度終わらせ、「冬」を受け入れるタイミングが来ています。<br><br>
+          <div class="speech-bubble">
+            相手が間違った方向に進んで失敗すると分かっていても、あえて手出しや口出しをせずに黙って見守る。そんな厳しさと無償の愛を兼ね備えた「女帝」のような、より深みのある器の大きな女性へとご自身をアップデートしていく、素晴らしい転換期のお祝いなのです👸✨
+          </div>
+        </div>
+      </div>
+
+      <!-- カード14 -->
+      <div class="card">
+        <i class="fa-solid fa-book-journal-whills icon-large"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-landmark"></i> 神話を知り理解を深める
+          <span class="timestamp">01:01:28</span>
+        </div>
+        <div class="card-content">
+          占星術のサイン（星座）やタロットのダイアルカナの本質をより深く、立体的に理解するためには、背景にあるギリシャ神話の物語を知ることが非常に効果的です。<br><br>
+          例えば、ペルセポネとデメテルの神話を知ることで、女帝や隠者、乙女座の本当の意味が繋がり、表面的なキーワード暗記では辿り着けない深いリーディングが可能になります。
+          <div class="highlight-box">
+            📚 <b>おすすめ書籍</b><br>
+            ・和泉先生訳『星空の神々 わかる占星術と神々の物語』<br>
+            文字も小さすぎず非常に読みやすいので、ぜひ手元に置いて辞書代わりに引いてみてください。神話とサインがリンクする面白さに気づけます。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      作成日：2026年3月12日 | 情報源：3月10日勉強会.vtt
+    </footer>
+  </div>
+</body>
+</html>
