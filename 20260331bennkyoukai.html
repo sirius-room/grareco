@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式解説書：トートタロットと生命の木の神秘</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40;
+            --color-2: #DCE0F2;
+            --color-3: #012840;
+            --color-4: #A66A5D;
+            --color-5: #0D0D0D;
+        }
+
+        body {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            font-family: 'Yomogi', 'Kaisei Decol', sans-serif;
+            color: var(--color-5);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-family: 'Kaisei Decol', serif;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 0.15em;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #475569;
+            display: block;
+            font-weight: bold;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 45px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 25px;
+            position: relative;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 800px; /* 500文字以上のテキストを収容するための高さ */
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-family: 'Kaisei Decol', serif;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba(30, 64, 175, 0.2);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+            color: var(--color-1);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .timestamp {
+            font-size: 14px;
+            color: #64748b;
+            margin-left: auto;
+            font-family: sans-serif;
+            background: #eee;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+
+        .icon-large {
+            font-size: 75px;
+            display: block;
+            margin: 25px auto;
+            text-align: center;
+            color: var(--color-3);
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.1));
+        }
+
+        .content {
+            font-size: 15px;
+            text-align: justify;
+            color: #334155;
+            flex-grow: 1;
+            white-space: pre-wrap; /* 改行を反映 */
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.08);
+            border-radius: 20px;
+            padding: 18px;
+            margin: 25px 0;
+            font-size: 14px;
+            border: 1px solid rgba(166, 106, 93, 0.1);
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.08) transparent transparent;
+        }
+
+        .highlight-box {
+            border-left: 5px solid var(--color-1);
+            padding: 15px 18px;
+            background-color: rgba(166, 27, 64, 0.04);
+            margin: 25px 0;
+            font-weight: bold;
+        }
+
+        .keyword {
+            color: var(--color-1);
+            font-weight: bold;
+            text-decoration: underline wavy rgba(166, 27, 64, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding: 50px;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        @media (max-width: 1800px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1200px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-magic"></i> Mayumi式：トートタロット勉強会グラレコ <i class="fas fa-feather-alt"></i></h1>
+            <span class="subtitle">〜生命の木が解き明かす「宇宙の法則」と「現実創造」の方程式〜</span>
+        </header>
+
+        <div class="grid-container">
+            <!-- 01: History -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-scroll"></i> トートタロットの歴史背景 <span class="timestamp">00:15</span></div>
+                <i class="fas fa-book-open icon-large"></i>
+                <div class="content">
+トートタロットは、20世紀最大の魔術師とも称される<span class="keyword">アレスター・クローリー</span>によって、1969年に発表されました。その背景には、近代タロットの礎を築いた「黄金の夜明け団」の深い叡智があります。
+
+有名なウェイト版タロットを制作したアーサー・エドワード・ウェイトが活躍していた1910年頃には、カバラの「生命の木」に関する知識はまだ秘密結社の中で隠されていたものでした。しかし、クローリーがトートタロットを完成させる頃には、それらの知識は完全に公開され、世の中に開かれたものとなっていました。
+
+トートタロットの最大の特徴は、カードの1枚1枚が「生命の木」の思想と密接に結びついている点にあります。単なる占いの道具を超え、宇宙の設計図、あるいは精神の構造を視覚化した「装置」とも言えるでしょう。クローリーは、黄金の夜明け団が解散した後も、その知識をさらに発展させ、この1枚のデッキに宇宙の真理を詰め込んだのです。🏺
+                </div>
+                <div class="speech-bubble">
+                    ウェイトさんの時代にはまだ隠されていた「生命の木」の知識が、このデッキには完全に注ぎ込まれているんですよ。
+                </div>
+            </div>
+
+            <!-- 02: Tetragrammaton -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-atom"></i> テトラグラマトンの術式 <span class="timestamp">02:50</span></div>
+                <i class="fas fa-microchip icon-large"></i>
+                <div class="content">
+コートカード4枚の本質を理解する鍵は、<span class="keyword">テトラグラマトン（四文字名）</span>という宇宙の創造の方程式にあります。ヘブライ語で「ヨッド（Y）」「ヘー（H）」「バウ（V）」「ヘー（H）」という4文字は、神の聖なる名前として知られていますが、実はこれは単なる名前ではなく、宇宙がどのように構成されているかを示す「プログラミングコード」のようなものです。
+
+ヘブライ語には母音の表記がなく、子音だけで構成されるため、これら4文字は「人間には発音できない」とされています。日本語で言えば、母音のない「k・s・t」という音だけでは言葉として成り立たないのと似ています。これは、神聖な法則は人間の言葉や知覚を越えた次元にあり、特定の「発音（現象）」に限定されない、純粋なエネルギー体であることを示しています。
+
+この「ヨッド・ヘー・バウ・ヘー」の4段階のプロセスが、コートカードの「キング・クイーン・ナイト・ページ」にそのまま対応しています。宇宙のどこかにある膨大なエネルギーが、どのようにして私たちの目の前の「現実」へと落ちてくるのか。そのシステムを人格化したのがコートカードなのです。🌌
+                </div>
+                <div class="highlight-box">
+                    人間ごときが発音すらできない「偉大なる神」とは、すなわち「現実を創造する方程式」そのもののことなんです。
+                </div>
+            </div>
+
+            <!-- 03: Creation Energy -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-bezier-curve"></i> 父・母・子のエネルギー循環 <span class="timestamp">05:00</span></div>
+                <i class="fas fa-users-viewfinder icon-large"></i>
+                <div class="content">
+生命の木の上部には、神聖な創造のドラマが描かれています。まず、宇宙のどこかに<span class="keyword">「能動的なエネルギー」</span>としての種（父）が存在します。これがトートタロットにおける「キング（ヨッド）」の役割です。それに対し、その種を受け止めるための<span class="keyword">「受動的なエネルギー」</span>としての器（母）が存在します。これが「クイーン（ヘー）」です。
+
+この二つは、どちらか一方だけでは意味をなしません。種だけでは発芽できず、土や水（器）がなければ生命は育ちません。人間で言えば、精子と卵子のような関係です。この「能動」と「受動」が合体することによって、初めて新しい何かが生まれます。
+
+そうして生まれたのが「子供」であり、それが「ナイト（バウ）」と「ページ（ヘー）」です。父（キング）から母（クイーン）へ渡されたエネルギーが、子供という形になって現れる。このプロセスこそが、この世のあらゆる物事が誕生する仕組みです。コートカードは、この「種を植え、器で育み、形にする」という宇宙の循環プロセスを擬人化して示しているのです。🧬
+                </div>
+                <div class="highlight-box">
+                    父（キング）と母（クイーン）という、役割の違う二つのエネルギーが合体して、初めて「子供（現実）」が生まれてくるんです。
+                </div>
+            </div>
+
+            <!-- 04: Integration -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-infinity"></i> ナイトとページの統合 <span class="timestamp">07:20</span></div>
+                <i class="fas fa-handshake-angle icon-large"></i>
+                <div class="content">
+生まれた子供たちは「双子」として表現されます。一方は「精神的・エネルギー的な自己」であるナイト、もう一方は「物質的・肉体的な自己」であるページです。私たちは肉体を持って生まれてきた瞬間、自分がどこから来たのか、何を達成したいのかという「魂の目的（ナイト）」を忘れてしまいます。そして、単なる物質的な存在（ページ）として日々を過ごし始めます。
+
+しかし、人生の中で深い気づきを得たり、自分を多角的に見つめる視点（高い視座）を手に入れたとき、この離れ離れになっていた双子が出会います。タロットの世界では、これを「双子の結婚」と呼びます。
+
+この<span class="keyword">「魂と肉体の統合」</span>が成されると、人間は最強の状態になります。何かをしたいと思ったときに、いちいち自分をジャッジせず、淡々と行動できるようになります。「失敗したらどうしよう」という低い視点の恐れから解放され、全ての出来事を「実験」や「経験」として楽しむことができるようになるのです。これが、生命の木における「統合された人間」の生き方です。💍
+                </div>
+                <div class="speech-bubble">
+                    魂（ナイト）と肉体（ページ）が結婚すると、いちいちジャッジせずに「とりあえずやってみよう」という淡々とした行動力が生まれるんです。
+                </div>
+            </div>
+
+            <!-- 05: Page of Swords -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-wind"></i> ソードのページ：結果の現実 <span class="timestamp">10:00</span></div>
+                <i class="fas fa-street-view icon-large"></i>
+                <div class="content">
+今回引かれた「ソードのページ」は、私たちのいる現実世界（マルクト）を象徴するカードです。生命の木において、マルクトより上はすべて「目に見えない世界（感情・思考・エネルギー）」です。私たちが普段「現実」と呼んでいるこの物質世界は、実は目に見えないところで行われたあらゆるプロセスの<span class="keyword">「最終結果」</span>に過ぎません。
+
+これを理解するために、<span class="keyword">「絞り出したマヨネーズ」</span>という例えが非常に有効です。マヨネーズを容器から皿にポトッと落としたとき、その落ちた形を後から変えることはできません。成分もすでに混ざりきっています。現実というのも同じで、すでに起きてしまった事象（結果）そのものを直接変えることは不可能なのです。
+
+「ソードのページ」が出るとき、それは「今、目の前にある変えられない現実」を見つめることを意味します。不登校の子供がいる、仕事がうまくいかない…それらはすべて過去の集大成としての「結果」です。しかし、ページにはもう一つの意味があります。それは、その「終わり」の場所から「今、新しく何を始めるか」という<span class="keyword">「始まり」のエネルギー</span>です。結果を受け入れた上で、この肉体を使って何を選択するかが問われているのです。🌱
+                </div>
+                <div class="highlight-box">
+                    現実は「ポトッと落ちたマヨネーズ」。起きてしまった結果は変えられないけれど、そこから「何を始めるか」は自由なんです。
+                </div>
+            </div>
+
+            <!-- 06: High Perspective -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-eye"></i> 被害者意識からの卒業 <span class="timestamp">15:10</span></div>
+                <i class="fas fa-binoculars icon-large"></i>
+                <div class="content">
+目の前の現実（結果）に振り回されているとき、私たちは「被害者の視点」に陥りがちです。「なぜ私だけがこんな目に」「あいつのせいでこうなった」という思考は、生命の木の低い次元（ページ単体の視点）に閉じ込められている状態です。
+
+ここで必要になるのが、ナイトの持つ<span class="keyword">「高い視座」</span>です。これは、自分の人生を一段高いところから俯瞰する視点です。「この不都合な現実を通して、私の魂は何を学ぼうとしているのか？」「私自身にどんなメリットがあって、この出来事を引き起こしたのか？」という問いかけを自分に投げかけます。
+
+生命の木の教えでは、すべての出来事は「自分事」です。自分がいかに被害者であるように見えても、高い視点から見れば、それは魂が成長するためにセッティングした重要なシーンなのです。この「高い視座」が目覚めると、単なる鑑賞や愚痴の世界を卒業し、自分の人生の創造主として、冷静に物事を捉え、最適な次の一歩を踏み出せるようになります。🎓
+                </div>
+                <div class="speech-bubble">
+                    「どうせ意味ない」という目の前の出来事に振り回される世界から、自分を見つめる高い視点へとシフトしていくのが、トートの学びの醍醐味です。
+                </div>
+            </div>
+
+            <!-- 07: Subconscious -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-brain"></i> 潜在意識と地球ルール <span class="timestamp">21:00</span></div>
+                <i class="fas fa-database icon-large"></i>
+                <div class="content">
+私たちは皆、生まれたばかりの赤ちゃんの頃は、生命の木の上層部に近い「神の世界」のような純粋な領域で生きています。そこには快か不快かという純粋な感情しかなく、他人の目も社会のルールも存在しません。子供が神に近いと言われるのは、このためです。
+
+しかし、言葉を覚え、社会に適応していく過程で、親や周囲から大量の<span class="keyword">「地球ルール（制限・固定概念）」</span>を刷り込まれます。「女の子なんだからおしとやかに」「長女だから我慢しなさい」「勉強できないと価値がない」…。これらは知らず知らずのうちに潜在意識の深い部分に蓄積され、私たちの思考や行動のベース（セッティング）となります。
+
+大人になってからの生きづらさや停滞感の多くは、この幼少期に作られた古いセッティングが、今の自分に合わなくなっていることから生じます。現実を変えるためには、やみくもに行動するのではなく、まずはこの潜在意識の中にある「不要になったルール」を見つけ出し、書き換えていく作業が必要なのです。🧠
+                </div>
+                <div class="highlight-box">
+                    お母さんにどう育てられたか。その時に刷り込まれた「自分ルール」が、今のあなたの現実を自動で作ってしまっているんです。
+                </div>
+            </div>
+
+            <!-- 08: Wand 9 -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-shield-alt"></i> ワンドの9：自動運転の疲弊 <span class="timestamp">32:40</span></div>
+                <i class="fas fa-robot icon-large"></i>
+                <div class="content">
+「ワンドの9」が出るとき、それはあなたの活動が<span class="keyword">「自動運転モード」</span>に陥っている可能性を警告しています。かつては胸を熱くし、純粋な情熱（ワンドのエース）で始めたことであっても、時間が経つにつれて「やるのが当たり前」「やらないといけない」という、義務感や防御本能による行動にすり替わってしまうことがあります。
+
+例えば、野球が大好きで夢中で練習していた少年が、いつの間にかプロを目指す重圧や日々のルーチンに追われ、初期の「楽しい！」という純粋なエネルギーを忘れてしまうような状態です。ここにあるのは、情熱ではなく「防衛体制」です。負傷しながらも立ち向かうというキーワードがあるように、しんどいのに止まれない、無意識に頑張り続けてしまっている。
+
+このカードは、「今のあなたの行動に、初期の純粋な熱量はありますか？」と問いかけています。潜在意識が「頑張ること」をデフォルトに設定してしまっているとき、人は自分の疲弊にすら気づかなくなります。一旦立ち止まり、その行動が本当に自分の魂から来ているものなのか、単なる自動運転の習慣なのかを見極める時期なのです。🛡️
+                </div>
+                <div class="speech-bubble">
+                    かつての胸の熱さはもうここにはない。ただ「やるしかない」と防御を固めてしまっている状態に、アンテナを向けてみてください。
+                </div>
+            </div>
+
+            <!-- 09: The World -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-globe-asia"></i> 世界：土星による結晶化 <span class="timestamp">34:50</span></div>
+                <i class="fas fa-ring icon-large"></i>
+                <div class="content">
+大アルカナの最後、21番「世界」は、土星のエネルギーに対応しています。土星には「枠を作る」「制限する」「固める（結晶化させる）」という性質があります。生命の木においても、上層部の3番（ビナー）と一番下の世界を繋ぐ道であり、どちらも土星の象徴を帯びています。
+
+これは、宇宙の膨大なエネルギーを、私たちが認識できる<span class="keyword">「物質的・現実的な形」</span>に閉じ込める力を意味します。私たちは、この「土星の枠」があるからこそ、日本という国に生まれ、この体という制限を持ち、この時代を生きることができます。枠がなければ、すべては形を失い、霧散してしまいます。
+
+「世界」が出るとき、それは一つの物語が完全に結晶化したことを意味します。自分の持っている初期設定（才能や環境）を使い切り、一つの「結果」として現実を完成させた状態。それは一つのサイクルの終わりであると同時に、完璧な到達点でもあります。自分が作り上げてきたこの「枠組み」が、今の自分を救っているのか、あるいは閉じ込めているのか。その結果を総括する時期であることを示しています。🪐
+                </div>
+                <div class="highlight-box">
+                    自分の生まれながらの素地をどう調理しましたか？その最終的な答えが「今、ここにある世界」なんです。
+                </div>
+            </div>
+
+            <!-- 10: Lack vs Fullness -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-balance-scale"></i> 欠乏ではなく資質を見る <span class="timestamp">37:00</span></div>
+                <i class="fas fa-lightbulb icon-large"></i>
+                <div class="content">
+「世界」のカードが示す現実は、私たちがどこに意識を向けたかの鏡です。多くの人は、自分が「持っていないもの（欠乏）」に焦点を当てて人生を構築しようとします。「学歴がないから資格を取らなきゃ」「お金がないから節約しなきゃ」という「ない」からのスタートは、結局「ないことを埋めるためのハードな世界」を完成させます。
+
+対照的に、自分がすでに「持っている資質」に焦点を当てた場合、全く違う「世界」が立ち上がります。例えば、勉強は苦手だけれどコミュニケーションが天才的に上手な人が、その「上手な部分」を活かして生きたとき、周囲に笑顔が溢れる調和した現実が結晶化します。
+
+「世界」のカードは「良い・悪い」をジャッジしません。ただ、「あなたが意識を向け、使ってきたエネルギーが、この形になりましたよ」という結果をフラットに提示してくれます。今の現実が望むものでないなら、それは自分のどの能力を否定し、どの欠乏を埋めようとしてきたのかを見直すチャンスです。自分の持っている資質を正しく愛し、スポットライトを当てる場所を変えることで、次に完成させる「世界」は全く別のものになるのです。💡
+                </div>
+                <div class="speech-bubble">
+                    「ない」ところにフォーカスしちゃうと、ここはハード。でも「持ってる」方に焦点を当てられれば、現実はガラッと変わります。
+                </div>
+            </div>
+
+            <!-- 11: Wheel of Fortune -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-dharmachakra"></i> 運命の輪：掌を開く勇気 <span class="timestamp">46:30</span></div>
+                <i class="fas fa-hand-paper icon-large"></i>
+                <div class="content">
+「運命の輪」は、単なる棚ぼた的な幸運を呼ぶカードではありません。このカードのヘブライ文字「カフ」は「掌（手のひら）」を象徴し、前のカードである「隠者」の「ヨッド（拳）」と対になっています。隠者は、自分自身の内側へ深く入り込み、拳を固く握りしめて「私は何を大切にしているのか？」「何を握りしめて離さないのか？」を追求するプロセスです。
+
+そして、その自問自答を経て、握りしめていた拳をパッと開いた状態が「運命の輪」です。拳を開くということは、執着を手放し、自分の可能性という「種」を掌に見つけることです。しかし、開いただけでは不十分です。その掌にある種を、実際に現実の土壌に<span class="keyword">「植える（行動する）」</span>という決断が必要です。
+
+多くの人は「いつかチャンスが来たら」と種を掌に乗せたまま待ち続けますが、それでは輪は回りません。握りしめていた古い観念（安心安全だと思い込んでいた記憶）を手放し、新しい種を植える。そうすることで初めて、宇宙の歯車が噛み合い、人生のサイクルが次なる高いステージへと加速していくのです。🌻
+                </div>
+                <div class="highlight-box">
+                    開いた手のひらの中にある種を、現実の土に「植える」かどうかが、運命の輪を回すカギなんです。
+                </div>
+            </div>
+
+            <!-- 12: Stage Change -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-redo-alt"></i> サイクルと「気づき」 <span class="timestamp">56:00</span></div>
+                <i class="fas fa-sync icon-large"></i>
+                <div class="content">
+人生には繰り返されるパターンがあります。いつも同じようなタイプの男性に裏切られる、どの職場に行っても最後は人間関係で疲弊して辞めてしまう…。これらは運命の輪が「同じ階層でぐるぐる回っている」状態です。
+
+このループから抜け出す唯一の手段が「気づき」です。自分の潜在意識の奥底にある、「こうしないと愛されない」「私が全部やらなきゃいけない」といった古いプログラム（セッティング）に、高い視座から光を当てて「あ、私また同じことやってる！」と気づくこと。気づきが起きた瞬間、輪の軸は一段上の階層へと移動します。
+
+しかし、気づくだけでは不十分だとMayumi先生は強調します。気づいたあとに、現実世界で<span class="keyword">「今まで取らなかった選択（行動）」</span>を実際に取ることが重要です。例えば、いつもなら断れない場面で「できません」と勇気を持って言うこと。この勇気ある一歩（種植え）が、物理的な現実を変え、あなたを全く新しい「世界線」へと運んでくれるのです。🔓
+                </div>
+                <div class="speech-bubble">
+                    気づかなかったらこの輪っかは、いつまでもぐるぐる回っちゃう。気づいて行動して初めて、ステージが変わるんです。
+                </div>
+            </div>
+
+            <!-- 13: Art (Temperance) -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-palette"></i> アート（節制）：内なる錬金術 <span class="timestamp">62:00</span></div>
+                <i class="fas fa-vial icon-large"></i>
+                <div class="content">
+トートタロットにおける「節制」は、単なる自制ではなく<span class="keyword">「アート（技・芸術）」</span>と呼ばれます。これは人生における究極のバランスを整える「大いなる技」のカードです。中央に描かれた大釜の中で、自分の「理性の建前」と「潜在意識の本音」、さらには「喜び」と「悲しみ」といった、一見相反する要素をごまかしなく混ぜ合わせていきます。
+
+これは非常に高度で大変な作業です。自分自身のドロドロした部分や見たくない部分も、すべて一つの素材として受け入れ、最適な配合（良い塩梅）で統合していくプロセスだからです。この調和が完成したとき、大釜からは「虹」が誕生します。
+
+この虹は、人生のあらゆる要素がキラキラと輝き、完璧な調和を持って繋がり合う状態を象徴しています。自分の本音に嘘をつかず、かといって感情に流されるだけでもない。すべてを「大いなる技」として調理し、自分だけの美しい人生という芸術作品を練り上げる。このカードは、私たちが人生の「錬金術師」であることを思い出させてくれます。🌈
+                </div>
+                <div class="highlight-box">
+                    本音と建前をごまかしなく混ぜ合わせる。この「虹を作る作業」こそが、人生における大いなる技なんです。
+                </div>
+            </div>
+
+            <!-- 14: Sagittarius -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-location-arrow"></i> 意志の矢を高く射る <span class="timestamp">66:30</span></div>
+                <i class="fas fa-bullseye icon-large"></i>
+                <div class="content">
+「アート（節制）」のカードは、占星術の射手座に対応しています。射手座は「弓矢を射る人」ですが、タロットの文脈では、この矢は<span class="keyword">「純化された意志」</span>を象徴しています。大釜で様々な要素を混ぜ、自分自身の本音と統合させた後に残る、一点の曇りもない「本当の願い」。
+
+その意志の矢を、生命の木の中央に位置する「ティファレト（美・真実の自己）」に向かって真っ直ぐに放ちます。これは、迷いや雑念を振り払い、「私はこの人生でこれを成し遂げるのだ」という魂の誓いを宇宙へと届ける行為です。
+
+意志が一点に集中したとき、エネルギーは驚くほどの加速を見せます。中途半端な「こうなればいいな」という願いではなく、内なる錬金術（アート）を通過した後の、強固で美しい意志。それが宇宙の創造の源へと届けられたとき、現実はその意志に呼応するように、ダイナミックに再構成され始めます。目的地を定め、高く矢を放つ強さが、今のあなたに求められています。🏹
+                </div>
+                <div class="speech-bubble">
+                    自分の意志を、ごまかしのないところで一本に束ねて。その矢を高い自分（ハイヤーセルフ）に向かってビュッと打つんです。
+                </div>
+            </div>
+
+            <!-- 15: Mind & Body -->
+            <div class="card">
+                <div class="section-title"><i class="fas fa-heartbeat"></i> 肉体という尊い乗り物 <span class="timestamp">70:00</span></div>
+                <i class="fas fa-spa icon-large"></i>
+                <div class="content">
+トートタロットや生命の木の深い学びの終着点は、実は<span class="keyword">「肉体の重要性」</span>にあります。どれほど高い視座を持ち、潜在意識の書き換えを試みても、この三次元の世界でそれを体現し、動かすのは私たちの「体」です。心と体は表裏一体であり、切り離すことはできません。
+
+精神的な気づき（統合）が起きると、それまでマッサージをしても何をやってもガチガチだった体の筋が、ふっと緩むという現象が実際に起きます。これは、目に見えないエネルギーの滞りが解消された証拠です。逆に言えば、体を蔑ろにしていては、高いエネルギーを受け止めることも、種を植えることもできません。
+
+今回、参加者のサナエさんが怪我をされたことも、一つの大きなメッセージかもしれません。不便さを通して「肉体がいかに大切か」「この乗り物をどれだけケアしてあげているか」という問いが来ています。生命の木を実生活に活かすとは、エネルギーだけでなく、この尊い肉体をも一緒に整え、慈しんでいくこと。心身が真に整ったとき、あなたは人生の畑で最高の種を植え、豊かな収穫を迎えられるようになるでしょう。🧘
+                </div>
+                <div class="highlight-box">
+                    エネルギーだけ、心だけ、では不十分。この「肉体」という乗り物を大切にして、心と一緒に整えていくことが、現実を動かす鍵なんです。
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <i class="far fa-calendar-alt"></i> 解説書作成日：2026年4月1日 | <i class="fas fa-book"></i> 資料：Mayumi先生 0331勉強会 文字起こしより詳細に構成
+        </footer>
+    </div>
+</body>
+</html>
