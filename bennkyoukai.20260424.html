@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式 勉強会完全解説書: 生命の木とタロットの深層</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-1 */
+            --color-2: #DCE0F2; /* SHOOTING-2 */
+            --color-3: #012840; /* SHOOTING-3 */
+            --color-4: #A66A5D; /* SHOOTING-4 */
+            --color-5: #0D0D0D; /* SHOOTING-5 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: #f9f7f1;
+            font-family: 'Kaisei Decol', 'Yomogi', 'Zen Kurenaido', sans-serif;
+            color: var(--color-5);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .main-title {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .section-header {
+            font-size: 22px;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--color-4);
+            padding-bottom: 8px;
+        }
+
+        .section-header i {
+            animation: bounce 2s infinite;
+        }
+
+        .timestamp {
+            font-size: 13px;
+            color: #64748b;
+            margin-left: auto;
+            font-family: sans-serif;
+            font-weight: normal;
+        }
+
+        .icon-large {
+            font-size: 75px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            opacity: 0.7;
+        }
+
+        .content-text {
+            font-size: 15px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.12);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+            border-left: 5px solid var(--color-4);
+        }
+
+        .highlight-box {
+            border-left: 5px solid var(--color-1);
+            padding: 12px 15px;
+            background-color: rgba(220, 224, 242, 0.4);
+            margin: 18px 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 14px;
+        }
+
+        .comparison-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(166, 106, 93, 0.1);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--color-2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+            color: var(--color-3);
+            font-weight: bold;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .detail-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .detail-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--color-1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-6px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        @media (max-width: 1700px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1100px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .grid-container { grid-template-columns: 1fr; } }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            color: #64748b;
+            border-top: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="main-title">
+            <i class="fas fa-scroll"></i> Mayumi式 生命の木×タロット 勉強会完全解説 <i class="fas fa-bahai"></i>
+        </div>
+        <div class="subtitle">
+            <i class="fas fa-brain"></i> キーワードの先にある「宇宙の設計図」と「心理学的変容」
+        </div>
+    </header>
+
+    <div class="grid-container">
+        <!-- Card 1: The Core Concept -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-lightbulb"></i> メソッドの本質
+                <span class="timestamp">(00:15)</span>
+            </div>
+            <i class="fas fa-key icon-large"></i>
+            <div class="content-text">
+                札幌を拠点に活動する<b>鈴木麻由美先生</b>による、カバラの「生命の木」と「タロット」を融合させた学習法。多くの占い師が陥る<b>キーワード暗記の限界</b>を突破することを目指します。
+                <div class="highlight-box">
+                    タロット作者アーサー・エドワード・ウェイトは、この神秘思想を基にデッキを設計した。作者の意図を汲むことで「何一つ曖昧なカードは存在しない」ことが理解できる。
+                </div>
+                「豊かさ」という同じキーワードを持つカード（ペンタクルの9とクイーン等）の明確な違いを、配置（設計図）から論理的に導き出します。
+            </div>
+        </div>
+
+        <!-- Card 2: Tree Structure -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-sitemap"></i> 生命の木の構造
+                <span class="timestamp">(03:19)</span>
+            </div>
+            <i class="fas fa-project-diagram icon-large"></i>
+            <div class="content-text">
+                生命の木は、10個の「セフィラ（円）」と、それらを繋ぐ22本の「パス（線）」で構成されています。
+                <ul class="detail-list">
+                    <li><b>セフィラ：</b> 小アルカナの数札（1〜10）に対応。エネルギーが物質化するまでの各段階を示す。</li>
+                    <li><b>パス：</b> 大アルカナ（22枚）に対応。エネルギーが移動するプロセスや「通り道」を象徴する。</li>
+                </ul>
+                <div class="speech-bubble">
+                    「本来は西洋占星術やヘブライ語などの難解な知識が必要だが、それをいかに簡単に、直感的に扱えるようにするかが麻由美先生の工夫の核心」
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Four Worlds & Reality -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-globe"></i> 世界の4層と心理構造
+                <span class="timestamp">(21:40)</span>
+            </div>
+            <i class="fas fa-mountain icon-large"></i>
+            <div class="content-text">
+                生命の木は上下で異なる次元を表します。一番下の10番（マルクト）だけが目に見える<b>現実世界</b>であり、他はすべて潜在意識や精神の領域です。
+                <div class="comparison-container">
+                    <div class="comparison-item">
+                        <div><b>最上層：</b> 宇宙・神の領域。カオスで純粋、圧倒的な可能性の塊。善悪やルールが存在しない。</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div><b>中層：</b> 私たちの魂・ハイヤーセルフ、そして思考と感情が交差する三角形の領域。</div>
+                    </div>
+                </div>
+                現実は「見えない世界」でのエネルギーの結果に過ぎません。現実を動かそうと焦るのではなく、上流のエネルギーを書き換えることが変容の鍵となります。
+            </div>
+        </div>
+
+        <!-- Card 4: Maki-chan: Pentacles 3 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-user-edit"></i> まきちゃん：設定の構築
+                <span class="timestamp">(15:11)</span>
+            </div>
+            <i class="fas fa-pencil-alt icon-large"></i>
+            <div class="content-text">
+                <div class="tag">ペンタクルの3</div>
+                3番のセフィラは「物語の設定が決まる場所」。これから現実化するための土台や素地。
+                <div class="highlight-box">
+                    50代半ば、子育てを終えて「これからは自分の人生だ」と決めた瞬間、新しい物語のスペックがこの場所で設定されている。
+                </div>
+                <div class="tag">恋人（Path 6）</div>
+                純粋な感情。エデンの園のイブのように、理性（アダム）や社会のルールよりも、自分の「やりたい！楽しい！」という無垢な感覚に繋がることが、宇宙のエネルギーを受け取る最大の突破口になります。
+            </div>
+        </div>
+
+        <!-- Card 5: Reiko-san: Wands 9 -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-user-shield"></i> レイコさん：自動運転
+                <span class="timestamp">(39:37)</span>
+            </div>
+            <i class="fas fa-sync icon-large"></i>
+            <div class="content-text">
+                <div class="tag">ワンドの9</div>
+                9番のセフィラは「潜在意識・自動運転」の場所。95%以上の無意識が人生を支配しています。
+                <ul class="detail-list">
+                    <li><b>無意識の防衛：</b> かつて胸を熱くした情熱も、ここでは「やって当たり前」の条件反射になっている。</li>
+                    <li><b>パターンの反復：</b> 職場などで「いつもこの役割をやってしまう」という反射的な振る舞い。</li>
+                </ul>
+                <div class="speech-bubble">
+                    「一生懸命防御している姿は、本人にとっては当たり前でも、周りから見れば『もう終わらせていい段階』に見えているかもしれない」
+                </div>
+                この自動運転に「気づく」ことで、次のステージである10番へ抜け、新しいサイクルを始められます。
+            </div>
+        </div>
+
+        <!-- Card 6: Yuka-san: The Empress -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-user-gratitude"></i> ゆかさん：受け取りの統合
+                <span class="timestamp">(01:00:42)</span>
+            </div>
+            <i class="fas fa-hand-holding-heart icon-large"></i>
+            <div class="content-text">
+                <div class="tag">女帝（The Empress）</div>
+                異質なエネルギーを結合し、命を育む力。
+                <div class="highlight-box">
+                    「もらうだけの自分には価値がない」という等価交換の思い込みを、女帝の「もらえるならもらうわ！」という圧倒的な受容性で統合する。
+                </div>
+                <div class="tag">女司祭との交差</div>
+                ゆかさんの「長女気質・真面目さ」というルールを司るパスを、女帝のパスがぶった切っている配置。ルールを無視してやりたいことをやる「ダークな自分」を認めることで、宇宙からのエネルギーがスムーズに降りてくるようになります。
+            </div>
+        </div>
+
+        <!-- Card 7: Mirei: The Magician -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-user-wizard"></i> ミレッチ：知性と愛嬌
+                <span class="timestamp">(03:31) ※2枚目</span>
+            </div>
+            <i class="fas fa-bolt icon-large"></i>
+            <div class="content-text">
+                <div class="tag">魔術師（The Magician）</div>
+                伝達の神ヘルメス。知性、言葉、そして「盗みの神」としてのずる賢さ。
+                <ul class="detail-list">
+                    <li><b>自分を整える：</b> 新たにビジネスを始めるにあたって、自分の持っているリソース（素地）をすべて棚卸しする段階。</li>
+                    <li><b>可愛がられ力：</b> 自分で全部やるのではなく、いかに周囲に甘え、自分のために動いてもらうか。</li>
+                </ul>
+                <div class="speech-bubble">
+                    「ずる賢さとは、人との繋がりの中で生きること。自分の苦手なことは誰かに頼み、愛される存在として枠組みを作るのが今のミレッチの課題」
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8: Method: Indirect Consultation -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-user-md"></i> 占わない占いの手法
+                <span class="timestamp">(16:50)</span>
+            </div>
+            <i class="fas fa-eye icon-large"></i>
+            <div class="content-text">
+                生命の木を使ったセッションでは、最初に相談内容を細かく聞く必要がありません。
+                <div class="highlight-box">
+                    1. カードが示す抽象的な概念（宇宙の法則）を徹底的に説明する。<br>
+                    2. 相談者の脳が、その概念と自身の近況を勝手に結びつける（投影）。
+                </div>
+                占い師が未来を当てるのではなく、相談者が自分の内側にある答えに気づくプロセスを、タロットという「設計図」を使ってガイドする手法です。
+            </div>
+        </div>
+
+        <!-- Card 9: Tool: Grounded Inner Work -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-drafting-compass"></i> 泥臭い内観ツール
+                <span class="timestamp">(38:46)</span>
+            </div>
+            <i class="fas fa-shoe-prints icon-large"></i>
+            <div class="content-text">
+                タロットは神秘的でキラキラしたものではなく、非常に地に足のついた「人生を見つめるツール」です。
+                <div class="speech-bubble">
+                    「数十年生きてきた私たちの人生経験には、無難なものなど一つもない。しんどかったあの経験は、生命の木のこの場所の体験だったんだと解明していく作業」
+                </div>
+                自分の実体験が地図に乗ることで、言葉に圧倒的な熱量（エネルギー）が宿ります。それが相談者の心に深く刺さり、本当の変容を促す力となります。
+            </div>
+        </div>
+
+        <!-- Card 10: Conclusion: The New Standard -->
+        <div class="card">
+            <div class="section-header">
+                <i class="fas fa-flag-checkered"></i> 結びに：生命の木の恩恵
+                <span class="timestamp">(12:45) ※2枚目</span>
+            </div>
+            <i class="fas fa-door-open icon-large"></i>
+            <div class="content-text">
+                生命の木という「根っこ」を理解すると、その後のタロット学習と実践が劇的に楽になります。
+                <div class="highlight-box">
+                    ・恋愛、仕事などジャンルごとの意味を覚える必要がなくなる。<br>
+                    ・偶然出たカードを無理やり繋げる「嘘」がいらなくなる。<br>
+                    ・相談者の「無意識の反応」を可視化し、軽やかにできる。
+                </div>
+                自分自身を深く知り、他者の人生をサポートするための、一生もののナビゲーションシステムを手に入れる。それが麻由美先生が伝える生命の木の世界です。
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        2026年4月24日 勉強会 記録 | 講師: 鈴木麻由美 | 解説書作成: グラレコ作成AI<br>
+        ※この資料は提供された2枚の音声文字起こし(VTT)を統合し、全内容を網羅して構成されています。
+    </footer>
+</div>
+
+</body>
+</html>
