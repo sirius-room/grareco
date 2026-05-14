@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayumi式タロット解説書：ワンドの8と生命の木（詳細版）</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Yomogi&family=Zen+Kurenaido&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+        :root {
+            --color-1: #A61B40; /* SHOOTING-1: 赤 */
+            --color-2: #DCE0F2; /* SHOOTING-2: 薄青灰 */
+            --color-3: #012840; /* SHOOTING-3: 紺 */
+            --color-4: #A66A5D; /* SHOOTING-4: 茶 */
+            --color-5: #0D0D0D; /* SHOOTING-5: 黒 */
+            --bg-color: #f9f7f1;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e0e0e0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+            background-size: 30px 30px;
+            background-color: var(--bg-color);
+            color: var(--color-5);
+            font-family: 'Kaisei Decol', 'Yomogi', 'Zen Kurenaido', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 42px;
+            background: linear-gradient(45deg, var(--color-3), var(--color-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            display: inline-block;
+            position: relative;
+        }
+
+        h1 i {
+            font-size: 32px;
+            color: var(--color-1);
+            margin: 0 20px;
+            -webkit-text-fill-color: initial;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+            margin-top: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--color-2);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .timestamp {
+            font-size: 14px;
+            color: var(--color-4);
+            margin-left: auto;
+            font-family: 'Yomogi', sans-serif;
+        }
+
+        .icon-large {
+            font-size: 70px;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            color: var(--color-3);
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .content {
+            font-size: 15px;
+            color: #334155;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background-color: rgba(166, 106, 93, 0.08);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+            border: 1px solid rgba(166, 106, 93, 0.1);
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: rgba(166, 106, 93, 0.1) transparent transparent;
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--color-1);
+            padding-left: 15px;
+            background-color: rgba(166, 27, 64, 0.03);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .comparison-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .comparison-item {
+            background-color: rgba(220, 224, 242, 0.3);
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            background-color: var(--color-2);
+            font-size: 12px;
+            margin-right: 5px;
+            color: var(--color-3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            border-top: 1px solid var(--color-2);
+            color: var(--color-4);
+            font-family: 'Yomogi', sans-serif;
+        }
+
+        @media (max-width: 1600px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .grid-container { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-bolt"></i> Mayumi式タロット解説書 <i class="fas fa-fire"></i></h1>
+        <div class="subtitle"><i class="fas fa-calendar-alt"></i> 2026.05.14 勉強会記録：ワンドの8が教える「エネルギーの着地点」</div>
+    </header>
+
+    <div class="grid-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-image"></i> ワンドの8の第一印象 <span class="timestamp">(00:26)</span></div>
+            <i class="fas fa-wind icon-large"></i>
+            <div class="content">
+                ウエイト版タロットの中でも珍しく<strong>「人物が一切描かれていない」</strong>カード。一見すると無機質に棒が飛んでいるだけのようですが、実は非常に直球で迷いのないエネルギー。
+                <div class="speech-bubble">
+                    早苗さん：「他のカードと違って人がいないから、余計な感情や関係性に邪魔されない。直球勝負でズバーンと来る感じがして、私はこのカードが好き。勢いだけを伝える時に使えます」
+                </div>
+                空を横切る8本の棒は、以前に放たれた矢が目的地に到着する直前の姿。無意識的にもう「そこに向かうしかない」スピード感を表します。
+                <div class="comparison-container">
+                    <div class="comparison-item"><i class="fas fa-fast-forward"></i> 急展開・チャンスの到来</div>
+                    <div class="comparison-item"><i class="fas fa-paper-plane"></i> 通信・迅速な解決・遠距離</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-tree"></i> 四元素のエネルギー階層 <span class="timestamp">(03:33)</span></div>
+            <i class="fas fa-layer-group icon-large"></i>
+            <div class="content">
+                生命の木で見ると、ワンドは最も抽象的な<strong>生命エネルギー</strong>。私たちがなぜ生きているのか分からないけれど、ただ命を燃やす「源泉」の部分を司っています。
+                <div class="highlight-box">
+                    ワンド（火）：魂の燃焼、根源的な生きる意欲<br>
+                    カップ（水）：感情の揺れ、燃やす対象への愛着<br>
+                    ソード（風）：思考による選別、整理、情報の分類<br>
+                    ペンタクル（土）：肉体、経験、目に見える成果
+                </div>
+                ワンドのエネルギーが水や風の層を降りてきて、ようやく「自分にとってこれは占いだ」「これは野球だ」と具現化される前の、純粋な上昇気流のような段階です。
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-thermometer-half"></i> 熱から「保温」への変化 <span class="timestamp">(08:53)</span></div>
+            <i class="fas fa-burn icon-large"></i>
+            <div class="content">
+                ワンドの数字が進むにつれ、火の性質は変化します。5番で燃え盛り、6番でちょうど良い温度になりますが、8番に到着すると<strong>「保温」</strong>のような安定した状態になります。
+                <div class="comparison-container">
+                    <div class="comparison-item"><strong>1〜5：</strong> 燃え盛る純粋な炎、激しい情熱</div>
+                    <div class="comparison-item"><strong>6〜7：</strong> 加熱されつつ、少し整理される</div>
+                    <div class="comparison-item"><strong>8：</strong> <span class="tag">保温状態</span> 概念が固まり情報化された</div>
+                    <div class="comparison-item"><strong>9〜10：</strong> 無意識の自動化、もはや義務的な重圧</div>
+                </div>
+                8番は、胸の熱さよりも「整理整頓された情報」としてビュンビュン降りてくる、彗星（情報・思考）の場所にあるエネルギーなのです。
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-arrows-split-up"></i> 8番目の分岐点 <span class="timestamp">(13:31)</span></div>
+            <i class="fas fa-code-branch icon-large"></i>
+            <div class="content">
+                エネルギーが整理されたからこそ、次は「自覚を持って選べるチャンス」です。何もしなければ、そのまま無意識的に「やるのが当たり前」の9番、10番（重圧）へと移行してしまいます。
+                <div class="speech-bubble">
+                    Mayumi：「かつての情熱が保温状態であることに気づくこと。気づけば、意識的に終わらせることも、もう一度激しく燃え上がらせることもできる。自分の意志で選べるのがこの8番の醍醐味」
+                </div>
+                研磨し続けてきた結果、何の迷いもなくコントロールされて到着する稲妻のような力が今、手の中にあります。
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-brain"></i> 早苗さんの気づき：鎧を脱ぐ <span class="timestamp">(25:54)</span></div>
+            <i class="fas fa-shield-alt icon-large"></i>
+            <div class="content">
+                早苗さんは<strong>「喜ばれること ＝ 役に立つこと」</strong>という固定観念に縛られていた自分に気づきました。これは、自分の存在価値を「成果」に依存させていた状態です。
+                <div class="speech-bubble">
+                    早苗さん：「役に立たないことは喜ばれないと思い込んでいて、自分を追い込んでいた。でも、役に立つかどうかは相手が決めること。私はただ、自分の感覚で置けばよかった。鎧を脱いだような感覚です」
+                </div>
+                「こうでなければならない」という思考の壁（悪魔のパス）を壊し、太陽のような無邪気な認識へ移行することで、未来の9や10にある「しんどさ」を回避した瞬間でした。
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-adjust"></i> 由佳さんの現在地：整える <span class="timestamp">(56:46)</span></div>
+            <i class="fas fa-spa icon-large"></i>
+            <div class="content">
+                由佳さんは今、社会的な役割や「誰かのために」を一旦休み、<strong>「自分が整うこと」</strong>を最優先しています。これは自分の内側を満たすための大切なリハビリ期間。
+                <div class="speech-bubble">
+                    由佳さん：「今は何もしたくない、ただ寝ていたいし雲を眺めていたい。でも、そんな自分に『これでいいの？』と囁く自動思考の癖がある。それを意識的に『今は緩もう』と自分に言い聞かせています」
+                </div>
+                <div class="highlight-box">
+                    引いたカード：<br>
+                    <i class="fas fa-sword"></i> <strong>ソードのエース</strong><br>
+                    → 余計な思考を断ち切り、整った先にだけ「真実の言葉」が降りてくることを示唆しています。
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-link"></i> 役に立ちたい「欲」と境界線 <span class="timestamp">(01:10:44)</span></div>
+            <i class="fas fa-user-shield icon-large"></i>
+            <div class="content">
+                「役に立ちたい」という想いは素晴らしいものですが、度が過ぎると自分を搾取させる<strong>「首枷（くびき）」</strong>になってしまいます。タロットの「力」のカードに描かれるライオンも、花の首枷で繋がれています。
+                <div class="comparison-container">
+                    <div class="comparison-item"><strong>過去：</strong> 純粋な活動の原動力（成長のために必要だった）</div>
+                    <div class="comparison-item"><strong>現在：</strong> 自分を縛り、消耗させる「欲」の一部</div>
+                </div>
+                <div class="speech-bubble">
+                    Mayumi：「何もしていなくても受け取っていい。自分を守るための境界線（プロテクション）を引くこと。それは今までの道徳観をアップデートするタイミング」
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-gem"></i> 過去の自分へのギフト <span class="timestamp">(01:16:33)</span></div>
+            <i class="fas fa-gift icon-large"></i>
+            <div class="content">
+                今、もし何もせずに支えられている状況があるなら、それは過去の由佳さんが懸命に徳を積み、人間関係を築いてきた「結果」です。人柄という資産があるからこそ、今休めるのです。
+                <div class="highlight-box">
+                    現在は「ボーナスタイム」。<br>
+                    過去の自分に「ありがとう」を言う時期。
+                </div>
+                何もしていない自分に罪悪感を持つ必要はありません。支えてくれる人がいるのは、あなたがそれだけ愛される行動をしてきた証拠。タロットの「女帝」のように、ゆったりと受け取る豊かさを味わう時です。
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-apple-alt"></i> メンタルと栄養の意外な関係 <span class="timestamp">(01:04:10)</span></div>
+            <i class="fas fa-vial icon-large"></i>
+            <div class="content">
+                意欲が湧かない、思考がまとまらない。それは精神の問題だけではなく、単純な<strong>「肉体の栄養不足」</strong>かもしれません。脳のメモリを空けるには、まず体を満たすこと。
+                <div class="comparison-container">
+                    <div class="comparison-item"><strong>タンパク質：</strong> 動物性 ＋ 植物性（大豆など）のセット摂取</div>
+                    <div class="comparison-item"><strong>微量元素：</strong> 鉄分やビタミンが意欲を支える</div>
+                    <div class="comparison-item"><strong>睡眠：</strong> 不足すると「おバカ思考」になり、同じところを回る</div>
+                </div>
+                喉を労るハチミツや朝のプロテイン。そういった具体的なペンタクル（現実的アプローチ）が、ワンド（意欲）を再燃させる土台になります。
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-check-circle"></i> 結論：柔軟なアップデート <span class="timestamp">(01:28:54)</span></div>
+            <i class="fas fa-sync icon-large"></i>
+            <div class="content">
+                「1年前の正解」に縛られず、常に今の自分に合わせて情報をアップデートしましょう。情報がありすぎる現代、唯一のモノサシは「今の自分が調子いいかどうか」だけです。
+                <div class="highlight-box">
+                    思考（ソード）を整理し、心（カップ）を休ませ、体（ペンタクル）に栄養を。
+                </div>
+                これらが統合されたとき、ワンドの8が示す「直感的なスピード感」が再びあなたを新しいステージへと運んでくれます。
+                <div class="speech-bubble">
+                    「頑張る」の形を変えながら、この変化の時期を楽しんでいきましょう！
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-pen-nib"></i> Created on 2026.05.14 | Source: タロット勉強会 ライブログ（Mayumi, Sanae, Yuka）</p>
+        <p>※本資料は対話の要点を凝縮し、可視化したものです。個人の内省と学びに活用してください。</p>
+    </footer>
+</div>
+
+</body>
+</html>
