@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi式タロット×生命の木 勉強会解説書</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Yomogi&family=Zen+Kurenaido&display=swap');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    :root {
+      --color-1: #A61B40; /* SHOOTING-[23']-1: 深い赤 */
+      --color-2: #DCE0F2; /* SHOOTING-[23']-2: 淡いブルーグレー */
+      --color-3: #012840; /* SHOOTING-[23']-3: 深いネイビー */
+      --color-4: #A66A5D; /* SHOOTING-[23']-4: くすんだ桃茶 */
+      --color-5: #0D0D0D; /* SHOOTING-[23']-5: 漆黒 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e2e8f0" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #fcfbfa;
+      color: var(--color-5);
+      font-family: 'Yomogi', 'Zen Kurenaido', 'Kaisei Decol', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+
+    /* ヘッダーデザイン */
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-1);
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0px var(--color-2);
+    }
+
+    header h1 i {
+      font-size: 28px;
+      color: var(--color-4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    header p {
+      font-size: 16px;
+      color: var(--color-4);
+      font-weight: bold;
+    }
+
+    /* 5カラムグリッドレイアウト */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    /* カード装飾（枠線なし、背景なじみ） */
+    .card {
+      background-color: transparent;
+      padding: 15px;
+      border-radius: 15px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* セクション見出し */
+    .section-title {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      color: var(--color-3);
+      border-bottom: 2px dashed var(--color-4);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .section-title span.title-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      color: var(--color-1);
+      animation: pulse 2s infinite;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: var(--color-4);
+      background-color: var(--color-2);
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-family: sans-serif;
+    }
+
+    /* 大きなアイコン */
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      color: var(--color-4);
+      opacity: 0.85;
+    }
+
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(220, 223, 242, 0.4); /* color-2の透明度版 */
+      border: 1px dashed var(--color-4);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(220, 223, 242, 0.4) transparent transparent;
+    }
+
+    /* 比較コンテナ */
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .comparison-item {
+      background-color: rgba(166, 106, 93, 0.08); /* color-4の極薄版 */
+      padding: 12px;
+      border-radius: 10px;
+      flex: 1;
+      font-size: 13px;
+    }
+
+    .comparison-item h4 {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--color-1);
+      font-size: 14px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid var(--color-4);
+      padding-bottom: 3px;
+    }
+
+    /* ハイライトボックス */
+    .highlight-box {
+      border-left: 4px solid var(--color-1);
+      padding-left: 12px;
+      background-color: rgba(220, 223, 242, 0.15);
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .highlight-box h4 {
+      font-family: 'Kaisei Decol', serif;
+      color: var(--color-3);
+      margin-bottom: 5px;
+    }
+
+    /* キーワード装飾 */
+    .keyword {
+      font-weight: bold;
+      color: var(--color-1);
+      background: linear-gradient(transparent 70%, var(--color-2) 30%);
+      padding: 0 2px;
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 20px;
+      border-top: 1px dashed var(--color-4);
+      color: var(--color-4);
+      font-size: 14px;
+    }
+
+    /* アニメーション */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* レスポンシブ設計 */
+    @media (max-width: 1600px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1><i class="fa-solid fa-tree"></i> Mayumi式 タロット×生命の木 勉強会解説書 <i class="fa-solid fa-star"></i></h1>
+      <p><i class="fa-solid fa-graduation-cap"></i> 2026年5月18日開催 勉強会アーカイブ・ビジュアルサマリー</p>
+    </header>
+
+    <div class="grid-container">
+
+      <!-- CARD 1 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-circle-nodes"></i> 生命の木の基本構造</span>
+          <span class="timestamp">00:00:23</span>
+        </h3>
+        <p>生命の木には<span class="keyword">10個の丸い球（セフィラ）</span>が存在し、これらは上から1番（エース）から10番（キング等のスートの終着点）まで配置されています。この10個の丸が、タロットにおける<span class="keyword">小アルカナ（数札：ヌーメラルカード）</span>に美しく対応しています。一方、キング・クイーン・ナイト・ページといったコートカードは、生命の木の不規則な位置や複数の領域にまたがって対応しており、これらを学ぶことでカードの複雑な個性を立体的に理解できるようになります。</p>
+        <i class="fa-solid tree-dec icon-large fa-network-wired"></i>
+        <div class="highlight-box">
+          <h4>構造の基本</h4>
+          <ul>
+            <li>・丸（セフィラ）＝ 10個の数札</li>
+            <li>・線（パス）＝ 大アルカナ</li>
+            <li>・コートカード ＝ 不規則な配置</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-arrows-split-up-and-left"></i> 大小アルカナ役割の違い</span>
+          <span class="timestamp">00:01:40</span>
+        </h3>
+        <p>一般的に「大アルカナは人生の重大事、小アルカナは日常の些細なこと」と解釈されがちですが、Mayumi式では全く異なる視点を提示します。<span class="keyword">小アルカナ（丸）は「動かない駅」</span>であり、そこにただ存在する「状態や点」を表します。対して、<span class="keyword">大アルカナ（線）は駅と駅を繋ぐ「電車」</span>であり、私たちを異なる状態へと運ぶ「変化・変容のエネルギー」そのものです。この違いを理解することで、現状維持から脱出するための具体的な動きが見えてきます。</p>
+        <i class="fa-solid fa-train-subway icon-large"></i>
+        <div class="comparison-container">
+          <div class="comparison-item">
+            <h4>小アルカナ (丸)</h4>
+            <p>動かない「駅」。状態や環境、現在の座標を表す。</p>
+          </div>
+          <div class="comparison-item">
+            <h4>大アルカナ (線)</h4>
+            <p>移動する「電車」。変化を促すエネルギー。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-brain"></i> タロットはロジカルな学問</span>
+          <span class="timestamp">00:08:00</span>
+        </h3>
+        <p>多くの人はタロットに神秘的でスピリチュアルな側面ばかりを求めがちですが、本来タロットは<span class="keyword">極めてロジカルで地に足のついた理論</span>に基づいています。生命の木に描かれているのは、心理学的な「人間の精神構造」や「行動パターン」そのものです。神秘的なインスピレーションに頼る前に、この人間構造学としてのロジックを頭に叩き込んでおくことで、どんな相談内容に対してもブレずに、深く現実的なアドバイスを提供できるようになります。</p>
+        <i class="fa-solid fa-gears icon-large"></i>
+        <div class="speech-bubble">
+          タロットは神秘のベールを剥ぎ取ると、驚くほど緻密に構築された「心の設計図」が現れる。
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-magnifying-glass-chart"></i> 1枚引きが持つ圧倒的な情報量</span>
+          <span class="timestamp">00:09:50</span>
+        </h3>
+        <p>Mayumi式のリーディングでは、たった1枚のカードを引くだけで、通常の何倍もの情報量を相談者に伝えることができます。なぜなら、引いたカードの数字が位置する「駅（丸）」の性質だけでなく、その駅が構成する<span class="keyword">生命の木独自の「三角形（ゲビュラー、ヘセド、ティファレト等の関係性）」</span>や、対応するスートの性質を掛け合わせて読むからです。これにより、単なるカードの絵柄解説に留まらず、相談者の心の中で何が起こっているかを多角的に紐解くことが可能になります。</p>
+        <i class="fa-solid fa-chart-line icon-large"></i>
+        <div class="highlight-box">
+          <h4>掛け合わせリーディング</h4>
+          <p>「カード単体の意味」＋「位置する駅の性質」＋「周辺の三角形との繋がり」＋「エレメントのエネルギー」＝無限の対話の引き出し</p>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-eye-slash"></i> 見える世界と見えない世界</span>
+          <span class="timestamp">00:18:20</span>
+        </h3>
+        <p>生命の木において、私たちが肉体を持って生きて生じる「リアルな現実世界」は、一番下の<span class="keyword">「10番（マルクト）」</span>だけです。10番以外の0番から9番までの領域は、すべて「見えない世界」であり、私たちの心や無意識の領域です。しかし、この10番に最も密着している9番（無意識・基礎）や8番、7番の領域は、外側の世界のルール、道徳、親の価値観などに強く左右されやすく、ここで多くの人が葛藤を抱えてぐるぐる迷子になっています。</p>
+        <i class="fa-solid fa-earth-asia icon-large"></i>
+        <div class="comparison-container">
+          <div class="comparison-item">
+            <h4>現実世界 (10番)</h4>
+            <p>肉体があり、人とぶつかり、摩擦が生じる具体的な世界。</p>
+          </div>
+          <div class="comparison-item">
+            <h4>精神世界 (0〜9番)</h4>
+            <p>思考、感情、潜在意識、魂が蠢く見えない領域。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-hand-fist"></i> 「力」のカードの本質</span>
+          <span class="timestamp">00:13:50</span>
+        </h3>
+        <p>8番「力」のカードをネットで検索すると、一般的には「忍耐」「自制」「強い精神力」といった言葉が出てきます。しかし、これらの一面的なキーワードだけではカードの本質を見誤ります。このカードが本当に示しているのは、我慢や忍耐で力ずくで自分を抑え込むことではありません。自分の中にいる激しい衝動や本能を、<span class="keyword">否定せず、優しく受け入れて手なずける</span>という、非常に柔らかくも強靭な精神の統合プロセスを意味しているのです。</p>
+        <i class="fa-solid fa-heart-pulse icon-large"></i>
+        <div class="speech-bubble">
+          猛獣（本能）を鎖で縛り上げるのではなく、優しい眼差しでなだめ、信頼関係を築くことこそが「真の力」。
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-shield-halved"></i> 4番「安心安全」からの脱出</span>
+          <span class="timestamp">00:20:40</span>
+        </h3>
+        <p>「力」のカードは、生命の木の「4番（ヘセド：慈悲）」と「5番（ゲビュラー：厳格）」を結ぶパスに位置しています。4番は自分にとっての<span class="keyword">「安心・安全のゆりかご」</span>であり、どんな自分でも許されるぬるま湯のような場所です。人はここで十分に満たされて初めて、本当にやりたいことを見出せますが、長居しすぎるとそこが新たな「制限」になります。そこから一歩踏み出し、意志を貫くために、私たちは「力」のエネルギーを必要とするのです。</p>
+        <i class="fa-solid fa-door-open icon-large"></i>
+        <div class="highlight-box">
+          <h4>成長のステップ</h4>
+          <p>安心安全を十分に確保する（4番） ➔ 安心しすぎてだらける ➔ 意志を持って不快な領域へ踏み出す（5番への移行に「力」が必要）</p>
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-face-angry"></i> 自分の中の「3歳児」のなだめ方</span>
+          <span class="timestamp">00:25:00</span>
+        </h3>
+        <p>「力」のカードに描かれている獅子は、自分の中にいる<span class="keyword">「ワガママな3歳児（本能・欲求）」</span>の象徴です。大人の私たちは、社会のルールや他人の目を気にして、この3歳児を厳しく抑圧しがちです。「こんなことをしたら嫌われる」「ちゃんとしなきゃダメだ」と鞭を振るうのではなく、まずは「やりたくないよね、わかるよ」とその感情に寄り添い、安心させてあげること。安心した子供は、ようやく大人の話（理性）を聞いてくれるようになります。</p>
+        <i class="fa-solid fa-baby icon-large"></i>
+        <div class="speech-bubble">
+          駄々をこねる我が子を叩くのではなく、そっと抱きしめて「大丈夫だよ」と伝える対話の姿勢。
+        </div>
+      </div>
+
+      <!-- CARD 9 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-venus-mars"></i> 男性性と女性性の正しい関係</span>
+          <span class="timestamp">00:28:10</span>
+        </h3>
+        <p>多くの人が誤解していますが、<span class="keyword">「感じる」のは女性性の役割</span>であり、女性性が何かをコントロールすることはありません。行動を決めたり、自分に制限をかけたり、あるいは3歳児をなだめすかして「じゃあ、これだけやってみよう」と道を示すのは、すべて<span class="keyword">男性性の役割</span>です。自分の中で女性性が感じたこと（嫌だ、怖い、やりたい）を、男性性が優しくエスコートし、対等なパートナーシップを築くこと。これが「力」の表す内的統合です。</p>
+        <i class="fa-solid fa-yin-yang icon-large"></i>
+        <div class="comparison-container">
+          <div class="comparison-item">
+            <h4>女性性の役割</h4>
+            <p>ただ感じる。喜怒哀楽、本能的な欲求をそのままキャッチする。</p>
+          </div>
+          <div class="comparison-item">
+            <h4>男性性の役割</h4>
+            <p>決断し、行動する。女性性を守り、現実社会へとアジャストする。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 10 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-comments"></i> 悩みのパターンを紐解く</span>
+          <span class="timestamp">00:32:00</span>
+        </h3>
+        <p>人間が悩むのは、いつも同じ「思考回路の癖」や「無意識の行動パターン」を繰り返しているからです。例えば「遅刻する人は社会人としてクズだ」という強い固定観念（ルール）を持っている人は、他人が遅刻するたびに怒り狂い、自分を縛り付けて我慢させます。カードリーディングの目的は、未来を言い当てることではなく、相談者が無意識にやっている<span class="keyword">「我慢のループ」や「自己否定の癖」</span>を言語化し、気づきを与えること。気づければ、問題は問題でなくなります。</p>
+        <i class="fa-solid fa-retweet icon-large"></i>
+        <div class="highlight-box">
+          <h4>対話のヒント</h4>
+          <p>「それ、どうしてダメだと思っているんですか？」という問いから、頑固な思い込みのフィルター（心の闇）をあぶり出す。</p>
+        </div>
+      </div>
+
+      <!-- CARD 11 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-sun"></i> 「太陽」の裏にある本当の意味</span>
+          <span class="timestamp">00:44:00</span>
+        </h3>
+        <p>19番「太陽」は、一般的に「成功」「祝福」「明るい未来」を約束する最高の大吉札とされています。しかし、例えば「ダイエットしたいのに、いつも食べてしまってうまくいかない」と悩む人に太陽が出たとき、「大丈夫、成功しますよ！」とだけ伝えるのは無責任です。このカードの本質は、輝かしい未来を自動的に約束するものではなく、太陽の強烈な光によって、自分の心の中にある<span class="keyword">「潜在意識の闇」を白日の下に照らし出す</span>という、内省を促すエネルギーなのです。</p>
+        <i class="fa-solid fa-sun icon-large"></i>
+        <div class="speech-bubble">
+          まぶしすぎる光は、同時に最も濃い「影」を作り出す。見たくなかった自分自身の本音を直視する時。
+        </div>
+      </div>
+
+      <!-- CARD 12 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-lightbulb"></i> 思考の光で心の闇を照らす</span>
+          <span class="timestamp">00:48:00</span>
+        </h3>
+        <p>太陽のカードは、考える力（思考・理性）を使って、自分のドロドロした潜在意識を解き明かしていくプロセスを指し示します。「なぜ私はこんなに痩せたいのだろう？」「太っている自分は醜いと、誰が決めたのだろう？」。その強い執着や不安の裏には、幼少期の傷ついた経験や、愛されたいという切実な願い、他人の視線を過剰に気にする固定観念が眠っています。思考の光をしっかりと自分の内側へ向け、<span class="keyword">「闇を自覚すること」</span>こそが、太陽の真の成功の始まりです。</p>
+        <i class="fa-solid fa-wand-magic-sparkles icon-large"></i>
+        <div class="highlight-box">
+          <h4>内省のワーク</h4>
+          <ul>
+            <li>・「痩せなきゃダメ」というマイルールを疑う</li>
+            <li>・自分を縛っている本当の「恐怖」は何かを見つける</li>
+            <li>・他人の評価から自分を切り離す</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD 13 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-person-walking-luggage"></i> 愚者の旅：プライドを捨てた素の自分</span>
+          <span class="timestamp">00:50:20</span>
+        </h3>
+        <p>タロットの「愚者の旅」において、19番の太陽は、さまざまな挫折や葛藤を経験した末にたどり着く場所です。かつてイケメンだった男性が、ハゲを隠すために痛い思いをして植毛を繰り返した末に、すべてを諦めてスキンヘッドにしたという例があります。隠すのをやめてありのままの自分を晒したとき、周りは意外と気にしていないことに気づき、彼は深く安心しました。太陽に描かれた全裸の赤ちゃんは、<span class="keyword">見栄やプライドをすべて削ぎ落とした「素の自分」</span>の象徴なのです。</p>
+        <i class="fa-solid fa-user-astronaut icon-large"></i>
+        <div class="speech-bubble">
+          「もう隠さなくていい、これが私だ」と諦めた瞬間に、本当の自由と生命力が湧き上がってくる。
+        </div>
+      </div>
+
+      <!-- CARD 14 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid fa-vial"></i> 節制（大いなる技）を泥臭く歩む</span>
+          <span class="timestamp">00:58:30</span>
+        </h3>
+        <p>生命の木において、太陽からさらに上に昇るためには、14番「節制」のパスを通る必要があります。トートタロットではこのカードを「アート（技）」と呼び、クロウリーは「大いなる技」と称しました。これは、潜在意識（感情・欲）に片足を突っ込みながら、現実世界（理性）にもう片足を残し、<span class="keyword">相反する二つの要素をドロドロに混ぜ合わせて現実を歩む</span>という、極めて過酷で泥臭い道程です。一歩ずつ、谷を越え山を越え、コツコツやり続けること自体が、人生における芸術（アート）なのです。</p>
+        <i class="fa-solid fa-palette icon-large"></i>
+        <div class="comparison-container">
+          <div class="comparison-item">
+            <h4>感情・欲 (潜在意識)</h4>
+            <p>「やりたい」「食べたい」といった本能的な水のエネルギー。</p>
+          </div>
+          <div class="comparison-item">
+            <h4>理性・思考 (現実世界)</h4>
+            <p>「こうあるべき」「やるしかない」という意志の火のエネルギー。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 15 -->
+      <div class="card">
+        <h3 class="section-title">
+          <span class="title-text"><i class="fa-solid Tree-dec fa-map"></i> 「図」があるから圧倒的に簡単</span>
+          <span class="timestamp">01:06:50</span>
+        </h3>
+        <p>タロットをコーチングや心理セラピーに使う流派は多く存在し、それらは高額な講座になりがちです。しかし、<span class="keyword">「生命の木」というビジュアルマップ</span>が頭に入っていれば、高度なテクニックに頼らずとも、圧倒的に簡単かつロジカルに自分や他人の心を整理できるようになります。「今、この人は上の魂の領域にいるな」「現実世界の摩擦に囚われているから、このパス（カード）を使って移動させよう」。地図があるからこそ、私たちは迷うことなく、深いリーディングができるのです。</p>
+        <i class="fa-solid fa-compass icon-large"></i>
+        <div class="highlight-box">
+          <h4>まとめ：生命の木の効能</h4>
+          <p>複雑な人間の精神構造を1枚の図に視覚化。現在地（問題）と目的地（解決の方向性）がひと目でわかり、誰でも深いコーチングが可能になる最強のツール。</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <p><i class="fa-regular fa-copyright"></i> 2026 グラレコ作成. All Rights Reserved. | Source: 20260518勉強会.vtt</p>
+    </footer>
+  </div>
+
+</body>
+</html>
