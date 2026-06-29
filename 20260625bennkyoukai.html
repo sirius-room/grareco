@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi式 生命の木＆タロット勉強会グラレコ（2026.06.25 第2セッション）</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts (手書き風フォント、味わいフォント) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Yomogi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* カラーパレットの変数設定 */
+    :root {
+      --color-1: #A61B40; /* シューティングレッド（情熱・ポイント） */
+      --color-2: #DCE0F2; /* シューティンググレー（背景調和・やさしいトーン） */
+      --color-3: #012840; /* ディープインディゴ（生命の木・主軸） */
+      --color-4: #A66A5D; /* アースココア（手書き風・吹き出し・暖かみ） */
+      --color-5: #0D0D0D; /* チャコール（本文テキスト） */
+    }
+
+    /* 手書き風グリッドライン背景 */
+    body {
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e4e2db" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #fcfbf7;
+      overflow-x: hidden;
+      color: var(--color-5);
+      font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* タイトル・見出し用フォント */
+    h1, h2, h3, .heading-font {
+      font-family: 'Kaisei Decol', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 5カラム構成のグリッドコンテナ */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 35px;
+    }
+
+    /* カードデザイン：背景透明、枠なし、手書き風の装飾をさりげなく */
+    .card {
+      background-color: transparent;
+      padding: 20px 15px;
+      border-radius: 20px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* カードを仕切るラフな手書き風点線 */
+    .card-divider {
+      border: none;
+      border-top: 2px dashed rgba(166, 106, 93, 0.3);
+      margin: 20px 0;
+    }
+
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(166, 106, 93, 0.08);
+      border: 1.5px dashed rgba(166, 106, 93, 0.4);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+      font-size: 0.95rem;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(166, 106, 93, 0.08) transparent transparent;
+    }
+
+    .speech-bubble-speaker {
+      font-size: 0.8rem;
+      color: var(--color-4);
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ハイライトボックス：手書き風赤ライン */
+    .highlight-box {
+      border-left: 3.5px solid var(--color-1);
+      border-radius: 4px;
+      padding-left: 12px;
+      background-color: rgba(166, 27, 64, 0.03);
+      margin: 15px 0;
+    }
+
+    /* 大きなアイコン */
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      color: var(--color-3);
+      filter: drop-shadow(2px 4px 6px rgba(1, 39, 63, 0.15));
+    }
+
+    /* セクションヘッダー：アニメーションアイコン付き */
+    .section-header {
+      border-bottom: 3px double var(--color-3);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: var(--color-3);
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      gap: 10px;
+    }
+
+    .comparison-item {
+      background-color: rgba(220, 223, 242, 0.3);
+      padding: 10px;
+      border-radius: 12px;
+      flex: 1;
+      text-align: center;
+      font-size: 0.9rem;
+      border: 1px dotted rgba(1, 39, 63, 0.2);
+    }
+
+    .comparison-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-1);
+      font-weight: bold;
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    /* メディアクエリ（画面幅に応じた柔軟な可変） */
+    @media (max-width: 1700px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 手書き風のワンポイントシール・クリップ装飾 */
+    .tape-deco {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background-color: rgba(220, 223, 242, 0.7);
+      color: var(--color-3);
+      padding: 2px 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+      border-left: 2px solid var(--color-1);
+      border-right: 2px solid var(--color-1);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- グラレコ大見出し -->
+    <header class="text-center mb-16 relative">
+      <div class="inline-block relative">
+        <span class="absolute -top-8 -left-12 text-5xl text-red-700 opacity-20 transform -rotate-12"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <h1 class="text-4xl md:text-5xl text-slate-800 tracking-wider mb-3 flex items-center justify-center gap-4">
+          <i class="fa-solid fa-palette text-amber-600 animate-pulse"></i>
+          Mayumi式 生命の木＆タロット勉強会
+          <i class="fa-solid fa-pen-nib text-amber-600"></i>
+        </h1>
+        <span class="absolute -bottom-6 -right-12 text-5xl text-blue-900 opacity-20 transform rotate-12"><i class="fa-solid fa-tree"></i></span>
+      </div>
+      <p class="text-lg text-slate-600 mt-4 tracking-widest heading-font">
+        <i class="fa-solid fa-calendar-day mr-2 text-rose-700"></i>2026年6月25日 勉強会グラフィックレポート（第2セッション）
+      </p>
+      <div class="w-24 h-1 bg-red-700 mx-auto mt-6 rounded-full"></div>
+    </header>
+
+    <!-- 5カラムメイングリッド -->
+    <main class="grid-container">
+
+      <!-- COLUMN 1: 偶然から始まる占いの道 & 運命の輪の境界線 (00:03～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-route text-rose-700 animate-bounce"></i>
+            偶然の導きと境界の扉
+            <span class="text-xs text-slate-500 font-mono ml-auto">00:03～</span>
+          </h2>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+          <span class="tape-deco">名術と卜術の美しい交差</span>
+          <i class="fa-solid fa-shuffle icon-large text-emerald-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">他者の声を鏡として受け入れるプロセス</h3>
+          <p class="text-sm text-slate-700">
+            生年月日などのロジックから一生の設計図や個人の本質を読み解く「名術（西洋占星術や四柱推命など）」と、その場に現れた偶然のカードを媒介にして潜在意識をリアルタイムに映し出す「卜術（タロットなど）」。これらは別物に見えて、人間の魂を多次元的に紐解く上で美しく補完し合っています。自分から「やる側」への興味が全くなかったとしても、異なる人たちから短期間に何度も「向いている」「やってみたら」と背中を押されて引き込まれるその偶然のプロセスこそが、生命の木の精緻な導きです。他者からかけられた言葉という必然の歯車が、人生の次の扉を静かに、かつ確実に開け放ちます。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Aさん</div>
+            「全然違う人から立て続けにやる側を勧められて、全く興味がなかったのにタロットに惹かれ始めました。本当に不思議なタイミングでした！」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 2 -->
+        <div class="card">
+          <span class="tape-deco">10番「運命の輪」の本当の本質</span>
+          <i class="fa-solid fa-arrows-spin icon-large text-pink-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">ベールを越えるための条件付き変容</h3>
+          <p class="text-sm text-slate-700">
+            一般的な書籍やサイトでは「チャンス到来」「電撃的な好転」と手放しで歓迎される「運命の輪（10番）」ですが、カバラ生命の木を重ね合わせることで、その非常に奥深い条件が浮かび上がります。このパスは、私たちが普段暮らす「現実・常識の領域（第7〜10セフィラの下向き三角形）」と、自立的なハイヤーセルフの領域（第6セフィラ以上）を仕切る「ベール（境界線）」を跨いでいます。このカードの本質は、棚ぼた的な幸運を待つことではありません。むしろ<strong>「あなたが人生の中で無意識に何度も繰り返してしまっている、いつもの感情や行動の不毛な癖（サイクル）」</strong>に自ら気がつくことで、初めてこのベールを突き抜けられるという条件付きの変容カードなのです。
+          </p>
+          <div class="highlight-box">
+            職場や付き合う相手を変えても、いつも同じ不満や同じ衝突のパターンを繰り返していませんか？そこに気付けなければ、上の精神世界へと進むことはできません。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 2: 運命の輪と四元素の最大活性 (28:00～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-dharmachakra text-emerald-800 animate-pulse"></i>
+            四元素の最大稼働
+            <span class="text-xs text-slate-500 font-mono ml-auto">28:00～</span>
+          </h2>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <span class="tape-deco">神聖な四隅の獣たちの暗号</span>
+          <i class="fa-solid fa-shapes icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">ホロスコープの不動宮が示す最強エネルギー</h3>
+          <p class="text-sm text-slate-700">
+            運命の輪のカードの四隅に描かれている、本を持った羽のある「天使・鷲・牛・獅子」は、聖書に登場する聖なる使いであると同時に、西洋占星術におけるホロスコープの「不動宮（水瓶座・蠍座・牡牛座・獅子座）」を示しています。これはそれぞれの季節（冬・秋・春・夏）のエネルギーが最も純粋かつ最強の密度で高まった状態を象徴しています。つまり、私たちが生まれ持っている「火（ワンド）・水（カップ）・風（ソード）・土（ペンタクル）」の四元素のエネルギーを、自分の人生の中で100％稼働させ、自立的な現実をダイナミックに創造していくための原理原則を示しているのです。
+          </p>
+          <div class="comparison-container">
+            <div class="comparison-item">同じ反応を繰り返す<br>「受動的なぐるぐる」</div>
+            <div class="comparison-vs">突破</div>
+            <div class="comparison-item">四元素の最大稼働<br>「主体制と自立創造」</div>
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 4 -->
+        <div class="card">
+          <span class="tape-deco">直感の沼を抜けるロジックの快感</span>
+          <i class="fa-solid fa-brain icon-large text-slate-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">「直感だけで感じる」手法の限界</h3>
+          <p class="text-sm text-slate-700">
+            タロットでよく推奨される「ただカードを直感で感じてみてください」というアプローチは、時に学習者を際限のない混乱の沼へと引きずり込みます。ネットや書籍を調べれば調べるほど、同じカードなのに「真反対のキーワード」が飛び出し、何が正しいのか分からなくなってしまうからです。しかし、アーサー・ウェイトがカバラ生命の木をベースに置いて設計した通り、カードの位置づけを数秘やセフィラ、パスでロジカルに理解すれば、そのカードの「変わらない本質」が美しく一本の線で繋がります。辻褄が完全に合う快感を知れば、リーディングに迷いがなくなります。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>mayumi</div>
+            "直感に頼ったリーディングで行き詰まっているプロの占い師はとても多いです。生命の木という明確な地図があれば、主観の迷いから解放されます。"
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 3: 死神の「諦め」とメモリ（RAM）の解放 (37:30～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-hourglass-half text-amber-600 animate-pulse"></i>
+            死神の諦めと容量確保
+            <span class="text-xs text-slate-500 font-mono ml-auto">37:30～</span>
+          </h2>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <span class="tape-deco">13番「死神」の美しい降伏</span>
+          <i class="fa-solid fa-ban icon-large text-rose-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">手に入らないものへの異常な固執を止める</h3>
+          <p class="text-sm text-slate-700">
+            「死神（13番）」のカードも、運命の輪と同じく現実世界を飛び出し、メタ認知の「ティファレト（6番）」に這い上がるための、非常にパワフルなベール横断パスに位置します。このカードの本質は、安易な「死と再生」の綺麗なストーリーよりも、まず徹底的な「終わらせる行為・諦める（明らかに見極める）行為」にあります。自分の生まれ持った性質や資質、あるいは状況、変えられない不公平な初期設定、あるいは他者に対する異常な固執に対し、「もうこれでいいや、持っていないものは仕方ない」と降伏し、潔く諦める心の強さを指しているのです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Bさん</div>
+            「いつもあれこれ考えすぎて頭がいっぱいいっぱいで、冷静に自分を観察する余裕がありませんでした。本当にすごく腑に落ちて、共感します」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 6 -->
+        <div class="card">
+          <span class="tape-deco">執着の緩和と脳の空き容量</span>
+          <i class="fa-solid fa-laptop-medical icon-large text-blue-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">重い未解決アプリ（悩み）を閉じて隙間を作る</h3>
+          <p class="text-sm text-slate-700">
+            私たちが悩みに囚われている時、頭の脳内メモリ（RAM）はその悩みだけで100%占有されてしまっています。これは裏で重いアプリケーションが稼働し続けてフリーズしているようなもので、新しく素敵な現実を立ち上げることができません。たとえばアトピーなどの肌の不調や持病に対して、「絶対に完璧に健康に治さなければならない」と強く固執してがんじがらめになり、それがかえって一番の強いストレス源になってしまう、というお話も聞いたことがあります。もうこの体質と一緒に生きていこうと「諦め（死）」を完了させることで初めてメモリに空きができ、それまで見えなかった穏やかな愛情や最適な解決策が脳に入ってくるようになるとされています。
+          </p>
+          <div class="highlight-box">
+            「終わらせる」ことで、初めて目の前にあったはずの解決の糸口や、身近な人が差し伸べてくれていた優しい救いの手に気がつくことができるようになります。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 4: 占い師としての愛と高次元の線引き (49:10～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-scale-balanced text-indigo-800 animate-bounce"></i>
+            占い師としての愛と線引き
+            <span class="text-xs text-slate-500 font-mono ml-auto">49:10～</span>
+          </h2>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+          <span class="tape-deco">小学校1年生に大学受験を教えない</span>
+          <i class="fa-solid fa-graduation-cap icon-large text-red-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">相手の精神性の段階を諦めて尊重する</h3>
+          <p class="text-sm text-slate-700">
+            生命の木の深い心理学や自己統合の話は、とても次元の高い精神性に基づいています。しかし、占いの現場（特に電話占いなど）では「彼から連絡は来ますか？」「いつ復縁できますか？」という、目先の安心や他力本願な答えのみを求める「多責な状態」のお客様が大多数を占めます。その人たちにいきなり自己責任の話をしても、不快な説教にしか聞こえません。それは小学校1年生に高校受験の難解なテキストを解かせるようなものであり、ある意味で酷なことです。相手のいる意識の段階を「そういう時期なんだな」と優しく諦め、求められている優しい言葉をかけて満足させてあげることも、プロとしての愛であり、必要な防衛の線引きです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>mayumi</div>
+            "プロとして長く活動するなら、この線引きができないと自分が疲弊して潰れてしまいます。相手を変えようとせず、求められるレベルに合わせて深入りしない強さを持ってください。"
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 8 -->
+        <div class="card">
+          <span class="tape-deco">醜い自分と付き合って生きる</span>
+          <i class="fa-solid fa-compress icon-large text-rose-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">いい人の仮面を脱ぐことで周波数が変わる</h3>
+          <p class="text-sm text-slate-700">
+            自分の中の嫌な部分、ズルくて醜い「いい人とはかけ離れた自分」を一度認めて受け入れてしまえば、他人に対して「いい人を作る仮面」を被る必要が完全になくなります。この自己受容を完了すると、あなたの周囲からは「我慢を強いる人間」が消え去り、同じようにありのままで楽しんで生きている美しい周波数の人々の輪の中に、ごく自然に移行していくことになります。
+            この自分を深く観察する心の天秤（ティファレト）を美しく揺らしながら、人生を大きく好転させていきましょう。
+          </p>
+          <div class="highlight-box">
+            タロットは未来の善悪を当てるためのツールではなく、自分の魂がどのような設定で生まれてきて、今どこに躓いているのかをロジカルに教えてくれる素晴らしい鏡です。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 5: カップの7と月の暗闇を歩むメタ認知 (56:30～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-moon text-rose-800 animate-pulse"></i>
+            感情の幻想とメタ認知
+            <span class="text-xs text-slate-500 font-mono ml-auto">56:30～</span>
+          </h2>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+          <span class="tape-deco">ネツァク（7番）の膨らむ妄想</span>
+          <i class="fa-solid fa-mug-hot icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">感情×感情によって肥大化する妄想</h3>
+          <p class="text-sm text-slate-700">
+            「カップの7」は、境界線（ベール）より下、私たちが物質的に流されて生きている<strong>第7セフィラ「ネツァク（感情と欲）」</strong>の場所に位置しています。もともと欲や感情のテーマがあるセフィラに、さらに感情の「カップ」が過剰に流れ込むことで、感情が何乗にも膨れ上がり、それはやがて「地に足がつかない妄想や理想、目移り」へと姿を変えます。
+            現実の目の前の課題を客観的に見るための思考（ホド）や物質的観察（マルクト）が一切稼働していないため、あれもこれもと手を出しては空回りする、不透明な状況になります。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Cさん</div>
+            「何かに失敗したり自信がなくなると、目の前の問題に向き合わずに『これじゃない、もっと他に自分に向いたことがあるはずだ』と新しい選択肢ばかりに目移りして、同じ失敗を繰り返していました！」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 10 -->
+        <div class="card">
+          <span class="tape-deco">月の暗闇を手探りで歩く訓練</span>
+          <i class="fa-solid fa-compass icon-large text-slate-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">もやっとした瞬間に自分を「ただ観察する」</h3>
+          <p class="text-sm text-slate-700">
+            このカップの7のフラフラした状態から抜け出すためには、「月（18番・無意識の不安）」のパスの手法が必要です。月の暗闇の森を歩くときのように、何があるかわからない現実を手探りで、ゆっくりと慎重に、踏みしめながら歩くこと。日常生活のなかで誰かに対して「もやっと」したり「イラッと」した瞬間に、その相手の人間性をどうこうジャッジするのではなく、<strong>「今、私はどんな前提（価値観）を握りしめているから、この言葉にこんなに過剰反応したのだろう？」</strong>と、一歩引いて自分を客観的にメタ認知する訓練が、根本解決の唯一の鍵です。
+          </p>
+          <div class="highlight-box">
+            最初は腹が立っている最中に観察することはできません。数時間後、あるいは1日後に「さっき何にあんなに反応したのかな」と振り返るだけで大丈夫。10回、5回と訓練を繰り返すごとに、反応の瞬間に立ち止まることができるようになっていきます。
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- フッター部 -->
+    <footer class="mt-16 text-center border-t border-dashed border-slate-300 pt-8 text-slate-500">
+      <p class="text-sm heading-font">
+        <i class="fa-solid fa-quote-left text-xs mr-1 text-slate-400"></i>
+        生命の木は平面に見えて、本当はもの凄く立体的で、奥行きがあるカラフルな世界。
+        <i class="fa-solid fa-quote-right text-xs ml-1 text-slate-400"></i>
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 mt-6 text-xs text-slate-400 font-mono">
+        <span><i class="fa-solid fa-book-open mr-1"></i>Mayumi式解説書（グラレコ版）</span>
+        <span><i class="fa-solid fa-clock-four mr-1"></i>勉強会音声：約1時間17分収録</span>
+        <span><i class="fa-solid fa-heart text-red-500 mr-1 animate-pulse"></i>Designed for Tarot & Kabbalah Lovers</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
