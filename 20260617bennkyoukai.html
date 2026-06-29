@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi式 生命の木＆タロット勉強会グラレコ（2026.06.17 第2セッション）</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts (手書き風フォント、味わいフォント) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Yomogi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* カラーパレットの変数設定 */
+    :root {
+      --color-1: #A61B40; /* シューティングレッド（情熱・ポイント） */
+      --color-2: #DCE0F2; /* シューティンググレー（背景調和・やさしいトーン） */
+      --color-3: #012840; /* ディープインディゴ（生命の木・主軸） */
+      --color-4: #A66A5D; /* アースココア（手書き風・吹き出し・暖かみ） */
+      --color-5: #0D0D0D; /* チャコール（本文テキスト） */
+    }
+
+    /* 手書き風グリッドライン背景 */
+    body {
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e4e2db" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #fcfbf7;
+      overflow-x: hidden;
+      color: var(--color-5);
+      font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* タイトル・見出し用フォント */
+    h1, h2, h3, .heading-font {
+      font-family: 'Kaisei Decol', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 5カラム構成のグリッドコンテナ */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 35px;
+    }
+
+    /* カードデザイン：背景透明、枠なし、手書き風の装飾をさりげなく */
+    .card {
+      background-color: transparent;
+      padding: 20px 15px;
+      border-radius: 20px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* カードを仕切るラフな手書き風点線 */
+    .card-divider {
+      border: none;
+      border-top: 2px dashed rgba(166, 106, 93, 0.3);
+      margin: 20px 0;
+    }
+
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(166, 106, 93, 0.08);
+      border: 1.5px dashed rgba(166, 106, 93, 0.4);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+      font-size: 0.95rem;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(166, 106, 93, 0.08) transparent transparent;
+    }
+
+    .speech-bubble-speaker {
+      font-size: 0.8rem;
+      color: var(--color-4);
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ハイライトボックス：手書き風赤ライン */
+    .highlight-box {
+      border-left: 3.5px solid var(--color-1);
+      border-radius: 4px;
+      padding-left: 12px;
+      background-color: rgba(166, 27, 64, 0.03);
+      margin: 15px 0;
+    }
+
+    /* 大きなアイコン */
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      color: var(--color-3);
+      filter: drop-shadow(2px 4px 6px rgba(1, 39, 63, 0.15));
+    }
+
+    /* セクションヘッダー：アニメーションアイコン付き */
+    .section-header {
+      border-bottom: 3px double var(--color-3);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: var(--color-3);
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      gap: 10px;
+    }
+
+    .comparison-item {
+      background-color: rgba(220, 223, 242, 0.3);
+      padding: 10px;
+      border-radius: 12px;
+      flex: 1;
+      text-align: center;
+      font-size: 0.9rem;
+      border: 1px dotted rgba(1, 39, 63, 0.2);
+    }
+
+    .comparison-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-1);
+      font-weight: bold;
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    /* メディアクエリ（画面幅に応じた柔軟な可変） */
+    @media (max-width: 1700px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 手書き風のワンポイントシール・クリップ装飾 */
+    .tape-deco {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background-color: rgba(220, 223, 242, 0.7);
+      color: var(--color-3);
+      padding: 2px 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+      border-left: 2px solid var(--color-1);
+      border-right: 2px solid var(--color-1);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- グラレコ大見出し -->
+    <header class="text-center mb-16 relative">
+      <div class="inline-block relative">
+        <span class="absolute -top-8 -left-12 text-5xl text-red-700 opacity-20 transform -rotate-12"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <h1 class="text-4xl md:text-5xl text-slate-800 tracking-wider mb-3 flex items-center justify-center gap-4">
+          <i class="fa-solid fa-palette text-amber-600 animate-pulse"></i>
+          Mayumi式 生命の木＆タロット勉強会
+          <i class="fa-solid fa-pen-nib text-amber-600"></i>
+        </h1>
+        <span class="absolute -bottom-6 -right-12 text-5xl text-blue-900 opacity-20 transform rotate-12"><i class="fa-solid fa-tree"></i></span>
+      </div>
+      <p class="text-lg text-slate-600 mt-4 tracking-widest heading-font">
+        <i class="fa-solid fa-calendar-day mr-2 text-rose-700"></i>2026年6月17日 勉強会グラフィックレポート
+      </p>
+      <div class="w-24 h-1 bg-red-700 mx-auto mt-6 rounded-full"></div>
+    </header>
+
+    <!-- 5カラムメイングリッド -->
+    <main class="grid-container">
+
+      <!-- COLUMN 1: 女帝とカオスな創造の方程式 (02:20～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-venus text-rose-700 animate-bounce"></i>
+            女帝とカオスな創造力
+            <span class="text-xs text-slate-500 font-mono ml-auto">02:20～</span>
+          </h2>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+          <span class="tape-deco">神様カオスと異質の結合</span>
+          <i class="fa-solid fa-crown icon-large text-emerald-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">コクマーとビナーを身ごもる方程式</h3>
+          <p class="text-sm text-slate-700">
+            3番「女帝」のカードは、生命の木の最上部、神聖なるカオス領域に位置し、2番コクマー（荒々しく純粋な力の種・精子的エネルギー）と、3番ビナー（その強大な力を形として無条件に受け止める器・卵子的エネルギー）を結ぶパスに存在しています。この相反する2つの異質な極性を混ぜ合わせ、新たな命として育むことこそが、宇宙に万物を誕生させる「創造の方程式」です。人間の現実創造（仕事、活動、理想の誕生）においても、これと全く同じ「相反する素材の受け入れと合体」が必要になります。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Aさん</div>
+            「タロットは本の暗記だけでは難しそうでノータッチでしたが、生命の木で学ぶと本質がスッと一本で繋がるのが面白いです！」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 2 -->
+        <div class="card">
+          <span class="tape-deco">自己肯定感100％の世界観</span>
+          <i class="fa-solid fa-heart icon-large text-pink-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">何もしなくても「まるっとオッケー」</h3>
+          <p class="text-sm text-slate-700">
+            女帝の本質は、地上の条件付き取引を遥かに超越した「究極の自己肯定感（100％）」です。現実社会では「結果を出さないと愛されない、価値がない」と思いがちですが、女帝は何の行動を起こさずただ寝ているだけでも「そんなありのままの私が素晴らしい」と全面的に受容します。この無条件の愛を地球の視点から見ると、時には無限に温かい母性に見えることもあれば、周囲の配慮を無視した極端な「わがまま・傲慢さ」に見えることもあります。
+          </p>
+          <div class="highlight-box">
+            私たちはできない自分をすぐ否定してしまいますが、女帝を引くときは「どんな不完全な自分にもまるっとオッケー」を出してあげる最高のタイミングです。
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 3 -->
+        <div class="card">
+          <span class="tape-deco">潜在意識の裏返しの結実</span>
+          <i class="fa-solid fa-seedling icon-large text-amber-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">抱いた本音（小麦）をそのまま実らせる</h3>
+          <p class="text-sm text-slate-700">
+            女帝の下に描かれている小麦は「10番マルクト（現実・大地）」の実りを表しています。女帝はとても優しくなんでも受け入れますが、人間の都合の良い「頭の願い」は一切忖度してくれません。頭で「愛されたい」と願いながら、潜在意識（本音）に「私は愛されない、足りない」という欠乏感を抱いていると、女帝はその不毛な欠乏感の種をそっくりそのまま地上の「豊かな実り」として現実化してしまいます。
+          </p>
+          <div class="comparison-container">
+            <div class="comparison-item">頭の表面的な願い<br>「彼氏が欲しい！」</div>
+            <div class="comparison-vs">裏返しの現実化</div>
+            <div class="comparison-item">無意識の欠乏感<br>「満たされない私」の実り</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 2: ペンタクルのページと、受け取る情報量の「次元上昇」 (26:40～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-person-running text-emerald-800 animate-pulse"></i>
+            実践フェーズと次元上昇
+            <span class="text-xs text-slate-500 font-mono ml-auto">26:40～</span>
+          </h2>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <span class="tape-deco">肉体（ページ）を伴う実践サイクル</span>
+          <i class="fa-solid fa-repeat icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">宇宙の種を実際の行動で降ろす</h3>
+          <p class="text-sm text-slate-700">
+            コートカード（人物カード）は、単一の状態を指す数札とは違い、現実をどのように体験するかという「創造のサイクル」を示しています。父と母（キング・クイーン）が合体し、双子であるナイト（魂・抽象の受け取り手）とページ（肉体・具体的な実践）が生まれます。どんなにハイヤーセルフの領域（ナイト）でメッセージを受け取っても、それを肉体（ページ）を使って「地上の行動」へ下ろしてあげなければ、現実の歯車は絶対に回りません。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Bさん</div>
+            「最近ページのカードを引くことが多いです。忙しさにかまけて後回しにしていた日常のあれこれを、まずは地道に動かすタイミングなんですね」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 5 -->
+        <div class="card">
+          <span class="tape-deco">情報量が激変する「次元上昇」</span>
+          <i class="fa-solid fa-up-long icon-large text-slate-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">同じ動画を見ても受け取る深さが変わる</h3>
+          <p class="text-sm text-slate-700">
+            「次元が高い・低い」というのは、人間的な偉さの善悪ではなく、単に「同じ情報からどれだけの情報量を読み取れるか」という意識のキャパシティの差です。自分自身と向き合って人生経験を積み重ねると、3年前に聞いたのと同じ音声講義や本から、全く異なる深い教訓を読み取れるようになります。これが本当の「次元上昇」であり、生命の木を学び続ける最大の醍醐味なのです。
+          </p>
+          <div class="highlight-box">
+            一度学んで知っているつもりになっている知識も、あなたの精神段階が進んだ今、もう一度見直すことで劇的な「宝探し」に変わります。
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 6 -->
+        <div class="card">
+          <span class="tape-deco">無意識による「自分を守る」壁</span>
+          <i class="fa-solid fa-user-shield icon-large text-blue-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">まだ準備ができていない傷は「見せない」</h3>
+          <p class="text-sm text-slate-700">
+            人間は、自分にとって都合の良いようにしか世界を見ていません。しかしそれは悪いことではなく、まだその傷に向き合う心の準備（リソース）ができていない時、過度な絶望から自己を守るために、無意識の防衛作用が「あえて見せない・聞こえない」ように情報のフィルタリングをしてくれているのです。いつか心が十分に育った時、スッと自然に気づけるタイミングが必ず訪れます。
+          </p>
+          <div class="comparison-container">
+            <div class="comparison-item">無意識の防衛壁<br>「まだ早い傷は見せない」</div>
+            <div class="comparison-vs">開示</div>
+            <div class="comparison-item">心の成長と気づき<br>「今なら向き合える！」</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 3: カップのエースと魔術師：創造の「種」と「四元素」の奇跡 (27:30～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-mug-hot text-amber-600 animate-pulse"></i>
+            純粋な種と四元素の奇跡
+            <span class="text-xs text-slate-500 font-mono ml-auto">27:30～</span>
+          </h2>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+          <span class="tape-deco">1番「ケテル」の圧倒的抽象エネルギー</span>
+          <i class="fa-solid fa-gem icon-large text-rose-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">「カップのエース」に隠されたヘブライ文字の暗号</h3>
+          <p class="text-sm text-slate-700">
+            頂点「1番（ケテル）」に対応する「カップのエース」は、具体的な方向性を持たない純粋な「愛の可能性」の種です。カードに描かれているたくさんの雫や花びらは、ヘブライ語で『宇宙創造の最初の種』を意味する<strong>「ヨッド（Yod）」</strong>の文字を象っています。
+            どんなに破壊的な崩壊を表す「塔」のカードであっても、周囲にはこのヨッドの光が舞っています。今がどれほど泥沼のしんどい状況でも、それは美しい蓮の花を咲かせるための純粋な種（エース）がすでに手元にあるサインです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Cさん</div>
+            「エースの絵は、下に向かっているようでもあり、上へ貫通しているようにも見えます。対極のマルクト（現実）との美しい対比ですね」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 8 -->
+        <div class="card">
+          <span class="tape-deco">1番から3番へ流れる魔術師の意思</span>
+          <i class="fa-solid fa-wand-magic-sparkles icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">伝達と知性の神ヘルメスに学ぶズルさ</h3>
+          <p class="text-sm text-slate-700">
+            ケテルからビナーへ流れるパスを司る「魔術師」には、神話のトリックスター「ヘルメス」が投影されています。彼は非常に頭がキレ、他人の大切なものをサッと盗んでは巧みな言葉で丸め込む「盗みの神」の顔も持ちます。
+            魔術師の始まりの力は、綺麗ごとだけではありません。他人の目を気にして縮こまるのをやめ、「やりたいと思ったのなら、時に手段や枠を超えて、ただ始めてしまえ！」という、圧倒的で狡猾な創造の意思を内包しています。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Dさん</div>
+            「今日はお客さんが多くてカンペが見られないドキドキの対面イベントでしたが、まさに自分の持っている素地だけでやり切りました！」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 9 -->
+        <div class="card">
+          <span class="tape-deco">黄金の夜明け団の四元素階層</span>
+          <i class="fa-solid fa-arrows-spin icon-large text-emerald-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">火・水・風・土が重なった肉体の奇跡</h3>
+          <p class="text-sm text-slate-700">
+            カバラでは、タロットの四元素は宇宙の階層に対応します。生命エネルギーそのものの「火（ワンド）」、感情の「水（カップ）」、思考・ロゴスの「風（ソード）」が奇跡的に重なり、最も重く具体的で限定された「土（ペンタクル＝肉体）」が完成します。魔術師のテーブルに全て揃っているこの道具は、他人と同じ完璧な能力ではなく、<strong>「あなたに生まれつき与えられた得意素材（素地）」</strong>です。無いものねだりをやめて素材を使いこなすことが、魔術師の第一歩です。
+          </p>
+          <div class="highlight-box">
+            苦手なこと（自分の木に設定されていないもの）を必死で克服しようと我慢するのを諦めることで、エネルギーは劇的に巡り始めます。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 4: ワンドの8と、情熱の「保温（キープ）」コントロール (51:30～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-rose-700 animate-bounce"></i>
+            ワンドの8と保温キープ
+            <span class="text-xs text-slate-500 font-mono ml-auto">51:30～</span>
+          </h2>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+          <span class="tape-deco">8番ホド（水星）による「保温」状態</span>
+          <i class="fa-solid fa-temperature-half icon-large text-amber-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">燃え盛る情熱をコンパクトに整理整頓する</h3>
+          <p class="text-sm text-slate-700">
+            一般的に「急展開、スピード解決」と読まれる「ワンドの8」ですが、生命の木で見るとさらに深い構造があります。これは情熱（ワンド）が、理性を司る「8番（ホド・水星）」に到達した姿。5番（葛藤）や7番ネツァク（感じる情熱）の、自分のコントロールが効かないほどの過熱したエネルギーから脱し、思考と情報整理の力によって、情熱をスッキリと使いやすい効率的な<strong>「保温（キープ）状態」</strong>へまとめることに成功しているのです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Eさん</div>
+            「小アルカナは覚え始めたばかりですが、炎がメラメラ燃える状態から、保温状態にキープされていると聞くとすごく納得できます」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 11 -->
+        <div class="card">
+          <span class="tape-deco">9番の「自動運転」と10番の「限界」</span>
+          <i class="fa-solid fa-gears icon-large text-blue-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">当たり前になりすぎて最初の原動力を失う</h3>
+          <p class="text-sm text-slate-700">
+            ワンドがさらに下に進むと、9番（イエソド）になり、情熱が完全に「当たり前のルーティン」として無意識に自動運転されるようになります。たとえば「野球をするのが当たり前」になりすぎて、そこに最初の頃のような胸の熱さは感じられなくなっていきます。そして最終的な10番（マルクト）に到達した時、かつての情熱は、肉体に重くのしかかる単なる義務や「やらなきゃいけないストレス・重圧」へと変わり、ワンドのエネルギーとしての推進力は終わりを迎えます。
+          </p>
+          <div class="highlight-box">
+            急展開や即決が起こるのは、これまであなたが誠実に積み重ね、整理整頓してきたエネルギーが、いよいよ最も使いやすい形で結実したサインです。
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 12 -->
+        <div class="card">
+          <span class="tape-deco">枠を超えるためのAI活用法</span>
+          <i class="fa-solid fa-laptop-code icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">ぶっ飛んだ宇宙の概念を地球ルールに翻訳する</h3>
+          <p class="text-sm text-slate-700">
+            生命の木の「上側（宇宙の領域）」のカードは非常に抽象的で、そのままでは現実の悩みに落とし込めないことが多々あります。そんな時は、AIに「このカードの上昇の意図を、現代人のこういう具体的な悩みの例に翻訳するとしたらどうなる？」と相談するのも有効です。テクノロジーを翻訳機として活用することで、自分の中にはなかった新しい切り口や、客観的言語化の素晴らしいヒントを得ることができます。
+          </p>
+          <div class="comparison-container">
+            <div class="comparison-item">ぶっ飛んだ上側の概念<br>（宇宙ルール・抽象）</div>
+            <div class="comparison-vs">AI等の言語化</div>
+            <div class="comparison-item">現実的な落とし込み<br>（地球ルール・具体例）</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 5: ソードの3の限界、カップの6＆悪魔、そして天秤の均衡 (01:01:14～) -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-heart-crack text-rose-800 animate-pulse"></i>
+            限界の設定と心の天秤
+            <span class="text-xs text-slate-500 font-mono ml-auto">01:01:14～</span>
+          </h2>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+          <span class="tape-deco">ソードの3：残酷な「不公平」設定</span>
+          <i class="fa-solid fa-shield-heart icon-large text-slate-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">生まれながらの不公平を認める悲しみ</h3>
+          <p class="text-sm text-slate-700">
+            心臓に3本の剣が刺さった図案はショッキングですが、3番「ビナー（土星・枠の設定）」というカバラの階層で読むと見え方が変わります。ここは「持っている・持っていない」「できる・できない」という、人間の地球上での生まれつきの不公平（初期設定）が決まる場所。比べる相手がいない宇宙の段階ではただの設定（ビナー）ですが、これをわざわざ「言葉や概念（ソード）」として他者と比較してしまった時、初めて私たちの心に「私は持っていない」という深い残酷な悲しみがグサリと刺さるのです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Dさん</div>
+            「『今はものすごく楽しい！』と絶好調をアピールしていたお客様に、このソードの3、カップの6、悪魔の3枚が連続して出ました。裏側に強い欠乏感や依存が隠れているサインですね」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 14 -->
+        <div class="card">
+          <span class="tape-deco">楽しさ（カップの6）で隠す「悪魔」</span>
+          <i class="fa-solid fa-mask icon-large text-red-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">欠乏感から目を背けるためのアドレナリン</h3>
+          <p class="text-sm text-slate-700">
+            もし、ソードの3（不公平な欠乏設定）の後に「カップの6（過去の楽しさ・子供心の体現）」や「悪魔（依存・執着）」のカードが続くのであれば、その「絶好調な楽しさ」の裏側に、何かから目を背けるための依存的なエネルギーが働いている可能性があります。「私は設定されておらず、持っていない」という悲しい真実を見つめるのが怖いために、楽しさというアドレナリンを過剰に出して、一時的に心を誤魔化していないか。それさえも優しく自覚することで、本当の自立への扉が開きます。
+          </p>
+          <div class="highlight-box">
+            今は思い当たらなくても、いつかふとした瞬間に思い出してもらえるように、大切にお客様へこの「裏のメッセージ」を届けることも占い師の役割です。
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 15 -->
+        <div class="card">
+          <span class="tape-deco">ペンタクルの6と天秤の配置</span>
+          <i class="fa-solid fa-scale-balanced icon-large text-rose-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">自分がコントロールする傲慢さを手放す</h3>
+          <p class="text-sm text-slate-700">
+            「ペンタクルの6」は、中央の調和の座「ティファレト（6番）」が物質のペンタクルに投影されたもの。宇宙からの直感やお声がけを、自我の抵抗なく「ありがとうございます」とうっかり受け取れている美しい循環を示します。
+            「自分の力だけで現実をコントロールしよう」というコントロール欲求（我が強すぎる状態）を手放した時、思いがけない人助けや、滑らかなご縁のギブ＆テイクが勝手に巡り始めます。カードに描かれた赤い人の天秤は、ティファレトからネツァク（情熱）とホド（理性・計算）のバランスを美しく量る、私たちの心の内側の天秤そのものです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Fさん</div>
+            「うっかり誰かのためにやっちゃった、というような謙虚な状態で受け取れると、現実は本当に美しく巡っていきますね」
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- フッター部 -->
+    <footer class="mt-16 text-center border-t border-dashed border-slate-300 pt-8 text-slate-500">
+      <p class="text-sm heading-font">
+        <i class="fa-solid fa-quote-left text-xs mr-1 text-slate-400"></i>
+        生命の木は平面に見えて、本当はもの凄く立体的で、奥行きがあるカラフルな世界。
+        <i class="fa-solid fa-quote-right text-xs ml-1 text-slate-400"></i>
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 mt-6 text-xs text-slate-400 font-mono">
+        <span><i class="fa-solid fa-book-open mr-1"></i>Mayumi式解説書（グラレコ版）</span>
+        <span><i class="fa-solid fa-clock-four mr-1"></i>勉強会音声：約1時間30分収録</span>
+        <span><i class="fa-solid fa-heart text-red-500 mr-1 animate-pulse"></i>Designed for Tarot & Kabbalah Lovers</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
