@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi式 生命の木＆タロット勉強会グラレコ（2026.06.30）</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts (手書き風フォント、味わいフォント) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Yomogi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* カラーパレットの変数設定 */
+    :root {
+      --color-1: #A61B40; /* シューティングレッド（情熱・ポイント） */
+      --color-2: #DCE0F2; /* シューティンググレー（背景調和・やさしいトーン） */
+      --color-3: #012840; /* ディープインディゴ（生命の木・主軸） */
+      --color-4: #A66A5D; /* アースココア（手書き風・吹き出し・暖かみ） */
+      --color-5: #0D0D0D; /* チャコール（本文テキスト） */
+    }
+
+    /* 手書き風グリッドライン背景 */
+    body {
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e4e2db" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
+      background-size: 30px 30px;
+      background-color: #fcfbf7;
+      overflow-x: hidden;
+      color: var(--color-5);
+      font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* タイトル・見出し用フォント */
+    h1, h2, h3, .heading-font {
+      font-family: 'Kaisei Decol', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 5カラム構成のグリッドコンテナ */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 35px;
+    }
+
+    /* カードデザイン：背景透明、枠なし、手書き風の装飾をさりげなく */
+    .card {
+      background-color: transparent;
+      padding: 20px 15px;
+      border-radius: 20px;
+      position: relative;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* カードを仕切るラフな手書き風点線 */
+    .card-divider {
+      border: none;
+      border-top: 2px dashed rgba(166, 106, 93, 0.3);
+      margin: 20px 0;
+    }
+
+    /* 手書き風吹き出し */
+    .speech-bubble {
+      position: relative;
+      background-color: rgba(166, 106, 93, 0.08);
+      border: 1.5px dashed rgba(166, 106, 93, 0.4);
+      border-radius: 15px;
+      padding: 15px;
+      margin: 15px 0;
+      font-size: 0.95rem;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(166, 106, 93, 0.08) transparent transparent;
+    }
+
+    .speech-bubble-speaker {
+      font-size: 0.8rem;
+      color: var(--color-4);
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ハイライトボックス：手書き風赤ライン */
+    .highlight-box {
+      border-left: 3.5px solid var(--color-1);
+      border-radius: 4px;
+      padding-left: 12px;
+      background-color: rgba(166, 27, 64, 0.03);
+      margin: 15px 0;
+    }
+
+    /* 大きなアイコン */
+    .icon-large {
+      font-size: 70px;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      color: var(--color-3);
+      filter: drop-shadow(2px 4px 6px rgba(1, 39, 63, 0.15));
+    }
+
+    /* セクションヘッダー：アニメーションアイコン付き */
+    .section-header {
+      border-bottom: 3px double var(--color-3);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: var(--color-3);
+    }
+
+    .comparison-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      gap: 10px;
+    }
+
+    .comparison-item {
+      background-color: rgba(220, 223, 242, 0.3);
+      padding: 10px;
+      border-radius: 12px;
+      flex: 1;
+      text-align: center;
+      font-size: 0.9rem;
+      border: 1px dotted rgba(1, 39, 63, 0.2);
+    }
+
+    .comparison-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-1);
+      font-weight: bold;
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    /* メディアクエリ（画面幅に応じた柔軟な可変） */
+    @media (max-width: 1700px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 手書き風のワンポイントシール・クリップ装飾 */
+    .tape-deco {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      background-color: rgba(220, 223, 242, 0.7);
+      color: var(--color-3);
+      padding: 2px 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
+      border-left: 2px solid var(--color-1);
+      border-right: 2px solid var(--color-1);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- グラレコ大見出し -->
+    <header class="text-center mb-16 relative">
+      <div class="inline-block relative">
+        <span class="absolute -top-8 -left-12 text-5xl text-red-700 opacity-20 transform -rotate-12"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <h1 class="text-4xl md:text-5xl text-slate-800 tracking-wider mb-3 flex items-center justify-center gap-4">
+          <i class="fa-solid fa-palette text-amber-600 animate-pulse"></i>
+          Mayumi式 生命の木＆タロット勉強会
+          <i class="fa-solid fa-pen-nib text-amber-600"></i>
+        </h1>
+        <span class="absolute -bottom-6 -right-12 text-5xl text-blue-900 opacity-20 transform rotate-12"><i class="fa-solid fa-tree"></i></span>
+      </div>
+      <p class="text-lg text-slate-600 mt-4 tracking-widest heading-font">
+        <i class="fa-solid fa-calendar-day mr-2 text-rose-700"></i>2026年6月30日 勉強会グラフィックレポート
+      </p>
+      <div class="w-24 h-1 bg-red-700 mx-auto mt-6 rounded-full"></div>
+    </header>
+
+    <!-- 5カラムメイングリッド -->
+    <main class="grid-container">
+
+      <!-- COLUMN 1: Aさんの「ソードの4」（思考の休眠と当たり前の見直し） -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-bed text-rose-700 animate-bounce"></i>
+            思考の休眠と当たり前
+            <span class="text-xs text-slate-500 font-mono ml-auto">00:01:21～</span>
+          </h2>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+          <span class="tape-deco">思考が眠るシンボリズム</span>
+          <i class="fa-solid fa-brain icon-large text-emerald-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">肉体の休息ではない、エネルギーの休眠</h3>
+          <p class="text-sm text-slate-700">
+            一般的な書籍や解説では「一時的な休息・回復期間」と読まれる「ソードの4」ですが、生命の木を通してみると全く異なる深奥な本質が見えてきます。このカードに描かれた寝ている人物は、肉体的な休息を求めているのではなく、<strong>思考（ソード）のエネルギーそのものが「休眠状態」にあること</strong>を表しています。私たちは、自分自身にとって当たり前すぎる事柄（4番ケセド：安心安全の記憶・固定のルール）を目の前にしているとき、激しく思考を稼働させる必要がないため、脳のエンジンを完全にオフにして眠らせてしまいます。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Aさん</div>
+            「ずっと音楽をやってきましたが、自分にとっては当たり前（ルーティン）でした。でも周りからは情熱や熱意を持って取り組んでいるように見られていて、その温度差にいつも不思議なすれ違いを感じていたんです」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 2 -->
+        <div class="card">
+          <span class="tape-deco">当たり前を疑い、5番へ目覚める</span>
+          <i class="fa-solid fa-eye icon-large text-pink-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">コンフォートゾーンから抜け出すタイミング</h3>
+          <p class="text-sm text-slate-700">
+            「命は大切」「お金を使えば減る」といった、誰も疑問を持たない絶対の安心ルール。しかし、その当たり前の固定観念をそのまま放置していると、時に自分の環境や体力の変化に追いつかず、自分を追い詰めることになります。このカードは、<strong>「あなたが当たり前だと信じ込んでいるルーティンやルールを一度疑ってみるタイミング」</strong>であることを教えてくれます。当たり前を疑い、思考を稼働させることで、私たちは5番（ゲブラー・火星）の「自分の意志で戦い選び取る領域」へと目覚めることができるのです。
+          </p>
+          <div class="highlight-box">
+            「今までこうしてきたから」に囚われず、お惣菜に頼るなど、今の自分のキャパシシティに合わせて当たり前をアップデートすることが、本当の自己愛に繋がります。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 2: Bさんの「ソードのキング」 -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-crown text-emerald-800 animate-pulse"></i>
+            枠外の決断と自己管理
+            <span class="text-xs text-slate-500 font-mono ml-auto">00:23:07～</span>
+          </h2>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <span class="tape-deco">ソードのキング：枠の外の種</span>
+          <i class="fa-solid fa-chess-king icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">新たな学びを切り拓く、皇帝の決断力</h3>
+          <p class="text-sm text-slate-700">
+            ソードのキングが位置する「2番（コクマー）」は、私たちが慣れ親しんだ日常の<strong>「当たり前の枠の外」</strong>にある荒々しく純粋なエネルギー。まだ何一つ現実化していない抽象的な種ですが、これを受け取り、皇帝（4番）の力強い「線引き・優先順位の確立」を使って、現実世界で自己管理していくフェーズです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Bさん</div>
+            「明日から本格的なタロットの受講が始まります。限られた時間の中で、自分の優先順位とスケジュールを力強く組み立てて臨むという決意に、あまりにもドンピシャで震えました！」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 4 -->
+        <div class="card">
+          <span class="tape-deco">自己管理と優先順位の確立</span>
+          <i class="fa-solid fa-list-check icon-large text-amber-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">流されずに自分で決める覚悟</h3>
+          <p class="text-sm text-slate-700">
+            誰かに言われたから、周囲がそうしているから、ではなく「自らの意志で時間の使い方を決定する」こと。これまでの甘えや流される日常を、愛を持って厳しく線引きし、本当に取り組みたいことへの優先順位をロジカルに確立していく。これこそが、ソードのキングが示す、地に足のついた自己管理のあり方です。
+          </p>
+          <div class="highlight-box">
+            優しいだけでは国を滅ぼしてしまう皇帝のように、時に自分に優しく、時に強固な意志を持って「やること・やらないこと」を自ら決定していきましょう。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 3: Cさんの「魔術師」 -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-wand-magic-sparkles text-slate-700 animate-pulse"></i>
+            魔術師と圧倒的主体性
+            <span class="text-xs text-slate-500 font-mono ml-auto">00:38:29～</span>
+          </h2>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <span class="tape-deco">魔術師：ヘルメスに学ぶ主体性</span>
+          <i class="fa-solid fa-wand-magic-sparkles icon-large text-slate-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">言い訳をそぎ落とし、ただ始める狡猾さ</h3>
+          <p class="text-sm text-slate-700">
+            1番「ケテル（ワンネス）」から3番「ビナー（設定）」へと架かるパスに対応する「魔術師」。このカードに描かれた神「ヘルメス」は、口がうまく非常に賢い知性の象徴であると同時に、他者のものを掠め取る「盗みの神」の側面を内包しています。ここでの始まりの力は綺麗ごとだけではありません。世間のルールや言い訳を飛び越え、<strong>「手段を選ばず、何でもいいからまずは自分の素地（得意素材）を操って始めてしまえ！」</strong>という圧倒的な主体性を示しています。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Cさん</div>
+            「ヨガやズーム勉強会への参加、新しい運動の再開など、色々なハードルを乗り越えて急にスタートさせました。まさに自分のタイミングで魔術師の波に乗っています」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 6 -->
+        <div class="card">
+          <span class="tape-deco">持っている素地だけで飛び出す</span>
+          <i class="fa-solid fa-bolt icon-large text-yellow-600"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">無いものねだりをやめて動き出す</h3>
+          <p class="text-sm text-slate-700">
+            魔術師のテーブルに置かれた四元素の道具は、「完璧な能力をすべて持っている」という意味ではなく、「あなたに最初から与えられている得意素材」を表します。苦手なことや持っていないものを克服しようとするのをやめ、今手元にある素材だけで「とにかく始めてしまう」ことで、エネルギーは循環を始めます。
+          </p>
+          <div class="highlight-box">
+            「準備が整ってから」と言い訳せず、不完全なまま枠の外へと一歩を踏み出す。その大胆さこそが、魔術師の錬金術的な推進力となります。
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 4: Dさんの「ペンタクルのクイーン」（恋人たちのパス） -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-venus-mars text-amber-600 animate-pulse"></i>
+            恋人たちのパスと限界突破
+            <span class="text-xs text-slate-500 font-mono ml-auto">00:48:13～</span>
+          </h2>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+          <span class="tape-deco">ペンタクルのクイーンの素地</span>
+          <i class="fa-solid fa-gem icon-large text-rose-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">生まれ持った資質を現実へ具現化する</h3>
+          <p class="text-sm text-slate-700">
+            ペンタクルのクイーンが位置する3番「ビナー」は、物事の設定や生まれながらの素地が決まる、母なる土星の領域。私たちがこれまでに何十年もかけて積み重ねてきた人生経験、もともと設定されている資質（得意・不得意）をすべて手元に集約し、<strong>現実世界の体験（ペンタクル）としていよいよ具体化し、形にしていく準備が万端に整っている状態</strong>を示しています。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Dさん</div>
+            「これから生み出される現実にワクワクします。今までの経験をもとに、一歩ずつ地に足をつけながら、自分の意志で新しい現実を描いていく時期ですね」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 8 -->
+        <div class="card">
+          <span class="tape-deco">恋人たちのパス（アダムとイブ）</span>
+          <i class="fa-solid fa-heart-pulse icon-large text-indigo-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">損得勘定の理性を超え、純粋な好奇心に従う</h3>
+          <p class="text-sm text-slate-700">
+            3番（ビナー：設定）と6番（ティファレト：調和・自分軸）を結ぶパスこそが、アダムとイブが描かれた「恋人たち」のカードです。カードの中で、理性（アダム）は目の前の現実（下）を見て損得やルールを計算していますが、<strong>純粋な好奇心（イブ）は上（宇宙・大天使）を見つめ、限界を突破する直感と繋がっています</strong>。
+            「どちらの仕事が得か」という理性の計算を超え、純粋な「やりたい！」というイブの感覚に従うことこそが、今までのコンフォートゾーン（退屈な楽園）を飛び出し、新たな世界線を切り開くための重要な鍵（ブレイクスルー）となるのです。
+          </p>
+          <div class="comparison-container">
+            <div class="comparison-item">理性のアダム<br>「損得で無難に選ぶ」</div>
+            <div class="comparison-vs">突破</div>
+            <div class="comparison-item">好奇心のイブ<br>「直感を信じて踏み出す」</div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLUMN 5: Eさんの「ソードの3」＆Fさんの「愚者」 -->
+      <section class="flex flex-col">
+        <div class="section-header">
+          <h2 class="text-lg flex items-center gap-2">
+            <i class="fa-solid fa-heart-crack text-rose-700 animate-bounce"></i>
+            初期設定の悲しみと自由な一歩
+            <span class="text-xs text-slate-500 font-mono ml-auto">01:05:40～</span>
+          </h2>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+          <span class="tape-deco">ソードの3：設定と言語化</span>
+          <i class="fa-solid fa-heart-crack icon-large text-amber-700"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">比較のない宇宙から、他人のいる地球へ</h3>
+          <p class="text-sm text-slate-700">
+            心臓を3本の剣が貫く「ソードの3」は、3番「ビナー（土星・設定の場所）」というカバラの定義で読むと本質がスッと見えてきます。ここは「生まれつき持っている資質」という、変えられない初期設定が決まる場所。比べる相手がいない宇宙の段階ではただの設定ですが、<strong>これをわざわざ言葉や概念（ソード）として他者と比較してしまった時</strong>、初めて私たちの心に「私はそれを持っていない」という深い残酷な悲しみが突き刺さるのです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Eさん</div>
+            「ヨガやピラティスのインストラクターをしていて、心と体の密接な繋がりを実感しています。心の固執や我慢は、特定の体の部位の強張りに直結して現れてくるんですよね」
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 10 -->
+        <div class="card">
+          <span class="tape-deco">ヨガ・ピラティスの心身の連動</span>
+          <i class="fa-solid fa-circle-notch icon-large text-blue-900"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">余計な鎧をそぎ落とし、透明な中心へ</h3>
+          <p class="text-sm text-slate-700">
+            私たちは「できないこと」を必死に我慢して克服しよう（みんなと同じになろう）と頑張りがちです。しかし、<strong>「向いていないことは向いていない」と認め、できない部分を優しく手放す（そぎ落とす）</strong>ことで、エネルギーは劇的に巡り始めます。心身は緊密に連動しており、心の強張りが和らぐと、肉体の不調やバランスも奇跡的に和らいでいくといったお話も聞いております。
+          </p>
+          <div class="highlight-box">
+            ピラティスで身長が数センチ伸びるように、身体の強張りを緩めることは、心に余白を空け、本来の自分（ティファレト）を取り戻す素晴らしい第一歩です。
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Card 11 -->
+        <div class="card">
+          <span class="tape-deco">愚者：異世界の王子様</span>
+          <i class="fa-solid fa-compass icon-large text-slate-800"></i>
+          <h3 class="text-md text-slate-800 font-bold text-center mb-2">「小さな一歩」から始める枠外の冒険</h3>
+          <p class="text-sm text-slate-700">
+            「愚者」は地球のルールに囚われず、崖っぷちを怖がらずに歩いています。自由を勧められても一歩が踏み出せない人に対しては、彼の「当たり前の少し外側（ちょっとの勇気でできる、ごく具体的なこと）」を一緒に探してあげることが、リーディングの重要なポイントです。
+          </p>
+          <div class="speech-bubble">
+            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Fさん</div>
+            「この危なっかしくて天真爛漫な愚者のカードが、なぜか分からないけれど大好きなんです。いつかこうやって軽やかに歩み出したいですね」
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- フッター部 -->
+    <footer class="mt-16 text-center border-t border-dashed border-slate-300 pt-8 text-slate-500">
+      <p class="text-sm heading-font">
+        <i class="fa-solid fa-quote-left text-xs mr-1 text-slate-400"></i>
+        生命の木は平面に見えて、本当はもの凄く立体的で、奥行きがあるカラフルな世界。
+        <i class="fa-solid fa-quote-right text-xs ml-1 text-slate-400"></i>
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 mt-6 text-xs text-slate-400 font-mono">
+        <span><i class="fa-solid fa-book-open mr-1"></i>Mayumi式解説書（グラレコ版）</span>
+        <span><i class="fa-solid fa-clock-four mr-1"></i>勉強会音声：約1時間56分収録</span>
+        <span><i class="fa-solid fa-heart text-red-500 mr-1 animate-pulse"></i>Designed for Tarot & Kabbalah Lovers</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
