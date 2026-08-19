@@ -1,555 +1,701 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mayumi式 生命の木＆タロット勉強会グラレコ（2026.07.17）</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayumi式 生命の樹＆タロット勉強会グラレコ（2026.07.17）</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts (手書き風フォント、味わいフォント) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500;700&family=Yomogi&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* 公式LINE由来の紺 */
+  --navy-900:#1F344C;
+  --navy-700:#27415F;
+  --navy-600:#33547A;
+  --navy-500:#3E6289;
+  /* 明るい青（本文まわり） */
+  --blue-400:#5B80AC;
+  --blue-300:#7FA0C4;
+  --blue-200:#B9CCE0;
+  --blue-100:#DCE7F1;
+  --blue-050:#EFF4F9;
+  /* 公式LINE由来の金 */
+  --gold-600:#B98F52;
+  --gold-500:#C79E5E;
+  --gold-400:#D8B77E;
+  --gold-300:#E9CE9B;
+  --gold-100:#F5EBD8;
+  --gold-050:#FBF6EC;
+  /* 紙とインク */
+  --paper:#FCFCFA;
+  --paper-2:#FFFFFF;
+  --ink:#333F4C;
+  --ink-2:#5D6B7A;
+  --ink-3:#8B97A4;
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  --serif:'Shippori Mincho B1', serif;
+  --sans:'Zen Kaku Gothic New', sans-serif;
+  --latin:'Cormorant Garamond', serif;
+}
 
-  <style>
-    /* カラーパレットの変数設定 */
-    :root {
-      --color-1: #A61B40; /* シューティングレッド（情熱・ポイント） */
-      --color-2: #DCE0F2; /* シューティンググレー（背景調和・やさしいトーン） */
-      --color-3: #012840; /* ディープインディゴ（生命の木・主軸） */
-      --color-4: #A66A5D; /* アースココア（手書き風・吹き出し・暖かみ） */
-      --color-5: #0D0D0D; /* チャコール（本文テキスト） */
-    }
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:2;
+  letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;}
 
-    /* 手書き風グリッドライン背景 */
-    body {
-      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 10h100M10 0v100" stroke="%23e4e2db" stroke-width="0.5" stroke-dasharray="2,3"/></svg>');
-      background-size: 30px 30px;
-      background-color: #fcfbf7;
-      overflow-x: hidden;
-      color: var(--color-5);
-      font-family: 'Yomogi', 'Zen Kurenaido', sans-serif;
-      line-height: 1.6;
-    }
+/* ============ ヒーロー（公式LINEの世界観） ============ */
+.hero{
+  position:relative;
+  background:linear-gradient(160deg,#27415F 0%,#33547A 45%,#1F344C 100%);
+  color:#F2E7D2;
+  padding:clamp(56px,9vw,110px) 24px clamp(52px,8vw,96px);
+  overflow:hidden;
+  text-align:center;
+}
+/* 二重の細枠 */
+.hero-frame{
+  position:absolute;inset:18px;
+  border:1px solid rgba(216,183,126,.42);
+  pointer-events:none;
+}
+.hero-frame::after{
+  content:'';position:absolute;inset:7px;
+  border:1px solid rgba(216,183,126,.22);
+}
+.hero-inner{position:relative;z-index:2;max-width:940px;margin:0 auto;}
 
-    /* タイトル・見出し用フォント */
-    h1, h2, h3, .heading-font {
-      font-family: 'Kaisei Decol', serif;
-      font-weight: 700;
-    }
+.hero-eyebrow{
+  font-family:var(--latin);
+  font-size:clamp(.78rem,1.6vw,.95rem);
+  letter-spacing:.42em;
+  text-indent:.42em;
+  color:var(--gold-300);
+  margin:0 0 22px;
+  font-weight:400;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(1.35rem,3.6vw,2.5rem);
+  line-height:1.75;
+  letter-spacing:.1em;
+  margin:0;
+  color:#FBF6EC;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.hero h1 .nw{white-space:nowrap;display:inline-block;}
+.hero h1 .accent{color:var(--gold-300);}
 
-    .container {
-      max-width: 2000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+.hero-rule{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:30px auto 26px;max-width:340px;
+}
+.hero-rule::before,.hero-rule::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(216,183,126,.65),transparent);
+}
+.hero-rule i{color:var(--gold-300);font-size:.7rem;}
 
-    /* 5カラム構成のグリッドコンテナ */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 35px;
-    }
+.hero-date{
+  font-family:var(--serif);
+  font-size:clamp(.9rem,2vw,1.05rem);
+  letter-spacing:.2em;
+  color:#E6DFD1;
+  margin:0 0 34px;
+}
 
-    /* カードデザイン：背景透明、枠なし、手書き風の装飾をさりげなく */
-    .card {
-      background-color: transparent;
-      padding: 20px 15px;
-      border-radius: 20px;
-      position: relative;
-      margin-bottom: 40px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+/* 引いた4枚 */
+.draw-list{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  margin:0;padding:0;list-style:none;
+}
+.draw-list a{
+  display:block;
+  font-family:var(--serif);
+  font-size:clamp(.76rem,1.7vw,.9rem);
+  letter-spacing:.12em;
+  color:#F2E7D2;
+  text-decoration:none;
+  border:1px solid rgba(216,183,126,.45);
+  border-radius:2px;
+  padding:7px 17px;
+  background:rgba(255,255,255,.045);
+  transition:background .25s, border-color .25s, color .25s;
+}
+.draw-list a:hover,.draw-list a:focus-visible{
+  background:rgba(233,206,155,.16);
+  border-color:var(--gold-300);
+  color:#FBF6EC;
+}
+.draw-list a span{color:var(--gold-300);font-family:var(--latin);margin-right:7px;font-size:1.05em;}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+/* 月と星 */
+.moon{position:absolute;left:6%;top:50%;transform:translateY(-50%);width:min(190px,20vw);opacity:.5;z-index:1;}
+@media(max-width:900px){.moon{display:none;}}
+.star{position:absolute;z-index:1;fill:var(--gold-300);opacity:.5;}
 
-    /* カードを仕切るラフな手書き風点線 */
-    .card-divider {
-      border: none;
-      border-top: 2px dashed rgba(166, 106, 93, 0.3);
-      margin: 20px 0;
-    }
+/* ============ レイアウト ============ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
 
-    /* 手書き風吹き出し */
-    .speech-bubble {
-      position: relative;
-      background-color: rgba(166, 106, 93, 0.08);
-      border: 1.5px dashed rgba(166, 106, 93, 0.4);
-      border-radius: 15px;
-      padding: 15px;
-      margin: 15px 0;
-      font-size: 0.95rem;
-    }
+/* 目次 */
+.toc{
+  margin:clamp(44px,6vw,72px) auto clamp(30px,5vw,56px);
+  text-align:center;
+}
+.toc-label{
+  font-family:var(--latin);
+  font-size:.82rem;letter-spacing:.4em;text-indent:.4em;
+  color:var(--gold-600);
+  margin:0 0 20px;
+}
+.toc-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0;margin:0;list-style:none;}
+.toc-list a{
+  display:inline-block;
+  font-family:var(--serif);
+  font-size:.86rem;letter-spacing:.08em;
+  color:var(--navy-600);
+  text-decoration:none;
+  border:1px solid var(--blue-200);
+  border-radius:2px;
+  padding:8px 16px;
+  background:var(--paper-2);
+  transition:.25s;
+}
+.toc-list a:hover{border-color:var(--gold-400);color:var(--gold-600);background:var(--gold-050);}
+.toc-list a em{font-family:var(--latin);font-style:normal;color:var(--gold-500);margin-right:8px;}
 
-    .speech-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 30px;
-      border-width: 10px 10px 0;
-      border-style: solid;
-      border-color: rgba(166, 106, 93, 0.08) transparent transparent;
-    }
+/* セクション：左に見出し／右に本文 */
+.section{
+  scroll-margin-top:34px;
+  display:grid;
+  grid-template-columns:250px 1fr;
+  gap:clamp(28px,4vw,60px);
+  padding:clamp(40px,5vw,64px) 0;
+  border-top:1px solid var(--blue-100);
+}
+.section:first-of-type{border-top:none;}
+@media(max-width:900px){
+  .section{grid-template-columns:1fr;gap:26px;}
+}
 
-    .speech-bubble-speaker {
-      font-size: 0.8rem;
-      color: var(--color-4);
-      font-weight: bold;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+.sec-head{position:sticky;top:34px;align-self:start;}
+@media(max-width:900px){.sec-head{position:static;}}
+.sec-num{
+  font-family:var(--latin);
+  font-size:2.9rem;font-weight:300;font-style:italic;
+  color:var(--gold-400);
+  line-height:1;
+  display:block;margin-bottom:12px;
+}
+.sec-head h2{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(1.08rem,2.3vw,1.32rem);
+  line-height:1.7;
+  letter-spacing:.09em;
+  color:var(--navy-700);
+  margin:0 0 16px;
+}
+.sec-head h2::after{
+  content:'';display:block;width:46px;height:1px;
+  background:var(--gold-400);margin-top:16px;
+}
+.sec-time{
+  font-family:var(--latin);
+  font-size:.85rem;letter-spacing:.16em;
+  color:var(--ink-3);
+}
+.sec-body{display:flex;flex-direction:column;gap:clamp(22px,3vw,34px);min-width:0;}
 
-    /* ハイライトボックス：手書き風赤ライン */
-    .highlight-box {
-      border-left: 3.5px solid var(--color-1);
-      border-radius: 4px;
-      padding-left: 12px;
-      background-color: rgba(166, 27, 64, 0.03);
-      margin: 15px 0;
-    }
+/* ============ カード ============ */
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--blue-100);
+  border-radius:3px;
+  padding:clamp(24px,3.4vw,38px);
+  position:relative;
+  transition:border-color .3s, box-shadow .3s;
+}
+.card:hover{
+  border-color:var(--blue-200);
+  box-shadow:0 10px 34px -20px rgba(31,52,76,.4);
+}
+/* 表紙から飛んできたカードを、ひと目で分かるように */
+.card{scroll-margin-top:34px;}
+.card:target{
+  border-color:var(--gold-400);
+  box-shadow:0 0 0 4px var(--gold-050);
+}
+.card-tag{
+  display:inline-block;
+  font-family:var(--serif);
+  font-size:.72rem;letter-spacing:.14em;
+  color:var(--gold-600);
+  background:var(--gold-050);
+  border:1px solid var(--gold-100);
+  border-radius:2px;
+  padding:4px 12px;
+  margin-bottom:18px;
+  line-height:1.8;
+}
+.card h3{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(1.05rem,2.4vw,1.3rem);
+  line-height:1.85;
+  letter-spacing:.05em;
+  color:var(--navy-700);
+  margin:0 0 20px;
+}
+.card p{
+  font-size:.94rem;
+  line-height:2.15;
+  color:var(--ink);
+  margin:0 0 18px;
+}
+.card p:last-child{margin-bottom:0;}
+.card strong{
+  font-weight:500;
+  color:var(--navy-600);
+  background:linear-gradient(transparent 62%,var(--gold-100) 62%);
+  padding-bottom:1px;
+}
 
-    /* 大きなアイコン */
-    .icon-large {
-      font-size: 70px;
-      display: block;
-      margin: 20px auto;
-      text-align: center;
-      color: var(--color-3);
-      filter: drop-shadow(2px 4px 6px rgba(1, 39, 63, 0.15));
-    }
+/* 参加者の声 */
+.voice{
+  background:var(--blue-050);
+  border-left:2px solid var(--blue-300);
+  border-radius:0 3px 3px 0;
+  padding:18px 22px;
+  margin:22px 0;
+}
+.voice-name{
+  font-family:var(--serif);
+  font-size:.76rem;letter-spacing:.16em;
+  color:var(--blue-400);
+  margin:0 0 8px;
+  display:flex;align-items:center;gap:8px;
+}
+.voice-name::before{
+  content:'';width:16px;height:1px;background:var(--blue-300);
+}
+.voice p{
+  font-size:.89rem;line-height:2.05;color:var(--ink-2);margin:0;
+}
 
-    /* セクションヘッダー：アニメーションアイコン付き */
-    .section-header {
-      border-bottom: 3px double var(--color-3);
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      color: var(--color-3);
-    }
+/* まゆみさんのひとこと */
+.note{
+  background:var(--gold-050);
+  border:1px solid var(--gold-100);
+  border-radius:3px;
+  padding:18px 22px;
+  margin:22px 0 0;
+  position:relative;
+}
+.note::before{
+  content:'point';
+  position:absolute;top:-9px;left:20px;
+  font-family:var(--latin);font-size:.7rem;letter-spacing:.28em;
+  color:var(--gold-600);background:var(--paper-2);padding:0 9px;
+}
+.note p{font-size:.88rem;line-height:2.05;color:var(--ink-2);margin:0;}
 
-    .comparison-container {
-      display: flex;
-      justify-content: space-between;
-      margin: 15px 0;
-      gap: 10px;
-    }
+/* 対比 */
+.compare{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:stretch;
+  gap:0;
+  margin:24px 0;
+  border:1px solid var(--blue-100);
+  border-radius:3px;
+  overflow:hidden;
+}
+.compare.three{grid-template-columns:1fr 1fr 1fr;}
+.compare-cell{
+  padding:20px 16px;
+  text-align:center;
+  background:var(--paper-2);
+}
+.compare.three .compare-cell + .compare-cell{border-left:1px solid var(--blue-100);}
+.compare-cell .t{
+  font-family:var(--serif);
+  font-size:.92rem;letter-spacing:.08em;
+  color:var(--navy-600);
+  display:block;margin-bottom:7px;
+}
+.compare-cell .d{
+  font-size:.79rem;line-height:1.9;color:var(--ink-2);display:block;
+}
+.compare-mid{
+  display:flex;align-items:center;justify-content:center;
+  padding:0 14px;
+  background:var(--gold-050);
+  font-family:var(--serif);
+  font-size:.78rem;letter-spacing:.1em;
+  color:var(--gold-600);
+  white-space:nowrap;
+}
 
-    .comparison-item {
-      background-color: rgba(220, 223, 242, 0.3);
-      padding: 10px;
-      border-radius: 12px;
-      flex: 1;
-      text-align: center;
-      font-size: 0.9rem;
-      border: 1px dotted rgba(1, 39, 63, 0.2);
-    }
+/* 火加減メーター */
+.heat{margin:24px 0;}
+.heat-bar{
+  height:5px;border-radius:3px;
+  background:linear-gradient(90deg,#DCE7F1,#E9CE9B,#D8B77E,#C08A5A,#A8583F);
+  margin-bottom:14px;
+}
+.heat-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.heat-step{text-align:center;}
+.heat-step .t{
+  font-family:var(--serif);font-size:.86rem;color:var(--navy-600);
+  display:block;margin-bottom:4px;letter-spacing:.06em;
+}
+.heat-step .d{font-size:.75rem;color:var(--ink-2);display:block;line-height:1.8;}
+@media(max-width:560px){
+  .heat-steps{grid-template-columns:repeat(2,1fr);gap:14px;}
+  .compare{grid-template-columns:1fr;}
+  .compare.three{grid-template-columns:1fr;}
+  .compare.three .compare-cell + .compare-cell{border-left:none;border-top:1px solid var(--blue-100);}
+  .compare-mid{padding:10px;border-top:1px solid var(--blue-100);border-bottom:1px solid var(--blue-100);}
+}
 
-    .comparison-vs {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-1);
-      font-weight: bold;
-      font-family: 'Kaisei Decol', serif;
-    }
+/* ============ 結び ============ */
+.closing{
+  margin:clamp(50px,7vw,90px) 0 0;
+  padding:clamp(44px,6vw,72px) clamp(24px,4vw,56px);
+  background:linear-gradient(160deg,#27415F,#1F344C);
+  color:#F2E7D2;
+  text-align:center;
+  position:relative;
+  border-radius:3px;
+  overflow:hidden;
+}
+.closing-frame{position:absolute;inset:14px;border:1px solid rgba(216,183,126,.3);pointer-events:none;}
+.closing p{
+  position:relative;z-index:2;
+  font-family:var(--serif);
+  font-size:clamp(1rem,2.3vw,1.25rem);
+  line-height:2.1;letter-spacing:.09em;
+  margin:0;
+}
+.closing p .accent{color:var(--gold-300);}
 
-    /* 火加減メーター（このグラレコ用のワンポイント） */
-    .heat-meter {
-      display: flex;
-      gap: 6px;
-      margin: 15px 0;
-      font-size: 0.78rem;
-      text-align: center;
-    }
-
-    .heat-step {
-      flex: 1;
-      padding: 8px 4px;
-      border-radius: 10px;
-      border: 1px dotted rgba(166, 27, 64, 0.3);
-      background-color: rgba(166, 27, 64, 0.04);
-    }
-
-    .heat-step:nth-child(2) { background-color: rgba(166, 27, 64, 0.09); }
-    .heat-step:nth-child(3) { background-color: rgba(166, 27, 64, 0.16); }
-    .heat-step:nth-child(4) { background-color: rgba(166, 27, 64, 0.26); }
-
-    /* メディアクエリ（画面幅に応じた柔軟な可変） */
-    @media (max-width: 1700px) {
-      .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 1024px) {
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 640px) {
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* 手書き風のワンポイントシール・クリップ装飾 */
-    .tape-deco {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-2deg);
-      background-color: rgba(220, 223, 242, 0.7);
-      color: var(--color-3);
-      padding: 2px 15px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
-      border-left: 2px solid var(--color-1);
-      border-right: 2px solid var(--color-1);
-      white-space: nowrap;
-    }
-  </style>
+footer{
+  padding:clamp(34px,4vw,52px) 0 clamp(48px,6vw,74px);
+  text-align:center;
+}
+.foot-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;
+  font-family:var(--latin);
+  font-size:.8rem;letter-spacing:.14em;
+  color:var(--ink-3);
+}
+.foot-mark{
+  font-family:var(--serif);
+  font-size:.84rem;letter-spacing:.24em;
+  color:var(--gold-600);
+  margin:0 0 18px;
+}
+</style>
 </head>
 <body>
 
-  <div class="container">
+<!-- ============ ヒーロー ============ -->
+<header class="hero">
+  <div class="hero-frame"></div>
 
-    <!-- グラレコ大見出し -->
-    <header class="text-center mb-16 relative">
-      <div class="inline-block relative">
-        <span class="absolute -top-8 -left-12 text-5xl text-red-700 opacity-20 transform -rotate-12"><i class="fa-solid fa-fire"></i></span>
-        <h1 class="text-4xl md:text-5xl text-slate-800 tracking-wider mb-3 flex items-center justify-center gap-4">
-          <i class="fa-solid fa-palette text-amber-600 animate-pulse"></i>
-          Mayumi式 生命の木＆タロット勉強会
-          <i class="fa-solid fa-pen-nib text-amber-600"></i>
-        </h1>
-        <span class="absolute -bottom-6 -right-12 text-5xl text-blue-900 opacity-20 transform rotate-12"><i class="fa-solid fa-tree"></i></span>
-      </div>
-      <p class="text-lg text-slate-600 mt-4 tracking-widest heading-font">
-        <i class="fa-solid fa-calendar-day mr-2 text-rose-700"></i>2026年7月17日 勉強会グラフィックレポート
-      </p>
-      <p class="text-sm text-slate-500 mt-2">この日引かれた4枚：ソードの5／ワンドのエース／戦車／カップの5</p>
-      <div class="w-24 h-1 bg-red-700 mx-auto mt-6 rounded-full"></div>
-    </header>
+  <svg class="moon" viewBox="0 0 200 200" aria-hidden="true">
+    <path d="M132 22a86 86 0 1 0 0 156 96 96 0 0 1 0-156z" fill="rgba(255,255,255,.07)" stroke="#D8B77E" stroke-width="2.2"/>
+    <path d="M120 40a72 72 0 0 0 0 120" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.2"/>
+    <g stroke="#C8CFC0" stroke-width="1.4" fill="none">
+      <path d="M112 168v-40"/><path d="M112 140c-9-3-15-10-16-19 9 1 15 7 16 19z"/>
+      <path d="M112 128c8-4 13-11 13-20-9 2-14 9-13 20z"/>
+    </g>
+    <circle cx="112" cy="122" r="2.6" fill="#E9CE9B"/>
+  </svg>
 
-    <!-- 5カラムメイングリッド -->
-    <main class="grid-container">
+  <svg class="star" style="left:14%;top:16%;width:15px" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  <svg class="star" style="left:31%;top:70%;width:10px;opacity:.35" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  <svg class="star" style="right:11%;top:22%;width:13px;opacity:.4" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  <svg class="star" style="right:22%;top:78%;width:9px;opacity:.3" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  <svg class="star" style="left:7%;bottom:14%;width:11px;opacity:.32" viewBox="0 0 24 24"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
 
-      <!-- COLUMN 1: Aさんの「ソードの5」（火加減で決まる世界） -->
-      <section class="flex flex-col">
-        <div class="section-header">
-          <h2 class="text-lg flex items-center gap-2">
-            <i class="fa-solid fa-fire text-rose-700 animate-pulse"></i>
-            ソードの5と火加減
-            <span class="text-xs text-slate-500 font-mono ml-auto">00:00:02～</span>
-          </h2>
-        </div>
-
-        <!-- Card 1 -->
-        <div class="card">
-          <span class="tape-deco">正反対のキーワードが同居する謎</span>
-          <i class="fa-solid fa-scale-unbalanced icon-large text-slate-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">「敗北」と「勝利」が同じカードに載っている</h3>
-          <p class="text-sm text-slate-700">
-            一般的な解説書やサイトでソードの5を引くと、争い・敗北・利己的な勝利、といったキーワードが並びます。まゆみさん自身が学びはじめの頃、いちばん振り回されたのがここでした。<strong>同じ1枚のカードに、真反対の意味がどうして同時に存在するのか。</strong>「直感でいいんだよ、思ったことをそのまま言って」と言われても、どっちを言えばいいのかが分からない。この納得のいかなさこそが、生命の木を使うと構造としてスッと解ける部分です。
-          </p>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Aさん</div>
-            「タロットを迎えたばかりの初心者なんですが、カードと仲良くなろうと引いてみると、なぜかソードばかりよく出るんです」
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 2 -->
-        <div class="card">
-          <span class="tape-deco">5番ゲブラー＝火星に、風が入る</span>
-          <i class="fa-solid fa-wind icon-large text-emerald-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">メラメラした場所に、風がどばっと吹き込む</h3>
-          <p class="text-sm text-slate-700">
-            数札の5が置かれるのは、生命の木の5番「ゲブラー」。西洋占星術でいえば火星が対応する、メラメラと燃えている場所です。そこへソード（風）のエネルギーが流れ込みます。バーベキューで火を起こすとき、必ず仰ぎますよね。<strong>風がないと火はつかない。でも風が強すぎると山火事になる。</strong>争いも、口論も、勝利も、敗北も、すべてこの火加減の違いから生まれます。
-          </p>
-          <div class="heat-meter">
-            <div class="heat-step">とろ火<br>静かな主張</div>
-            <div class="heat-step">中火<br>意見が立つ</div>
-            <div class="heat-step">強火<br>衝突・口論</div>
-            <div class="heat-step">火傷<br>暴走・傷つけ</div>
-          </div>
-          <div class="highlight-box">
-            熱くなりすぎているなら「正義」のカードでバランスを取ってもらう。感情や情熱を交えずに、優先順位と状況を冷静に整理してもらうイメージです。
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 3 -->
-        <div class="card">
-          <span class="tape-deco">小アルカナにもサインと天体がある</span>
-          <i class="fa-solid fa-star-and-crescent icon-large text-indigo-900"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">ソードの5＝水瓶座の金星</h3>
-          <p class="text-sm text-slate-700">
-            数札にもサインと天体が振られていて、ソードの5には「水瓶座の金星」が当てはまります。ただし、ウェイト版が生まれた1900年代前半は現代占星術以前の時代。<strong>「水瓶座はこういう性格」という細かい読み方ではなく、牡羊座で命が生まれ魚座で終わる、という人生のサイクルの11番目として眺めるほうがイメージが立ちます。</strong>山羊座で社会的な地位や名誉を手にしたその先で、場所や役割ではなく「一人の個」として枠を突破していく感覚。そこに金星が輝く、と捉えてみてください。
-          </p>
-        </div>
-      </section>
-
-
-      <!-- COLUMN 2: 4番から5番へ（思考の休眠と、選ぶ場所） -->
-      <section class="flex flex-col">
-        <div class="section-header">
-          <h2 class="text-lg flex items-center gap-2">
-            <i class="fa-solid fa-bed text-emerald-800 animate-bounce"></i>
-            4番から5番へ動く
-            <span class="text-xs text-slate-500 font-mono ml-auto">00:05:12～</span>
-          </h2>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="card">
-          <span class="tape-deco">ソードの4：寝ているのは思考</span>
-          <i class="fa-solid fa-brain icon-large text-slate-600"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">当たり前を前にすると、思考は動かない</h3>
-          <p class="text-sm text-slate-700">
-            5番の手前にある4番は、安定していて動きがない場所。受講生さんでもここの概念がすっと入らない方が多い、いちばん難しいセフィラです。ソードの4で人が寝ているのは、<strong>物理的に休んでいるのではなく、思考というエネルギーそのものが休眠している状態</strong>を描いています。「命は大事にしましょう」と言われて、なぜ大事なのかをわざわざ考える人はいませんよね。あまりに当たり前なものを前にすると、思考のエンジンは止まったままになるのです。
-          </p>
-          <div class="comparison-container">
-            <div class="comparison-item">4番<br>安定・動きなし<br>思考は眠る</div>
-            <div class="comparison-vs">→</div>
-            <div class="comparison-item">5番<br>激しく動く<br>思考が起きる</div>
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 5 -->
-        <div class="card">
-          <span class="tape-deco">世間の声が届かない場所</span>
-          <i class="fa-solid fa-hand-pointer icon-large text-rose-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">「みんながそうだから」を採用しない</h3>
-          <p class="text-sm text-slate-700">
-            5番は、自分の意志で決めたり選んだりする場所です。しかもここは現実世界から距離があるので、<strong>みんなが結婚しているから、男だから女だから、といった世間一般の常識やルールをそもそも採用しません。</strong>誰かに言われたからではなく、自分の魂が何をしたいかで選ぶ。だからこそ、なおさら熱くなりやすい場所でもあります。安心安全な4番から飛び出している分、普通の人と考え方が違うところに立つことになり、ぶつかった結果として勝つことも負けることもあります。
-          </p>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 6 -->
-        <div class="card">
-          <span class="tape-deco">ソード＝ヘルメスの神様</span>
-          <i class="fa-solid fa-wand-magic-sparkles icon-large text-amber-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">言葉を扱う力には、ずるさも含まれる</h3>
-          <p class="text-sm text-slate-700">
-            ソードといえば水星、水星といえばヘルメス。魔術師に描かれているこの伝達の神様は、話術に長けている一方で「盗みの神」とも言われます。口がうまいから、正当化もできてしまう。<strong>言語というのは扱い方しだいで、ずるさや策略を生むもの</strong>なのです。そこに火の力が合わさると、自分が勝ち取るために策略を練る形になり、いわゆる「利己的な勝利」というキーワードが生まれます。悪い意味に受け取る必要はありません。
-          </p>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Aさん</div>
-            「このカード、やってやったぜ、みたいな男性の顔がいちばん最初に目に入るんです。そういう意味合いも含めて読むと、また変わってきますか？」
-          </div>
-          <div class="highlight-box">
-            まゆみさんのおすすめは、生命の木という土台を入れたうえで思う存分に直感を働かせるスタイル。本質が一本通っていると、自信を持って伝えたあとに「でも、このにやっとした顔が氣になるんですよね」と足せます。土台が先、直感はそのあと。
-          </div>
-        </div>
-      </section>
-
-
-      <!-- COLUMN 3: Bさんの「ワンドのエース」 -->
-      <section class="flex flex-col">
-        <div class="section-header">
-          <h2 class="text-lg flex items-center gap-2">
-            <i class="fa-solid fa-seedling text-slate-700 animate-pulse"></i>
-            ワンドのエースと種
-            <span class="text-xs text-slate-500 font-mono ml-auto">00:21:12～</span>
-          </h2>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="card">
-          <span class="tape-deco">1番ケテル：宇宙のどこかにある種</span>
-          <i class="fa-solid fa-circle-nodes icon-large text-indigo-900"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">アンテナを張っていないと、通り過ぎてしまう</h3>
-          <p class="text-sm text-slate-700">
-            エースが置かれるのは生命の木のいちばん上、1番ケテル。正直に言うと、ここは圧倒的に抽象的で、具体的に言えることがほとんどありません。<strong>宇宙のどこかに、生命エネルギーを揺さぶるような種がある。そのくらいの話です。</strong>胸が熱くなる人もいれば、「なんかこの文字が氣になるな」程度の人もいる。あまりに小さいので、アンテナを張っていないとスルーしてしまう可能性があります。だからエースが出たら「少しアンテナを張っておくといいかもしれませんね」というアドバイスが効きます。
-          </p>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Bさん</div>
-            「エースは、生命の木を勉強していちばんイメージが変わったカードです。習ったのは『情熱を持って始めよう』という力強い意味で、魔術師と何が違うんだろうとずっと思っていました」
-          </div>
-          <div class="highlight-box">
-            抽象的すぎて話が終わってしまうときは、もう1枚10番の位置を出してみる。今起きている出来事が何かの種だとしたら、どう捉えますか？　畑がいっぱいなら新しい種は植えられないので、もう十分やったと思うものを終わらせて余白をつくる、という話にもできます。
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 8 -->
-        <div class="card">
-          <span class="tape-deco">4枚のエースを並べて氣づくこと</span>
-          <i class="fa-solid fa-layer-group icon-large text-emerald-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">ペンタクルにだけ、種が描かれていない</h3>
-          <p class="text-sm text-slate-700">
-            生命の木にはヨッド（ヘブライ文字の「י」）＝種という考え方があり、エースのカードにはその種が舞っています。ところが4枚を並べると、<strong>ペンタクルのエースにだけ種が描かれていません。ペンタクルは種を植える場所であり、結果そのものだからです。</strong>さらに面白いのが種の数。ワンドは少なく、ソードは6つほど、そしてカップがいちばん多い。感情のほうが、深掘りできる種をたくさん含んでいるということが、そのまま絵に表れています。
-          </p>
-          <div class="comparison-container">
-            <div class="comparison-item">ワンド<br>原始的な生命力<br>種は少ない</div>
-            <div class="comparison-item">カップ<br>感情<br>種がいちばん多い</div>
-            <div class="comparison-item">ペンタクル<br>結果・植える場所<br>種はない</div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- COLUMN 4: カップのエースと宇宙の愛 -->
-      <section class="flex flex-col">
-        <div class="section-header">
-          <h2 class="text-lg flex items-center gap-2">
-            <i class="fa-solid fa-dove text-amber-600 animate-pulse"></i>
-            宇宙の愛と、地球の愛
-            <span class="text-xs text-slate-500 font-mono ml-auto">00:33:38～</span>
-          </h2>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="card">
-          <span class="tape-deco">カップのエース：統合の種</span>
-          <i class="fa-solid fa-infinity icon-large text-rose-700"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">好きでも嫌いでもない何かが、生まれる</h3>
-          <p class="text-sm text-slate-700">
-            カップは愛。そして愛とは、究極には「統合」です。異質なもの同士がぶつかって混ぜ合わされ、<strong>好きでもない、嫌いでもない、新しい第三のものが生まれる</strong>。もし目の前に嫌いだと思っている人がいるなら、統合するというのはその人ととことん向き合うということ。宇宙レベルでは尊く素晴らしい経験ですが、地球目線ではなかなかしんどいですよね。だからこのカードは「新しい感情を経験する種」であって、それがどう転ぶかは未知数です。
-          </p>
-          <div class="highlight-box">
-            種は、受け取ることもできれば受け取らないこともできます。受け取らなければ、なかったことと同じ。いつもの反応・いつもの処理の仕方をすると、いつもと変わらない現実になります。
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 10 -->
-        <div class="card">
-          <span class="tape-deco">ヴェールの向こう側の話</span>
-          <i class="fa-solid fa-meteor icon-large text-slate-800"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">きれいなだけのカードでは、たぶんない</h3>
-          <p class="text-sm text-slate-700">
-            鳩が描かれているから「愛と平和のカード」。そう習った方も多いところです。でも天上の三つ組の話として考えるなら、ここは神様と宇宙の世界観のいちばん上。人間がどうこうできる領域ではありません。<strong>宇宙レベルの愛は、地球の感覚でいう愛や優しさとは別物です。</strong>自然の圧倒的な力が、時に恐怖であり、時に震えるほどの感動でもあるように。それのもっとすごいものだと思ってください。
-          </p>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Cさん</div>
-            「宇宙レベルでの愛の表現が『調整』なんだというのは、なるほどなと思いました。そういう捉え方もあるんですね」
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 11 -->
-        <div class="card">
-          <span class="tape-deco">許すって、好きになることじゃない</span>
-          <i class="fa-solid fa-hands-holding-circle icon-large text-blue-900"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">嫌いなままでいい。許せない自分ごと許す</h3>
-          <p class="text-sm text-slate-700">
-            許すというのは、嫌いなものを好きにすることではありません。<strong>「好きか嫌いかで言えば嫌い。でも、どんな人生を歩んだらその言動になるのか、背景を考えれば理解はできる」。それでいいのです。</strong>嫌いな相手を好きになろうとすると、苦しさがマックスになります。そして許すことがゴールだと思っていると、許せない自分を見つけたときに「私は心の狭い人間だ」と責めてしまう。許せない自分ごと許す。それが宇宙レベルの愛です。
-          </p>
-        </div>
-      </section>
-
-
-      <!-- COLUMN 5: Cさんの「戦車」＆Dさんの「カップの5」 -->
-      <section class="flex flex-col">
-        <div class="section-header">
-          <h2 class="text-lg flex items-center gap-2">
-            <i class="fa-solid fa-horse text-rose-700 animate-bounce"></i>
-            戦車と、カップの5
-            <span class="text-xs text-slate-500 font-mono ml-auto">00:46:01～</span>
-          </h2>
-        </div>
-
-        <!-- Card 12 -->
-        <div class="card">
-          <span class="tape-deco">戦車：3番と5番を結ぶパス</span>
-          <i class="fa-solid fa-shield-heart icon-large text-indigo-900"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">大事なものを守り、育むときに動くエネルギー</h3>
-          <p class="text-sm text-slate-700">
-            戦車は真ん中の領域、3番ビナーと5番ゲブラーを結ぶパスです。3番は生まれ持った素地が決まる場所。どんな親のもとに、どんな性別で、何が得意で何が不得意か。<strong>その素地を使って自分の土台を育てたり、自分の信念や大事なものを守ろうとするときに発動するのが戦車です。</strong>実は蟹座のカード。自分の心安らぐ場所を育て、大事なものは囲い込みたい。でも一度敵と認定すると、硬い甲羅とはさみで攻撃的になる。まゆみさんが「ヤンキー星座」と呼ぶ性質が、そのまま戦車にも入っています。
-          </p>
-          <div class="comparison-container">
-            <div class="comparison-item">対極の柱<br>司祭（法王）<br>道徳・社会的責任</div>
-            <div class="comparison-vs">⇔</div>
-            <div class="comparison-item">戦車<br>ルールでも善悪でもない<br>自分の大事なもの</div>
-          </div>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Cさん</div>
-            「守るもの、抱えているものが大きいと思っているから、面白いほうを選ぶと今のものをぽいっと捨ててしまう氣がして。どうバランスを取るのかを今悩んでいます」
-          </div>
-          <div class="highlight-box">
-            「みんな結婚するから私も」で戦車が出ても、結婚したらいいですね、とはなりません。その関係はあなたの土台を育むことにつながりますか、と見ていく。物質的な条件の話ではないところが、このカードのポイントです。
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 13 -->
-        <div class="card">
-          <span class="tape-deco">恋人たち：イブだけが上を向いている</span>
-          <i class="fa-solid fa-venus-mars icon-large text-amber-600"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">理性は、限界突破のキーにはならない</h3>
-          <p class="text-sm text-slate-700">
-            恋人たちのカードで、上を見上げているのはイブだけです。アダムの目線はどちらかというと斜め下、目の前の現実のほう。<strong>理性はとても大事なものですが、何かの限界を突破する鍵にはなりません。爆発的な力を持っているのは感情のほうです。</strong>どこまでも堕落できるのも感情なら、枠を飛び出して越えていくのも感情。この振り幅の大きさが、そのままカップの種の多さに表れています。
-          </p>
-          <div class="comparison-container">
-            <div class="comparison-item">アダム＝理性<br>損得・効率で選ぶ</div>
-            <div class="comparison-vs">突破</div>
-            <div class="comparison-item">イブ＝感情<br>「面白そう」で動く</div>
-          </div>
-          <div class="highlight-box">
-            中学生の恋愛にたとえるなら、優等生から告白されているのに惹かれるのはヤンキーのほう。内申点は下がるし、いいことがないのも分かっている。でも損得と効率だけで決めてきた人と、感情に振り回されて損もした人とでは、40代50代になったときの深みが違ってきます。
-          </div>
-        </div>
-
-        <hr class="card-divider">
-
-        <!-- Card 14 -->
-        <div class="card">
-          <span class="tape-deco">カップの5：火星のところに、水が来る</span>
-          <i class="fa-solid fa-droplet icon-large text-blue-900"></i>
-          <h3 class="text-md text-slate-800 font-bold text-center mb-2">裏切られて悲しんでいるカードではない</h3>
-          <p class="text-sm text-slate-700">
-            カップの5も、ソードの5と同じ5番ゲブラー＝火星の場所です。水は安定を好むので、四角い水槽のような4番と相性がいい。けれど動きがない場所に留まると、水はすぐ腐ります。<strong>5番へ行くというのは、やりたくない・面倒くさい・恥ずかしい・怖い、に向き合って選ぶということ。</strong>だから行きたくない。それでも行かなければならないときが来ます。やりたいことを選んだ結果、集客も、批判も、傷つくことも付いてくる。感情の起伏が起こるのは当たり前で、これはただの途中経過を描いたカードです。
-          </p>
-          <div class="speech-bubble">
-            <div class="speech-bubble-speaker"><i class="fa-solid fa-comment-dots"></i>Dさん</div>
-            「カップが2個残っているのは、やっぱり何か意味がありますか？」
-          </div>
-          <p class="text-sm text-slate-700">
-            「あるものに氣づいていない」と読む人が多いところですが、5番はそもそもそういう場所ではありません。<strong>枯渇していない、というだけです。</strong>5番で起こる悲しみは、自分で選んだ結果だとちゃんと分かっている悲しみ。お金を貸して返ってこなくても「貸したのは俺なんだから」と言える覚悟がある。それでも、信じていた人に裏切られたらショックですよね。芯はある、だけどしんどい。そういうカードです。
-          </p>
-          <div class="highlight-box">
-            揺さぶられすぎているなら、一度4番に戻ってもいい。優先順位を決めましょうか、調整していきましょうね、と伝えるカードでもあります。
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- フッター部 -->
-    <footer class="mt-16 text-center border-t border-dashed border-slate-300 pt-8 text-slate-500">
-      <p class="text-sm heading-font">
-        <i class="fa-solid fa-quote-left text-xs mr-1 text-slate-400"></i>
-        争っているかどうかではなく、火加減がどうか。同じ場所から、勝利も敗北も生まれます。
-        <i class="fa-solid fa-quote-right text-xs ml-1 text-slate-400"></i>
-      </p>
-      <div class="flex flex-wrap justify-center gap-6 mt-6 text-xs text-slate-400 font-mono">
-        <span><i class="fa-solid fa-book-open mr-1"></i>Mayumi式解説書（グラレコ版）</span>
-        <span><i class="fa-solid fa-clock-four mr-1"></i>勉強会音声：約1時間22分収録</span>
-        <span><i class="fa-solid fa-heart text-red-500 mr-1 animate-pulse"></i>Designed for Tarot &amp; Kabbalah Lovers</span>
-      </div>
-    </footer>
-
+  <div class="hero-inner">
+    <p class="hero-eyebrow">GRAPHIC RECORD</p>
+    <h1><span class="nw">Mayumi式</span><span class="nw accent">　生命の樹　</span><span class="nw">＆</span><span class="nw accent">　タロット</span><span class="nw">　勉強会</span></h1>
+    <div class="hero-rule"><i>✦</i></div>
+    <p class="hero-date">2026年7月17日</p>
+    <ul class="draw-list">
+      <li><a href="#s1"><span>01</span>ソードの5</a></li>
+      <li><a href="#s3"><span>02</span>ワンドのエース</a></li>
+      <li><a href="#c-chariot"><span>03</span>戦車</a></li>
+      <li><a href="#c-cup5"><span>04</span>カップの5</a></li>
+    </ul>
   </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 目次 -->
+  <nav class="toc">
+    <p class="toc-label">CONTENTS</p>
+    <ul class="toc-list">
+      <li><a href="#s1"><em>I</em>ソードの5と火加減</a></li>
+      <li><a href="#s2"><em>II</em>4番から5番へ動く</a></li>
+      <li><a href="#s3"><em>III</em>ワンドのエースと種</a></li>
+      <li><a href="#s4"><em>IV</em>宇宙の愛と、地球の愛</a></li>
+      <li><a href="#s5"><em>V</em>戦車と、カップの5</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============ I ============ -->
+  <section class="section" id="s1">
+    <div class="sec-head">
+      <span class="sec-num">I</span>
+      <h2>ソードの5と火加減</h2>
+      <p class="sec-time">00:00:02 —</p>
+    </div>
+    <div class="sec-body">
+
+      <article class="card">
+        <span class="card-tag">正反対のキーワードが同居する謎</span>
+        <h3>「敗北」と「勝利」が、同じカードに載っている</h3>
+        <p>一般的な解説書やサイトでソードの5を引くと、争い・敗北・利己的な勝利、といったキーワードが並びます。まゆみさん自身が学びはじめの頃、いちばん振り回されたのがここでした。<strong>同じ1枚のカードに、真反対の意味がどうして同時に存在するのか。</strong>「直感でいいんだよ、思ったことをそのまま言って」と言われても、どっちを言えばいいのかが分からない。この納得のいかなさこそが、生命の樹を使うと構造としてスッと解ける部分です。</p>
+        <div class="voice">
+          <p class="voice-name">Aさん</p>
+          <p>「タロットを迎えたばかりの初心者なんですが、カードと仲良くなろうと引いてみると、なぜかソードばかりよく出るんです」</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">5番ゲブラー＝火星に、風が入る</span>
+        <h3>メラメラした場所に、風がどばっと吹き込む</h3>
+        <p>数札の5が置かれるのは、生命の樹の5番「ゲブラー」。西洋占星術でいえば火星が対応する、メラメラと燃えている場所です。そこへソード（風）のエネルギーが流れ込みます。バーベキューで火を起こすとき、必ず仰ぎますよね。<strong>風がないと火はつかない。でも風が強すぎると山火事になる。</strong>争いも、口論も、勝利も、敗北も、すべてこの火加減の違いから生まれます。</p>
+        <div class="heat">
+          <div class="heat-bar"></div>
+          <div class="heat-steps">
+            <div class="heat-step"><span class="t">とろ火</span><span class="d">静かな主張</span></div>
+            <div class="heat-step"><span class="t">中火</span><span class="d">意見が立つ</span></div>
+            <div class="heat-step"><span class="t">強火</span><span class="d">衝突・口論</span></div>
+            <div class="heat-step"><span class="t">火傷</span><span class="d">暴走・傷つけ</span></div>
+          </div>
+        </div>
+        <div class="note">
+          <p>熱くなりすぎているなら「正義」のカードでバランスを取ってもらう。感情や情熱を交えずに、優先順位と状況を冷静に整理してもらうイメージです。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">小アルカナにもサインと天体がある</span>
+        <h3>ソードの5＝水瓶座の金星</h3>
+        <p>数札にもサインと天体が振られていて、ソードの5には「水瓶座の金星」が当てはまります。ただし、ウェイト版が生まれた1900年代前半は現代占星術以前の時代。<strong>「水瓶座はこういう性格」という細かい読み方ではなく、牡羊座で命が生まれ魚座で終わる、という人生のサイクルの11番目として眺めるほうがイメージが立ちます。</strong>山羊座で社会的な地位や名誉を手にしたその先で、場所や役割ではなく「一人の個」として枠を突破していく感覚。そこに金星が輝く、と捉えてみてください。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ II ============ -->
+  <section class="section" id="s2">
+    <div class="sec-head">
+      <span class="sec-num">II</span>
+      <h2>4番から5番へ動く</h2>
+      <p class="sec-time">00:05:12 —</p>
+    </div>
+    <div class="sec-body">
+
+      <article class="card">
+        <span class="card-tag">ソードの4：寝ているのは思考</span>
+        <h3>当たり前を前にすると、思考は動かない</h3>
+        <p>5番の手前にある4番は、安定していて動きがない場所。受講生さんでもここの概念がすっと入らない方が多い、いちばん難しいセフィラです。ソードの4で人が寝ているのは、<strong>物理的に休んでいるのではなく、思考というエネルギーそのものが休眠している状態</strong>を描いています。「命は大事にしましょう」と言われて、なぜ大事なのかをわざわざ考える人はいませんよね。あまりに当たり前なものを前にすると、思考のエンジンは止まったままになるのです。</p>
+        <div class="compare">
+          <div class="compare-cell"><span class="t">4番</span><span class="d">安定・動きなし<br>思考は眠る</span></div>
+          <div class="compare-mid">動き出す</div>
+          <div class="compare-cell"><span class="t">5番</span><span class="d">激しく動く<br>思考が起きる</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">世間の声が届かない場所</span>
+        <h3>「みんながそうだから」を採用しない</h3>
+        <p>5番は、自分の意志で決めたり選んだりする場所です。しかもここは現実世界から距離があるので、<strong>みんなが結婚しているから、男だから女だから、といった世間一般の常識やルールをそもそも採用しません。</strong>誰かに言われたからではなく、自分の魂が何をしたいかで選ぶ。だからこそ、なおさら熱くなりやすい場所でもあります。安心安全な4番から飛び出している分、普通の人と考え方が違うところに立つことになり、ぶつかった結果として勝つことも負けることもあります。</p>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">ソード＝ヘルメスの神様</span>
+        <h3>言葉を扱う力には、ずるさも含まれる</h3>
+        <p>ソードといえば水星、水星といえばヘルメス。魔術師に描かれているこの伝達の神様は、話術に長けている一方で「盗みの神」とも言われます。口がうまいから、正当化もできてしまう。<strong>言語というのは扱い方しだいで、ずるさや策略を生むもの</strong>なのです。そこに火の力が合わさると、自分が勝ち取るために策略を練る形になり、いわゆる「利己的な勝利」というキーワードが生まれます。悪い意味に受け取る必要はありません。</p>
+        <div class="voice">
+          <p class="voice-name">Aさん</p>
+          <p>「このカード、やってやったぜ、みたいな男性の顔がいちばん最初に目に入るんです。そういう意味合いも含めて読むと、また変わってきますか？」</p>
+        </div>
+        <div class="note">
+          <p>まゆみさんのおすすめは、生命の樹という土台を入れたうえで思う存分に直感を働かせるスタイル。本質が一本通っていると、自信を持って伝えたあとに「でも、このにやっとした顔が氣になるんですよね」と足せます。土台が先、直感はそのあと。</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ III ============ -->
+  <section class="section" id="s3">
+    <div class="sec-head">
+      <span class="sec-num">III</span>
+      <h2>ワンドのエースと種</h2>
+      <p class="sec-time">00:21:12 —</p>
+    </div>
+    <div class="sec-body">
+
+      <article class="card">
+        <span class="card-tag">1番ケテル：宇宙のどこかにある種</span>
+        <h3>アンテナを張っていないと、通り過ぎてしまう</h3>
+        <p>エースが置かれるのは生命の樹のいちばん上、1番ケテル。正直に言うと、ここは圧倒的に抽象的で、具体的に言えることがほとんどありません。<strong>宇宙のどこかに、生命エネルギーを揺さぶるような種がある。そのくらいの話です。</strong>胸が熱くなる人もいれば、「なんかこの文字が氣になるな」程度の人もいる。あまりに小さいので、アンテナを張っていないとスルーしてしまう可能性があります。だからエースが出たら「少しアンテナを張っておくといいかもしれませんね」というアドバイスが効きます。</p>
+        <div class="voice">
+          <p class="voice-name">Bさん</p>
+          <p>「エースは、生命の樹を勉強していちばんイメージが変わったカードです。習ったのは『情熱を持って始めよう』という力強い意味で、魔術師と何が違うんだろうとずっと思っていました」</p>
+        </div>
+        <div class="note">
+          <p>抽象的すぎて話が終わってしまうときは、もう1枚10番の位置を出してみる。今起きている出来事が何かの種だとしたら、どう捉えますか？　畑がいっぱいなら新しい種は植えられないので、もう十分やったと思うものを終わらせて余白をつくる、という話にもできます。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">4枚のエースを並べて氣づくこと</span>
+        <h3>ペンタクルにだけ、種が描かれていない</h3>
+        <p>生命の樹にはヨッド（ヘブライ文字の「י」）＝種という考え方があり、エースのカードにはその種が舞っています。ところが4枚を並べると、<strong>ペンタクルのエースにだけ種が描かれていません。ペンタクルは種を植える場所であり、結果そのものだからです。</strong>さらに面白いのが種の数。ワンドは少なく、ソードは6つほど、そしてカップがいちばん多い。感情のほうが、深掘りできる種をたくさん含んでいるということが、そのまま絵に表れています。</p>
+        <div class="compare three">
+          <div class="compare-cell"><span class="t">ワンド</span><span class="d">原始的な生命力<br>種は少ない</span></div>
+          <div class="compare-cell"><span class="t">カップ</span><span class="d">感情<br>種がいちばん多い</span></div>
+          <div class="compare-cell"><span class="t">ペンタクル</span><span class="d">結果・植える場所<br>種はない</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ IV ============ -->
+  <section class="section" id="s4">
+    <div class="sec-head">
+      <span class="sec-num">IV</span>
+      <h2>宇宙の愛と、地球の愛</h2>
+      <p class="sec-time">00:33:38 —</p>
+    </div>
+    <div class="sec-body">
+
+      <article class="card">
+        <span class="card-tag">カップのエース：統合の種</span>
+        <h3>好きでも嫌いでもない何かが、生まれる</h3>
+        <p>カップは愛。そして愛とは、究極には「統合」です。異質なもの同士がぶつかって混ぜ合わされ、<strong>好きでもない、嫌いでもない、新しい第三のものが生まれる</strong>。もし目の前に嫌いだと思っている人がいるなら、統合するというのはその人ととことん向き合うということ。宇宙レベルでは尊く素晴らしい経験ですが、地球目線ではなかなかしんどいですよね。だからこのカードは「新しい感情を経験する種」であって、それがどう転ぶかは未知数です。</p>
+        <div class="note">
+          <p>種は、受け取ることもできれば受け取らないこともできます。受け取らなければ、なかったことと同じ。いつもの反応・いつもの処理の仕方をすると、いつもと変わらない現実になります。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">ヴェールの向こう側の話</span>
+        <h3>きれいなだけのカードでは、たぶんない</h3>
+        <p>鳩が描かれているから「愛と平和のカード」。そう習った方も多いところです。でも天上の三つ組の話として考えるなら、ここは神様と宇宙の世界観のいちばん上。人間がどうこうできる領域ではありません。<strong>宇宙レベルの愛は、地球の感覚でいう愛や優しさとは別物です。</strong>自然の圧倒的な力が、時に恐怖であり、時に震えるほどの感動でもあるように。それのもっとすごいものだと思ってください。</p>
+        <div class="voice">
+          <p class="voice-name">Cさん</p>
+          <p>「宇宙レベルでの愛の表現が『調整』なんだというのは、なるほどなと思いました。そういう捉え方もあるんですね」</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">許すって、好きになることじゃない</span>
+        <h3>嫌いなままでいい。許せない自分ごと許す</h3>
+        <p>許すというのは、嫌いなものを好きにすることではありません。<strong>「好きか嫌いかで言えば嫌い。でも、どんな人生を歩んだらその言動になるのか、背景を考えれば理解はできる」。それでいいのです。</strong>嫌いな相手を好きになろうとすると、苦しさがマックスになります。そして許すことがゴールだと思っていると、許せない自分を見つけたときに「私は心の狭い人間だ」と責めてしまう。許せない自分ごと許す。それが宇宙レベルの愛です。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ V ============ -->
+  <section class="section" id="s5">
+    <div class="sec-head">
+      <span class="sec-num">V</span>
+      <h2>戦車と、カップの5</h2>
+      <p class="sec-time">00:46:01 —</p>
+    </div>
+    <div class="sec-body">
+
+      <article class="card" id="c-chariot">
+        <span class="card-tag">戦車：3番と5番を結ぶパス</span>
+        <h3>大事なものを守り、育むときに動くエネルギー</h3>
+        <p>戦車は真ん中の領域、3番ビナーと5番ゲブラーを結ぶパスです。3番は生まれ持った素地が決まる場所。どんな親のもとに、どんな性別で、何が得意で何が不得意か。<strong>その素地を使って自分の土台を育てたり、自分の信念や大事なものを守ろうとするときに発動するのが戦車です。</strong>実は蟹座のカード。自分の心安らぐ場所を育て、大事なものは囲い込みたい。でも一度敵と認定すると、硬い甲羅とはさみで攻撃的になる。まゆみさんが「ヤンキー星座」と呼ぶ性質が、そのまま戦車にも入っています。</p>
+        <div class="compare">
+          <div class="compare-cell"><span class="t">司祭（法王）</span><span class="d">対極の柱<br>道徳・社会的責任</span></div>
+          <div class="compare-mid">⇔</div>
+          <div class="compare-cell"><span class="t">戦車</span><span class="d">ルールでも善悪でもない<br>自分の大事なもの</span></div>
+        </div>
+        <div class="voice">
+          <p class="voice-name">Cさん</p>
+          <p>「守るもの、抱えているものが大きいと思っているから、面白いほうを選ぶと今のものをぽいっと捨ててしまう氣がして。どうバランスを取るのかを今悩んでいます」</p>
+        </div>
+        <div class="note">
+          <p>「みんな結婚するから私も」で戦車が出ても、結婚したらいいですね、とはなりません。その関係はあなたの土台を育むことにつながりますか、と見ていく。物質的な条件の話ではないところが、このカードのポイントです。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">恋人たち：イブだけが上を向いている</span>
+        <h3>理性は、限界突破のキーにはならない</h3>
+        <p>恋人たちのカードで、上を見上げているのはイブだけです。アダムの目線はどちらかというと斜め下、目の前の現実のほう。<strong>理性はとても大事なものですが、何かの限界を突破する鍵にはなりません。爆発的な力を持っているのは感情のほうです。</strong>どこまでも堕落できるのも感情なら、枠を飛び出して越えていくのも感情。この振り幅の大きさが、そのままカップの種の多さに表れています。</p>
+        <div class="compare">
+          <div class="compare-cell"><span class="t">アダム＝理性</span><span class="d">損得・効率で選ぶ</span></div>
+          <div class="compare-mid">突破</div>
+          <div class="compare-cell"><span class="t">イブ＝感情</span><span class="d">「面白そう」で動く</span></div>
+        </div>
+        <div class="note">
+          <p>中学生の恋愛にたとえるなら、優等生から告白されているのに惹かれるのはヤンキーのほう。内申点は下がるし、いいことがないのも分かっている。でも損得と効率だけで決めてきた人と、感情に振り回されて損もした人とでは、40代50代になったときの深みが違ってきます。</p>
+        </div>
+      </article>
+
+      <article class="card" id="c-cup5">
+        <span class="card-tag">カップの5：火星のところに、水が来る</span>
+        <h3>裏切られて悲しんでいるカードではない</h3>
+        <p>カップの5も、ソードの5と同じ5番ゲブラー＝火星の場所です。水は安定を好むので、四角い水槽のような4番と相性がいい。けれど動きがない場所に留まると、水はすぐ腐ります。<strong>5番へ行くというのは、やりたくない・面倒くさい・恥ずかしい・怖い、に向き合って選ぶということ。</strong>だから行きたくない。それでも行かなければならないときが来ます。やりたいことを選んだ結果、集客も、批判も、傷つくことも付いてくる。感情の起伏が起こるのは当たり前で、これはただの途中経過を描いたカードです。</p>
+        <div class="voice">
+          <p class="voice-name">Dさん</p>
+          <p>「カップが2個残っているのは、やっぱり何か意味がありますか？」</p>
+        </div>
+        <p>「あるものに氣づいていない」と読む人が多いところですが、5番はそもそもそういう場所ではありません。<strong>枯渇していない、というだけです。</strong>5番で起こる悲しみは、自分で選んだ結果だとちゃんと分かっている悲しみ。お金を貸して返ってこなくても「貸したのは俺なんだから」と言える覚悟がある。それでも、信じていた人に裏切られたらショックですよね。芯はある、だけどしんどい。そういうカードです。</p>
+        <div class="note">
+          <p>揺さぶられすぎているなら、一度4番に戻ってもいい。優先順位を決めましょうか、調整していきましょうね、と伝えるカードでもあります。</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ 結び ============ -->
+  <div class="closing">
+    <div class="closing-frame"></div>
+    <p>争っているかどうかではなく、<span class="accent">火加減がどうか</span>。<br>同じ場所から、勝利も敗北も生まれます。</p>
+  </div>
+
+  <footer>
+    <p class="foot-mark">シリウスの部屋</p>
+    <div class="foot-meta">
+      <span>MAYUMI式解説書 — グラレコ版</span>
+      <span>勉強会音声 約1時間22分</span>
+      <span>2026.07.17</span>
+    </div>
+  </footer>
+
+</div>
 
 </body>
 </html>
